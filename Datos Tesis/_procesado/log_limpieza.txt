@@ -1,0 +1,64 @@
+[algoritmos_2425-2_sec1] Sesiones detectadas: 16 (rango 2025-01-06 a 2025-03-12). Inicio de termino asumido (lunes semana 1): 2025-01-06.
+[algoritmos_2425-2_sec1] Estudiantes procesados: 30. Filas estudiante-fecha generadas: 480.
+[algoritmos_2425-2_sec2] Sesiones detectadas: 15 (rango 2025-01-07 a 2025-03-13). Inicio de termino asumido (lunes semana 1): 2025-01-06.
+[algoritmos_2425-2_sec2] Estudiantes procesados: 30. Filas estudiante-fecha generadas: 450.
+[algoritmos_2526-1] Sesiones detectadas: 15 (rango 2025-09-08 a 2025-11-17). Inicio de termino asumido (lunes semana 1): 2025-09-08.
+[algoritmos_2526-1] Estudiantes procesados: 27. Filas estudiante-fecha generadas: 405.
+[algoritmos_2526-1] NOTA: el archivo fuente no distingue seccion por estudiante (el libro 'Total' menciona 'sec 1 y 5' de forma ambigua) -> columna 'seccion' se dejo vacia.
+[algoritmos_2526-3_sec1] Estudiantes procesados: 30. Columnas de sesion usadas: 17 (se ignoraron columnas 'prepa N', que son notas de preparaduria, no participacion).
+[algoritmos_2526-3_sec1] codigo 'F' (Fraude) tratado como asistencia=1, participaciones=0 (x2 celdas)
+[algoritmos_2526-3_sec1] Filas estudiante-fecha generadas: 510.
+[algoritmos_2526-3_sec3] Estudiantes procesados: 30. Columnas de sesion usadas: 17 (se ignoraron columnas 'prepa N', que son notas de preparaduria, no participacion).
+[algoritmos_2526-3_sec3] Filas estudiante-fecha generadas: 510.
+[algoritmos_2526-3_sec6] Estudiantes procesados: 30. Columnas de sesion usadas: 17 (se ignoraron columnas 'prepa N', que son notas de preparaduria, no participacion).
+[algoritmos_2526-3_sec6] Filas estudiante-fecha generadas: 510.
+[computacion_emergente_2526-1] Sesiones detectadas: 15 (rango 2025-09-09 a 2025-11-18). Inicio de termino asumido (lunes semana 1): 2025-09-08.
+[computacion_emergente_2526-1] Estudiantes procesados: 28. Filas estudiante-fecha generadas: 420.
+[computacion_emergente_2526-1] NOTA: seccion no especificada en el archivo fuente -> columna 'seccion' vacia.
+[computacion_emergente_2526-2] Estudiantes procesados: 42. Semanas ya agregadas en el origen: Sem 1 a Sem 12 (12 columnas). Sin fecha de sesion individual en el archivo fuente -> columna 'fecha' queda vacia, se mantiene la granularidad semanal original.
+[computacion_emergente_2526-2] Filas estudiante-semana generadas: 504.
+[computacion_emergente_2526-2] NOTA: se uso el archivo standalone de 'Computacion Emergente/2526-2/' (no la hoja duplicada dentro del libro de Estructuras de Datos 2526-2).
+[estructuras_2425-3] Sesiones detectadas: 18 (rango 2025-04-22 a 2025-07-08). Inicio de termino asumido (lunes semana 1): 2025-04-21.
+[estructuras_2425-3] Estudiantes procesados: 30. Filas estudiante-fecha generadas: 540.
+[estructuras_2425-3] ADVERTENCIA: celdas con valores no numericos {'⚕️': 8} tratadas como NaN en 'participaciones'.
+[estructuras_2425-3] NOTA: seccion no especificada en el archivo fuente -> columna 'seccion' vacia.
+[estructuras_2526-1] Sesiones detectadas: 15 (rango 2025-09-09 a 2025-11-24). Inicio de termino asumido: 2025-09-08.
+[estructuras_2526-1] Cedula obtenida cruzando 'Hoja 1' (sin cedula) con 'Totales' (con cedula) por nombre normalizado.
+[estructuras_2526-1] Estudiantes cruzados exitosamente: 30. Sin match de cedula (excluidos del CSV): 2.
+[estructuras_2526-1] Filas estudiante-fecha generadas: 450.
+[estructuras_2526-2] Estudiantes procesados: 18. Semanas ya agregadas en el origen: Sem 1 a Sem 12 (12 columnas). Sin fecha de sesion individual en el archivo fuente -> columna 'fecha' queda vacia, se mantiene la granularidad semanal original.
+[estructuras_2526-2] Filas estudiante-semana generadas: 216.
+[estructuras_2526-2] NOTA: el libro fuente tambien contiene una hoja COMPURACION EMERGENTE para el mismo trimestre, que es duplicada del archivo standalone (ver nota de computacion_emergente_2526-2) y por eso no se proceso de nuevo aqui. La hoja ALGORITMOS del mismo libro SI se proceso, ver fuente 'algoritmos_2526-2' abajo.
+[algoritmos_2526-2] Estudiantes procesados: 30. Semanas ya agregadas en el origen: Sem 1 a Sem 12 (12 columnas). Sin fecha de sesion individual en el archivo fuente -> columna 'fecha' queda vacia, se mantiene la granularidad semanal original.
+[algoritmos_2526-2] Filas estudiante-semana generadas: 360.
+[algoritmos_2526-2] NOTA: Algoritmos 2526-2 no tenia archivo de participaciones propio (solo cronograma). Por decision expresa del usuario, se tomo esta hoja del libro de Estructuras de Datos 2526-2, que registra participaciones de Algoritmos para el mismo trimestre bajo el mismo formato Sem1..Sem12.
+[estructuras_2526-3] Estudiantes procesados: 30. Columnas de sesion usadas: 19 (se ignoraron columnas 'prepa N', que son notas de preparaduria, no participacion).
+[estructuras_2526-3] codigo especial no reconocido 'p' tratado como NaN (x1 celdas)
+[estructuras_2526-3] codigo 'J' (jubilado): estudiante asistio pero se retiro antes de terminar la clase (confirmado por el autor de la tesis) -> asistencia=1, participaciones=0 (x12 celdas)
+[estructuras_2526-3] codigo especial no reconocido '⚖️' tratado como NaN (x4 celdas)
+[estructuras_2526-3] Filas estudiante-fecha generadas: 570.
+
+=== Mapeo de anonimizacion ===
+Total de estudiantes unicos (por cedula) detectados en los 10 archivos: 345.
+IDs asignados: anon_001 a anon_345, ordenados por cedula ascendente. El mismo estudiante recibe el mismo estudiante_id en todos los CSV donde aparezca.
+
+=== Archivos CSV generados ===
+algoritmos_2425-2_sec1_participaciones.csv: 480 filas
+algoritmos_2425-2_sec2_participaciones.csv: 450 filas
+algoritmos_2526-1_participaciones.csv: 405 filas
+algoritmos_2526-3_sec1_participaciones.csv: 510 filas
+algoritmos_2526-3_sec3_participaciones.csv: 510 filas
+algoritmos_2526-3_sec6_participaciones.csv: 510 filas
+computacion_emergente_2526-1_participaciones.csv: 420 filas
+computacion_emergente_2526-2_participaciones.csv: 504 filas
+estructuras_2425-3_participaciones.csv: 540 filas
+estructuras_2526-1_participaciones.csv: 450 filas
+estructuras_2526-2_participaciones.csv: 216 filas
+algoritmos_2526-2_participaciones.csv: 360 filas
+estructuras_2526-3_participaciones.csv: 570 filas
+
+=== VALIDACION: suma de columnas de fecha vs columna TOTAL del Excel original (Algoritmos 2425-2 sec1) ===
+Coinciden exactamente: 29/31 estudiantes.
+Los 2 restantes tienen un TOTAL en el Excel que no coincide con la suma de las columnas de fecha; en la revision manual (ver informe) se confirmo que se debe a que la formula TOTAL del archivo original no fue extendida a la ultima columna de fecha (error del archivo fuente, no de esta extraccion).
+[algoritmos_2526-1] Semanas sin tema en el cronograma (no es error de cruce, el cronograma no registra tema esa semana): [11]
+[computacion_emergente_2526-2] Semanas sin tema en el cronograma (no es error de cruce, el cronograma no registra tema esa semana): [5]

@@ -1,0 +1,511 @@
+estudiante_id,numero_lista,materia,trimestre,seccion,fecha,semana,tema,participaciones,tipo_participacion,asistencia
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,1.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,1.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,2.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,2.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_305,  1,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,0.0,,0
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,0
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,0
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,0
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,0
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,0
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,0
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],0.0,,0
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_318,  2,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_158,  3,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,0.0,,0
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,0
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,0
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,0
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,0
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,0
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,0
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_267,  4,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,0.0,,0
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,1.0,,1
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,1.0,,1
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_253,  5,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,1.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,0.0,,0
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,1.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,1.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_288,  6,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,1.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,0
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_255,  7,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,1.0,,1
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,0
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,0
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,0
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,0
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],0.0,,0
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_319,  8,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,1.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,1.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_329,  9,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,1.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,1.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,2.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,1.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],2.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_335, 10,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,1.0,,1
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,1.0,,1
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,1.0,,1
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,0
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,0
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_229, 11,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,0.0,,0
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,1.0,,1
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,1.0,,1
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],0.0,,1
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_227, 12,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,0.5,,1
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,0
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,0
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,0
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,0
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],0.0,,0
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_332, 13,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,0.0,,0
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,3.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_298, 14,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,1.0,,1
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,1.0,,1
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,1.0,,1
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,3.0,,1
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,0
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,0
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,0
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_243, 15,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,1.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,1.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,1.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,1.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,2.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",1.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,1.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,2.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,1.0,,1
+anon_294, 16,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,1.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,1.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,1.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,1.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,1.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,1.0,,1
+anon_234, 17,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,2.0,,1
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,0.0,,0
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,2.0,,1
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,0
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],2.0,,1
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,0
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,0
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,0
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_165, 18,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,1.0,,1
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,0.0,,0
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,0
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,0
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,0
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,0
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,0
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,0
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,0
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,0
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,0
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],0.0,,0
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_254, 19,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,1.0,,1
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,1.0,,1
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,2.0,,1
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,0
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,0
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,0
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,0
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],0.0,,0
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_202, 20,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,1.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_282, 21,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,1.0,,1
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,0.0,,0
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,1.0,,1
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,1.0,,1
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,0
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,1.0,,1
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,0
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,0
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,0
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,0
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,0
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,0
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],0.0,,0
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_154, 22,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,1.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,1.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,1.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,1.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,3.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,1.0,,1
+anon_326, 23,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,0.0,,0
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,0
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,0
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,0
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,0
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,0
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,0
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,0
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,0
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],0.0,,0
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_271, 24,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,1.0,,1
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,1.0,,1
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,0
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,5.0,,1
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,2.0,,1
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_314, 25,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,0
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,1.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,2.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,1.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,1.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,2.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,2.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,2.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],4.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_239, 26,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,0.0,,0
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,0
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,0
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,0
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,1.0,,1
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,0
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_072, 27,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,2.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,1.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,3.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,2.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,3.5,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,3.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",2.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,1.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_313, 28,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,0.0,,0
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,1.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,2.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,0.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_333, 29,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,2.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-04-13,1,Introducción a la programación,0.0,,0
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-04-15,1,Introducción a la programación,0.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-04-20,2,Estructuras de Decisión,0.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-04-22,2,Estructuras de Decisión,0.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-04-27,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-04-29,3,Estructuras de Repetición Manejo de Arreglos,0.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-05-04,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-05-06,4,4. Manejo de Arreglos (cont.) Pase de parámetros,0.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-05-11,5,[Resolución de ejercicios],0.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-05-20,6,"Clases, objetos y mensajes",0.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-05-25,7,Concepto de encapsulamiento,0.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-05-27,7,Concepto de encapsulamiento,0.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-06-01,8,Entrada de datos Recursividad,0.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-06-03,8,Entrada de datos Recursividad,3.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-06-08,9,[Resolución de ejercicios],2.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-06-15,10,Métodos de ordenamiento y búsqueda,0.0,,1
+anon_273, 30,Algoritmos y Programación,2526-3,1,2026-06-17,10,Métodos de ordenamiento y búsqueda,1.0,,1
