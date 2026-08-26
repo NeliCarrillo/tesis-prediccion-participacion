@@ -199,6 +199,7 @@ def process_weekly_aggregated(path, hoja, materia, trimestre, seccion, cronogram
 
     filas = []
     n_estudiantes = 0
+    codigos_especiales = {}
     for _, fila in data.iterrows():
         cedula_cruda = fila[idx_cedula]
         if pd.isna(cedula_cruda):
@@ -216,6 +217,7 @@ def process_weekly_aggregated(path, hoja, materia, trimestre, seccion, cronogram
                 participaciones = float(valor)
             else:
                 participaciones = np.nan
+                codigos_especiales[repr(valor)] = codigos_especiales.get(repr(valor), 0) + 1
             filas.append(_fila_base(cedula, None, materia, trimestre, seccion,
                                      '', semana, cronogramas, participaciones, np.nan))
 
@@ -227,6 +229,8 @@ def process_weekly_aggregated(path, hoja, materia, trimestre, seccion, cronogram
         f"semanal original.",
         f"Filas estudiante-semana generadas: {len(filas)}.",
     ]
+    if codigos_especiales:
+        notas.append(f"ADVERTENCIA: celdas con valores no numericos {codigos_especiales} tratadas como NaN en 'participaciones'.")
     return filas, notas, []
 
 
