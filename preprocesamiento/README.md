@@ -7,20 +7,29 @@ estandarización de datos") descrita en el anteproyecto.
 
 ## Estructura
 
-| Archivo | Qué hace |
-|---|---|
-| `cronogramas.py` | Parsea los cronogramas (`.docx` y el `.xlsx` especial de Algoritmos 2425-2) a `{(materia, trimestre): {semana: tema}}`. |
-| `limpieza.py` | Funciones puras de normalización: cédulas, artefacto de iniciales pegadas en nombres, cálculo de semana a partir de una fecha, decodificación de asistencia P/1/T/F/J. |
-| `extractores.py` | Un extractor por cada formato de archivo fuente (por sesión, agregado por semana, híbrido con código de asistencia) + el caso especial de Estructuras 2526-1 (cruce por nombre). |
-| `fuentes.py` | Catálogo declarativo de las 11 fuentes (qué archivo/hoja, qué materia/trimestre/sección, qué extractor usar) y la función que las despacha todas. |
-| `anonimizacion.py` | Construye el mapa cédula → `estudiante_id` y lo aplica. |
-| `validacion.py` | Chequeos post-procesamiento (cruce contra la columna `TOTAL` del Excel original, huecos de tema). Solo reporta cifras, nunca nombres ni cédulas. |
-| `pipeline.py` | Orquesta todo lo anterior. Se puede correr como script (`python3 pipeline.py`) o importar (`from pipeline import ejecutar`). |
-| `01_estandarizacion_y_anonimizacion.ipynb` | Notebook delgado: importa `pipeline`, lo corre, muestra el resumen. Toda la lógica vive en los `.py`, no en el notebook. |
+```
+preprocesamiento/
+├── 01_estandarizacion_y_anonimizacion.ipynb   # notebook delgado: solo importa, corre y narra
+├── pipeline.py                                # orquestador / punto de entrada
+├── README.md
+└── modulos/
+    ├── entrada/
+    │   └── cronogramas.py         # cronogramas (.docx / .xlsx) -> {semana: tema}
+    ├── procesamiento/
+    │   ├── limpieza.py            # normalizacion: cedulas, nombres, fechas, codigos P/1/T/F/J
+    │   ├── extractores.py         # un extractor por cada formato de archivo fuente
+    │   └── fuentes.py             # catalogo declarativo de las 11 fuentes + despacho
+    └── salida/
+        ├── anonimizacion.py       # mapa cedula -> estudiante_id
+        └── validacion.py          # chequeos post-procesamiento (sin datos personales)
+```
 
-Separar la lógica en módulos permite leer/probar cada pieza de forma aislada (p. ej. `extractores.py`
-sin tener que abrir el notebook), y que el notebook en sí sea solo la capa de orquestación y
-narrativa — no un único archivo con 300+ líneas de código mezcladas con explicaciones.
+Cada subcarpeta de `modulos/` corresponde a una etapa del pipeline: **entrada** (leer los
+cronogramas), **procesamiento** (limpiar y extraer las hojas de participación) y **salida**
+(anonimizar, validar). `pipeline.py` es el único archivo que conoce las tres etapas y las
+encadena; el notebook, a su vez, solo conoce `pipeline.py`. Esto permite leer o probar cada
+pieza de forma aislada (p. ej. `extractores.py` sin abrir el notebook) sin tener que navegar
+un único archivo con todo mezclado.
 
 ## Cómo correrlo
 
@@ -65,14 +74,14 @@ estudiantes y nunca deben subirse al repositorio.
 
 - **Cómo se calcula `semana` cuando el archivo fuente no la da directamente**: se toma el lunes
   de la semana de la primera sesión registrada como inicio de la "semana 1" del trimestre, y se
-  cuenta en bloques de 7 días desde ahí (`limpieza.semana_desde_fecha`). Se validó contra el único
+  cuenta en bloques de 7 días desde ahí (`modulos/procesamiento/limpieza.py::semana_desde_fecha`). Se validó contra el único
   cronograma que trae fechas explícitas por semana (Algoritmos 2425-2) y reproduce exactamente la
   numeración real del profesor.
 - **`participaciones` vs. el `TOTAL` de algunos Excel originales**: en Algoritmos 2425-2 sec1, 2 de
   31 estudiantes tienen un `TOTAL` en el Excel que no coincide con la suma de las columnas de
   fecha, porque la fórmula del archivo original no se extendió a la última columna. Este pipeline
   suma cada celda de fecha directamente, así que es más confiable que ese `TOTAL` para esos casos
-  (ver `validacion.validar_total_algoritmos_2425_2_sec1`, que lo reporta en el log).
+  (ver `modulos/salida/validacion.py::validar_total_algoritmos_2425_2_sec1`, que lo reporta en el log).
 - **Duplicados**: Computación Emergente 2526-2 existe en dos libros (uno standalone y otro dentro
   del libro de Estructuras de Datos 2526-2); se usa el standalone.
 - **Algoritmos 2526-2** no tenía archivo de participaciones propio (solo cronograma). Se completó

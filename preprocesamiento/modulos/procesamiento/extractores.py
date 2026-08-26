@@ -24,8 +24,8 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 
-from cronogramas import tema_for
-from limpieza import (
+from ..entrada.cronogramas import tema_for
+from .limpieza import (
     norm_cedula,
     limpiar_artefacto_nombre,
     normalizar_para_cruce,

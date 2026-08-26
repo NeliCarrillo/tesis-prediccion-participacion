@@ -6,7 +6,7 @@ Mantener esto separado de extractores.py permite ver de un vistazo *que* se proc
 """
 from datetime import datetime
 
-from extractores import (
+from .extractores import (
     process_simple_partic,
     process_hybrid_asistencia,
     process_weekly_aggregated,

@@ -8,10 +8,10 @@ from pathlib import Path
 
 import pandas as pd
 
-from cronogramas import cargar_cronogramas
-from fuentes import procesar_todas_las_fuentes
-from anonimizacion import construir_mapa, aplicar_mapa
-from validacion import validar_total_algoritmos_2425_2_sec1, semanas_sin_tema
+from modulos.entrada.cronogramas import cargar_cronogramas
+from modulos.procesamiento.fuentes import procesar_todas_las_fuentes
+from modulos.salida.anonimizacion import construir_mapa, aplicar_mapa
+from modulos.salida.validacion import validar_total_algoritmos_2425_2_sec1, semanas_sin_tema
 
 COLUMNAS_SALIDA = [
     'estudiante_id', 'numero_lista', 'materia', 'trimestre', 'seccion',
