@@ -1,9 +1,16 @@
 # Preprocesamiento — Fase 2 del anteproyecto
 
-Código que convierte los registros crudos de participación (`Datos Tesis/`, formatos heterogéneos
+Código que convierte los registros crudos de participación (`Datos Tesis Upstream/`, formatos heterogéneos
 según el docente y el trimestre) en los CSV estandarizados y anonimizados que alimentan el
 modelado (redes bayesianas / LSTM). Implementa la Fase 2 ("levantamiento, limpieza y
 estandarización de datos") descrita en el anteproyecto.
+
+> **Nota (cambio de flujo):** a partir de ahora la conversión raw → estándar de cada materia/trimestre
+> se hace manualmente, siguiendo la plantilla `ESTANDAR_Participaciones.xlsx` en la raíz del repo, y
+> el resultado se coloca en `Datos Tesis Downstream/` (misma estructura de carpetas que `Datos Tesis
+> Upstream/`, pero vacía hasta que se vaya llenando a mano). El pipeline de este directorio sigue
+> funcionando tal cual sobre `Datos Tesis Upstream/` (útil como referencia/contraste), pero el código
+> que lea `Datos Tesis Downstream/` está por escribirse una vez existan los primeros archivos ahí.
 
 ## Estructura
 
@@ -45,7 +52,7 @@ Ambos caminos llaman exactamente al mismo código y producen el mismo resultado.
 
 ## Salida
 
-Todo se escribe en `Datos Tesis/_procesado/` (no versionado salvo por su ausencia — no hay `.csv`
+Todo se escribe en `Datos Tesis Upstream/_procesado/` (no versionado salvo por su ausencia — no hay `.csv`
 comiteados en este repo; cada quien los regenera corriendo el pipeline):
 
 - `<materia>_<trimestre>[_seccion]_participaciones.csv` — 13 archivos, uno por fuente. Esquema:
@@ -67,7 +74,7 @@ comiteados en este repo; cada quien los regenera corriendo el pipeline):
 - `_confidencial/log_limpieza_detalle.txt` — el puñado de notas que sí requieren nombrar a alguien
   (hoy, solo el detalle del cruce por nombre en Estructuras 2526-1).
 
-⚠️ `Datos Tesis/_procesado/_confidencial/` está en `.gitignore` — son datos personales de
+⚠️ `Datos Tesis Upstream/_procesado/_confidencial/` está en `.gitignore` — son datos personales de
 estudiantes y nunca deben subirse al repositorio.
 
 ## Decisiones de diseño que vale la pena conocer antes de tocar el código

@@ -1,6 +1,6 @@
 """Extraccion de la relacion semana -> tema a partir de los cronogramas de cada materia/trimestre.
 
-Los cronogramas viven en dos formatos dentro de "Datos Tesis":
+Los cronogramas viven en dos formatos dentro de "Datos Tesis Upstream":
   - La mayoria son .docx con una tabla de columnas Tema | Semana | Actividad Evaluada | Fecha | Porcentaje.
   - El cronograma de Algoritmos y Programacion 2425-2 es un .xlsx con un formato propio: dos filas
     por semana (la fecha de cada dia de clase, y debajo el tema visto ese dia).
@@ -66,7 +66,7 @@ def parse_xlsx_cronograma_alg2425_2(path, hoja):
     return resultado
 
 
-# (materia, trimestre) -> (formato, ruta relativa a "Datos Tesis")
+# (materia, trimestre) -> (formato, ruta relativa a "Datos Tesis Upstream")
 _RUTAS_CRONOGRAMA = {
     ("Algoritmos y Programación", "2425-2"): ("xlsx_alg2425_2", "Algoritmos y Programacion/2425-2/cronograma alg 2425-2.xlsx"),
     ("Algoritmos y Programación", "2526-1"): ("docx", "Algoritmos y Programacion/2526-1/Cronograma 2526-1.docx"),

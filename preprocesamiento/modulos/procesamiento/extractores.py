@@ -32,6 +32,7 @@ from .limpieza import (
     lunes_de_la_semana,
     semana_desde_fecha,
     interpretar_codigo_asistencia,
+    interpretar_valor_participacion,
 )
 
 
@@ -95,14 +96,9 @@ def process_simple_partic(path, hoja, materia, trimestre, seccion, cronogramas,
         numero_lista = fila[idx_id] if idx_id is not None and not pd.isna(fila[idx_id]) else None
 
         for i, fecha in columnas_fecha:
-            valor = fila[i]
-            if pd.isna(valor):
-                participaciones = 0.0
-            elif isinstance(valor, (int, float)):
-                participaciones = float(valor)
-            else:
-                participaciones = np.nan
-                codigos_especiales[str(valor)] = codigos_especiales.get(str(valor), 0) + 1
+            participaciones, nota = interpretar_valor_participacion(fila[i])
+            if nota:
+                codigos_especiales[nota] = codigos_especiales.get(nota, 0) + 1
             semana = semana_desde_fecha(fecha, inicio_trimestre)
             filas.append(_fila_base(cedula, numero_lista, materia, trimestre, seccion,
                                      fecha.date().isoformat(), semana, cronogramas,
@@ -113,8 +109,7 @@ def process_simple_partic(path, hoja, materia, trimestre, seccion, cronogramas,
         f"{fechas_ordenadas[-1].date()}). Inicio de termino asumido (lunes semana 1): {inicio_trimestre.date()}.",
         f"Estudiantes procesados: {n_estudiantes}. Filas estudiante-fecha generadas: {len(filas)}.",
     ]
-    if codigos_especiales:
-        notas.append(f"ADVERTENCIA: celdas con valores no numericos {codigos_especiales} tratadas como NaN en 'participaciones'.")
+    notas.extend(f"{nota} (x{cnt} celdas)" for nota, cnt in codigos_especiales.items())
     return filas, notas, []
 
 
@@ -210,14 +205,9 @@ def process_weekly_aggregated(path, hoja, materia, trimestre, seccion, cronogram
         n_estudiantes += 1
 
         for i, semana in columnas_semana:
-            valor = fila[i]
-            if pd.isna(valor):
-                participaciones = 0.0
-            elif isinstance(valor, (int, float)):
-                participaciones = float(valor)
-            else:
-                participaciones = np.nan
-                codigos_especiales[repr(valor)] = codigos_especiales.get(repr(valor), 0) + 1
+            participaciones, nota = interpretar_valor_participacion(fila[i])
+            if nota:
+                codigos_especiales[nota] = codigos_especiales.get(nota, 0) + 1
             filas.append(_fila_base(cedula, None, materia, trimestre, seccion,
                                      '', semana, cronogramas, participaciones, np.nan))
 
@@ -229,8 +219,7 @@ def process_weekly_aggregated(path, hoja, materia, trimestre, seccion, cronogram
         f"semanal original.",
         f"Filas estudiante-semana generadas: {len(filas)}.",
     ]
-    if codigos_especiales:
-        notas.append(f"ADVERTENCIA: celdas con valores no numericos {codigos_especiales} tratadas como NaN en 'participaciones'.")
+    notas.extend(f"{nota} (x{cnt} celdas)" for nota, cnt in codigos_especiales.items())
     return filas, notas, []
 
 
@@ -257,6 +246,7 @@ def process_estructura_2526_1(path, materia, trimestre, seccion, cronogramas):
     filas = []
     n_estudiantes = 0
     sin_match = []
+    codigos_especiales = {}
     for _, fila in data.iterrows():
         nombre_crudo = fila[0]
         if pd.isna(nombre_crudo):
@@ -269,13 +259,9 @@ def process_estructura_2526_1(path, materia, trimestre, seccion, cronogramas):
         n_estudiantes += 1
 
         for i, fecha in columnas_fecha:
-            valor = fila[i]
-            if pd.isna(valor):
-                participaciones = 0.0
-            elif isinstance(valor, (int, float)):
-                participaciones = float(valor)
-            else:
-                participaciones = np.nan
+            participaciones, nota = interpretar_valor_participacion(fila[i])
+            if nota:
+                codigos_especiales[nota] = codigos_especiales.get(nota, 0) + 1
             semana = semana_desde_fecha(fecha, inicio_trimestre)
             filas.append(_fila_base(cedula, None, materia, trimestre, seccion,
                                      fecha.date().isoformat(), semana, cronogramas,
@@ -288,6 +274,7 @@ def process_estructura_2526_1(path, materia, trimestre, seccion, cronogramas):
         f"Estudiantes cruzados exitosamente: {n_estudiantes}. Sin match de cedula (excluidos del CSV): {len(sin_match)}.",
         f"Filas estudiante-fecha generadas: {len(filas)}.",
     ]
+    notas.extend(f"{nota} (x{cnt} celdas)" for nota, cnt in codigos_especiales.items())
     notas_confidenciales = []
     if sin_match:
         notas_confidenciales.append(f"Nombres de 'Hoja 1' sin match en 'Totales' (excluidos): {sin_match}")

@@ -30,7 +30,7 @@ def ejecutar(directorio_notebook=None):
     """
     directorio_notebook = Path(directorio_notebook) if directorio_notebook else Path.cwd()
     raiz_repo = directorio_notebook.parent
-    base_dir = raiz_repo / "Datos Tesis"
+    base_dir = raiz_repo / "Datos Tesis Upstream"
     out_dir = base_dir / "_procesado"
     conf_dir = out_dir / "_confidencial"
     out_dir.mkdir(parents=True, exist_ok=True)

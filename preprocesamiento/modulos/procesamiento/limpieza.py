@@ -63,6 +63,28 @@ def semana_desde_fecha(fecha, inicio_trimestre):
     return (fecha.date() - inicio_trimestre.date()).days // 7 + 1
 
 
+# Emojis usados en algunas hojas de 'participaciones' en vez de un numero. Confirmados
+# por el autor de la tesis; ambos implican una ausencia justificada (no se sabe la fecha
+# exacta de reincorporacion, asi que se cuentan en 0 participaciones ese dia).
+CODIGOS_AUSENCIA_JUSTIFICADA = {
+    '⚕️': 'reposo medico',
+    '⚖️': 'caso legal/gubernamental',
+}
+
+
+def interpretar_valor_participacion(valor):
+    """Traduce una celda de una hoja 'simple' (sin codigo de asistencia, solo numero o
+    codigo de ausencia justificada) a (participaciones, nota)."""
+    if pd.isna(valor):
+        return 0.0, None
+    if isinstance(valor, (int, float)):
+        return float(valor), None
+    codigo = str(valor).strip()
+    if codigo in CODIGOS_AUSENCIA_JUSTIFICADA:
+        return 0.0, f"codigo {codigo!r} ({CODIGOS_AUSENCIA_JUSTIFICADA[codigo]}) tratado como ausencia justificada, participaciones=0"
+    return np.nan, f"codigo especial no reconocido {codigo!r} tratado como NaN"
+
+
 def interpretar_codigo_asistencia(valor):
     """Traduce el codigo de asistencia usado en los archivos 'hibridos' (P/1/T/F/J/numero)
     a (participaciones, asistencia, nota). 'nota' es None salvo que el codigo merezca
@@ -74,7 +96,8 @@ def interpretar_codigo_asistencia(valor):
         return float(valor), 1, None
 
     codigo = str(valor).strip()
-    if codigo == 'P':
+    if codigo in ('P', 'p'):
+        # 'p' minusculo confirmado como typo de 'P', mismo significado.
         return 0.0, 1, None
     if codigo == 'T':
         return 0.0, 1, None
@@ -85,6 +108,9 @@ def interpretar_codigo_asistencia(valor):
         # de terminar la clase -> se cuenta como presente, sin participaciones ese dia.
         return 0.0, 1, ("codigo 'J' (jubilado): estudiante asistio pero se retiro antes de "
                          "terminar la clase -> asistencia=1, participaciones=0")
+    if codigo in CODIGOS_AUSENCIA_JUSTIFICADA:
+        return 0.0, 0, (f"codigo {codigo!r} ({CODIGOS_AUSENCIA_JUSTIFICADA[codigo]}) tratado como "
+                         f"ausencia justificada: asistencia=0, participaciones=0")
     if re.match(r'^\d+(\.\d+)?$', codigo):
         return float(codigo), 1, None
 
