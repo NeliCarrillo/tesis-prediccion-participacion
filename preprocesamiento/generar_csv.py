@@ -166,6 +166,9 @@ def procesar(path: Path, anonimo, canon: dict, avisos: list):
     materia, trimestre, seccion = normalizar_materia(meta(0), canon), meta(1), meta(2)
     if materia != meta(0):
         avisos.append(f"{path.name}: asignatura {meta(0)!r} normalizada a {materia!r}")
+    if materia not in canon.values():
+        avisos.append(f"{path.name}: la asignatura {materia!r} no tiene hoja en "
+                      f"{CATALOGO.name}; sus códigos de tema no tienen significado asociado")
     encabezado = [texto(v) for v in est.iloc[4].tolist()]
     dias = [texto(v).lower() for v in est.iloc[5].tolist()]
 
