@@ -1,101 +1,61 @@
-# Preprocesamiento — Fase 2 del anteproyecto
+# Preprocesamiento
 
-Código que convierte los registros crudos de participación (`Datos Tesis Upstream/`, formatos heterogéneos
-según el docente y el trimestre) en los CSV estandarizados y anonimizados que alimentan el
-modelado (redes bayesianas / LSTM). Implementa la Fase 2 ("levantamiento, limpieza y
-estandarización de datos") descrita en el anteproyecto.
+Convierte los registros estandarizados en un conjunto de datos tabular, uno por sección.
 
-> **Nota (cambio de flujo):** a partir de ahora la conversión raw → estándar de cada materia/trimestre
-> se hace manualmente, siguiendo la plantilla `ESTANDAR_Participaciones.xlsx` en la raíz del repo, y
-> el resultado se coloca en `Datos Tesis Downstream/` (misma estructura de carpetas que `Datos Tesis
-> Upstream/`, pero vacía hasta que se vaya llenando a mano). El pipeline de este directorio sigue
-> funcionando tal cual sobre `Datos Tesis Upstream/` (útil como referencia/contraste), pero el código
-> que lea `Datos Tesis Downstream/` está por escribirse una vez existan los primeros archivos ahí.
+## Entrada
 
-## Estructura
+Cada archivo de `Datos Tesis Upstream` lleva dos hojas añadidas al libro original:
 
-```
-preprocesamiento/
-├── 01_estandarizacion_y_anonimizacion.ipynb   # notebook delgado: solo importa, corre y narra
-├── pipeline.py                                # orquestador / punto de entrada
-├── README.md
-└── modulos/
-    ├── entrada/
-    │   └── cronogramas.py         # cronogramas (.docx / .xlsx) -> {semana: tema}
-    ├── procesamiento/
-    │   ├── limpieza.py            # normalizacion: cedulas, nombres, fechas, codigos P/1/T/F/J
-    │   ├── extractores.py         # un extractor por cada formato de archivo fuente
-    │   └── fuentes.py             # catalogo declarativo de las 11 fuentes + despacho
-    └── salida/
-        ├── anonimizacion.py       # mapa cedula -> estudiante_id
-        └── validacion.py          # chequeos post-procesamiento (sin datos personales)
-```
-
-Cada subcarpeta de `modulos/` corresponde a una etapa del pipeline: **entrada** (leer los
-cronogramas), **procesamiento** (limpiar y extraer las hojas de participación) y **salida**
-(anonimizar, validar). `pipeline.py` es el único archivo que conoce las tres etapas y las
-encadena; el notebook, a su vez, solo conoce `pipeline.py`. Esto permite leer o probar cada
-pieza de forma aislada (p. ej. `extractores.py` sin abrir el notebook) sin tener que navegar
-un único archivo con todo mezclado.
-
-## Cómo correrlo
-
-```bash
-cd preprocesamiento
-python3 pipeline.py
-```
-
-o abriendo `01_estandarizacion_y_anonimizacion.ipynb` en Jupyter/VS Code y ejecutando todas las celdas.
-Ambos caminos llaman exactamente al mismo código y producen el mismo resultado.
-
-**Dependencias:** `pandas`, `numpy`, `openpyxl`, `python-docx`.
+- **`Estandar`** — la rejilla de participaciones: una fila por estudiante y dos
+  subcolumnas por semana, una por sesión. Se considera sesión real la subcolumna
+  que lleva el nombre del día, de modo que las secciones con una sola clase
+  semanal quedan con una sesión por semana.
+- **`Cronograma`** — una fila por sesión, con `semana`, `dia_sesion`, `tema` y
+  `tipo_sesion`. El tema es el código del catálogo de la asignatura
+  (`CATALOGO_Temas.xlsx`); vale `0` cuando la sesión no cubre contenido nuevo, y
+  entonces `tipo_sesion` indica la causa.
 
 ## Salida
 
-Todo se escribe en `Datos Tesis Upstream/_procesado/` (no versionado salvo por su ausencia — no hay `.csv`
-comiteados en este repo; cada quien los regenera corriendo el pipeline):
+Un `.csv` por sección en `Datos Tesis Downstream`, con la misma estructura de
+carpetas. Cada fila es un estudiante en una sesión.
 
-- `<materia>_<trimestre>[_seccion]_participaciones.csv` — 13 archivos, uno por fuente. Esquema:
+## Criterios aplicados
 
-  | Columna | Descripción |
-  |---|---|
-  | `estudiante_id` | Anónimo, consistente entre archivos (`anon_001`, `anon_002`, ...) |
-  | `numero_lista` | Solo si el archivo fuente lo trae directamente |
-  | `materia`, `trimestre`, `seccion` | — |
-  | `fecha` | `YYYY-MM-DD`; vacía si la fuente ya venía agregada por semana |
-  | `semana` | Número de semana del trimestre |
-  | `tema` | Del cronograma correspondiente a esa semana |
-  | `participaciones` | Cantidad de intervenciones |
-  | `tipo_participacion` | Reservado, no disponible aún en los datos fuente |
-  | `asistencia` | Solo disponible en 2 de las 13 fuentes (las que traen código P/1/T/F/J) |
+- **Participaciones.** El número de la celda, redondeado hacia arriba (una media
+  participación cuenta como una).
+- **Asistencia.** Participar implica haber asistido. Los códigos `P`, `p`, `T`,
+  `F` y `J` indican presencia sin participación; `⚕️` y `⚖️`, ausencia
+  justificada. En las secciones que llevan registro de asistencia, la celda vacía
+  significa ausencia; en las demás queda como dato faltante, que la red bayesiana
+  puede manejar.
+- **Sesiones no dictadas.** Cuando `tipo_sesion` es `sin_clase`, la participación
+  y la asistencia quedan vacías: no hubo oportunidad de participar.
+- **Año académico.** Diferencia entre el año calendario del trimestre y el año de
+  ingreso que indican los cuatro primeros dígitos del carnet, más uno.
+- **Anonimización.** La cédula se sustituye por un identificador consistente entre
+  archivos. El mapeo se guarda en `Datos Tesis Upstream/_procesado/_confidencial/`,
+  fuera del control de versiones.
 
-- `log_limpieza.txt` — bitácora pública de las transformaciones. No contiene cédulas ni nombres.
-- `_confidencial/mapeo_estudiantes.csv` — el mapa cédula → `estudiante_id`.
-- `_confidencial/log_limpieza_detalle.txt` — el puñado de notas que sí requieren nombrar a alguien
-  (hoy, solo el detalle del cruce por nombre en Estructuras 2526-1).
+## Ejecución
 
-⚠️ `Datos Tesis Upstream/_procesado/_confidencial/` está en `.gitignore` — son datos personales de
-estudiantes y nunca deben subirse al repositorio.
+Requiere Python 3 con `pandas` y `openpyxl`:
 
-## Decisiones de diseño que vale la pena conocer antes de tocar el código
+```bash
+pip install pandas openpyxl
+```
 
-- **Cómo se calcula `semana` cuando el archivo fuente no la da directamente**: se toma el lunes
-  de la semana de la primera sesión registrada como inicio de la "semana 1" del trimestre, y se
-  cuenta en bloques de 7 días desde ahí (`modulos/procesamiento/limpieza.py::semana_desde_fecha`). Se validó contra el único
-  cronograma que trae fechas explícitas por semana (Algoritmos 2425-2) y reproduce exactamente la
-  numeración real del profesor.
-- **`participaciones` vs. el `TOTAL` de algunos Excel originales**: en Algoritmos 2425-2 sec1, 2 de
-  31 estudiantes tienen un `TOTAL` en el Excel que no coincide con la suma de las columnas de
-  fecha, porque la fórmula del archivo original no se extendió a la última columna. Este pipeline
-  suma cada celda de fecha directamente, así que es más confiable que ese `TOTAL` para esos casos
-  (ver `modulos/salida/validacion.py::validar_total_algoritmos_2425_2_sec1`, que lo reporta en el log).
-- **Duplicados**: Computación Emergente 2526-2 existe en dos libros (uno standalone y otro dentro
-  del libro de Estructuras de Datos 2526-2); se usa el standalone.
-- **Algoritmos 2526-2** no tenía archivo de participaciones propio (solo cronograma). Se completó
-  con la hoja `ALGORITMOS` del libro de Estructuras de Datos 2526-2, que trae ese mismo trimestre.
-- **Código `J` ("jubilado")** en los archivos híbridos: confirmado con el autor de la tesis que
-  significa "asistió pero se retiró antes de terminar la clase" → se cuenta como presente, sin
-  participaciones ese día.
-- Quedan sin interpretar el emoji `⚕️` (8 celdas, Estructuras 2425-3), el emoji `⚖️` (4 celdas,
-  Estructuras 2526-3) y una `p` minúscula suelta (1 celda, típico de un typo de `P`) — se dejan
-  como `NaN` en vez de adivinar su significado.
+```bash
+python3 preprocesamiento/generar_csv.py
+```
+
+Se puede correr cuantas veces haga falta: reescribe los catorce CSV desde cero en cada
+ejecución y elimina los que ya no correspondan a ningún archivo de origen, de modo que
+la carpeta refleje siempre el estado actual de los registros. El mapeo de anonimización
+sí se conserva entre ejecuciones, para que un mismo estudiante mantenga su identificador.
+
+El resultado es reproducible: dos ejecuciones sobre una copia limpia del repositorio
+producen los catorce archivos idénticos byte a byte, identificadores anónimos incluidos,
+porque estos se asignan recorriendo los archivos en un orden fijo. El mapeo no se versiona
+por contener cédulas, de modo que quien clone el repositorio lo regenera al ejecutar el
+script y obtiene los mismos identificadores.
