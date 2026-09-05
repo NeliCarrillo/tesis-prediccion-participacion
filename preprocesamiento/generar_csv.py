@@ -23,6 +23,9 @@ COLUMNAS = ["numero_lista", "estudiante_id", "materia", "trimestre", "seccion",
             "participaciones", "asistencia", "anio_academico"]
 
 DIAS = ("lunes", "martes", "miercoles", "miércoles", "jueves")
+# el año que cursa se agrupa en su último valor: más allá del quinto año los casos
+# son escasos y dispersos, de modo que «5» debe leerse como «quinto año o más»
+TOPE_ANIO = 5
 CODIGOS_PRESENTE = {"P", "p", "T", "F", "J"}      # presente sin participar
 CODIGOS_AUSENTE = {"⚕️", "⚖️"}                     # ausencia justificada
 
@@ -133,7 +136,7 @@ def anio_academico(carnet: str, trimestre: str):
         return ""
     ingreso = int(digitos[:4])
     calendario = 2000 + int(m.group(1) if m.group(3) == "1" else m.group(2))
-    return calendario - ingreso + 1
+    return min(calendario - ingreso + 1, TOPE_ANIO)
 
 
 def leer_cronograma(path: Path):

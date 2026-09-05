@@ -32,7 +32,9 @@ carpetas. Cada fila es un estudiante en una sesión.
 - **Sesiones no dictadas.** Cuando `tipo_sesion` es `sin_clase`, la participación
   y la asistencia quedan vacías: no hubo oportunidad de participar.
 - **Año académico.** Diferencia entre el año calendario del trimestre y el año de
-  ingreso que indican los cuatro primeros dígitos del carnet, más uno.
+  ingreso que indican los cuatro primeros dígitos del carnet, más uno. El valor se
+  agrupa en su último nivel: más allá del quinto año los casos son escasos y
+  dispersos, de modo que `5` debe leerse como «quinto año o más».
 - **Anonimización.** La cédula se sustituye por un identificador consistente entre
   archivos. El mapeo se guarda en `Datos Tesis Upstream/_procesado/_confidencial/`,
   fuera del control de versiones.
