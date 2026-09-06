@@ -1,0 +1,28 @@
+materia,hito,fuente,rmse,mae,r2
+Algoritmos y Programación,4,modelo,3.7111,2.788,0.5948
+Algoritmos y Programación,4,media,6.1151,4.6814,-0.1001
+Algoritmos y Programación,4,extrapolación,5.7018,3.7075,0.0436
+Algoritmos y Programación,6,modelo,3.0211,2.1638,0.7315
+Algoritmos y Programación,6,media,6.1151,4.6814,-0.1001
+Algoritmos y Programación,6,extrapolación,3.2899,2.1565,0.6816
+Algoritmos y Programación,8,modelo,1.2266,0.8432,0.9557
+Algoritmos y Programación,8,media,6.1151,4.6814,-0.1001
+Algoritmos y Programación,8,extrapolación,2.804,1.7517,0.7687
+Computación Emergente,4,modelo,2.5854,1.7532,0.7686
+Computación Emergente,4,media,5.7853,3.9959,-0.1584
+Computación Emergente,4,extrapolación,3.8765,2.1264,0.4799
+Computación Emergente,6,modelo,2.2684,1.3258,0.8219
+Computación Emergente,6,media,5.7853,3.9959,-0.1584
+Computación Emergente,6,extrapolación,2.1096,1.1978,0.846
+Computación Emergente,8,modelo,1.2143,0.6707,0.949
+Computación Emergente,8,media,5.7853,3.9959,-0.1584
+Computación Emergente,8,extrapolación,1.4676,0.7967,0.9255
+Estructura de Datos,4,modelo,6.6253,4.7792,0.2712
+Estructura de Datos,4,media,7.8452,5.4797,-0.0218
+Estructura de Datos,4,extrapolación,5.743,3.3889,0.4524
+Estructura de Datos,6,modelo,4.8652,3.3703,0.607
+Estructura de Datos,6,media,7.8452,5.4797,-0.0218
+Estructura de Datos,6,extrapolación,3.8944,2.2407,0.7482
+Estructura de Datos,8,modelo,3.952,2.7066,0.7407
+Estructura de Datos,8,media,7.8452,5.4797,-0.0218
+Estructura de Datos,8,extrapolación,2.8288,1.4491,0.8671
