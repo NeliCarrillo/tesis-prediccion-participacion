@@ -20,7 +20,7 @@ CATALOGO = RAIZ / "CATALOGO_Temas.xlsx"
 
 COLUMNAS = ["numero_lista", "estudiante_id", "materia", "trimestre", "seccion",
             "semana", "dia_sesion", "tema", "tipo_sesion",
-            "participaciones", "asistencia", "anio_academico"]
+            "participaciones", "anio_academico"]
 
 DIAS = ("lunes", "martes", "miercoles", "miércoles", "jueves")
 # el año que cursa se agrupa en su último valor: más allá del quinto año los casos
@@ -114,19 +114,17 @@ def texto(v) -> str:
 
 
 # ------------------------------------------------------------------ conversión
-def interpretar(valor: str, con_asistencia: bool):
-    """Traduce una celda de la rejilla a (participaciones, asistencia)."""
+def interpretar(valor: str):
+    """Traduce una celda de la rejilla al número de participaciones."""
     if not valor:
-        return 0, (0 if con_asistencia else "")
-    if valor in CODIGOS_PRESENTE:
-        return 0, 1
-    if valor in CODIGOS_AUSENTE:
-        return 0, 0
+        return 0
+    if valor in CODIGOS_PRESENTE or valor in CODIGOS_AUSENTE:
+        return 0
     try:
         # las medias participaciones se redondean hacia arriba
-        return math.ceil(float(valor.replace(",", "."))), 1
+        return math.ceil(float(valor.replace(",", ".")))
     except ValueError:
-        return "", ""
+        return ""
 
 
 def anio_academico(carnet: str, trimestre: str):
@@ -184,9 +182,6 @@ def procesar(path: Path, anonimo, canon: dict, avisos: list):
             for n, k in enumerate(usadas, 1):
                 columnas[(int(m.group(1)), n)] = (k, sin_tildes(dias[k]))
 
-    rejilla = [texto(v) for i in range(6, len(est)) for v in est.iloc[i].tolist()[5:]]
-    con_asistencia = any(v in CODIGOS_PRESENTE for v in rejilla)
-
     filas = []
     for i in range(6, len(est)):
         datos = est.iloc[i].tolist()
@@ -199,12 +194,12 @@ def procesar(path: Path, anonimo, canon: dict, avisos: list):
             valor = texto(datos[col]) if col < len(datos) else ""
             if tipo == "sin_clase":
                 # la sesión no se dictó: no hubo oportunidad de participar
-                participaciones, asistencia = "", ""
+                participaciones = ""
                 if valor:
                     avisos.append(f"{path.name}: sem {semana} ses {sesion} marcada sin clase "
                                   f"pero la rejilla trae {valor!r}")
             else:
-                participaciones, asistencia = interpretar(valor, con_asistencia)
+                participaciones = interpretar(valor)
                 if participaciones == "" and valor:
                     avisos.append(f"{path.name}: código no reconocido {valor!r} "
                                   f"(sem {semana}, ses {sesion})")
@@ -212,7 +207,7 @@ def procesar(path: Path, anonimo, canon: dict, avisos: list):
                 "numero_lista": texto(datos[0]), "estudiante_id": anonimo(cedula),
                 "materia": materia, "trimestre": trimestre, "seccion": seccion,
                 "semana": semana, "dia_sesion": dia, "tema": tema, "tipo_sesion": tipo,
-                "participaciones": participaciones, "asistencia": asistencia,
+                "participaciones": participaciones,
                 "anio_academico": anio,
             })
     return filas

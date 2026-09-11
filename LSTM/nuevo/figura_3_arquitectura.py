@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 
 N_CODIGOS = 14           # códigos 0 a 13 del catálogo (Estructura de Datos fija el máximo)
-PARAMETROS = 4_013       # 1.856 + 2.112 + 28 + 17
+PARAMETROS = 3_949       # 1.792 + 2.112 + 28 + 17
 PARAMETROS_ORIGINAL = 52_228
 
 GRIS, AZUL, BORDE = "#f2f2f2", "#e4e9f3", "#222222"
@@ -44,8 +44,8 @@ ax.text(0.4, 10.1, "Dos entradas concatenadas por semana, dos capas LSTM con reg
         fontsize=10.5, va="center", color="#333333")
 
 # entradas
-caja(0.4, 6.6, 6.9, 3.2, "Entrada numérica\n12 semanas × 8 rasgos",
-     "año que cursa, sección,\ntamaño del grupo, posición en la lista,\nparticipaciones, asistencia,\nsesiones, evaluaciones", t_size=11, s_size=9, t_dy=1.0, s_dy=-0.72)
+caja(0.4, 6.6, 6.9, 3.2, "Entrada numérica\n12 semanas × 7 rasgos",
+     "año que cursa, sección,\ntamaño del grupo, posición en la lista,\nparticipaciones, sesiones,\nevaluaciones", t_size=11, s_size=9, t_dy=1.0, s_dy=-0.72)
 ax.text(3.85, 6.38, "se estandariza", ha="center", va="top", fontsize=9, color="#666666", style="italic")
 caja(0.4, 1.3, 6.9, 3.2, "Entrada de temas\n12 semanas × 2 códigos",
      "código de tema de la sesión 1 y\nde la sesión 2 de cada semana\n(0 = sin contenido)", t_size=11, s_size=9, t_dy=0.85, s_dy=-0.7)
@@ -55,7 +55,7 @@ ax.text(3.85, 1.1, "no se estandariza:\nson códigos, no magnitudes", ha="center
 # rama de temas
 caja(7.8, 1.7, 3.9, 1.9, "Embedding", f"{N_CODIGOS} códigos → vector\nde 2 valores aprendidos")
 caja(12.2, 1.9, 2.4, 1.5, "Reshape", "12 × 4", t_dy=0.32, s_dy=-0.35)
-caja(15.2, 4.2, 4.3, 1.9, "Concatenar", "12 semanas × 12 valores", fill=AZUL)
+caja(15.2, 4.2, 4.3, 1.9, "Concatenar", "12 semanas × 11 valores", fill=AZUL)
 
 # cadena LSTM
 x = 19.8

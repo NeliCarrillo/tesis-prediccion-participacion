@@ -23,14 +23,13 @@ carpetas. Cada fila es un estudiante en una sesión.
 ## Criterios aplicados
 
 - **Participaciones.** El número de la celda, redondeado hacia arriba (una media
-  participación cuenta como una).
-- **Asistencia.** Participar implica haber asistido. Los códigos `P`, `p`, `T`,
-  `F` y `J` indican presencia sin participación; `⚕️` y `⚖️`, ausencia
-  justificada. En las secciones que llevan registro de asistencia, la celda vacía
-  significa ausencia; en las demás queda como dato faltante, que la red bayesiana
-  puede manejar.
+  participación cuenta como una). Los códigos `P`, `p`, `T`, `F` y `J` (presencia
+  sin participación) y `⚕️`, `⚖️` (ausencia justificada) se traducen como cero
+  participaciones. No se registra la asistencia como variable propia: solo dos de
+  las catorce secciones la llevan de forma fiable, y en las demás equivaldría a
+  repetir la participación semanal con otro nombre.
 - **Sesiones no dictadas.** Cuando `tipo_sesion` es `sin_clase`, la participación
-  y la asistencia quedan vacías: no hubo oportunidad de participar.
+  queda vacía: no hubo oportunidad de participar.
 - **Año académico.** Diferencia entre el año calendario del trimestre y el año de
   ingreso que indican los cuatro primeros dígitos del carnet, más uno. El valor se
   agrupa en su último nivel: más allá del quinto año los casos son escasos y
