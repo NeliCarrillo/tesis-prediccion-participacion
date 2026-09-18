@@ -186,7 +186,18 @@ def procesar(path: Path, anonimo, canon: dict, avisos: list):
     for i in range(6, len(est)):
         datos = est.iloc[i].tolist()
         cedula = re.sub(r"\D", "", texto(datos[3]))
-        if not cedula:
+        numero_lista = texto(datos[0])
+        if cedula:
+            estudiante_id = anonimo(cedula)
+        elif (materia == "Matemáticas Discretas"
+              and not texto(datos[1]) and not texto(datos[2])
+              and numero_lista.isdigit()):
+            # Los tres libros llegaron sin identificadores personales. No hay
+            # evidencia para enlazar alumnos entre secciones, trimestres o
+            # materias: la posición en la lista solo identifica dentro de esta.
+            estudiante_id = (f"anon_md_{trimestre.replace('-', '_')}_"
+                             f"{seccion}_{int(numero_lista):03d}")
+        else:
             continue
         anio = anio_academico(texto(datos[4]), trimestre)
         for (semana, sesion), (col, dia) in sorted(columnas.items()):
@@ -204,7 +215,7 @@ def procesar(path: Path, anonimo, canon: dict, avisos: list):
                     avisos.append(f"{path.name}: código no reconocido {valor!r} "
                                   f"(sem {semana}, ses {sesion})")
             filas.append({
-                "numero_lista": texto(datos[0]), "estudiante_id": anonimo(cedula),
+                "numero_lista": numero_lista, "estudiante_id": estudiante_id,
                 "materia": materia, "trimestre": trimestre, "seccion": seccion,
                 "semana": semana, "dia_sesion": dia, "tema": tema, "tipo_sesion": tipo,
                 "participaciones": participaciones,
@@ -228,7 +239,7 @@ def main():
     canon = canonicas()
     archivos = sorted(p for p in UPSTREAM.rglob("*.xlsx")
                       if "cronograma" not in p.name.lower() and not p.name.startswith("~$"))
-    avisos, total, generados = [], 0, set()
+    avisos, total, generados, estudiantes = [], 0, set(), set()
     for path in archivos:
         filas = procesar(path, anonimo, canon, avisos)
         if not filas:
@@ -239,6 +250,7 @@ def main():
             w = csv.DictWriter(f, fieldnames=COLUMNAS)
             w.writeheader(); w.writerows(filas)
         total += len(filas)
+        estudiantes.update(fila["estudiante_id"] for fila in filas)
         generados.add(destino.resolve())
         print(f"  {destino.relative_to(DOWNSTREAM)}  ->  {len(filas)} filas")
 
@@ -252,7 +264,7 @@ def main():
     with MAPEO.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f); w.writerow(["cedula", "estudiante_id"]); w.writerows(sorted(mapa.items()))
 
-    print(f"\n{len(archivos)} secciones, {total} filas, {len(mapa)} estudiantes distintos"
+    print(f"\n{len(archivos)} secciones, {total} filas, {len(estudiantes)} estudiantes distintos"
           + (f", {len(sobrantes)} csv eliminado(s)" if sobrantes else ""))
     if avisos:
         print(f"\n{len(avisos)} aviso(s):")

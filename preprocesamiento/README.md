@@ -34,9 +34,14 @@ carpetas. Cada fila es un estudiante en una sesión.
   ingreso que indican los cuatro primeros dígitos del carnet, más uno. El valor se
   agrupa en su último nivel: más allá del quinto año los casos son escasos y
   dispersos, de modo que `5` debe leerse como «quinto año o más».
-- **Anonimización.** La cédula se sustituye por un identificador consistente entre
-  archivos. El mapeo se guarda en `Datos Tesis Upstream/_procesado/_confidencial/`,
-  fuera del control de versiones.
+- **Anonimización.** Cuando existe cédula, se sustituye por un identificador
+  consistente entre archivos. El mapeo se guarda en
+  `Datos Tesis Upstream/_procesado/_confidencial/`, fuera del control de versiones.
+  Los tres libros de Matemáticas Discretas ya llegaron sin cédula ni nombres.
+  Para ellos se genera un identificador a partir del trimestre, la sección y el
+  número de lista. Esto permite agrupar sus sesiones, pero trata como personas
+  distintas a los alumnos de secciones o trimestres diferentes: no hay datos
+  para comprobar si se repiten o si cursaron otra asignatura.
 
 ## Ejecución
 
@@ -50,13 +55,13 @@ pip install pandas openpyxl
 python3 preprocesamiento/generar_csv.py
 ```
 
-Se puede correr cuantas veces haga falta: reescribe los catorce CSV desde cero en cada
+Se puede correr cuantas veces haga falta: reescribe los diecisiete CSV desde cero en cada
 ejecución y elimina los que ya no correspondan a ningún archivo de origen, de modo que
 la carpeta refleje siempre el estado actual de los registros. El mapeo de anonimización
 sí se conserva entre ejecuciones, para que un mismo estudiante mantenga su identificador.
 
 El resultado es reproducible: dos ejecuciones sobre una copia limpia del repositorio
-producen los catorce archivos idénticos byte a byte, identificadores anónimos incluidos,
+producen los diecisiete archivos idénticos byte a byte, identificadores anónimos incluidos,
 porque estos se asignan recorriendo los archivos en un orden fijo. El mapeo no se versiona
 por contener cédulas, de modo que quien clone el repositorio lo regenera al ejecutar el
 script y obtiene los mismos identificadores.
