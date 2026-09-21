@@ -3,7 +3,7 @@
 entre tamaño del grupo), sin cortes de estado (eso pertenece a la Tabla 12 del
 Sprint 3, que ya requiere el concepto de discretización).
 
-Incluye la verificación de que la variación entre barras es ruido muestral
+Incluye los cuartiles observados y la verificación de que la variación entre barras es ruido muestral
 (prueba chi-cuadrado contra la hipótesis de distribución uniforme), no un
 patrón sistemático — la explicación que pide el comentario del tutor.
 
@@ -26,6 +26,7 @@ RAIZ = Path(__file__).resolve().parent.parent.parent
 AQUI = Path(__file__).resolve().parent
 ANCHO_IN = 6.5
 AZUL = "#8fa8d8"
+CORTE = "#b3352a"
 CLAVE = ["estudiante_id", "materia", "trimestre", "seccion"]
 
 df = pd.concat([pd.read_csv(f) for f in glob.glob(str(RAIZ / "Datos Tesis Downstream" / "**" / "*.csv"), recursive=True)],
@@ -35,14 +36,20 @@ tam_sec = df.groupby(["materia", "trimestre", "seccion"])["estudiante_id"].nuniq
 reg = df.drop_duplicates(subset=CLAVE)[CLAVE + ["numero_lista"]].copy()
 reg = reg.merge(tam_sec, on=["materia", "trimestre", "seccion"])
 reg["posicion"] = reg["numero_lista"] / reg["tamano_grupo"]
-assert len(reg) == 437
+assert len(reg) == 524
+assert reg["posicion"].notna().all()
+
+cuartiles = reg["posicion"].quantile([0.25, 0.50, 0.75])
+grupos = pd.qcut(reg["posicion"], 4).value_counts().sort_index()
 
 counts, edges = np.histogram(reg["posicion"], bins=20, range=(0, 1))
 chi2, p = stats.chisquare(counts)
-print(f"conteos por bin (20 bins, 437 registros): {counts.tolist()}")
+print(f"conteos por bin (20 bins, {len(reg)} registros): {counts.tolist()}")
 print(f"prueba chi-cuadrado vs. uniforme: chi2={chi2:.2f}, p={p:.3f}")
 assert p > 0.05, "se esperaba no rechazar uniformidad"
 print(f"tamaños de grupo distintos que se combinan: {sorted(tam_sec.unique())}")
+print("cuartiles observados:", {q: round(v, 6) for q, v in cuartiles.items()})
+print("registros por cuartil:", grupos.tolist())
 
 plt.rcParams["font.family"] = "Arial"
 plt.rcParams["axes.grid"] = True
@@ -51,6 +58,11 @@ plt.rcParams["axes.axisbelow"] = True
 
 fig, ax = plt.subplots(figsize=(ANCHO_IN, 3.6), constrained_layout=True)
 ax.hist(reg["posicion"], bins=20, range=(0, 1), color=AZUL, edgecolor="white")
+for etiqueta, valor in zip(("Q1", "Q2", "Q3"), cuartiles):
+    ax.axvline(valor, color=CORTE, linestyle="--", linewidth=1.4)
+    ax.text(valor, 0.97, f"{etiqueta} = {valor:.3f}".replace(".", ","),
+            transform=ax.get_xaxis_transform(), ha="center", va="top",
+            fontsize=10, color=CORTE)
 ax.set_xlabel("número de lista / tamaño del grupo", fontsize=11)
 ax.set_ylabel("registros\nestudiante-sección", fontsize=11)
 ax.tick_params(labelsize=10)

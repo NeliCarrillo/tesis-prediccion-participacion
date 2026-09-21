@@ -11,7 +11,7 @@ análisis aparte, autocontenido. Lee «Datos Tesis Downstream/» directamente.
 
 Corre el análisis por separado para cada asignatura (el modelo se entrena por
 asignatura, igual que la LSTM y la red bayesiana manual), construyendo un
-registro por estudiante-sesión (la unidad más fina disponible: 9.612 filas en
+registro por estudiante-sesión (la unidad más fina disponible: 11.700 filas en
 total) con las variables discretizadas según la Tabla 12 y el Apéndice A
 (Tabla A4) del informe.
 
@@ -29,32 +29,37 @@ Uso:
 
 from pathlib import Path
 import glob
+import os
 import warnings
 import re
+import sys
+
+# pgmpy resuelve algunos empates de HillClimbSearch iterando conjuntos. Fijar
+# el hash antes de importar la biblioteca hace reproducible esa elección.
+if os.environ.get("PYTHONHASHSEED") != "0":
+    entorno = os.environ.copy()
+    entorno["PYTHONHASHSEED"] = "0"
+    os.execve(sys.executable, [sys.executable, *sys.argv], entorno)
 
 warnings.filterwarnings("ignore")
 
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import networkx as nx
 
 from pgmpy.estimators import HillClimbSearch, BIC
 from pgmpy.causal_discovery import ExpertKnowledge
 from pgmpy.models import DiscreteBayesianNetwork
+from pgmpy.parameter_estimator import DiscreteBayesianEstimator
+
+from ensamblado import ensamblar_conjunto, CLAVE, COLUMNAS_BN, ESTADOS_BN, RAIZ
+from discretizacion import ajustar_mapa_temas, aplicar_mapa_temas
 
 
 # ======================================================================
 # 0. CONFIGURACIÓN
 # ======================================================================
-
-RAIZ = Path(__file__).resolve().parent.parent.parent
-
-CLAVE = [
-    "estudiante_id",
-    "materia",
-    "trimestre",
-    "seccion"
-]
 
 # Carpeta donde se guardarán las figuras
 CARPETA_FIGURAS = RAIZ / "RedBayesiana" / "figuras"
@@ -62,330 +67,28 @@ CARPETA_FIGURAS.mkdir(parents=True, exist_ok=True)
 
 
 # ======================================================================
-# 1. CARGA DE DATOS
+# 1-6. ENSAMBLADO DEL CONJUNTO DISCRETIZADO (Sprint 4, carta 2)
 # ======================================================================
-
-frames = [
-    pd.read_csv(f)
-    for f in glob.glob(
-        str(RAIZ / "Datos Tesis Downstream" / "**" / "*.csv"),
-        recursive=True
-    )
-]
-
-df = pd.concat(frames, ignore_index=True)
-
-df["participaciones"] = pd.to_numeric(
-    df["participaciones"],
-    errors="coerce"
-)
-
-df["numero_lista"] = pd.to_numeric(
-    df["numero_lista"],
-    errors="coerce"
-)
-
-df["tema"] = pd.to_numeric(
-    df["tema"],
-    errors="coerce"
-)
-
-df["anio_academico"] = pd.to_numeric(
-    df["anio_academico"],
-    errors="coerce"
-)
-
-assert len(df) == 9612, (
-    f"se esperaban 9.612 filas estudiante-sesión, hay {len(df)}"
-)
-
-
-# ======================================================================
-# 2. VARIABLES POR REGISTRO ESTUDIANTE-SECCIÓN
-# ======================================================================
-
-tam_sec = (
-    df.groupby(
-        ["materia", "trimestre", "seccion"]
-    )["estudiante_id"]
-    .nunique()
-    .rename("tamano_grupo")
-)
-
-reg = (
-    df.drop_duplicates(subset=CLAVE)[
-        CLAVE + ["numero_lista", "anio_academico"]
-    ]
-    .copy()
-)
-
-reg = reg.merge(
-    tam_sec,
-    on=["materia", "trimestre", "seccion"]
-)
-
-reg["posicion"] = (
-    reg["numero_lista"] /
-    reg["tamano_grupo"]
-)
-
-tot = (
-    df.groupby(CLAVE)["participaciones"]
-    .sum()
-    .rename("total_trimestre")
-    .reset_index()
-)
-
-reg = reg.merge(
-    tot,
-    on=CLAVE
-)
-
-assert len(reg) == 437
-
-
-# ======================================================================
-# 3. VARIABLES POR SEMANA
-# ======================================================================
-
-sem = (
-    df.groupby(CLAVE + ["semana"])["participaciones"]
-    .sum()
-    .rename("participaciones_semana")
-    .reset_index()
-)
-
-n_sesiones = (
-    df.groupby(CLAVE + ["semana"])
-    .size()
-    .rename("n_sesiones_semana")
-    .reset_index()
-)
-
-sem = sem.merge(
-    n_sesiones,
-    on=CLAVE + ["semana"]
-)
-
-n_eval = (
-    df[df["tipo_sesion"] == "evaluacion"]
-    .groupby(CLAVE + ["semana"])
-    .size()
-    .rename("n_eval_semana")
-)
-
-sem = sem.merge(
-    n_eval,
-    on=CLAVE + ["semana"],
-    how="left"
-)
-
-sem["n_eval_semana"] = (
-    sem["n_eval_semana"]
-    .fillna(0)
-    .astype(int)
-)
-
-assert len(sem) == 5244
-
-sem = sem.sort_values(
-    CLAVE + ["semana"]
-)
-
-# Participaciones de la semana anterior
-sem["participaciones_semana_anterior"] = (
-    sem.groupby(CLAVE)["participaciones_semana"]
-    .shift(1)
-)
-
-
-# ======================================================================
-# 4. DISCRETIZACIONES
-# ======================================================================
-
-def bin_anio(a):
-    return str(int(a)) if a < 5 else "5 o más"
-
-
-def bin_tamano(t):
-    if t <= 28:
-        return "pequeño"
-
-    if t == 30:
-        return "mediano"
-
-    return "grande"
-
-
-def bin_posicion(p):
-    if p <= 0.25:
-        return "≤0,25"
-
-    if p <= 0.50:
-        return "0,25–0,50"
-
-    if p <= 0.75:
-        return "0,50–0,75"
-
-    return ">0,75"
-
-
-def bin_partsem(p):
-    if pd.isna(p):
-        return None
-
-    if p == 0:
-        return "0"
-
-    if p == 1:
-        return "1"
-
-    if p == 2:
-        return "2"
-
-    return "3 o más"
-
-
-def bin_nses(n):
-    return "1" if n == 1 else "2"
-
-
-def bin_neval(n):
-    return str(int(n))
-
-
-def bin_trimestre(t):
-    if t == 0:
-        return "0"
-
-    if t <= 2:
-        return "1-2"
-
-    if t <= 5:
-        return "3-5"
-
-    if t <= 11:
-        return "6-11"
-
-    return "12 o más"
-
-
-reg["Año que cursa"] = (
-    reg["anio_academico"]
-    .apply(bin_anio)
-)
-
-reg["Tamaño del grupo"] = (
-    reg["tamano_grupo"]
-    .apply(bin_tamano)
-)
-
-reg["Posición relativa en la lista"] = (
-    reg["posicion"]
-    .apply(bin_posicion)
-)
-
-reg["Cantidad de participaciones del trimestre"] = (
-    reg["total_trimestre"]
-    .apply(bin_trimestre)
-)
-
-sem["Participaciones de la semana"] = (
-    sem["participaciones_semana"]
-    .apply(bin_partsem)
-)
-
-sem["Participaciones de la semana anterior"] = (
-    sem["participaciones_semana_anterior"]
-    .apply(bin_partsem)
-)
-
-sem["Número de sesiones de la semana"] = (
-    sem["n_sesiones_semana"]
-    .apply(bin_nses)
-)
-
-sem["Sesiones de evaluación de la semana"] = (
-    sem["n_eval_semana"]
-    .apply(bin_neval)
-)
-
-
-# ======================================================================
-# 4.1. DISCRETIZACIÓN DEL TEMA
-# ======================================================================
-
-temas = (
-    df[df["tema"] != 0]
-    .groupby(["materia", "tema"])
-    .agg(
-        n=("participaciones", "size"),
-        media=("participaciones", "mean")
-    )
-    .reset_index()
-)
-
-
-def tercios(g):
-    g = g.sort_values("media").copy()
-
-    g["acum"] = g["n"].cumsum()
-
-    total = g["n"].sum()
-
-    g["categoria"] = pd.cut(
-        g["acum"],
-        bins=[
-            0,
-            total / 3,
-            2 * total / 3,
-            total
-        ],
-        labels=[
-            "baja",
-            "media",
-            "alta"
-        ]
-    )
-
-    return g
-
-
-_tercios_por_materia = [
-    tercios(g)
-    for _, g in temas.groupby("materia")
-]
-
-temas = pd.concat(
-    _tercios_por_materia,
-    ignore_index=True
-)
-
-mapa_tema = {}
-
-for _, row in temas.iterrows():
-
-    mapa_tema[
-        (row["materia"], row["tema"])
-    ] = row["categoria"]
-
-
-def bin_tema(materia, tema):
-
-    if tema == 0:
-        return "0"
-
-    return mapa_tema.get(
-        (materia, tema),
-        None
-    )
-
-
-df["Tema de la sesión"] = [
-    bin_tema(m, t)
-    for m, t in zip(
-        df["materia"],
-        df["tema"]
+# La carga de datos, la construcción de `reg` (524 registros
+# estudiante-sección) y `sem` (6.288 filas estudiante-semana), y la
+# discretización de las 9 variables no supervisadas ahora viven en
+# `ensamblado.py` y `discretizacion.py`, reusadas aquí en vez de
+# duplicadas. Ver `ensamblado.py` para el detalle de la unidad de ensamblado
+# (estudiante-sesión) y por qué no se colapsa a estudiante-semana.
+
+sesiones, reg, sem = ensamblar_conjunto()
+
+# Mapa descriptivo del conjunto completo, para el Apéndice A (Tabla A4) y la
+# verificación de más abajo. La evaluación por fold, definida más adelante
+# en `preparar_fold_tema`, nunca reutiliza este mapa: ajusta uno nuevo solo
+# con los trimestres de entrenamiento de cada pliegue.
+mapa_tema_global, temas = ajustar_mapa_temas(sesiones)
+
+sesiones["Tema de la sesión"] = [
+    *aplicar_mapa_temas(
+        sesiones,
+        mapa_tema_global,
+        permitir_no_visto=False
     )
 ]
 
@@ -437,7 +140,7 @@ print(
 
 print(
     "Tema (todas las asignaturas, código 0 aparte):",
-    df[
+    sesiones[
         "Tema de la sesión"
     ].value_counts(
         dropna=False
@@ -448,68 +151,13 @@ print()
 
 
 # ======================================================================
-# 5. ENSAMBLAR REGISTRO ESTUDIANTE-SESIÓN
+# 6. HIPERPARÁMETROS DE ESTIMACIÓN
 # ======================================================================
+# COLUMNAS_BN y ESTADOS_BN ahora vienen de `ensamblado.py` (import arriba);
+# `sesiones` ya incluye "Sección" discretizada desde `ensamblar_conjunto`.
 
-sesiones = df[
-    [
-        "estudiante_id",
-        "materia",
-        "trimestre",
-        "seccion",
-        "semana",
-        "dia_sesion",
-        "Tema de la sesión"
-    ]
-].copy()
-
-sesiones = sesiones.merge(
-    reg[
-        CLAVE + [
-            "Año que cursa",
-            "Tamaño del grupo",
-            "Posición relativa en la lista",
-            "Cantidad de participaciones del trimestre"
-        ]
-    ],
-    on=CLAVE
-)
-
-sesiones = sesiones.merge(
-    sem[
-        CLAVE + [
-            "semana",
-            "Participaciones de la semana",
-            "Participaciones de la semana anterior",
-            "Número de sesiones de la semana",
-            "Sesiones de evaluación de la semana"
-        ]
-    ],
-    on=CLAVE + ["semana"]
-)
-
-
-# ======================================================================
-# 6. VARIABLES DE LA RED BAYESIANA
-# ======================================================================
-
-COLUMNAS_BN = [
-    "Año que cursa",
-    "Sección",
-    "Tamaño del grupo",
-    "Posición relativa en la lista",
-    "Tema de la sesión",
-    "Número de sesiones de la semana",
-    "Sesiones de evaluación de la semana",
-    "Participaciones de la semana anterior",
-    "Participaciones de la semana",
-    "Cantidad de participaciones del trimestre",
-]
-
-sesiones["Sección"] = (
-    sesiones["seccion"]
-    .astype(str)
-)
+ESS_EVALUADOS = [1, 5, 10]
+ESS_SELECCIONADO = 5
 
 
 # ======================================================================
@@ -542,51 +190,21 @@ FIN = [
 # ======================================================================
 # 8. ESTRUCTURA MANUAL
 # ======================================================================
-
-ARCOS_MANUALES = [
-
-    # Estructura del contexto
-    (
-        "Sección",
-        "Tamaño del grupo"
-    ),
-
-    # Relaciones dentro de la semana
-    (
-        "Número de sesiones de la semana",
-        "Sesiones de evaluación de la semana"
-    ),
-
-    (
-        "Sesiones de evaluación de la semana",
-        "Participaciones de la semana"
-    ),
-
-    (
-        "Posición relativa en la lista",
-        "Participaciones de la semana"
-    ),
-
-    (
-        "Tema de la sesión",
-        "Participaciones de la semana"
-    ),
-
-    # Dependencia temporal
-    (
-        "Participaciones de la semana anterior",
-        "Participaciones de la semana"
-    ),
-
-    # Dependencias con el objetivo
-    (
-        "Participaciones de la semana",
-        "Cantidad de participaciones del trimestre"
-    ),
-
-    (
-        "Participaciones de la semana anterior",
-        "Cantidad de participaciones del trimestre"
+# ARCOS_MANUALES ahora vive en red_bayesiana.py (Sprint 4, carta 3), la
+# fuente única de verdad de la estructura final; se importa arriba junto con
+# ensamblado/discretizacion para no mantener dos copias de los 10 arcos.
+# El bloque comentado documenta el contenido importado, tal como estaba
+# antes del refactor, para referencia rápida:
+#
+# ARCOS_MANUALES = [
+#     ("Sección", "Tamaño del grupo"),                                            # contexto
+#     ("Número de sesiones de la semana", "Sesiones de evaluación de la semana"),  # semana
+#     ("Sesiones de evaluación de la semana", "Participaciones de la semana"),
+#     ("Posición relativa en la lista", "Participaciones de la semana"),
+#     ("Tema de la sesión", "Participaciones de la semana"),
+#     ("Participaciones de la semana anterior", "Participaciones de la semana"),   # temporal
+#     ("Participaciones de la semana", "Cantidad de participaciones del trimestre"),   # objetivo
+#     ("Participaciones de la semana anterior", "Cantidad de participaciones del trimestre"),
     ),
 
     (
@@ -599,6 +217,210 @@ ARCOS_MANUALES = [
         "Cantidad de participaciones del trimestre"
     ),
 ]
+
+
+# ======================================================================
+# 8.1. VALIDACIÓN LEAVE-ONE-TRIMESTER-OUT Y ESTIMACIÓN DE CPT
+# ======================================================================
+
+def preparar_fold_tema(materia, trimestre_prueba):
+    """Prepara train/test y ajusta el mapa de tema solo con train."""
+    datos_materia = sesiones[
+        sesiones["materia"] == materia
+    ].copy()
+
+    train = datos_materia[
+        datos_materia["trimestre"] != trimestre_prueba
+    ].copy()
+    test = datos_materia[
+        datos_materia["trimestre"] == trimestre_prueba
+    ].copy()
+
+    mapa, tabla_temas = ajustar_mapa_temas(train)
+
+    train["Tema de la sesión"] = aplicar_mapa_temas(
+        train,
+        mapa,
+        permitir_no_visto=False
+    )
+    test["Tema de la sesión"] = aplicar_mapa_temas(
+        test,
+        mapa,
+        permitir_no_visto=True
+    )
+
+    temas_no_vistos = sorted(
+        test.loc[
+            test["Tema de la sesión"] == "tema_no_visto",
+            "tema"
+        ].astype(int).unique().tolist()
+    )
+    filas_no_vistas = int(
+        (test["Tema de la sesión"] == "tema_no_visto").sum()
+    )
+
+    categorias_presentes = set(
+        tabla_temas["categoria"].dropna().astype(str)
+    )
+    categorias_vacias = [
+        categoria
+        for categoria in ["baja", "media", "alta"]
+        if categoria not in categorias_presentes
+    ]
+
+    train_bn = train[COLUMNAS_BN].dropna().astype(str)
+    test_bn = test[COLUMNAS_BN].dropna().astype(str)
+
+    for columna, estados in ESTADOS_BN.items():
+        valores_invalidos = set(train_bn[columna]) - set(estados)
+        valores_invalidos |= set(test_bn[columna]) - set(estados)
+        if valores_invalidos:
+            raise ValueError(
+                f"Estados fuera del dominio en {columna}: "
+                f"{sorted(valores_invalidos)}"
+            )
+
+    return {
+        "materia": materia,
+        "trimestre_prueba": trimestre_prueba,
+        "train": train_bn,
+        "test": test_bn,
+        "temas_no_vistos": temas_no_vistos,
+        "filas_no_vistas": filas_no_vistas,
+        "filas_test": len(test),
+        "categorias_vacias_train": categorias_vacias
+    }
+
+
+def ajustar_cpt_bdeu(datos_train, ess):
+    """Ajusta las CPT del grafo manual con BDeu y dominio completo."""
+    modelo = DiscreteBayesianNetwork()
+    modelo.add_nodes_from(COLUMNAS_BN)
+    modelo.add_edges_from(ARCOS_MANUALES)
+
+    estimador = DiscreteBayesianEstimator(
+        state_names=ESTADOS_BN,
+        prior_type="BDeu",
+        equivalent_sample_size=ess
+    )
+    modelo.fit(datos_train, estimator=estimador)
+
+    min_probabilidad = 1.0
+    max_error_normalizacion = 0.0
+
+    for cpd in modelo.get_cpds():
+        valores = np.asarray(cpd.values, dtype=float)
+        if not np.isfinite(valores).all():
+            raise ValueError(
+                f"La CPT de {cpd.variable} contiene valores no finitos"
+            )
+
+        min_probabilidad = min(min_probabilidad, float(valores.min()))
+        sumas = valores.sum(axis=0)
+        max_error_normalizacion = max(
+            max_error_normalizacion,
+            float(np.max(np.abs(sumas - 1.0)))
+        )
+
+    return modelo, min_probabilidad, max_error_normalizacion
+
+
+print("=" * 70)
+print("VALIDACIÓN LEAVE-ONE-TRIMESTER-OUT DEL TEMA")
+print("=" * 70)
+print(
+    "El mapa de cada fold se ajusta solo con train. "
+    "ESS evaluados con train:",
+    ESS_EVALUADOS
+)
+
+auditoria_folds = []
+
+for materia in sorted(sesiones["materia"].unique()):
+    trimestres = sorted(
+        sesiones.loc[
+            sesiones["materia"] == materia,
+            "trimestre"
+        ].unique()
+    )
+
+    for trimestre_prueba in trimestres:
+        fold = preparar_fold_tema(materia, trimestre_prueba)
+        sensibilidad = {}
+
+        for ess in ESS_EVALUADOS:
+            modelo_cpt, minimo, error = ajustar_cpt_bdeu(
+                fold["train"],
+                ess
+            )
+            sensibilidad[ess] = {
+                "min_probabilidad": minimo,
+                "max_error_normalizacion": error
+            }
+
+            # La CPT hija conserva explícitamente tema_no_visto como estado
+            # del padre, aunque no haya aparecido en train.
+            cpd_participacion = modelo_cpt.get_cpds(
+                "Participaciones de la semana"
+            )
+            if "tema_no_visto" not in cpd_participacion.state_names[
+                "Tema de la sesión"
+            ]:
+                raise AssertionError(
+                    "tema_no_visto no fue conservado en la CPT"
+                )
+
+        fold["sensibilidad_ess"] = sensibilidad
+        auditoria_folds.append(fold)
+
+        print(
+            f"{materia} | test={trimestre_prueba} | "
+            f"no vistos={fold['temas_no_vistos'] or 'ninguno'} | "
+            f"filas={fold['filas_no_vistas']}/{fold['filas_test']} | "
+            f"categorías vacías en train="
+            f"{fold['categorias_vacias_train'] or 'ninguna'}"
+        )
+
+print("\nSensibilidad BDeu (solo train; todas las CPT):")
+for ess in ESS_EVALUADOS:
+    minimo = min(
+        fold["sensibilidad_ess"][ess]["min_probabilidad"]
+        for fold in auditoria_folds
+    )
+    error = max(
+        fold["sensibilidad_ess"][ess]["max_error_normalizacion"]
+        for fold in auditoria_folds
+    )
+    print(
+        f"  ESS={ess}: probabilidad mínima={minimo:.12g}; "
+        f"error máximo de normalización={error:.3g}"
+    )
+
+print(
+    "ESS seleccionado para la implementación: "
+    f"{ESS_SELECCIONADO} (valor predeterminado de pgmpy y punto medio "
+    "del análisis 1/5/10; se fija sin usar test)."
+)
+
+param_participacion_antes = (4 - 1) * 4 * 3 * 4 * 4
+param_participacion_despues = (4 - 1) * 4 * 3 * 5 * 4
+param_tema_antes = 4 - 1
+param_tema_despues = 5 - 1
+param_objetivo = (5 - 1) * 4 * 4 * 5 * 3
+
+assert param_participacion_antes == 576
+assert param_participacion_despues == 720
+assert param_tema_antes == 3
+assert param_tema_despues == 4
+assert param_objetivo == 960
+
+print(
+    "Parámetros libres: participación semanal "
+    f"{param_participacion_antes} -> {param_participacion_despues}; "
+    f"tema {param_tema_antes} -> {param_tema_despues}; "
+    f"objetivo={param_objetivo}."
+)
+print()
 
 
 # ======================================================================
@@ -655,648 +477,177 @@ def construir_posiciones():
     return posiciones
 
 
-def crear_grafo_comparativo(
+ETIQUETAS_NODOS = {
+    "Año que cursa": "Año",
+    "Sección": "Sección",
+    "Tamaño del grupo": "Tamaño\ngrupo",
+    "Posición relativa en la lista": "Posición\nlista",
+    "Tema de la sesión": "Tema",
+    "Número de sesiones de la semana": "Sesiones",
+    "Sesiones de evaluación de la semana": "Sesiones\neval.",
+    "Participaciones de la semana anterior": "Part.\nprevia",
+    "Participaciones de la semana": "Part.\nsemanal",
+    "Cantidad de participaciones del trimestre": "Part.\ntrimestral",
+}
+
+NOMBRES_CORTOS_MATERIA = {
+    "Algoritmos y Programación": "Algoritmos y Programación",
+    "Computación Emergente": "Computación Emergente",
+    "Estructura de Datos": "Estructura de Datos",
+    "Matemáticas Discretas": "Matemáticas Discretas",
+}
+
+
+def _curvatura_arco(origen, destino, indice):
+    """Separa arcos paralelos y verticales sin alterar el grafo."""
+    posiciones = construir_posiciones()
+    x1, y1 = posiciones[origen]
+    x2, y2 = posiciones[destino]
+
+    if x1 == x2:
+        return 0.22 if y2 > y1 else -0.22
+
+    signo = -1 if indice % 2 else 1
+    distancia = abs(x2 - x1)
+    return signo * (0.045 if distancia <= 3 else 0.085)
+
+
+def dibujar_grafo_aprendido(
+    ax,
+    nodos,
+    arcos,
     materia,
-    arcos_manual,
-    arcos_aprendidos,
-    ruta_salida
+    font_nodos,
+    font_panel,
+    font_capas,
+    node_size
 ):
-    """
-    Genera un grafo comparativo:
-
-        - Arco manual solamente:
-              línea continua
-
-        - Arco aprendido solamente:
-              línea discontinua
-
-        - Arco presente en ambos:
-              línea continua y resaltada
-
-    El gráfico compara específicamente el grafo manual con
-    el grafo aprendido bajo restricciones temporales.
-    """
-
-    manual_set = set(arcos_manual)
-    aprendido_set = set(arcos_aprendidos)
-
-    comunes = manual_set & aprendido_set
-    solo_manual = manual_set - aprendido_set
-    solo_aprendido = aprendido_set - manual_set
+    """Dibuja exclusivamente un DAG aprendido con orden temporal fijo."""
+    posiciones = construir_posiciones()
+    nodos = list(nodos)
+    arcos = list(arcos)
 
     G = nx.DiGraph()
+    G.add_nodes_from(nodos)
+    G.add_edges_from(arcos)
 
-    G.add_nodes_from(COLUMNAS_BN)
+    for indice, arco in enumerate(sorted(arcos)):
+        nx.draw_networkx_edges(
+            G,
+            posiciones,
+            edgelist=[arco],
+            edge_color="#303030",
+            width=2.4,
+            arrows=True,
+            arrowsize=30,
+            arrowstyle="-|>",
+            connectionstyle=f"arc3,rad={_curvatura_arco(*arco, indice)}",
+            min_source_margin=28,
+            min_target_margin=28,
+            ax=ax
+        )
 
-    # --------------------------------------------------------------
-    # Crear figura
-    # --------------------------------------------------------------
-
-    fig, ax = plt.subplots(
-        figsize=(15, 8)
-    )
-
-    posiciones = construir_posiciones()
-
-    # --------------------------------------------------------------
-    # Nodos
-    # --------------------------------------------------------------
-
+    # Los nodos y sus rótulos se dibujan después de los arcos para que
+    # ninguna flecha atraviese el texto.
     nx.draw_networkx_nodes(
         G,
         posiciones,
-        node_size=5000,
-        node_color="white",
-        edgecolors="black",
-        linewidths=1.5,
+        nodelist=nodos,
+        node_size=node_size,
+        node_color="#f7f7f7",
+        edgecolors="#303030",
+        linewidths=2.2,
         node_shape="s",
         ax=ax
     )
 
-    # --------------------------------------------------------------
-    # Etiquetas
-    # --------------------------------------------------------------
-
-    etiquetas = {
-
-        "Año que cursa":
-            "Año que\ncursa",
-
-        "Sección":
-            "Sección",
-
-        "Tamaño del grupo":
-            "Tamaño del\ngrupo",
-
-        "Posición relativa en la lista":
-            "Posición relativa\nen la lista",
-
-        "Tema de la sesión":
-            "Tema de la\nsesión",
-
-        "Número de sesiones de la semana":
-            "N.º de sesiones\nde la semana",
-
-        "Sesiones de evaluación de la semana":
-            "Sesiones de evaluación\nde la semana",
-
-        "Participaciones de la semana anterior":
-            "Participaciones de\nla semana anterior",
-
-        "Participaciones de la semana":
-            "Participaciones de\nla semana",
-
-        "Cantidad de participaciones del trimestre":
-            "Cantidad de participaciones\ndel trimestre",
-    }
-
     nx.draw_networkx_labels(
         G,
         posiciones,
-        labels=etiquetas,
-        font_size=8,
+        labels={n: ETIQUETAS_NODOS[n] for n in nodos},
+        font_family="Arial",
+        font_size=font_nodos,
         font_weight="normal",
         ax=ax
     )
 
-    # --------------------------------------------------------------
-    # Arcos SOLO MANUAL
-    # --------------------------------------------------------------
-
-    if solo_manual:
-
-        nx.draw_networkx_edges(
-            G,
-            posiciones,
-            edgelist=list(solo_manual),
-            edge_color="black",
-            style="solid",
-            width=1.8,
-            arrows=True,
-            arrowsize=18,
-            arrowstyle="-|>",
-            connectionstyle="arc3,rad=0.04",
-            min_source_margin=15,
-            min_target_margin=15,
-            ax=ax
-        )
-
-    # --------------------------------------------------------------
-    # Arcos SOLO APRENDIDOS
-    # --------------------------------------------------------------
-
-    if solo_aprendido:
-
-        nx.draw_networkx_edges(
-            G,
-            posiciones,
-            edgelist=list(solo_aprendido),
-            edge_color="dimgray",
-            style="dashed",
-            width=1.8,
-            arrows=True,
-            arrowsize=18,
-            arrowstyle="-|>",
-            connectionstyle="arc3,rad=-0.04",
-            min_source_margin=15,
-            min_target_margin=15,
-            ax=ax
-        )
-
-    # --------------------------------------------------------------
-    # Arcos COMUNES
-    # --------------------------------------------------------------
-
-    if comunes:
-
-        nx.draw_networkx_edges(
-            G,
-            posiciones,
-            edgelist=list(comunes),
-            edge_color="black",
-            style="solid",
-            width=2.8,
-            arrows=True,
-            arrowsize=20,
-            arrowstyle="-|>",
-            connectionstyle="arc3,rad=0.0",
-            min_source_margin=15,
-            min_target_margin=15,
-            ax=ax
-        )
-
-    # --------------------------------------------------------------
-    # Etiquetas de capas
-    # --------------------------------------------------------------
-
-    ax.text(
-        -3.8,
-        3.5,
-        "INICIO",
-        ha="center",
-        va="center",
-        fontsize=10,
-        fontweight="bold"
+    titulo = NOMBRES_CORTOS_MATERIA.get(materia, materia)
+    ax.set_title(
+        f"{titulo} ({len(arcos)} arcos)",
+        fontsize=font_panel,
+        fontweight="bold",
+        family="Arial",
+        pad=16
     )
-
-    ax.text(
-        -1.3,
-        3.5,
-        "SEMANA ANTERIOR",
-        ha="center",
-        va="center",
-        fontsize=10,
-        fontweight="bold"
-    )
-
-    ax.text(
-        1.3,
-        3.5,
-        "SEMANA ACTUAL",
-        ha="center",
-        va="center",
-        fontsize=10,
-        fontweight="bold"
-    )
-
-    ax.text(
-        4.0,
-        3.5,
-        "FIN",
-        ha="center",
-        va="center",
-        fontsize=10,
-        fontweight="bold"
-    )
-
-    # --------------------------------------------------------------
-    # Leyenda
-    # --------------------------------------------------------------
-
-    from matplotlib.lines import Line2D
-
-    elementos_leyenda = [
-
-        Line2D(
-            [0],
-            [0],
-            color="black",
-            linewidth=2.8,
-            linestyle="-",
-            label="Arco presente en ambas estructuras"
-        ),
-
-        Line2D(
-            [0],
-            [0],
-            color="black",
-            linewidth=1.8,
-            linestyle="-",
-            label="Arco solo en el grafo manual"
-        ),
-
-        Line2D(
-            [0],
-            [0],
-            color="dimgray",
-            linewidth=1.8,
-            linestyle="--",
-            label="Arco solo en el grafo aprendido"
-        ),
-    ]
-
-    ax.legend(
-        handles=elementos_leyenda,
-        loc="lower center",
-        bbox_to_anchor=(0.5, -0.08),
-        ncol=3,
-        frameon=False,
-        fontsize=9
-    )
-
-    # --------------------------------------------------------------
-    # Información de comparación
-    # --------------------------------------------------------------
-
-    ax.text(
-        0.01,
-        0.01,
-        (
-            f"Asignatura: {materia}\n"
-            f"Arcos manuales: {len(manual_set)}   |   "
-            f"Arcos aprendidos: {len(aprendido_set)}   |   "
-            f"Coincidentes: {len(comunes)}"
-        ),
-        transform=ax.transAxes,
-        fontsize=8,
-        va="bottom"
-    )
-
-    # --------------------------------------------------------------
-    # Configuración final
-    # --------------------------------------------------------------
-
-    ax.set_xlim(-5.0, 5.2)
-    ax.set_ylim(-3.5, 4.0)
-
+    ax.set_xlim(-5.15, 5.35)
+    ax.set_ylim(-3.55, 3.55)
     ax.axis("off")
 
-    plt.tight_layout()
 
-    # Guardar en PNG de alta resolución
-    fig.savefig(
-        ruta_salida,
-        dpi=300,
-        bbox_inches="tight",
-        facecolor="white"
+def crear_grafo_aprendido(materia, nodos, arcos, ruta_salida):
+    """Genera la figura individual de la estructura restringida aprendida."""
+    fig, ax = plt.subplots(figsize=(13, 7.5), constrained_layout=True)
+    dibujar_grafo_aprendido(
+        ax=ax,
+        nodos=nodos,
+        arcos=arcos,
+        materia=materia,
+        font_nodos=22,
+        font_panel=28,
+        font_capas=21,
+        node_size=6000
     )
-
+    fig.savefig(ruta_salida, dpi=300, facecolor="white")
     plt.close(fig)
-
-    print(
-        f"Figura generada: {ruta_salida}"
-    )
+    print(f"Figura aprendida generada: {ruta_salida}")
 
 
-def crear_figura_consolidada(
-    resultados_graficos,
-    ruta_salida
-):
-    """
-    Genera una figura consolidada con un panel por asignatura.
-
-    Cada panel muestra:
-        - estructura manual
-        - estructura aprendida
-        - coincidencias entre ambas
-
-    La estructura de cada panel mantiene la misma distribución
-    temporal para facilitar la comparación.
-    """
-
-    materias = list(resultados_graficos.keys())
+def crear_figura_consolidada(resultados_graficos, ruta_salida):
+    """Genera cuatro paneles con solo las estructuras restringidas aprendidas."""
+    orden = [
+        "Algoritmos y Programación",
+        "Computación Emergente",
+        "Estructura de Datos",
+        "Matemáticas Discretas",
+    ]
+    materias = [m for m in orden if m in resultados_graficos]
 
     if not materias:
         return
 
-    # --------------------------------------------------------------
-    # Figura
-    # --------------------------------------------------------------
-
     fig, axes = plt.subplots(
-        len(materias),
-        1,
-        figsize=(15, 7 * len(materias))
+        2,
+        2,
+        figsize=(13, 11),
+        constrained_layout=True
     )
 
-    if len(materias) == 1:
-        axes = [axes]
-
-    posiciones = construir_posiciones()
-
-    etiquetas = {
-
-        "Año que cursa":
-            "Año que\ncursa",
-
-        "Sección":
-            "Sección",
-
-        "Tamaño del grupo":
-            "Tamaño del\ngrupo",
-
-        "Posición relativa en la lista":
-            "Posición relativa\nen la lista",
-
-        "Tema de la sesión":
-            "Tema de la\nsesión",
-
-        "Número de sesiones de la semana":
-            "N.º de sesiones\nde la semana",
-
-        "Sesiones de evaluación de la semana":
-            "Sesiones de evaluación\nde la semana",
-
-        "Participaciones de la semana anterior":
-            "Participaciones de\nla semana anterior",
-
-        "Participaciones de la semana":
-            "Participaciones de\nla semana",
-
-        "Cantidad de participaciones del trimestre":
-            "Cantidad de participaciones\ndel trimestre",
-    }
-
-    # --------------------------------------------------------------
-    # Dibujar cada asignatura
-    # --------------------------------------------------------------
-
-    for ax, materia in zip(
-        axes,
-        materias
-    ):
-
-        arcos_manual = set(
-            resultados_graficos[materia]["manual"]
+    for ax, materia in zip(axes.flat, materias):
+        resultado = resultados_graficos[materia]
+        dibujar_grafo_aprendido(
+            ax=ax,
+            nodos=resultado["nodos"],
+            arcos=resultado["aprendido"],
+            materia=materia,
+            font_nodos=22,
+            font_panel=24,
+            font_capas=20,
+            node_size=5500
         )
 
-        arcos_aprendidos = set(
-            resultados_graficos[materia]["aprendido"]
-        )
-
-        comunes = (
-            arcos_manual &
-            arcos_aprendidos
-        )
-
-        solo_manual = (
-            arcos_manual -
-            arcos_aprendidos
-        )
-
-        solo_aprendido = (
-            arcos_aprendidos -
-            arcos_manual
-        )
-
-        G = nx.DiGraph()
-
-        G.add_nodes_from(
-            COLUMNAS_BN
-        )
-
-        # ----------------------------------------------------------
-        # Nodos
-        # ----------------------------------------------------------
-
-        nx.draw_networkx_nodes(
-            G,
-            posiciones,
-            node_size=4200,
-            node_color="white",
-            edgecolors="black",
-            linewidths=1.3,
-            node_shape="s",
-            ax=ax
-        )
-
-        # ----------------------------------------------------------
-        # Etiquetas
-        # ----------------------------------------------------------
-
-        nx.draw_networkx_labels(
-            G,
-            posiciones,
-            labels=etiquetas,
-            font_size=7,
-            ax=ax
-        )
-
-        # ----------------------------------------------------------
-        # Solo manual
-        # ----------------------------------------------------------
-
-        if solo_manual:
-
-            nx.draw_networkx_edges(
-                G,
-                posiciones,
-                edgelist=list(solo_manual),
-                edge_color="black",
-                style="solid",
-                width=1.5,
-                arrows=True,
-                arrowsize=16,
-                arrowstyle="-|>",
-                connectionstyle="arc3,rad=0.04",
-                min_source_margin=15,
-                min_target_margin=15,
-                ax=ax
-            )
-
-        # ----------------------------------------------------------
-        # Solo aprendido
-        # ----------------------------------------------------------
-
-        if solo_aprendido:
-
-            nx.draw_networkx_edges(
-                G,
-                posiciones,
-                edgelist=list(solo_aprendido),
-                edge_color="dimgray",
-                style="dashed",
-                width=1.5,
-                arrows=True,
-                arrowsize=16,
-                arrowstyle="-|>",
-                connectionstyle="arc3,rad=-0.04",
-                min_source_margin=15,
-                min_target_margin=15,
-                ax=ax
-            )
-
-        # ----------------------------------------------------------
-        # Comunes
-        # ----------------------------------------------------------
-
-        if comunes:
-
-            nx.draw_networkx_edges(
-                G,
-                posiciones,
-                edgelist=list(comunes),
-                edge_color="black",
-                style="solid",
-                width=2.5,
-                arrows=True,
-                arrowsize=18,
-                arrowstyle="-|>",
-                connectionstyle="arc3,rad=0.0",
-                min_source_margin=15,
-                min_target_margin=15,
-                ax=ax
-            )
-
-        # ----------------------------------------------------------
-        # Encabezado del panel
-        # ----------------------------------------------------------
-
-        ax.text(
-            0.5,
-            0.98,
-            str(materia),
-            transform=ax.transAxes,
-            ha="center",
-            va="top",
-            fontsize=12,
-            fontweight="bold"
-        )
-
-        # ----------------------------------------------------------
-        # Capas temporales
-        # ----------------------------------------------------------
-
-        ax.text(
-            -3.8,
-            3.5,
-            "INICIO",
-            ha="center",
-            fontsize=8,
-            fontweight="bold"
-        )
-
-        ax.text(
-            -1.3,
-            3.5,
-            "SEMANA ANTERIOR",
-            ha="center",
-            fontsize=8,
-            fontweight="bold"
-        )
-
-        ax.text(
-            1.3,
-            3.5,
-            "SEMANA ACTUAL",
-            ha="center",
-            fontsize=8,
-            fontweight="bold"
-        )
-
-        ax.text(
-            4.0,
-            3.5,
-            "FIN",
-            ha="center",
-            fontsize=8,
-            fontweight="bold"
-        )
-
-        # ----------------------------------------------------------
-        # Estadísticas
-        # ----------------------------------------------------------
-
-        ax.text(
-            0.5,
-            0.02,
-            (
-                f"Manual: {len(arcos_manual)} arcos   |   "
-                f"Aprendido: {len(arcos_aprendidos)} arcos   |   "
-                f"Coincidentes: {len(comunes)}"
-            ),
-            transform=ax.transAxes,
-            ha="center",
-            fontsize=7
-        )
-
-        ax.set_xlim(-5.0, 5.2)
-        ax.set_ylim(-3.5, 4.0)
-
+    for ax in axes.flat[len(materias):]:
         ax.axis("off")
 
-    # --------------------------------------------------------------
-    # Leyenda global
-    # --------------------------------------------------------------
-
-    from matplotlib.lines import Line2D
-
-    elementos_leyenda = [
-
-        Line2D(
-            [0],
-            [0],
-            color="black",
-            linewidth=2.5,
-            linestyle="-",
-            label="Arco presente en ambas estructuras"
-        ),
-
-        Line2D(
-            [0],
-            [0],
-            color="black",
-            linewidth=1.5,
-            linestyle="-",
-            label="Arco solo en el grafo manual"
-        ),
-
-        Line2D(
-            [0],
-            [0],
-            color="dimgray",
-            linewidth=1.5,
-            linestyle="--",
-            label="Arco solo en el grafo aprendido"
-        ),
-    ]
-
-    fig.legend(
-        handles=elementos_leyenda,
-        loc="lower center",
-        bbox_to_anchor=(0.5, 0.005),
-        ncol=3,
-        frameon=False,
-        fontsize=9
+    fig.suptitle(
+        "Estructuras aprendidas automáticamente\n"
+        "para contraste metodológico",
+        fontsize=28,
+        fontweight="bold",
+        family="Arial"
     )
-
-    fig.subplots_adjust(
-        hspace=0.10,
-        bottom=0.04
-    )
-
-    fig.savefig(
-        ruta_salida,
-        dpi=300,
-        bbox_inches="tight",
-        facecolor="white"
-    )
-
+    fig.savefig(ruta_salida, dpi=300, facecolor="white")
     plt.close(fig)
-
-    print(
-        f"\nFigura consolidada generada: {ruta_salida}"
-    )
+    print(f"\nFigura consolidada generada: {ruta_salida}")
 
 
 # ======================================================================
@@ -1382,6 +733,11 @@ for materia in sorted(
             .astype(str)
         )
 
+    bic = BIC(
+        datos,
+        state_names=ESTADOS_BN
+    )
+
     variante_resultados = {}
 
     modelo_b_completo = None
@@ -1393,11 +749,12 @@ for materia in sorted(
     try:
 
         hc = HillClimbSearch(
-            datos
+            datos,
+            state_names=ESTADOS_BN
         )
 
         modelo_a = hc.estimate(
-            scoring_method="bic-d",
+            scoring_method=bic,
             show_progress=False
         )
 
@@ -1447,11 +804,12 @@ for materia in sorted(
         )
 
         hc2 = HillClimbSearch(
-            datos
+            datos,
+            state_names=ESTADOS_BN
         )
 
         modelo_b = hc2.estimate(
-            scoring_method="bic-d",
+            scoring_method=bic,
             expert_knowledge=ek,
             show_progress=False
         )
@@ -1569,10 +927,6 @@ for materia in sorted(
     # PUNTAJES BIC
     # ==============================================================
 
-    bic = BIC(
-        datos
-    )
-
     modelo_manual = (
         DiscreteBayesianNetwork()
     )
@@ -1671,10 +1025,10 @@ for materia in sorted(
             nombre_archivo
         )
 
-        crear_grafo_comparativo(
+        crear_grafo_aprendido(
             materia=materia,
-            arcos_manual=ARCOS_MANUALES,
-            arcos_aprendidos=(
+            nodos=list(modelo_b_completo.nodes()),
+            arcos=(
                 variante_resultados[
                     "restringido"
                 ]
@@ -1685,7 +1039,7 @@ for materia in sorted(
         resultados_graficos[
             materia
         ] = {
-            "manual": ARCOS_MANUALES,
+            "nodos": list(modelo_b_completo.nodes()),
             "aprendido": (
                 variante_resultados[
                     "restringido"

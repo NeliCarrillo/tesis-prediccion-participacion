@@ -24,10 +24,11 @@ AQUI = Path(__file__).resolve().parent
 
 ANCHO_IN = 6.5
 
-T_TITULO = 13
-T_EJES = 11
-T_TICKS = 10
-T_ANOTACION = 11
+T_TITULO = 15
+T_EJES = 14
+T_TICKS = 13
+T_ANOTACION = 13
+T_LEYENDA = 13
 
 CORTE = "#b3352a"
 
@@ -53,6 +54,29 @@ def tercios(g):
 
 temas = temas.groupby("materia", group_keys=False).apply(tercios)
 
+# Comprobación reproducible de la nueva asignatura. La figura no se genera si
+# los datos actuales dejan de producir la categorización previamente auditada.
+categorias_md = {
+    categoria: sorted(
+        temas.loc[
+            (temas["materia"] == "Matemáticas Discretas")
+            & (temas["categoria"] == categoria),
+            "tema",
+        ].astype(int).tolist()
+    )
+    for categoria in ["baja", "media", "alta"]
+}
+categorias_md_esperadas = {
+    "baja": [1, 3, 4],
+    "media": [7, 8],
+    "alta": [2, 5, 6],
+}
+if categorias_md != categorias_md_esperadas:
+    raise RuntimeError(
+        "La categorización de Matemáticas Discretas cambió: "
+        f"se obtuvo {categorias_md}, se esperaba {categorias_md_esperadas}."
+    )
+
 print("=== Verificación previa a graficar ===\n")
 print("Tema de la sesión — códigos por asignatura y categoría (baja/media/alta):")
 for materia, g in temas.groupby("materia"):
@@ -67,9 +91,14 @@ plt.rcParams["axes.grid"] = True
 plt.rcParams["grid.alpha"] = 0.25
 plt.rcParams["axes.axisbelow"] = True
 
-fig, ax = plt.subplots(figsize=(ANCHO_IN, 4.4), constrained_layout=True)
+fig, ax = plt.subplots(figsize=(ANCHO_IN, 6.4), constrained_layout=True)
 
-colores = {"Algoritmos y Programación": "#8fa8d8", "Estructura de Datos": "#e0a15c", "Computación Emergente": "#7fb37f"}
+colores = {
+    "Algoritmos y Programación": "#8fa8d8",
+    "Computación Emergente": "#7fb37f",
+    "Estructura de Datos": "#e0a15c",
+    "Matemáticas Discretas": "#8172b3",
+}
 for materia, g in temas.groupby("materia"):
     g = g.sort_values("media")
     x = (g["acum"] - g["n"] / 2) / g["n"].sum() * 100
@@ -82,13 +111,23 @@ ax.text(100 / 6, 1.02, "baja", ha="center", va="bottom", fontsize=T_ANOTACION, t
 ax.text(50, 1.02, "media", ha="center", va="bottom", fontsize=T_ANOTACION, transform=trans)
 ax.text(100 - 100 / 6, 1.02, "alta", ha="center", va="bottom", fontsize=T_ANOTACION, transform=trans)
 
-ax.set_title("Tema de la sesión: participación promedio, agrupada en terciles",
+ax.set_title("Tema de la sesión: participación promedio\nagrupada en terciles",
              fontsize=T_TITULO, fontweight="bold", pad=16)
-ax.set_xlabel("percentil acumulado de sesiones (por código de tema, dentro de la asignatura)", fontsize=T_EJES)
+ax.set_xlabel(
+    "percentil acumulado de sesiones\n"
+    "(por código de tema, dentro de la asignatura)",
+    fontsize=T_EJES,
+)
 ax.set_ylabel("participaciones promedio por sesión", fontsize=T_EJES)
 ax.tick_params(labelsize=T_TICKS)
 ax.xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _pos: f"{x:.0f}%"))
-ax.legend(fontsize=T_ANOTACION, loc="lower right", framealpha=0.9)
+ax.legend(
+    fontsize=T_LEYENDA,
+    loc="upper center",
+    bbox_to_anchor=(0.5, -0.25),
+    ncol=1,
+    framealpha=0.9,
+)
 
 destino = AQUI / "figura_tema.png"
 fig.savefig(destino, dpi=300)

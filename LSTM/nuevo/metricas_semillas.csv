@@ -8,6 +8,9 @@ semilla,materia,hito,rmse,mae,r2
 42,Estructura de Datos,4,5.201,3.3615,0.5509
 42,Estructura de Datos,6,3.7269,2.1747,0.7694
 42,Estructura de Datos,8,3.2457,1.8764,0.8251
+42,Matemáticas Discretas,4,3.0357,2.5939,0.4214
+42,Matemáticas Discretas,6,2.1692,1.7754,0.7046
+42,Matemáticas Discretas,8,1.3431,1.0827,0.8868
 7,Algoritmos y Programación,4,3.3724,2.5629,0.6654
 7,Algoritmos y Programación,6,2.7822,2.1351,0.7723
 7,Algoritmos y Programación,8,1.3645,1.0808,0.9452
@@ -17,6 +20,9 @@ semilla,materia,hito,rmse,mae,r2
 7,Estructura de Datos,4,5.3251,3.2135,0.5292
 7,Estructura de Datos,6,3.9693,2.203,0.7384
 7,Estructura de Datos,8,3.4308,1.805,0.8046
+7,Matemáticas Discretas,4,2.9797,2.5889,0.4426
+7,Matemáticas Discretas,6,2.2531,1.8779,0.6813
+7,Matemáticas Discretas,8,1.4429,1.1876,0.8693
 123,Algoritmos y Programación,4,3.3753,2.5704,0.6648
 123,Algoritmos y Programación,6,2.6493,2.0578,0.7935
 123,Algoritmos y Programación,8,1.4486,1.1406,0.9383
@@ -26,6 +32,9 @@ semilla,materia,hito,rmse,mae,r2
 123,Estructura de Datos,4,5.3452,3.4131,0.5256
 123,Estructura de Datos,6,3.7696,2.251,0.7641
 123,Estructura de Datos,8,3.0619,1.7662,0.8443
+123,Matemáticas Discretas,4,2.9417,2.565,0.4567
+123,Matemáticas Discretas,6,2.3093,1.9932,0.6652
+123,Matemáticas Discretas,8,1.3063,1.1609,0.8929
 2024,Algoritmos y Programación,4,3.448,2.5938,0.6503
 2024,Algoritmos y Programación,6,2.8012,2.1687,0.7691
 2024,Algoritmos y Programación,8,1.3704,1.0793,0.9448
@@ -35,6 +44,9 @@ semilla,materia,hito,rmse,mae,r2
 2024,Estructura de Datos,4,4.9631,3.077,0.591
 2024,Estructura de Datos,6,3.8728,2.3607,0.751
 2024,Estructura de Datos,8,3.196,1.8151,0.8304
+2024,Matemáticas Discretas,4,2.9567,2.4114,0.4512
+2024,Matemáticas Discretas,6,1.9523,1.4657,0.7607
+2024,Matemáticas Discretas,8,1.296,0.9908,0.8946
 31,Algoritmos y Programación,4,3.3121,2.5336,0.6773
 31,Algoritmos y Programación,6,2.712,2.1614,0.7836
 31,Algoritmos y Programación,8,1.3724,1.0774,0.9446
@@ -44,3 +56,6 @@ semilla,materia,hito,rmse,mae,r2
 31,Estructura de Datos,4,5.0897,3.2831,0.5699
 31,Estructura de Datos,6,3.8712,2.2241,0.7512
 31,Estructura de Datos,8,3.0957,1.7326,0.8409
+31,Matemáticas Discretas,4,2.9485,2.5756,0.4542
+31,Matemáticas Discretas,6,2.1439,1.8313,0.7114
+31,Matemáticas Discretas,8,1.3161,1.0956,0.8913
