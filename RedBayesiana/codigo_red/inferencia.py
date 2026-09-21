@@ -19,9 +19,16 @@ fijados esos 4 padres (verificado antes de implementar, no es una
 simplificación de conveniencia).
 
 Una predicción por registro estudiante-sección y por hito — nunca una por
-sesión ni una combinación de posteriores de varias sesiones. Los 3
-registros con año académico faltante se excluyen de la inferencia (nunca
-se imputan) cuando caen en el trimestre de prueba de su propio pliegue.
+sesión ni una combinación de posteriores de varias sesiones.
+
+Año académico faltante en el registro de prueba (3 casos: anon_063,
+anon_065, anon_259): en vez de excluir el registro completo, se omite
+«Año que cursa» de la evidencia y `VariableElimination.query()` marginaliza
+esa variable no observada — verificado antes de implementar que pgmpy lo
+soporta de forma nativa, sin error, con posterior normalizada (auditoría
+previa a esta carta). Nunca se imputa un valor artificial. La columna
+`evidencia_anio_que_cursa` queda vacía (None) en esas filas del resultado,
+para que quede explícito que la evidencia fue parcial.
 
 Fuera de alcance, deliberadamente no incluido aquí: RMSE, R² y comparación
 con LSTM/extrapolación — eso es la carta 7.
@@ -59,12 +66,19 @@ COLUMNAS_EVIDENCIA = (
 
 
 def _evidencia_c1(fila_reg: pd.Series, fila_semana: pd.Series) -> dict[str, str]:
-    return {
-        "Año que cursa": fila_reg["Año que cursa"],
+    """Evidencia mínima necesaria (C1). Si «Año que cursa» es faltante para
+    este registro, se omite del diccionario en vez de excluir el registro:
+    `VariableElimination` marginaliza esa variable no observada (verificado
+    antes de implementar — ver docstring del módulo)."""
+    evidencia = {
         "Tamaño del grupo": fila_reg["Tamaño del grupo"],
         "Participaciones de la semana": fila_semana["Participaciones de la semana"],
         "Participaciones de la semana anterior": fila_semana["Participaciones de la semana anterior"],
     }
+    anio = fila_reg["Año que cursa"]
+    if pd.notna(anio):
+        evidencia["Año que cursa"] = anio
+    return evidencia
 
 
 def evaluar_fold(
@@ -82,8 +96,10 @@ def evaluar_fold(
     prueba evaluable en cada hito.
 
     Devuelve `(filas, resumen_fold)`: `filas` es la lista de resultados (uno
-    por registro evaluable × hito); `resumen_fold` trae conteos y las
-    exclusiones por año académico faltante.
+    por registro de prueba × hito — TODOS los registros de prueba se
+    evalúan, incluidos los de año académico faltante, con evidencia
+    parcial); `resumen_fold` trae conteos y cuáles registros se evaluaron
+    con evidencia parcial.
     """
     train_bn, test_bn, reporte_fold = preparar_fold(sesiones, materia, trimestre_prueba)
 
@@ -108,11 +124,9 @@ def evaluar_fold(
     n_train_fold = int((reg["materia"] == materia).sum()) - n_test_fold
 
     falta_anio = registros_test["Año que cursa"].isna()
-    excluidos = registros_test.loc[falta_anio, list(CLAVE)]
-    evaluables = registros_test.loc[~falta_anio]
 
     filas = []
-    for _, fila_reg in evaluables.iterrows():
+    for _, fila_reg in registros_test.iterrows():
         clave_valores = {c: fila_reg[c] for c in CLAVE}
 
         for hito in hitos:
@@ -160,7 +174,8 @@ def evaluar_fold(
                 "ess": ess,
                 "n_train_fold": n_train_fold,
                 "n_test_fold": n_test_fold,
-                "evidencia_anio_que_cursa": evidencia["Año que cursa"],
+                "evidencia_completa": "Año que cursa" in evidencia,
+                "evidencia_anio_que_cursa": evidencia.get("Año que cursa"),
                 "evidencia_tamano_grupo": evidencia["Tamaño del grupo"],
                 "evidencia_participaciones_semana": evidencia["Participaciones de la semana"],
                 "evidencia_participaciones_semana_anterior": evidencia[
@@ -173,9 +188,9 @@ def evaluar_fold(
         "trimestre_prueba": trimestre_prueba,
         "n_train_fold": n_train_fold,
         "n_test_fold": n_test_fold,
-        "n_excluidos_anio_faltante": int(falta_anio.sum()),
-        "excluidos_anio_faltante": excluidos["estudiante_id"].tolist(),
-        "n_evaluables": len(evaluables),
+        "n_evidencia_parcial_anio_faltante": int(falta_anio.sum()),
+        "registros_evidencia_parcial": registros_test.loc[falta_anio, "estudiante_id"].tolist(),
+        "n_evaluables": len(registros_test),
         "n_predicciones": len(filas),
     }
 
@@ -240,12 +255,26 @@ def verificar_resultados(
     assert resultados["prediccion_continua"].notna().all(), "hay NaN en prediccion_continua"
     assert np.isfinite(resultados["prediccion_continua"]).all(), "hay valores no finitos"
 
-    # Exclusión explícita de los 3 registros con año faltante: no deben
-    # aparecer en absoluto en los resultados.
-    total_excluidos = sum(r["n_excluidos_anio_faltante"] for r in resumenes)
-    ids_excluidos = {eid for r in resumenes for eid in r["excluidos_anio_faltante"]}
-    assert not (set(resultados["estudiante_id"]) & ids_excluidos), (
-        "un registro con año faltante aparece en los resultados"
+    # Los registros con año faltante YA NO se excluyen: deben aparecer con
+    # evidencia parcial (evidencia_completa=False, evidencia_anio_que_cursa
+    # vacío) y nunca con un valor de año imputado.
+    total_evidencia_parcial = sum(r["n_evidencia_parcial_anio_faltante"] for r in resumenes)
+    ids_evidencia_parcial = {eid for r in resumenes for eid in r["registros_evidencia_parcial"]}
+
+    filas_parciales = resultados[resultados["estudiante_id"].isin(ids_evidencia_parcial)]
+    assert len(filas_parciales) == len(ids_evidencia_parcial) * len(hitos), (
+        "los registros con año faltante no tienen sus 3 hitos evaluados"
+    )
+    assert (~filas_parciales["evidencia_completa"]).all(), (
+        "un registro con año faltante quedó marcado como evidencia completa"
+    )
+    assert filas_parciales["evidencia_anio_que_cursa"].isna().all(), (
+        "un registro con año faltante tiene un valor de año en la evidencia (imputación no permitida)"
+    )
+
+    filas_completas = resultados[~resultados["estudiante_id"].isin(ids_evidencia_parcial)]
+    assert filas_completas["evidencia_completa"].all(), (
+        "un registro con año presente quedó marcado como evidencia parcial"
     )
 
     # Correspondencia semana=hito <-> su rezago: el rezago de la fila
@@ -274,7 +303,7 @@ def verificar_resultados(
     return {
         "n_predicciones_totales": len(resultados),
         "n_registros_evaluados": len(conteos_registro),
-        "n_excluidos_anio_faltante": total_excluidos,
+        "n_evidencia_parcial_anio_faltante": total_evidencia_parcial,
         "n_pliegues": len(resumenes),
     }
 
@@ -287,7 +316,8 @@ if __name__ == "__main__":
 
     print(f"Predicciones totales: {verificacion['n_predicciones_totales']}")
     print(f"Registros evaluados (únicos): {verificacion['n_registros_evaluados']}")
-    print(f"Excluidos por año faltante: {verificacion['n_excluidos_anio_faltante']}")
+    print(f"Evaluados con evidencia parcial (año faltante, no excluidos): "
+          f"{verificacion['n_evidencia_parcial_anio_faltante']}")
     print(f"Pliegues: {verificacion['n_pliegues']}")
     print()
 
@@ -302,8 +332,9 @@ if __name__ == "__main__":
     print()
     print("verificaciones superadas: 1 predicción por registro-sección x hito, "
           "3 hitos por registro evaluable, posteriores normalizadas, sin NaN, "
-          "valor esperado finito, 3 registros con año faltante excluidos, "
-          "rezago consistente entre semana=hito y semana=hito-1")
+          "valor esperado finito, 3 registros con año faltante evaluados con "
+          "evidencia parcial (no excluidos, no imputados), rezago consistente "
+          "entre semana=hito y semana=hito-1")
 
     CARPETA_RESULTADOS.mkdir(parents=True, exist_ok=True)
     resultados.to_csv(RUTA_CSV_PREDICCIONES, index=False)

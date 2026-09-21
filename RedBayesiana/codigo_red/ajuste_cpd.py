@@ -33,13 +33,27 @@ recibe los datos ya discretizados, así que la carta 5 podrá reutilizarla sin
 cambios pasándole datos donde el mapa se ajustó solo con los trimestres de
 entrenamiento de cada pliegue.
 
-Año académico faltante: las filas cuyo año que cursa es faltante (3
-registros estudiante-sección, propagados a todas sus sesiones) se excluyen
-del ajuste porque el nodo "Año que cursa" participa en la red; nunca se
-convierten en "5 o más" ni se imputan. Lo mismo para la primera semana de
-cada registro (sin "Participaciones de la semana anterior"). Ninguna otra
+Año académico y rezago faltantes — tratamiento por CPD, no por fila
+completa: `pgmpy.parameter_estimator.DiscreteBayesianEstimator` calcula
+cada CPD de forma independiente, usando únicamente las filas donde ese nodo
+y sus padres directos tienen valor (verificado empíricamente antes de este
+cambio, incluso con la estructura y los datos reales del proyecto: un nodo
+sin relación con «Año que cursa» usa el 100% de las filas aunque esa
+columna tenga NaN). Por eso este módulo ya NO descarta la fila completa
+solo porque «Año que cursa» o «Participaciones de la semana anterior» sea
+NaN — eso era más agresivo de lo necesario y le quitaba información a los
+8 nodos que no dependen de ninguna de esas dos variables. El único nodo que
+genuinamente necesita ambas presentes es el objetivo («Cantidad de
+participaciones del trimestre», que tiene a los dos como padres directos):
+para ese nodo, pgmpy ya excluye por sí solo las filas con cualquiera de los
+dos faltantes, sin que este módulo tenga que hacerlo de antemano.
+
+Ninguna de las dos se convierte nunca en "5 o más", en "0" ni en ningún
+otro estado — el NaN real se preserva hasta que llega a pgmpy. Ninguna otra
 de las 10 columnas debería tener faltantes — se verifica explícitamente en
-vez de asumirlo.
+vez de asumirlo. El reporte de exclusiones (`excluidas_solo_anio_faltante`,
+etc.) se conserva por trazabilidad y para comparar contra el comportamiento
+anterior, aunque ya no describe filas realmente descartadas del ajuste.
 """
 from __future__ import annotations
 
@@ -51,7 +65,7 @@ from pgmpy.parameter_estimator import DiscreteBayesianEstimator
 
 from ensamblado import ensamblar_conjunto, COLUMNAS_BN, ESTADOS_BN, CLAVE
 from discretizacion import ajustar_mapa_temas, aplicar_mapa_temas
-from red_bayesiana import construir_modelo_manual
+from red_bayesiana import construir_modelo_manual, ARCOS_MANUALES
 
 ESS_EVALUADOS: tuple[int, ...] = (1, 5, 10)
 ESS_SELECCIONADO: int = 5
@@ -63,20 +77,65 @@ COLUMNAS_CON_FALTANTES_ESPERADOS = (
 )
 
 
-def _excluir_incompletos(datos: pd.DataFrame, materia: str) -> tuple[pd.DataFrame, dict]:
+def _padres_por_nodo() -> dict[str, list[str]]:
+    """Padres directos de cada nodo, según `red_bayesiana.ARCOS_MANUALES`."""
+    padres: dict[str, list[str]] = {nodo: [] for nodo in COLUMNAS_BN}
+    for origen, destino in ARCOS_MANUALES:
+        padres[destino].append(origen)
+    return padres
+
+
+def filas_utilizables_por_nodo(datos_bn: pd.DataFrame) -> dict[str, int]:
+    """Cuenta, para cada uno de los 10 nodos, cuántas filas de `datos_bn`
+    tienen valor no nulo tanto en el nodo como en todos sus padres directos
+    — es decir, cuántas filas puede usar realmente la CPD de ese nodo al
+    ajustarse con `DiscreteBayesianEstimator`. Antes de esta carta, las 10
+    CPD usaban el mismo número de filas (el de `dropna()` sobre las 10
+    columnas); ahora cada una usa el máximo disponible según su propio
+    subgrafo — solo «Cantidad de participaciones del trimestre» (el
+    objetivo, con «Año que cursa» y «Participaciones de la semana
+    anterior» como padres) sigue necesitando ambas presentes."""
+    padres = _padres_por_nodo()
+    return {
+        nodo: int(datos_bn[[nodo, *padres[nodo]]].dropna().shape[0]) if padres[nodo] else
+        int(datos_bn[[nodo]].dropna().shape[0])
+        for nodo in COLUMNAS_BN
+    }
+
+
+def _a_texto_preservando_faltantes(datos_bn: pd.DataFrame) -> pd.DataFrame:
+    """Convierte las columnas a texto para pgmpy, preservando los NaN
+    reales — nunca los convierte en la cadena literal 'nan' (que
+    `DiscreteBayesianEstimator` trataría como un estado válido más)."""
+    resultado = datos_bn.copy()
+    for columna in resultado.columns:
+        valores = resultado[columna]
+        no_nulos = valores.notna()
+        resultado[columna] = valores.astype(object)
+        resultado.loc[no_nulos, columna] = valores.loc[no_nulos].astype(str)
+    return resultado
+
+
+def _reportar_faltantes(datos: pd.DataFrame, materia: str) -> tuple[pd.DataFrame, dict]:
     """A partir de sesiones de una asignatura con «Tema de la sesión» ya
-    asignado, separa las filas completas de las excluidas por algún
-    faltante entre las 10 columnas de la red — solo año académico y la
-    primera semana de cada registro pueden estar faltantes; cualquier otro
-    faltante se trata como un error, no como un caso a excluir en
-    silencio. No imputa nada.
+    asignado, calcula el reporte de faltantes de las 10 columnas de la red
+    — solo año académico y la primera semana de cada registro pueden estar
+    faltantes; cualquier otro faltante se trata como un error, no como un
+    caso a excluir en silencio. No imputa nada.
+
+    A diferencia de la versión anterior de esta función, YA NO excluye
+    ninguna fila: `DiscreteBayesianEstimator` calcula cada CPD con las
+    filas que esa CPD específica puede usar (ver docstring del módulo), así
+    que aquí se devuelven las filas completas de `datos` (con los NaN reales
+    preservados, no descartados), listas para `ajustar_cpd`.
 
     Reusada por `preparar_datos_asignatura` (carta 4, sin fold) y
     `preparar_fold` (carta 5, con fold) para no duplicar este criterio.
 
-    Devuelve `(datos_bn, reporte)`: `datos_bn` son las filas completas, con
-    las 10 columnas ya en texto (listas para `ajustar_cpd`); `reporte` es un
-    diccionario con el desglose de exclusiones.
+    Devuelve `(datos_bn, reporte)`: `datos_bn` tiene las 10 columnas en
+    texto, con los faltantes reales preservados; `reporte` trae el
+    desglose de faltantes (por trazabilidad y comparación con el
+    comportamiento anterior) y `filas_utilizables_por_nodo`.
     """
     n_inicial = len(datos)
     datos_bn = datos[COLUMNAS_BN]
@@ -107,32 +166,33 @@ def _excluir_incompletos(datos: pd.DataFrame, materia: str) -> tuple[pd.DataFram
         + reporte["excluidas_solo_rezago_faltante"]
         + reporte["excluidas_ambos_faltantes"]
     )
+    # Se conserva por comparabilidad con el comportamiento anterior: cuántas
+    # filas serían "completas en las 10 columnas" — ya no es lo que se pasa
+    # a ajustar_cpd, que ahora recibe las n_inicial filas con NaN intactos.
+    reporte["n_utilizado"] = n_inicial - reporte["n_excluido_total"]
 
-    completos = datos_bn.dropna().astype(str)
-    reporte["n_utilizado"] = len(completos)
+    datos_bn_final = _a_texto_preservando_faltantes(datos_bn)
+    reporte["filas_utilizables_por_nodo"] = filas_utilizables_por_nodo(datos_bn_final)
 
-    assert reporte["n_utilizado"] == n_inicial - reporte["n_excluido_total"], (
-        "el desglose de exclusiones no cuadra con las filas efectivamente usadas"
-    )
-
-    return completos, reporte
+    return datos_bn_final, reporte
 
 
 def preparar_datos_asignatura(sesiones: pd.DataFrame, materia: str) -> tuple[pd.DataFrame, dict]:
     """Prepara los datos de una asignatura para el ajuste de CPD.
 
     Ajusta "Tema de la sesión" con el 100% de las sesiones de `materia` (sin
-    conjunto de prueba en esta carta, ver docstring del módulo) y excluye
-    las filas incompletas con `_excluir_incompletos`.
+    conjunto de prueba en esta carta, ver docstring del módulo) y reporta
+    los faltantes con `_reportar_faltantes` (ya no excluye filas por
+    faltantes — ver docstring del módulo y de esa función).
 
-    Devuelve `(datos_bn, reporte)` — ver `_excluir_incompletos`.
+    Devuelve `(datos_bn, reporte)` — ver `_reportar_faltantes`.
     """
     datos = sesiones[sesiones["materia"] == materia].copy()
 
     mapa, _ = ajustar_mapa_temas(datos)
     datos["Tema de la sesión"] = aplicar_mapa_temas(datos, mapa, permitir_no_visto=False)
 
-    return _excluir_incompletos(datos, materia)
+    return _reportar_faltantes(datos, materia)
 
 
 def preparar_fold(
@@ -145,10 +205,10 @@ def preparar_fold(
     supervisada; ajusta el mapa de «Tema de la sesión» únicamente con las
     sesiones de train y lo aplica después a ambos conjuntos (en test, un
     código de tema ausente de train se etiqueta «tema_no_visto» sin
-    consultar su participación); excluye de cada lado, por separado, las
-    filas incompletas (año académico o rezago faltante), con el mismo
-    criterio que `preparar_datos_asignatura` — no imputa nada ni cambia los
-    estados o cortes fijos.
+    consultar su participación); reporta, por separado para cada lado, los
+    faltantes de año académico y rezago (`_reportar_faltantes`) — ya no
+    excluye filas por esos faltantes, ver docstring del módulo — y no
+    imputa nada ni cambia los estados o cortes fijos.
 
     Devuelve `(train_bn, test_bn, reporte)`. `reporte` incluye tamaños en
     registros estudiante-sección y en filas estudiante-sesión (brutas y
@@ -182,8 +242,8 @@ def preparar_fold(
     train_crudo["Tema de la sesión"] = aplicar_mapa_temas(train_crudo, mapa, permitir_no_visto=False)
     test_crudo["Tema de la sesión"] = aplicar_mapa_temas(test_crudo, mapa, permitir_no_visto=True)
 
-    train_bn, reporte_train = _excluir_incompletos(train_crudo, materia)
-    test_bn, reporte_test = _excluir_incompletos(test_crudo, materia)
+    train_bn, reporte_train = _reportar_faltantes(train_crudo, materia)
+    test_bn, reporte_test = _reportar_faltantes(test_crudo, materia)
 
     reporte = {
         "materia": materia,
@@ -279,12 +339,17 @@ if __name__ == "__main__":
         datos_bn, reporte = preparar_datos_asignatura(sesiones, materia)
         print(
             f"filas iniciales: {reporte['n_inicial']} | "
-            f"utilizadas: {reporte['n_utilizado']} | "
-            f"excluidas: {reporte['n_excluido_total']} "
+            f"«completas en las 10 columnas» (criterio anterior, solo informativo): "
+            f"{reporte['n_utilizado']} "
             f"(solo año faltante={reporte['excluidas_solo_anio_faltante']}, "
             f"solo rezago faltante={reporte['excluidas_solo_rezago_faltante']}, "
             f"ambos={reporte['excluidas_ambos_faltantes']})"
         )
+        print("filas realmente utilizables por nodo (tras eliminar el dropna() global):")
+        for nodo, n in reporte["filas_utilizables_por_nodo"].items():
+            recuperadas = n - reporte["n_utilizado"]
+            marca = f" (+{recuperadas} respecto del criterio anterior)" if recuperadas else ""
+            print(f"    {nodo}: {n}{marca}")
 
         for ess in ESS_EVALUADOS:
             modelo = construir_modelo_manual()

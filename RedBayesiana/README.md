@@ -11,9 +11,19 @@ RedBayesiana/
 │                          conceptos de la red bayesiana (van en el informe
 │                          antes del Sprint 3: exploración inicial de los
 │                          datos cuantitativos y codificación numérica)
-└── codigo_red/            el modelo en sí: discretización, comparabilidad,
-                            estructura del grafo y su validación
+├── codigo_red/            el modelo en sí: discretización, comparabilidad,
+│                          estructura del grafo, ajuste de CPD, inferencia
+│                          y auditorías
+├── notebooks/             notebooks de ejecución/auditoría, guardados con
+│                          outputs
+└── resultados/            CSV producidos por esos notebooks (predicciones,
+                            comparaciones, tablas de auditoría)
 ```
+
+> Nota: esta sección de la carpeta describe el estado del Sprint 3. El
+> código de `codigo_red/` avanzó bastante más allá (Sprint 4, cartas 2 a 6,
+> más las auditorías de ponderación/asistencia); ver más abajo la lista
+> completa de archivos y notebooks.
 
 ### `exploracion_inicial/`
 
@@ -65,3 +75,36 @@ Cartas 1 a 6 del Trello completas: mapeo (Tabla 11), discretización
 estructura del grafo (Figura 9) y selección de la herramienta (pgmpy).
 Pendiente de decidir: si incorporar hallazgos de `estructura_aprendida.py`
 al diseño del grafo antes de Sprint 4 (construcción del modelo).
+
+## Auditoría de ponderación y asistencia (Product Backlog del tutor)
+
+Responde a dos observaciones de Fernando Torre Mora: por qué se pondera o
+no se pondera durante el entrenamiento, y si la asistencia puede
+reconstruirse a partir de la participación. Sustenta los Apéndices F y G
+del informe.
+
+- **`codigo_red/auditoria_ponderacion_asistencia.py`** — script de solo
+  lectura (no modifica ningún pipeline). Reproduce, desde los datos y el
+  código reales: tamaños por materia/trimestre/sección; sesiones por
+  registro estudiante-sección (24 en todo el estudio salvo los 73 registros
+  de Computación Emergente 2425-3, con 12); confirmación de que la LSTM
+  adaptada no usa `sample_weight` ni `class_weight`; inventario de hojas de
+  asistencia reales en `Datos Tesis Upstream/`; confirmación de que
+  «asistencia» nunca entró a `generar_csv.py` ni a `Datos Tesis
+  Downstream/`; búsqueda en todo el historial de git de una corrida previa
+  con asistencia; y la evaluación cuantitativa de la regla «participación >
+  0 ⇒ presencia» (14,1 % de las filas con participación conocida quedan
+  determinadas, 85,9 % quedan ambiguas).
+- **`notebooks/auditoria_ponderacion_asistencia.ipynb`** — importa y
+  ejecuta ese script (sin duplicar su lógica), guardado con outputs. Genera
+  los CSV de apoyo en `resultados/`: `auditoria_sesiones_por_registro.csv`,
+  `auditoria_inventario_asistencia.csv`,
+  `auditoria_heuristica_participacion.csv`.
+
+```bash
+python3 codigo_red/auditoria_ponderacion_asistencia.py
+```
+
+No se introdujo ninguna ponderación correctora ni ninguna variable de
+asistencia reconstruida en los modelos — ambos puntos quedan documentados,
+no resueltos con un cambio de metodología.
