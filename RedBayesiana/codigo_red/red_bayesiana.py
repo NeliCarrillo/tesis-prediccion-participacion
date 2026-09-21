@@ -20,13 +20,10 @@ from pgmpy.models import DiscreteBayesianNetwork
 
 from ensamblado import COLUMNAS_BN
 
-# Los 10 nodos son exactamente las columnas del conjunto que ensambla
-# `ensamblado.ensamblar_conjunto()` (Sprint 4, carta 2) — una sola fuente de
-# verdad para los nombres de nodo.
-NODOS: tuple[str, ...] = tuple(COLUMNAS_BN)
-
 # Los 10 arcos de la Figura 12 (Método, Sprint 3), ya cerrados y verificados
-# contra el informe actual — no se rediseñan aquí.
+# contra el informe actual — no se rediseñan aquí. Es la fuente de verdad de
+# la estructura: qué es "un nodo" lo define este grafo, no el esquema de
+# datos ensamblado.
 ARCOS_MANUALES: tuple[tuple[str, str], ...] = (
     # Estructura del contexto
     ("Sección", "Tamaño del grupo"),
@@ -47,6 +44,31 @@ ARCOS_MANUALES: tuple[tuple[str, str], ...] = (
     ("Año que cursa", "Cantidad de participaciones del trimestre"),
 )
 
+# Los nodos son exactamente los que aparecen en ARCOS_MANUALES — se derivan
+# del grafo, no del esquema de datos ensamblado. (En esta estructura ningún
+# nodo queda aislado, así que el grafo por sí solo ya determina las 10
+# variables.)
+NODOS: tuple[str, ...] = tuple(sorted({nodo for arco in ARCOS_MANUALES for nodo in arco}))
+
+
+def _verificar_consistencia_con_ensamblado() -> None:
+    """Nodos del grafo y columnas del conjunto ensamblado son dos conceptos
+    distintos que hoy deben coincidir (todo nodo debe tener su columna en
+    los datos, y viceversa). Se verifica explícitamente en cada
+    construcción, en vez de asumirlo por definición compartida, para
+    detectar cualquier divergencia futura entre la estructura (Figura 12)
+    y el esquema de datos de `ensamblado.py` (Sprint 4, carta 2)."""
+    nodos = set(NODOS)
+    columnas = set(COLUMNAS_BN)
+    solo_en_grafo = nodos - columnas
+    solo_en_datos = columnas - nodos
+    if solo_en_grafo or solo_en_datos:
+        raise ValueError(
+            "red_bayesiana.NODOS y ensamblado.COLUMNAS_BN dejaron de "
+            f"coincidir. Solo en el grafo={sorted(solo_en_grafo)}; "
+            f"solo en los datos ensamblados={sorted(solo_en_datos)}"
+        )
+
 
 def construir_modelo_manual() -> DiscreteBayesianNetwork:
     """Construye la estructura final (Figura 12) sin CPD.
@@ -58,8 +80,12 @@ def construir_modelo_manual() -> DiscreteBayesianNetwork:
     Verifica programáticamente, antes de devolver el modelo, que:
       - es un DAG (sin ciclos);
       - tiene exactamente los 10 nodos de `NODOS`, ni más ni menos;
-      - tiene exactamente los 10 arcos de `ARCOS_MANUALES`, ni más ni menos.
+      - tiene exactamente los 10 arcos de `ARCOS_MANUALES`, ni más ni menos;
+      - sus nodos siguen coincidiendo con las columnas que ensambla
+        `ensamblado.py` (ver `_verificar_consistencia_con_ensamblado`).
     """
+    _verificar_consistencia_con_ensamblado()
+
     modelo = DiscreteBayesianNetwork()
     modelo.add_nodes_from(NODOS)
     modelo.add_edges_from(ARCOS_MANUALES)

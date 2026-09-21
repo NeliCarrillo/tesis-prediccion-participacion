@@ -55,6 +55,7 @@ from pgmpy.parameter_estimator import DiscreteBayesianEstimator
 
 from ensamblado import ensamblar_conjunto, CLAVE, COLUMNAS_BN, ESTADOS_BN, RAIZ
 from discretizacion import ajustar_mapa_temas, aplicar_mapa_temas
+from red_bayesiana import ARCOS_MANUALES
 
 
 # ======================================================================
@@ -191,32 +192,9 @@ FIN = [
 # 8. ESTRUCTURA MANUAL
 # ======================================================================
 # ARCOS_MANUALES ahora vive en red_bayesiana.py (Sprint 4, carta 3), la
-# fuente única de verdad de la estructura final; se importa arriba junto con
-# ensamblado/discretizacion para no mantener dos copias de los 10 arcos.
-# El bloque comentado documenta el contenido importado, tal como estaba
-# antes del refactor, para referencia rápida:
-#
-# ARCOS_MANUALES = [
-#     ("Sección", "Tamaño del grupo"),                                            # contexto
-#     ("Número de sesiones de la semana", "Sesiones de evaluación de la semana"),  # semana
-#     ("Sesiones de evaluación de la semana", "Participaciones de la semana"),
-#     ("Posición relativa en la lista", "Participaciones de la semana"),
-#     ("Tema de la sesión", "Participaciones de la semana"),
-#     ("Participaciones de la semana anterior", "Participaciones de la semana"),   # temporal
-#     ("Participaciones de la semana", "Cantidad de participaciones del trimestre"),   # objetivo
-#     ("Participaciones de la semana anterior", "Cantidad de participaciones del trimestre"),
-    ),
-
-    (
-        "Tamaño del grupo",
-        "Cantidad de participaciones del trimestre"
-    ),
-
-    (
-        "Año que cursa",
-        "Cantidad de participaciones del trimestre"
-    ),
-]
+# fuente única de verdad de la estructura final (10 arcos, Figura 12); se
+# importa arriba junto con ensamblado/discretizacion para no mantener dos
+# copias de la misma lista.
 
 
 # ======================================================================
