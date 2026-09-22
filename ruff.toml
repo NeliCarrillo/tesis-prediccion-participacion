@@ -1,0 +1,11 @@
+# Configuración de Ruff para todo el repositorio.
+#
+# El repo no tenía ninguna configuración de linter, así que el editor
+# marcaba la regla de orden de imports (I001, "unsorted-imports") en
+# prácticamente cualquier archivo .py, incluidos los ya validados de
+# Sprints anteriores. Se apaga esa regla en vez de reordenar imports en
+# código ya validado: es puramente cosmética, no afecta el comportamiento
+# de ningún script ni notebook.
+
+[lint]
+ignore = ["I"]
