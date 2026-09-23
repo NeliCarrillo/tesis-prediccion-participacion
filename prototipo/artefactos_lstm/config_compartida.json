@@ -1,0 +1,22 @@
+{
+  "ESTATICAS": [
+    "anio_academico",
+    "seccion_num",
+    "tamano_grupo",
+    "posicion_lista"
+  ],
+  "DINAMICAS": [
+    "participaciones",
+    "sesiones",
+    "evaluaciones"
+  ],
+  "N_SEMANAS": 12,
+  "N_TEMAS": 14,
+  "HITOS": [
+    4,
+    6,
+    8
+  ],
+  "SEMILLA": 42,
+  "unidades": 16
+}

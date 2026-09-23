@@ -1,0 +1,1573 @@
+materia,trimestre,seccion,estudiante_id,hito,semilla,total_trimestre_real,prediccion_lstm,prediccion_media,prediccion_extrapolacion
+Algoritmos y Programación,2425-2,1,anon_001,4,42,2.0,3.6251254,4.0,6.0
+Algoritmos y Programación,2425-2,1,anon_002,4,42,2.0,1.4907298,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_003,4,42,17.0,7.7929273,4.0,18.0
+Algoritmos y Programación,2425-2,1,anon_004,4,42,2.0,3.6297455,4.0,6.0
+Algoritmos y Programación,2425-2,1,anon_005,4,42,10.0,8.815488,4.0,21.0
+Algoritmos y Programación,2425-2,1,anon_006,4,42,0.0,1.4842309,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_007,4,42,0.0,1.4830023,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_008,4,42,16.0,6.674368,4.0,15.0
+Algoritmos y Programación,2425-2,1,anon_009,4,42,9.0,5.7726855,4.0,12.0
+Algoritmos y Programación,2425-2,1,anon_010,4,42,22.0,9.979415,4.0,24.0
+Algoritmos y Programación,2425-2,1,anon_011,4,42,6.0,5.743093,4.0,12.0
+Algoritmos y Programación,2425-2,1,anon_012,4,42,0.0,1.4801692,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_013,4,42,0.0,1.4803839,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_014,4,42,23.0,17.190775,4.0,45.0
+Algoritmos y Programación,2425-2,1,anon_015,4,42,24.0,10.876711,4.0,27.0
+Algoritmos y Programación,2425-2,1,anon_016,4,42,1.0,1.9563302,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_017,4,42,1.0,1.4842528,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_018,4,42,17.0,7.7518396,4.0,18.0
+Algoritmos y Programación,2425-2,1,anon_019,4,42,0.0,1.4880561,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_020,4,42,24.0,13.039015,4.0,33.0
+Algoritmos y Programación,2425-2,1,anon_021,4,42,4.0,5.7945623,4.0,12.0
+Algoritmos y Programación,2425-2,1,anon_022,4,42,2.0,1.4960237,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_023,4,42,19.0,12.883434,4.0,33.0
+Algoritmos y Programación,2425-2,1,anon_024,4,42,7.0,5.8066106,4.0,12.0
+Algoritmos y Programación,2425-2,1,anon_025,4,42,5.0,6.731132,4.0,15.0
+Algoritmos y Programación,2425-2,1,anon_026,4,42,0.0,1.5103396,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_027,4,42,10.0,4.724168,4.0,9.0
+Algoritmos y Programación,2425-2,1,anon_028,4,42,18.0,14.082435,4.0,36.0
+Algoritmos y Programación,2425-2,1,anon_029,4,42,0.0,1.5231873,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_030,4,42,15.0,10.854623,4.0,27.0
+Algoritmos y Programación,2425-2,2,anon_031,4,42,1.0,2.700526,4.0,3.0
+Algoritmos y Programación,2425-2,2,anon_032,4,42,3.0,4.768057,4.0,9.0
+Algoritmos y Programación,2425-2,2,anon_033,4,42,20.0,14.147841,4.0,36.0
+Algoritmos y Programación,2425-2,2,anon_034,4,42,4.0,5.8727565,4.0,12.0
+Algoritmos y Programación,2425-2,2,anon_035,4,42,2.0,3.670145,4.0,6.0
+Algoritmos y Programación,2425-2,2,anon_036,4,42,8.0,6.953112,4.0,15.0
+Algoritmos y Programación,2425-2,2,anon_037,4,42,0.0,1.5621145,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_038,4,42,1.0,2.741889,4.0,3.0
+Algoritmos y Programación,2425-2,2,anon_039,4,42,7.0,4.7538605,4.0,9.0
+Algoritmos y Programación,2425-2,2,anon_040,4,42,2.0,1.9710857,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_041,4,42,0.0,1.6262006,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_042,4,42,8.0,2.6538584,4.0,3.0
+Algoritmos y Programación,2425-2,2,anon_043,4,42,9.0,7.910879,4.0,18.0
+Algoritmos y Programación,2425-2,2,anon_044,4,42,13.0,10.002889,4.0,24.0
+Algoritmos y Programación,2425-2,2,anon_045,4,42,10.0,7.0874867,4.0,15.0
+Algoritmos y Programación,2425-2,2,anon_046,4,42,0.0,1.63492,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_047,4,42,5.0,6.8898354,4.0,15.0
+Algoritmos y Programación,2425-2,2,anon_048,4,42,3.0,2.6831555,4.0,3.0
+Algoritmos y Programación,2425-2,2,anon_049,4,42,1.0,1.6426239,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_050,4,42,3.0,4.7949514,4.0,9.0
+Algoritmos y Programación,2425-2,2,anon_051,4,42,2.0,1.6484748,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_052,4,42,17.0,10.983269,4.0,27.0
+Algoritmos y Programación,2425-2,2,anon_053,4,42,3.0,1.5899196,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_054,4,42,3.0,3.7061453,4.0,6.0
+Algoritmos y Programación,2425-2,2,anon_055,4,42,10.0,6.872341,4.0,15.0
+Algoritmos y Programación,2425-2,2,anon_056,4,42,0.0,1.6640468,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_057,4,42,11.0,6.9894757,4.0,15.0
+Algoritmos y Programación,2425-2,2,anon_058,4,42,0.0,1.6701283,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_059,4,42,5.0,5.0155888,4.0,9.0
+Algoritmos y Programación,2425-2,2,anon_060,4,42,2.0,2.7111464,4.0,3.0
+Algoritmos y Programación,2526-1,1,anon_061,4,42,9.0,7.2778053,5.308333396911621,12.0
+Algoritmos y Programación,2526-1,1,anon_062,4,42,13.0,10.039121,5.308333396911621,18.0
+Algoritmos y Programación,2526-1,1,anon_063,4,42,15.0,8.768577,5.308333396911621,15.0
+Algoritmos y Programación,2526-1,1,anon_064,4,42,2.0,4.1683855,5.308333396911621,3.0
+Algoritmos y Programación,2526-1,1,anon_065,4,42,9.0,6.594124,5.308333396911621,9.0
+Algoritmos y Programación,2526-1,1,anon_066,4,42,2.0,5.409233,5.308333396911621,6.0
+Algoritmos y Programación,2526-1,1,anon_067,4,42,11.0,7.803462,5.308333396911621,12.0
+Algoritmos y Programación,2526-1,1,anon_068,4,42,1.0,3.4780812,5.308333396911621,3.0
+Algoritmos y Programación,2526-1,1,anon_069,4,42,12.0,11.26096,5.308333396911621,21.0
+Algoritmos y Programación,2526-1,1,anon_070,4,42,5.0,8.667009,5.308333396911621,15.0
+Algoritmos y Programación,2526-1,1,anon_071,4,42,1.0,3.9594345,5.308333396911621,3.0
+Algoritmos y Programación,2526-1,1,anon_072,4,42,1.0,3.5466864,5.308333396911621,3.0
+Algoritmos y Programación,2526-1,1,anon_073,4,42,1.0,3.897786,5.308333396911621,3.0
+Algoritmos y Programación,2526-1,1,anon_074,4,42,8.0,3.8667428,5.308333396911621,3.0
+Algoritmos y Programación,2526-1,1,anon_075,4,42,2.0,3.3185446,5.308333396911621,3.0
+Algoritmos y Programación,2526-1,1,anon_076,4,42,4.0,5.7308245,5.308333396911621,9.0
+Algoritmos y Programación,2526-1,1,anon_077,4,42,1.0,3.7729392,5.308333396911621,3.0
+Algoritmos y Programación,2526-1,1,anon_078,4,42,2.0,5.094675,5.308333396911621,6.0
+Algoritmos y Programación,2526-1,1,anon_079,4,42,0.0,2.0697796,5.308333396911621,0.0
+Algoritmos y Programación,2526-1,1,anon_080,4,42,10.0,8.876623,5.308333396911621,15.0
+Algoritmos y Programación,2526-1,1,anon_081,4,42,1.0,3.646824,5.308333396911621,3.0
+Algoritmos y Programación,2526-1,1,anon_082,4,42,0.0,2.0235107,5.308333396911621,0.0
+Algoritmos y Programación,2526-1,1,anon_083,4,42,7.0,8.331739,5.308333396911621,15.0
+Algoritmos y Programación,2526-1,1,anon_084,4,42,1.0,3.5520344,5.308333396911621,3.0
+Algoritmos y Programación,2526-1,1,anon_085,4,42,0.0,1.9348686,5.308333396911621,0.0
+Algoritmos y Programación,2526-1,1,anon_086,4,42,1.0,3.489174,5.308333396911621,3.0
+Algoritmos y Programación,2526-1,1,anon_087,4,42,1.0,3.4579794,5.308333396911621,3.0
+Algoritmos y Programación,2526-2,1,anon_088,4,42,0.0,2.569572,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_089,4,42,4.0,6.1461716,5.974359035491943,9.0
+Algoritmos y Programación,2526-2,1,anon_090,4,42,0.0,2.5206664,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_091,4,42,10.0,9.436324,5.974359035491943,18.0
+Algoritmos y Programación,2526-2,1,anon_092,4,42,0.0,2.4726434,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_093,4,42,1.0,3.602346,5.974359035491943,3.0
+Algoritmos y Programación,2526-2,1,anon_094,4,42,5.0,7.204733,5.974359035491943,12.0
+Algoritmos y Programación,2526-2,1,anon_095,4,42,0.0,2.4031568,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_096,4,42,1.0,3.6402345,5.974359035491943,3.0
+Algoritmos y Programación,2526-2,1,anon_097,4,42,0.0,2.359076,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_098,4,42,3.0,3.5838656,5.974359035491943,3.0
+Algoritmos y Programación,2526-2,1,anon_099,4,42,0.0,2.315296,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_100,4,42,0.0,2.2971263,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_101,4,42,1.0,3.5031204,5.974359035491943,3.0
+Algoritmos y Programación,2526-2,1,anon_102,4,42,2.0,3.3340075,5.974359035491943,3.0
+Algoritmos y Programación,2526-2,1,anon_103,4,42,0.0,2.210034,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_104,4,42,0.0,2.1959221,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_105,4,42,5.0,6.9389734,5.974359035491943,12.0
+Algoritmos y Programación,2526-2,1,anon_106,4,42,1.0,3.4180403,5.974359035491943,3.0
+Algoritmos y Programación,2526-2,1,anon_107,4,42,5.0,7.6037006,5.974359035491943,15.0
+Algoritmos y Programación,2526-2,1,anon_108,4,42,1.0,2.1617427,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_109,4,42,5.0,6.4849443,5.974359035491943,12.0
+Algoritmos y Programación,2526-2,1,anon_110,4,42,2.0,3.3501127,5.974359035491943,3.0
+Algoritmos y Programación,2526-2,1,anon_111,4,42,2.0,3.1834843,5.974359035491943,3.0
+Algoritmos y Programación,2526-2,1,anon_112,4,42,2.0,4.571503,5.974359035491943,6.0
+Algoritmos y Programación,2526-2,1,anon_113,4,42,0.0,2.0479898,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_114,4,42,4.0,6.7416086,5.974359035491943,12.0
+Algoritmos y Programación,2526-2,1,anon_115,4,42,1.0,3.281014,5.974359035491943,3.0
+Algoritmos y Programación,2526-2,1,anon_116,4,42,2.0,3.2692893,5.974359035491943,3.0
+Algoritmos y Programación,2526-2,1,anon_117,4,42,1.0,2.066084,5.974359035491943,0.0
+Algoritmos y Programación,2526-3,1,anon_118,4,42,8.0,4.3698215,5.017094135284424,12.0
+Algoritmos y Programación,2526-3,1,anon_119,4,42,0.0,-0.14039016,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_120,4,42,0.0,0.14296412,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_121,4,42,2.0,-0.12383866,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_122,4,42,5.0,2.1201549,5.017094135284424,6.0
+Algoritmos y Programación,2526-3,1,anon_123,4,42,4.0,1.0653107,5.017094135284424,3.0
+Algoritmos y Programación,2526-3,1,anon_124,4,42,3.0,0.9780083,5.017094135284424,3.0
+Algoritmos y Programación,2526-3,1,anon_125,4,42,1.0,0.99718356,5.017094135284424,3.0
+Algoritmos y Programación,2526-3,1,anon_126,4,42,5.0,1.0171354,5.017094135284424,3.0
+Algoritmos y Programación,2526-3,1,anon_127,4,42,8.0,5.6125555,5.017094135284424,12.0
+Algoritmos y Programación,2526-3,1,anon_128,4,42,2.0,2.3022547,5.017094135284424,6.0
+Algoritmos y Programación,2526-3,1,anon_129,4,42,5.0,3.7154908,5.017094135284424,9.0
+Algoritmos y Programación,2526-3,1,anon_130,4,42,1.0,1.0905728,5.017094135284424,3.0
+Algoritmos y Programación,2526-3,1,anon_131,4,42,5.0,4.2728806,5.017094135284424,9.0
+Algoritmos y Programación,2526-3,1,anon_132,4,42,8.0,9.976559,5.017094135284424,18.0
+Algoritmos y Programación,2526-3,1,anon_133,4,42,13.0,9.373627,5.017094135284424,18.0
+Algoritmos y Programación,2526-3,1,anon_134,4,42,10.0,5.253665,5.017094135284424,12.0
+Algoritmos y Programación,2526-3,1,anon_135,4,42,7.0,2.9224255,5.017094135284424,6.0
+Algoritmos y Programación,2526-3,1,anon_136,4,42,0.0,-0.011769772,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_137,4,42,4.0,5.2473745,5.017094135284424,12.0
+Algoritmos y Programación,2526-3,1,anon_138,4,42,4.0,1.1364751,5.017094135284424,3.0
+Algoritmos y Programación,2526-3,1,anon_139,4,42,3.0,3.8735645,5.017094135284424,9.0
+Algoritmos y Programación,2526-3,1,anon_140,4,42,10.0,4.8774605,5.017094135284424,12.0
+Algoritmos y Programación,2526-3,1,anon_141,4,42,11.0,9.201273,5.017094135284424,21.0
+Algoritmos y Programación,2526-3,1,anon_142,4,42,0.0,-0.059554815,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_143,4,42,15.0,13.707446,5.017094135284424,27.0
+Algoritmos y Programación,2526-3,1,anon_144,4,42,3.0,-0.067022085,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_145,4,42,20.0,22.376572,5.017094135284424,45.0
+Algoritmos y Programación,2526-3,1,anon_146,4,42,7.0,0.98469996,5.017094135284424,3.0
+Algoritmos y Programación,2526-3,1,anon_147,4,42,6.0,-0.080174685,5.017094135284424,0.0
+Algoritmos y Programación,2425-2,1,anon_001,6,42,2.0,3.39099,4.0,4.0
+Algoritmos y Programación,2425-2,1,anon_002,6,42,2.0,1.2296295,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_003,6,42,17.0,10.772118,4.0,18.0
+Algoritmos y Programación,2425-2,1,anon_004,6,42,2.0,3.376535,4.0,4.0
+Algoritmos y Programación,2425-2,1,anon_005,6,42,10.0,10.754456,4.0,18.0
+Algoritmos y Programación,2425-2,1,anon_006,6,42,0.0,1.2122827,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_007,6,42,0.0,1.2082539,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_008,6,42,16.0,8.606867,4.0,14.0
+Algoritmos y Programación,2425-2,1,anon_009,6,42,9.0,5.622361,4.0,8.0
+Algoritmos y Programación,2425-2,1,anon_010,6,42,22.0,13.9613085,4.0,24.0
+Algoritmos y Programación,2425-2,1,anon_011,6,42,6.0,6.643888,4.0,10.0
+Algoritmos y Programación,2425-2,1,anon_012,6,42,0.0,1.1914396,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_013,6,42,0.0,1.1889834,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_014,6,42,23.0,19.017448,4.0,34.0
+Algoritmos y Programación,2425-2,1,anon_015,6,42,24.0,13.850195,4.0,24.0
+Algoritmos y Programación,2425-2,1,anon_016,6,42,1.0,1.8581188,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_017,6,42,1.0,1.1832802,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_018,6,42,17.0,11.63996,4.0,20.0
+Algoritmos y Programación,2425-2,1,anon_019,6,42,0.0,1.1832464,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_020,6,42,24.0,15.966515,4.0,28.0
+Algoritmos y Programación,2425-2,1,anon_021,6,42,4.0,5.614144,4.0,8.0
+Algoritmos y Programación,2425-2,1,anon_022,6,42,2.0,3.216179,4.0,4.0
+Algoritmos y Programación,2425-2,1,anon_023,6,42,19.0,16.893055,4.0,30.0
+Algoritmos y Programación,2425-2,1,anon_024,6,42,7.0,7.668876,4.0,12.0
+Algoritmos y Programación,2425-2,1,anon_025,6,42,5.0,6.504658,4.0,10.0
+Algoritmos y Programación,2425-2,1,anon_026,6,42,0.0,1.1987386,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_027,6,42,10.0,6.566862,4.0,10.0
+Algoritmos y Programación,2425-2,1,anon_028,6,42,18.0,14.937108,4.0,26.0
+Algoritmos y Programación,2425-2,1,anon_029,6,42,0.0,1.2117484,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_030,6,42,15.0,11.717243,4.0,20.0
+Algoritmos y Programación,2425-2,2,anon_031,6,42,1.0,2.504644,4.0,2.0
+Algoritmos y Programación,2425-2,2,anon_032,6,42,3.0,4.555123,4.0,6.0
+Algoritmos y Programación,2425-2,2,anon_033,6,42,20.0,17.144516,4.0,30.0
+Algoritmos y Programación,2425-2,2,anon_034,6,42,4.0,5.704003,4.0,8.0
+Algoritmos y Programación,2425-2,2,anon_035,6,42,2.0,3.4675853,4.0,4.0
+Algoritmos y Programación,2425-2,2,anon_036,6,42,8.0,6.8333488,4.0,10.0
+Algoritmos y Programación,2425-2,2,anon_037,6,42,0.0,1.3154894,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_038,6,42,1.0,2.5932252,4.0,2.0
+Algoritmos y Programación,2425-2,2,anon_039,6,42,7.0,6.6681848,4.0,10.0
+Algoritmos y Programación,2425-2,2,anon_040,6,42,2.0,1.8773801,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_041,6,42,0.0,1.3982403,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_042,6,42,8.0,3.505046,4.0,4.0
+Algoritmos y Programación,2425-2,2,anon_043,6,42,9.0,8.830896,4.0,14.0
+Algoritmos y Programación,2425-2,2,anon_044,6,42,13.0,9.898203,4.0,16.0
+Algoritmos y Programación,2425-2,2,anon_045,6,42,10.0,10.053891,4.0,16.0
+Algoritmos y Programación,2425-2,2,anon_046,6,42,0.0,1.3963791,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_047,6,42,5.0,6.6754794,4.0,10.0
+Algoritmos y Programación,2425-2,2,anon_048,6,42,3.0,3.4928484,4.0,4.0
+Algoritmos y Programación,2425-2,2,anon_049,6,42,1.0,2.4357328,4.0,2.0
+Algoritmos y Programación,2425-2,2,anon_050,6,42,3.0,4.6293426,4.0,6.0
+Algoritmos y Programación,2425-2,2,anon_051,6,42,2.0,1.4030433,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_052,6,42,17.0,13.939306,4.0,24.0
+Algoritmos y Programación,2425-2,2,anon_053,6,42,3.0,1.3085241,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_054,6,42,3.0,3.4562237,4.0,4.0
+Algoritmos y Programación,2425-2,2,anon_055,6,42,10.0,8.733222,4.0,14.0
+Algoritmos y Programación,2425-2,2,anon_056,6,42,0.0,1.4131572,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_057,6,42,11.0,8.99914,4.0,14.0
+Algoritmos y Programación,2425-2,2,anon_058,6,42,0.0,1.4168034,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_059,6,42,5.0,4.9731503,4.0,6.0
+Algoritmos y Programación,2425-2,2,anon_060,6,42,2.0,2.486857,4.0,2.0
+Algoritmos y Programación,2526-1,1,anon_061,6,42,9.0,6.5947776,5.308333396911621,8.0
+Algoritmos y Programación,2526-1,1,anon_062,6,42,13.0,9.765017,5.308333396911621,14.0
+Algoritmos y Programación,2526-1,1,anon_063,6,42,15.0,8.729346,5.308333396911621,12.0
+Algoritmos y Programación,2526-1,1,anon_064,6,42,2.0,3.568756,5.308333396911621,2.0
+Algoritmos y Programación,2526-1,1,anon_065,6,42,9.0,5.631021,5.308333396911621,6.0
+Algoritmos y Programación,2526-1,1,anon_066,6,42,2.0,4.581541,5.308333396911621,4.0
+Algoritmos y Programación,2526-1,1,anon_067,6,42,11.0,7.672102,5.308333396911621,10.0
+Algoritmos y Programación,2526-1,1,anon_068,6,42,1.0,3.4040415,5.308333396911621,2.0
+Algoritmos y Programación,2526-1,1,anon_069,6,42,12.0,9.7236805,5.308333396911621,14.0
+Algoritmos y Programación,2526-1,1,anon_070,6,42,5.0,7.647586,5.308333396911621,10.0
+Algoritmos y Programación,2526-1,1,anon_071,6,42,1.0,3.487359,5.308333396911621,2.0
+Algoritmos y Programación,2526-1,1,anon_072,6,42,1.0,3.4153695,5.308333396911621,2.0
+Algoritmos y Programación,2526-1,1,anon_073,6,42,1.0,3.4598045,5.308333396911621,2.0
+Algoritmos y Programación,2526-1,1,anon_074,6,42,8.0,3.4453754,5.308333396911621,2.0
+Algoritmos y Programación,2526-1,1,anon_075,6,42,2.0,3.3284025,5.308333396911621,2.0
+Algoritmos y Programación,2526-1,1,anon_076,6,42,4.0,5.4025693,5.308333396911621,6.0
+Algoritmos y Programación,2526-1,1,anon_077,6,42,1.0,3.399623,5.308333396911621,2.0
+Algoritmos y Programación,2526-1,1,anon_078,6,42,2.0,4.4317994,5.308333396911621,4.0
+Algoritmos y Programación,2526-1,1,anon_079,6,42,0.0,2.2642078,5.308333396911621,0.0
+Algoritmos y Programación,2526-1,1,anon_080,6,42,10.0,7.550624,5.308333396911621,10.0
+Algoritmos y Programación,2526-1,1,anon_081,6,42,1.0,3.3329573,5.308333396911621,2.0
+Algoritmos y Programación,2526-1,1,anon_082,6,42,0.0,2.2383146,5.308333396911621,0.0
+Algoritmos y Programación,2526-1,1,anon_083,6,42,7.0,7.439009,5.308333396911621,10.0
+Algoritmos y Programación,2526-1,1,anon_084,6,42,1.0,3.2784548,5.308333396911621,2.0
+Algoritmos y Programación,2526-1,1,anon_085,6,42,0.0,2.1858654,5.308333396911621,0.0
+Algoritmos y Programación,2526-1,1,anon_086,6,42,1.0,3.240021,5.308333396911621,2.0
+Algoritmos y Programación,2526-1,1,anon_087,6,42,1.0,3.2202988,5.308333396911621,2.0
+Algoritmos y Programación,2526-2,1,anon_088,6,42,0.0,2.0098715,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_089,6,42,4.0,5.2219944,5.974359035491943,6.0
+Algoritmos y Programación,2526-2,1,anon_090,6,42,0.0,1.9931924,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_091,6,42,10.0,12.565489,5.974359035491943,20.0
+Algoritmos y Programación,2526-2,1,anon_092,6,42,0.0,1.977334,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_093,6,42,1.0,3.033434,5.974359035491943,2.0
+Algoritmos y Programación,2526-2,1,anon_094,6,42,5.0,6.252207,5.974359035491943,8.0
+Algoritmos y Programación,2526-2,1,anon_095,6,42,0.0,1.9556524,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_096,6,42,1.0,3.135983,5.974359035491943,2.0
+Algoritmos y Programación,2526-2,1,anon_097,6,42,0.0,1.9429903,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_098,6,42,3.0,3.0098848,5.974359035491943,2.0
+Algoritmos y Programación,2526-2,1,anon_099,6,42,0.0,2.208787,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_100,6,42,0.0,1.9273367,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_101,6,42,1.0,3.090596,5.974359035491943,2.0
+Algoritmos y Programación,2526-2,1,anon_102,6,42,2.0,2.963955,5.974359035491943,2.0
+Algoritmos y Programación,2526-2,1,anon_103,6,42,0.0,1.9968283,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_104,6,42,0.0,2.16768,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_105,6,42,5.0,6.171564,5.974359035491943,8.0
+Algoritmos y Programación,2526-2,1,anon_106,6,42,1.0,2.9763155,5.974359035491943,2.0
+Algoritmos y Programación,2526-2,1,anon_107,6,42,5.0,7.2779245,5.974359035491943,10.0
+Algoritmos y Programación,2526-2,1,anon_108,6,42,1.0,1.9100997,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_109,6,42,5.0,7.1215982,5.974359035491943,10.0
+Algoritmos y Programación,2526-2,1,anon_110,6,42,2.0,3.9893248,5.974359035491943,4.0
+Algoritmos y Programación,2526-2,1,anon_111,6,42,2.0,2.946239,5.974359035491943,2.0
+Algoritmos y Programación,2526-2,1,anon_112,6,42,2.0,4.046118,5.974359035491943,4.0
+Algoritmos y Programación,2526-2,1,anon_113,6,42,0.0,1.9819205,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_114,6,42,4.0,6.142207,5.974359035491943,8.0
+Algoritmos y Programación,2526-2,1,anon_115,6,42,1.0,2.9813075,5.974359035491943,2.0
+Algoritmos y Programación,2526-2,1,anon_116,6,42,2.0,2.9843957,5.974359035491943,2.0
+Algoritmos y Programación,2526-2,1,anon_117,6,42,1.0,1.9352508,5.974359035491943,0.0
+Algoritmos y Programación,2526-3,1,anon_118,6,42,8.0,4.034135,5.017094135284424,8.0
+Algoritmos y Programación,2526-3,1,anon_119,6,42,0.0,-0.018187046,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_120,6,42,0.0,0.11665511,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_121,6,42,2.0,-0.014834404,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_122,6,42,5.0,2.0230582,5.017094135284424,4.0
+Algoritmos y Programación,2526-3,1,anon_123,6,42,4.0,1.0135826,5.017094135284424,2.0
+Algoritmos y Programación,2526-3,1,anon_124,6,42,3.0,1.0035843,5.017094135284424,2.0
+Algoritmos y Programación,2526-3,1,anon_125,6,42,1.0,1.0075264,5.017094135284424,2.0
+Algoritmos y Programación,2526-3,1,anon_126,6,42,5.0,1.0114499,5.017094135284424,2.0
+Algoritmos y Programación,2526-3,1,anon_127,6,42,8.0,6.4252176,5.017094135284424,12.0
+Algoritmos y Programación,2526-3,1,anon_128,6,42,2.0,2.063768,5.017094135284424,4.0
+Algoritmos y Programación,2526-3,1,anon_129,6,42,5.0,3.1340983,5.017094135284424,6.0
+Algoritmos y Programación,2526-3,1,anon_130,6,42,1.0,1.0229522,5.017094135284424,2.0
+Algoritmos y Programación,2526-3,1,anon_131,6,42,5.0,3.2589326,5.017094135284424,6.0
+Algoritmos y Programación,2526-3,1,anon_132,6,42,8.0,6.9107084,5.017094135284424,12.0
+Algoritmos y Programación,2526-3,1,anon_133,6,42,13.0,8.83043,5.017094135284424,14.0
+Algoritmos y Programación,2526-3,1,anon_134,6,42,10.0,4.3361254,5.017094135284424,8.0
+Algoritmos y Programación,2526-3,1,anon_135,6,42,7.0,4.7462606,5.017094135284424,8.0
+Algoritmos y Programación,2526-3,1,anon_136,6,42,0.0,-0.039083123,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_137,6,42,4.0,4.2811356,5.017094135284424,8.0
+Algoritmos y Programación,2526-3,1,anon_138,6,42,4.0,0.9997488,5.017094135284424,2.0
+Algoritmos y Programación,2526-3,1,anon_139,6,42,3.0,3.8046012,5.017094135284424,6.0
+Algoritmos y Programación,2526-3,1,anon_140,6,42,10.0,4.2369976,5.017094135284424,8.0
+Algoritmos y Programación,2526-3,1,anon_141,6,42,11.0,8.066034,5.017094135284424,14.0
+Algoritmos y Programación,2526-3,1,anon_142,6,42,0.0,-0.07173443,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_143,6,42,15.0,11.398083,5.017094135284424,18.0
+Algoritmos y Programación,2526-3,1,anon_144,6,42,3.0,-0.08525133,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_145,6,42,20.0,23.01151,5.017094135284424,34.0
+Algoritmos y Programación,2526-3,1,anon_146,6,42,7.0,0.9617623,5.017094135284424,2.0
+Algoritmos y Programación,2526-3,1,anon_147,6,42,6.0,-0.1044544,5.017094135284424,0.0
+Algoritmos y Programación,2425-2,1,anon_001,8,42,2.0,3.0046492,4.0,3.0
+Algoritmos y Programación,2425-2,1,anon_002,8,42,2.0,0.902009,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_003,8,42,17.0,16.439438,4.0,22.5
+Algoritmos y Programación,2425-2,1,anon_004,8,42,2.0,2.9854894,4.0,3.0
+Algoritmos y Programación,2425-2,1,anon_005,8,42,10.0,11.30912,4.0,15.0
+Algoritmos y Programación,2425-2,1,anon_006,8,42,0.0,0.88378954,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_007,8,42,0.0,0.87917423,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_008,8,42,16.0,16.339153,4.0,22.5
+Algoritmos y Programación,2425-2,1,anon_009,8,42,9.0,7.2020135,4.0,9.0
+Algoritmos y Programación,2425-2,1,anon_010,8,42,22.0,21.539494,4.0,30.0
+Algoritmos y Programación,2425-2,1,anon_011,8,42,6.0,7.2154694,4.0,9.0
+Algoritmos y Programación,2425-2,1,anon_012,8,42,0.0,0.8573233,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_013,8,42,0.0,0.8535104,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_014,8,42,23.0,23.486847,4.0,33.0
+Algoritmos y Programación,2425-2,1,anon_015,8,42,24.0,23.489586,4.0,33.0
+Algoritmos y Programación,2425-2,1,anon_016,8,42,1.0,2.2738986,4.0,1.5
+Algoritmos y Programación,2425-2,1,anon_017,8,42,1.0,1.8624187,4.0,1.5
+Algoritmos y Programación,2425-2,1,anon_018,8,42,17.0,16.339226,4.0,22.5
+Algoritmos y Programación,2425-2,1,anon_019,8,42,0.0,0.8383462,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_020,8,42,24.0,23.532566,4.0,33.0
+Algoritmos y Programación,2425-2,1,anon_021,8,42,4.0,5.11349,4.0,6.0
+Algoritmos y Programación,2425-2,1,anon_022,8,42,2.0,2.8748903,4.0,3.0
+Algoritmos y Programación,2425-2,1,anon_023,8,42,19.0,19.42479,4.0,27.0
+Algoritmos y Programación,2425-2,1,anon_024,8,42,7.0,7.1875687,4.0,9.0
+Algoritmos y Programación,2425-2,1,anon_025,8,42,5.0,6.03627,4.0,7.5
+Algoritmos y Programación,2425-2,1,anon_026,8,42,0.0,0.84255415,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_027,8,42,10.0,10.175827,4.0,13.5
+Algoritmos y Programación,2425-2,1,anon_028,8,42,18.0,18.44593,4.0,25.5
+Algoritmos y Programación,2425-2,1,anon_029,8,42,0.0,0.85124034,4.0,0.0
+Algoritmos y Programación,2425-2,1,anon_030,8,42,15.0,14.26135,4.0,19.5
+Algoritmos y Programación,2425-2,2,anon_031,8,42,1.0,2.089667,4.0,1.5
+Algoritmos y Programación,2425-2,2,anon_032,8,42,3.0,4.1173944,4.0,4.5
+Algoritmos y Programación,2425-2,2,anon_033,8,42,20.0,21.591824,4.0,30.0
+Algoritmos y Programación,2425-2,2,anon_034,8,42,4.0,5.2185473,4.0,6.0
+Algoritmos y Programación,2425-2,2,anon_035,8,42,2.0,3.0699363,4.0,3.0
+Algoritmos y Programación,2425-2,2,anon_036,8,42,8.0,9.324718,4.0,12.0
+Algoritmos y Programación,2425-2,2,anon_037,8,42,0.0,0.9642471,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_038,8,42,1.0,2.1330612,4.0,1.5
+Algoritmos y Programación,2425-2,2,anon_039,8,42,7.0,8.306154,4.0,10.5
+Algoritmos y Programación,2425-2,2,anon_040,8,42,2.0,1.2810856,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_041,8,42,0.0,1.002726,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_042,8,42,8.0,8.227854,4.0,10.5
+Algoritmos y Programación,2425-2,2,anon_043,8,42,9.0,10.391027,4.0,13.5
+Algoritmos y Programación,2425-2,2,anon_044,8,42,13.0,13.440392,4.0,18.0
+Algoritmos y Programación,2425-2,2,anon_045,8,42,10.0,11.473342,4.0,15.0
+Algoritmos y Programación,2425-2,2,anon_046,8,42,0.0,0.99164706,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_047,8,42,5.0,6.164987,4.0,7.5
+Algoritmos y Programación,2425-2,2,anon_048,8,42,3.0,4.1025124,4.0,4.5
+Algoritmos y Programación,2425-2,2,anon_049,8,42,1.0,2.0311167,4.0,1.5
+Algoritmos y Programación,2425-2,2,anon_050,8,42,3.0,4.154351,4.0,4.5
+Algoritmos y Programación,2425-2,2,anon_051,8,42,2.0,0.99089396,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_052,8,42,17.0,16.470757,4.0,22.5
+Algoritmos y Programación,2425-2,2,anon_053,8,42,3.0,2.9886224,4.0,3.0
+Algoritmos y Programación,2425-2,2,anon_054,8,42,3.0,4.036498,4.0,4.5
+Algoritmos y Programación,2425-2,2,anon_055,8,42,10.0,10.316278,4.0,13.5
+Algoritmos y Programación,2425-2,2,anon_056,8,42,0.0,0.99637115,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_057,8,42,11.0,12.473566,4.0,16.5
+Algoritmos y Programación,2425-2,2,anon_058,8,42,0.0,0.99865335,4.0,0.0
+Algoritmos y Programación,2425-2,2,anon_059,8,42,5.0,5.41947,4.0,6.0
+Algoritmos y Programación,2425-2,2,anon_060,8,42,2.0,3.0782382,4.0,3.0
+Algoritmos y Programación,2526-1,1,anon_061,8,42,9.0,8.102495,5.308333396911621,10.5
+Algoritmos y Programación,2526-1,1,anon_062,8,42,13.0,8.235935,5.308333396911621,10.5
+Algoritmos y Programación,2526-1,1,anon_063,8,42,15.0,11.263489,5.308333396911621,15.0
+Algoritmos y Programación,2526-1,1,anon_064,8,42,2.0,2.1699555,5.308333396911621,1.5
+Algoritmos y Programación,2526-1,1,anon_065,8,42,9.0,7.2140555,5.308333396911621,9.0
+Algoritmos y Programación,2526-1,1,anon_066,8,42,2.0,3.1673005,5.308333396911621,3.0
+Algoritmos y Programación,2526-1,1,anon_067,8,42,11.0,9.224267,5.308333396911621,12.0
+Algoritmos y Programación,2526-1,1,anon_068,8,42,1.0,1.9891536,5.308333396911621,1.5
+Algoritmos y Programación,2526-1,1,anon_069,8,42,12.0,10.223231,5.308333396911621,13.5
+Algoritmos y Programación,2526-1,1,anon_070,8,42,5.0,6.179292,5.308333396911621,7.5
+Algoritmos y Programación,2526-1,1,anon_071,8,42,1.0,2.1244712,5.308333396911621,1.5
+Algoritmos y Programación,2526-1,1,anon_072,8,42,1.0,2.0364704,5.308333396911621,1.5
+Algoritmos y Programación,2526-1,1,anon_073,8,42,1.0,2.1088212,5.308333396911621,1.5
+Algoritmos y Programación,2526-1,1,anon_074,8,42,8.0,4.1164656,5.308333396911621,4.5
+Algoritmos y Programación,2526-1,1,anon_075,8,42,2.0,1.9500554,5.308333396911621,1.5
+Algoritmos y Programación,2526-1,1,anon_076,8,42,4.0,4.016667,5.308333396911621,4.5
+Algoritmos y Programación,2526-1,1,anon_077,8,42,1.0,2.0751667,5.308333396911621,1.5
+Algoritmos y Programación,2526-1,1,anon_078,8,42,2.0,3.0790293,5.308333396911621,3.0
+Algoritmos y Programación,2526-1,1,anon_079,8,42,0.0,0.9251909,5.308333396911621,0.0
+Algoritmos y Programación,2526-1,1,anon_080,8,42,10.0,6.105961,5.308333396911621,7.5
+Algoritmos y Programación,2526-1,1,anon_081,8,42,1.0,2.0397325,5.308333396911621,1.5
+Algoritmos y Programación,2526-1,1,anon_082,8,42,0.0,0.9143444,5.308333396911621,0.0
+Algoritmos y Programación,2526-1,1,anon_083,8,42,7.0,7.0378165,5.308333396911621,9.0
+Algoritmos y Programación,2526-1,1,anon_084,8,42,1.0,2.0118659,5.308333396911621,1.5
+Algoritmos y Programación,2526-1,1,anon_085,8,42,0.0,0.92434424,5.308333396911621,0.0
+Algoritmos y Programación,2526-1,1,anon_086,8,42,1.0,1.9921405,5.308333396911621,1.5
+Algoritmos y Programación,2526-1,1,anon_087,8,42,1.0,1.9818785,5.308333396911621,1.5
+Algoritmos y Programación,2526-2,1,anon_088,8,42,0.0,0.9100375,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_089,8,42,4.0,3.9958942,5.974359035491943,4.5
+Algoritmos y Programación,2526-2,1,anon_090,8,42,0.0,0.8962873,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_091,8,42,10.0,11.182453,5.974359035491943,15.0
+Algoritmos y Programación,2526-2,1,anon_092,8,42,0.0,0.88279176,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_093,8,42,1.0,1.9042083,5.974359035491943,1.5
+Algoritmos y Programación,2526-2,1,anon_094,8,42,5.0,4.987937,5.974359035491943,6.0
+Algoritmos y Programación,2526-2,1,anon_095,8,42,0.0,0.8635154,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_096,8,42,1.0,1.9236206,5.974359035491943,1.5
+Algoritmos y Programación,2526-2,1,anon_097,8,42,0.0,0.8516924,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_098,8,42,3.0,1.8731725,5.974359035491943,1.5
+Algoritmos y Programación,2526-2,1,anon_099,8,42,0.0,0.95881927,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_100,8,42,0.0,0.8362037,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_101,8,42,1.0,1.8860836,5.974359035491943,1.5
+Algoritmos y Programación,2526-2,1,anon_102,8,42,2.0,1.8483448,5.974359035491943,1.5
+Algoritmos y Programación,2526-2,1,anon_103,8,42,0.0,0.84465706,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_104,8,42,0.0,0.9316707,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_105,8,42,5.0,4.9182987,5.974359035491943,6.0
+Algoritmos y Programación,2526-2,1,anon_106,8,42,1.0,1.8399843,5.974359035491943,1.5
+Algoritmos y Programación,2526-2,1,anon_107,8,42,5.0,5.9756804,5.974359035491943,7.5
+Algoritmos y Programación,2526-2,1,anon_108,8,42,1.0,0.8137368,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_109,8,42,5.0,5.9098644,5.974359035491943,7.5
+Algoritmos y Programación,2526-2,1,anon_110,8,42,2.0,2.8430645,5.974359035491943,3.0
+Algoritmos y Programación,2526-2,1,anon_111,8,42,2.0,1.8280053,5.974359035491943,1.5
+Algoritmos y Programación,2526-2,1,anon_112,8,42,2.0,2.8599482,5.974359035491943,3.0
+Algoritmos y Programación,2526-2,1,anon_113,8,42,0.0,0.83601063,5.974359035491943,0.0
+Algoritmos y Programación,2526-2,1,anon_114,8,42,4.0,4.899974,5.974359035491943,6.0
+Algoritmos y Programación,2526-2,1,anon_115,8,42,1.0,1.8392596,5.974359035491943,1.5
+Algoritmos y Programación,2526-2,1,anon_116,8,42,2.0,1.8413779,5.974359035491943,1.5
+Algoritmos y Programación,2526-2,1,anon_117,8,42,1.0,0.8253843,5.974359035491943,0.0
+Algoritmos y Programación,2526-3,1,anon_118,8,42,8.0,6.9079194,5.017094135284424,9.0
+Algoritmos y Programación,2526-3,1,anon_119,8,42,0.0,0.54879034,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_120,8,42,0.0,0.621243,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_121,8,42,2.0,0.51336795,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_122,8,42,5.0,2.6332586,5.017094135284424,3.0
+Algoritmos y Programación,2526-3,1,anon_123,8,42,4.0,2.5636454,5.017094135284424,3.0
+Algoritmos y Programación,2526-3,1,anon_124,8,42,3.0,1.5284021,5.017094135284424,1.5
+Algoritmos y Programación,2526-3,1,anon_125,8,42,1.0,1.5112476,5.017094135284424,1.5
+Algoritmos y Programación,2526-3,1,anon_126,8,42,5.0,2.5235965,5.017094135284424,3.0
+Algoritmos y Programación,2526-3,1,anon_127,8,42,8.0,6.772061,5.017094135284424,9.0
+Algoritmos y Programación,2526-3,1,anon_128,8,42,2.0,2.524576,5.017094135284424,3.0
+Algoritmos y Programación,2526-3,1,anon_129,8,42,5.0,3.557607,5.017094135284424,4.5
+Algoritmos y Programación,2526-3,1,anon_130,8,42,1.0,1.4343258,5.017094135284424,1.5
+Algoritmos y Programación,2526-3,1,anon_131,8,42,5.0,3.5337205,5.017094135284424,4.5
+Algoritmos y Programación,2526-3,1,anon_132,8,42,8.0,6.691669,5.017094135284424,9.0
+Algoritmos y Programación,2526-3,1,anon_133,8,42,13.0,10.798164,5.017094135284424,15.0
+Algoritmos y Programación,2526-3,1,anon_134,8,42,10.0,5.5565157,5.017094135284424,7.5
+Algoritmos y Programación,2526-3,1,anon_135,8,42,7.0,4.5958085,5.017094135284424,6.0
+Algoritmos y Programación,2526-3,1,anon_136,8,42,0.0,0.29541233,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_137,8,42,4.0,4.519612,5.017094135284424,6.0
+Algoritmos y Programación,2526-3,1,anon_138,8,42,4.0,1.3470623,5.017094135284424,1.5
+Algoritmos y Programación,2526-3,1,anon_139,8,42,3.0,3.5076637,5.017094135284424,4.5
+Algoritmos y Programación,2526-3,1,anon_140,8,42,10.0,7.52015,5.017094135284424,10.5
+Algoritmos y Programación,2526-3,1,anon_141,8,42,11.0,9.638513,5.017094135284424,13.5
+Algoritmos y Programación,2526-3,1,anon_142,8,42,0.0,0.27544427,5.017094135284424,0.0
+Algoritmos y Programación,2526-3,1,anon_143,8,42,15.0,11.801299,5.017094135284424,16.5
+Algoritmos y Programación,2526-3,1,anon_144,8,42,3.0,1.2820704,5.017094135284424,1.5
+Algoritmos y Programación,2526-3,1,anon_145,8,42,20.0,19.104486,5.017094135284424,27.0
+Algoritmos y Programación,2526-3,1,anon_146,8,42,7.0,3.3252237,5.017094135284424,4.5
+Algoritmos y Programación,2526-3,1,anon_147,8,42,6.0,3.282496,5.017094135284424,4.5
+Computación Emergente,2425-3,1,anon_148,4,42,1.0,2.4109888,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_149,4,42,5.0,2.3691628,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_150,4,42,4.0,2.327278,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_151,4,42,1.0,1.9356505,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_152,4,42,4.0,1.8945673,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_153,4,42,0.0,1.8540208,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_154,4,42,0.0,1.8140632,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_155,4,42,5.0,3.5792212,4.2110090255737305,3.0
+Computación Emergente,2425-3,1,anon_156,4,42,0.0,2.0781949,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_157,4,42,2.0,2.0376654,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_158,4,42,0.0,1.9975983,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_159,4,42,1.0,1.9580612,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_160,4,42,1.0,1.5892563,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_161,4,42,0.0,1.5546432,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_162,4,42,0.0,2.1081414,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_163,4,42,0.0,2.077915,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_164,4,42,5.0,4.459217,4.2110090255737305,6.0
+Computación Emergente,2425-3,1,anon_165,4,42,6.0,2.9677787,4.2110090255737305,3.0
+Computación Emergente,2425-3,1,anon_166,4,42,2.0,1.7013465,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_167,4,42,0.0,1.9615352,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_168,4,42,5.0,3.2930083,4.2110090255737305,3.0
+Computación Emergente,2425-3,1,anon_169,4,42,0.0,1.604826,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_170,4,42,0.0,1.8795578,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_171,4,42,3.0,2.7545204,4.2110090255737305,3.0
+Computación Emergente,2425-3,1,anon_172,4,42,0.0,1.5176864,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_173,4,42,6.0,4.098482,4.2110090255737305,6.0
+Computación Emergente,2425-3,1,anon_174,4,42,6.0,2.9630547,4.2110090255737305,3.0
+Computación Emergente,2425-3,1,anon_175,4,42,0.0,1.1704719,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_176,4,42,6.0,3.9928956,4.2110090255737305,6.0
+Computación Emergente,2425-3,1,anon_177,4,42,3.0,1.1309103,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_178,4,42,3.0,1.6876599,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_179,4,42,0.0,1.3520315,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_180,4,42,0.0,1.3325758,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_181,4,42,3.0,1.3141243,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_182,4,42,4.0,1.296655,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_183,4,42,7.0,3.782005,4.2110090255737305,6.0
+Computación Emergente,2425-3,1,anon_184,4,42,1.0,1.0187734,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_185,4,42,0.0,1.0057744,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_185,4,42,0.0,1.1535511,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_186,4,42,0.0,2.0774345,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_187,4,42,7.0,5.322215,4.2110090255737305,6.0
+Computación Emergente,2425-3,2,anon_188,4,42,0.0,1.9952085,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_189,4,42,2.0,2.3885474,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_190,4,42,0.0,1.9153568,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_191,4,42,0.0,1.8764904,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_192,4,42,5.0,4.5404058,4.2110090255737305,6.0
+Computación Emergente,2425-3,2,anon_193,4,42,0.0,2.24335,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_194,4,42,1.0,1.7648066,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_195,4,42,0.0,1.7293686,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_196,4,42,1.0,1.6948841,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_197,4,42,0.0,1.6613785,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_198,4,42,2.0,1.62887,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_199,4,42,1.0,3.3744164,4.2110090255737305,3.0
+Computación Emergente,2425-3,2,anon_200,4,42,4.0,4.5858755,4.2110090255737305,6.0
+Computación Emergente,2425-3,2,anon_201,4,42,0.0,1.9661269,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_202,4,42,1.0,1.9338529,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_203,4,42,0.0,1.48151,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_204,4,42,3.0,4.519704,4.2110090255737305,6.0
+Computación Emergente,2425-3,2,anon_205,4,42,0.0,1.8415439,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_206,4,42,1.0,2.6691635,4.2110090255737305,3.0
+Computación Emergente,2425-3,2,anon_207,4,42,0.0,1.3814807,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_208,4,42,1.0,2.6164079,4.2110090255737305,3.0
+Computación Emergente,2425-3,2,anon_209,4,42,1.0,1.7305367,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_210,4,42,0.0,1.7051301,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_211,4,42,0.0,1.6806911,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_212,4,42,0.0,1.277221,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_213,4,42,1.0,2.591444,4.2110090255737305,3.0
+Computación Emergente,2425-3,2,anon_214,4,42,0.0,1.2415524,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_215,4,42,0.0,1.2249475,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_216,4,42,1.0,2.8406231,4.2110090255737305,3.0
+Computación Emergente,2425-3,2,anon_217,4,42,0.0,1.1941154,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_218,4,42,1.0,2.4031842,4.2110090255737305,3.0
+Computación Emergente,2425-3,2,anon_219,4,42,2.0,1.1663392,4.2110090255737305,0.0
+Computación Emergente,2526-1,1,anon_174,4,42,0.0,2.4513154,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_205,4,42,0.0,1.2606758,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_212,4,42,1.0,1.3428841,3.097402572631836,3.0
+Computación Emergente,2526-1,1,anon_220,4,42,1.0,3.0676398,3.097402572631836,3.0
+Computación Emergente,2526-1,1,anon_221,4,42,13.0,10.06653,3.097402572631836,15.0
+Computación Emergente,2526-1,1,anon_222,4,42,1.0,2.6840305,3.097402572631836,3.0
+Computación Emergente,2526-1,1,anon_223,4,42,3.0,2.7102098,3.097402572631836,3.0
+Computación Emergente,2526-1,1,anon_224,4,42,8.0,10.111728,3.097402572631836,15.0
+Computación Emergente,2526-1,1,anon_225,4,42,1.0,3.6863556,3.097402572631836,3.0
+Computación Emergente,2526-1,1,anon_226,4,42,5.0,3.5160768,3.097402572631836,6.0
+Computación Emergente,2526-1,1,anon_227,4,42,4.0,4.7226143,3.097402572631836,9.0
+Computación Emergente,2526-1,1,anon_228,4,42,15.0,11.28389,3.097402572631836,18.0
+Computación Emergente,2526-1,1,anon_229,4,42,1.0,0.97715735,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_230,4,42,1.0,2.307825,3.097402572631836,3.0
+Computación Emergente,2526-1,1,anon_231,4,42,4.0,6.85108,3.097402572631836,9.0
+Computación Emergente,2526-1,1,anon_232,4,42,8.0,8.401122,3.097402572631836,12.0
+Computación Emergente,2526-1,1,anon_233,4,42,0.0,1.4734973,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_234,4,42,5.0,7.192537,3.097402572631836,15.0
+Computación Emergente,2526-1,1,anon_235,4,42,13.0,6.291054,3.097402572631836,9.0
+Computación Emergente,2526-1,1,anon_236,4,42,2.0,1.1291465,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_237,4,42,13.0,9.031457,3.097402572631836,15.0
+Computación Emergente,2526-1,1,anon_238,4,42,0.0,0.41940117,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_239,4,42,1.0,2.186892,3.097402572631836,3.0
+Computación Emergente,2526-1,1,anon_240,4,42,0.0,0.3441527,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_241,4,42,0.0,0.8414629,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_242,4,42,1.0,2.0074785,3.097402572631836,3.0
+Computación Emergente,2526-1,1,anon_243,4,42,0.0,0.6987663,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_244,4,42,0.0,0.18669403,3.097402572631836,0.0
+Computación Emergente,2526-2,1,anon_174,4,42,0.0,1.1125869,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_222,4,42,0.0,0.7846459,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_244,4,42,0.0,0.473992,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_245,4,42,1.0,3.4873164,3.645390033721924,3.0
+Computación Emergente,2526-2,1,anon_246,4,42,0.0,0.81322515,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_247,4,42,6.0,4.4115105,3.645390033721924,9.0
+Computación Emergente,2526-2,1,anon_248,4,42,0.0,0.7319752,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_249,4,42,0.0,0.70784545,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_250,4,42,10.0,9.059029,3.645390033721924,15.0
+Computación Emergente,2526-2,1,anon_251,4,42,2.0,4.6968966,3.645390033721924,6.0
+Computación Emergente,2526-2,1,anon_252,4,42,9.0,10.823579,3.645390033721924,18.0
+Computación Emergente,2526-2,1,anon_253,4,42,0.0,0.6253823,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_254,4,42,0.0,1.3878251,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_255,4,42,0.0,1.3600082,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_256,4,42,0.0,0.57727885,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_257,4,42,4.0,4.3851614,3.645390033721924,6.0
+Computación Emergente,2526-2,1,anon_258,4,42,1.0,1.2832608,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_259,4,42,0.0,1.2599137,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_260,4,42,5.0,5.903454,3.645390033721924,12.0
+Computación Emergente,2526-2,1,anon_261,4,42,0.0,0.519876,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_262,4,42,1.0,1.8564953,3.645390033721924,3.0
+Computación Emergente,2526-2,1,anon_263,4,42,0.0,0.5038625,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_264,4,42,0.0,0.49718177,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_265,4,42,1.0,1.6717745,3.645390033721924,3.0
+Computación Emergente,2526-2,1,anon_266,4,42,1.0,2.7970314,3.645390033721924,3.0
+Computación Emergente,2526-2,1,anon_267,4,42,0.0,1.0989478,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_268,4,42,1.0,1.7759004,3.645390033721924,3.0
+Computación Emergente,2526-2,1,anon_269,4,42,0.0,1.0747,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_270,4,42,0.0,1.0640569,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_271,4,42,0.0,0.4712491,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_272,4,42,0.0,1.0456402,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_273,4,42,0.0,0.47145045,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_274,4,42,0.0,0.47243762,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_275,4,42,2.0,3.8473742,3.645390033721924,6.0
+Computación Emergente,2526-2,1,anon_276,4,42,3.0,4.4385996,3.645390033721924,9.0
+Computación Emergente,2526-2,1,anon_277,4,42,1.0,1.7345024,3.645390033721924,3.0
+Computación Emergente,2526-2,1,anon_278,4,42,0.0,1.0092247,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_279,4,42,12.0,7.242857,3.645390033721924,15.0
+Computación Emergente,2526-2,1,anon_280,4,42,1.0,2.2198772,3.645390033721924,3.0
+Computación Emergente,2526-2,1,anon_281,4,42,3.0,1.8902597,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_282,4,42,0.0,1.0059993,3.645390033721924,0.0
+Computación Emergente,2526-3,1,anon_174,4,42,0.0,0.32053936,2.0,0.0
+Computación Emergente,2526-3,1,anon_283,4,42,3.0,2.4429169,2.0,6.0
+Computación Emergente,2526-3,1,anon_284,4,42,21.0,15.822858,2.0,30.0
+Computación Emergente,2526-3,1,anon_285,4,42,30.0,16.619036,2.0,36.0
+Computación Emergente,2526-3,1,anon_286,4,42,18.0,14.72103,2.0,27.0
+Computación Emergente,2526-3,1,anon_287,4,42,23.0,20.00464,2.0,42.0
+Computación Emergente,2526-3,1,anon_288,4,42,24.0,13.9863405,2.0,24.0
+Computación Emergente,2526-3,1,anon_289,4,42,0.0,0.14391434,2.0,0.0
+Computación Emergente,2526-3,1,anon_290,4,42,5.0,8.091581,2.0,15.0
+Computación Emergente,2526-3,1,anon_291,4,42,0.0,0.85301876,2.0,0.0
+Computación Emergente,2526-3,1,anon_292,4,42,6.0,7.5532093,2.0,12.0
+Computación Emergente,2526-3,1,anon_293,4,42,0.0,0.28467655,2.0,0.0
+Computación Emergente,2526-3,1,anon_294,4,42,0.0,0.28651845,2.0,0.0
+Computación Emergente,2526-3,1,anon_295,4,42,3.0,0.8790294,2.0,0.0
+Computación Emergente,2526-3,1,anon_296,4,42,0.0,0.29102778,2.0,0.0
+Computación Emergente,2526-3,1,anon_297,4,42,16.0,13.908496,2.0,24.0
+Computación Emergente,2526-3,1,anon_298,4,42,6.0,9.79025,2.0,15.0
+Computación Emergente,2526-3,1,anon_299,4,42,0.0,0.29989624,2.0,0.0
+Computación Emergente,2526-3,1,anon_300,4,42,27.0,18.968319,2.0,39.0
+Computación Emergente,2526-3,1,anon_301,4,42,12.0,8.632176,2.0,18.0
+Computación Emergente,2526-3,1,anon_302,4,42,0.0,0.15842414,2.0,0.0
+Computación Emergente,2526-3,1,anon_303,4,42,9.0,10.349999,2.0,18.0
+Computación Emergente,2526-3,1,anon_304,4,42,0.0,0.9636184,2.0,0.0
+Computación Emergente,2526-3,1,anon_305,4,42,12.0,15.307835,2.0,27.0
+Computación Emergente,2526-3,1,anon_306,4,42,11.0,6.2284756,2.0,9.0
+Computación Emergente,2526-3,1,anon_307,4,42,0.0,0.3426534,2.0,0.0
+Computación Emergente,2526-3,1,anon_308,4,42,9.0,11.649308,2.0,21.0
+Computación Emergente,2526-3,1,anon_309,4,42,2.0,0.35567963,2.0,0.0
+Computación Emergente,2526-3,1,anon_310,4,42,8.0,13.498773,2.0,24.0
+Computación Emergente,2526-3,1,anon_311,4,42,0.0,0.37006485,2.0,0.0
+Computación Emergente,2526-3,1,anon_312,4,42,7.0,7.2152367,2.0,12.0
+Computación Emergente,2526-3,1,anon_313,4,42,1.0,1.8857334,2.0,3.0
+Computación Emergente,2526-3,1,anon_314,4,42,1.0,1.2247393,2.0,3.0
+Computación Emergente,2526-3,1,anon_315,4,42,1.0,1.519739,2.0,3.0
+Computación Emergente,2526-3,1,anon_316,4,42,11.0,12.537343,2.0,21.0
+Computación Emergente,2526-3,1,anon_317,4,42,0.0,1.110612,2.0,0.0
+Computación Emergente,2526-3,1,anon_318,4,42,0.0,0.21592355,2.0,0.0
+Computación Emergente,2526-3,1,anon_319,4,42,22.0,8.280644,2.0,15.0
+Computación Emergente,2526-3,1,anon_320,4,42,3.0,1.3426951,2.0,3.0
+Computación Emergente,2526-3,1,anon_321,4,42,3.0,6.1708965,2.0,9.0
+Computación Emergente,2425-3,1,anon_148,6,42,1.0,2.9959507,4.2110090255737305,2.0
+Computación Emergente,2425-3,1,anon_149,6,42,5.0,2.9519463,4.2110090255737305,2.0
+Computación Emergente,2425-3,1,anon_150,6,42,4.0,2.9075341,4.2110090255737305,2.0
+Computación Emergente,2425-3,1,anon_151,6,42,1.0,1.4041622,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_152,6,42,4.0,2.4356248,4.2110090255737305,2.0
+Computación Emergente,2425-3,1,anon_153,6,42,0.0,1.3014815,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_154,6,42,0.0,1.2517067,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_155,6,42,5.0,4.1330113,4.2110090255737305,4.0
+Computación Emergente,2425-3,1,anon_156,6,42,0.0,1.5158051,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_157,6,42,2.0,1.4727753,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_158,6,42,0.0,1.4302634,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_159,6,42,1.0,2.5050151,4.2110090255737305,2.0
+Computación Emergente,2425-3,1,anon_160,6,42,1.0,2.047571,4.2110090255737305,2.0
+Computación Emergente,2425-3,1,anon_161,6,42,0.0,0.9403876,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_162,6,42,0.0,1.6439204,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_163,6,42,0.0,1.619663,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_164,6,42,5.0,5.112791,4.2110090255737305,6.0
+Computación Emergente,2425-3,1,anon_165,6,42,6.0,3.6072743,4.2110090255737305,4.0
+Computación Emergente,2425-3,1,anon_166,6,42,2.0,1.1202135,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_167,6,42,0.0,1.523428,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_168,6,42,5.0,3.934455,4.2110090255737305,4.0
+Computación Emergente,2425-3,1,anon_169,6,42,0.0,1.0227456,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_170,6,42,0.0,1.4525753,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_171,6,42,3.0,3.368225,4.2110090255737305,4.0
+Computación Emergente,2425-3,1,anon_172,6,42,0.0,0.93746763,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_173,6,42,6.0,4.7187557,4.2110090255737305,6.0
+Computación Emergente,2425-3,1,anon_174,6,42,6.0,3.6992495,4.2110090255737305,4.0
+Computación Emergente,2425-3,1,anon_175,6,42,0.0,0.5414412,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_176,6,42,6.0,4.603653,4.2110090255737305,6.0
+Computación Emergente,2425-3,1,anon_177,6,42,3.0,0.5068605,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_178,6,42,3.0,2.3588746,4.2110090255737305,2.0
+Computación Emergente,2425-3,1,anon_179,6,42,0.0,0.78630084,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_180,6,42,0.0,0.76988184,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_181,6,42,3.0,0.75465775,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_182,6,42,4.0,0.7405879,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_183,6,42,7.0,4.3788233,4.2110090255737305,6.0
+Computación Emergente,2425-3,1,anon_184,6,42,1.0,1.4531221,4.2110090255737305,2.0
+Computación Emergente,2425-3,1,anon_185,6,42,0.0,0.41113806,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_185,6,42,0.0,0.56131244,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_186,6,42,0.0,1.5962532,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_187,6,42,7.0,7.1235886,4.2110090255737305,8.0
+Computación Emergente,2425-3,2,anon_188,6,42,0.0,1.4891431,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_189,6,42,2.0,2.9115129,4.2110090255737305,2.0
+Computación Emergente,2425-3,2,anon_190,6,42,0.0,1.3844345,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_191,6,42,0.0,1.3334932,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_192,6,42,5.0,5.1051188,4.2110090255737305,6.0
+Computación Emergente,2425-3,2,anon_193,6,42,0.0,1.6537297,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_194,6,42,1.0,1.1883891,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_195,6,42,0.0,1.1430464,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_196,6,42,1.0,2.1796885,4.2110090255737305,2.0
+Computación Emergente,2425-3,2,anon_197,6,42,0.0,1.057481,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_198,6,42,2.0,1.0173786,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_199,6,42,1.0,2.8304167,4.2110090255737305,2.0
+Computación Emergente,2425-3,2,anon_200,6,42,4.0,5.354066,4.2110090255737305,6.0
+Computación Emergente,2425-3,2,anon_201,6,42,0.0,1.4068877,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_202,6,42,1.0,2.5739162,4.2110090255737305,2.0
+Computación Emergente,2425-3,2,anon_203,6,42,0.0,0.84459484,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_204,6,42,3.0,4.0401115,4.2110090255737305,4.0
+Computación Emergente,2425-3,2,anon_205,6,42,0.0,1.2994837,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_206,6,42,1.0,2.0529041,4.2110090255737305,2.0
+Computación Emergente,2425-3,2,anon_207,6,42,0.0,0.73895496,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_208,6,42,1.0,2.0003474,4.2110090255737305,2.0
+Computación Emergente,2425-3,2,anon_209,6,42,1.0,1.206082,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_210,6,42,0.0,1.1850898,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_211,6,42,0.0,1.1650586,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_212,6,42,0.0,0.64381635,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_213,6,42,1.0,1.9433935,4.2110090255737305,2.0
+Computación Emergente,2425-3,2,anon_214,6,42,0.0,0.615934,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_215,6,42,0.0,0.6039485,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_216,6,42,1.0,2.3764365,4.2110090255737305,2.0
+Computación Emergente,2425-3,2,anon_217,6,42,0.0,0.5836041,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_218,6,42,1.0,1.8281305,4.2110090255737305,2.0
+Computación Emergente,2425-3,2,anon_219,6,42,2.0,0.56771994,4.2110090255737305,0.0
+Computación Emergente,2526-1,1,anon_174,6,42,0.0,2.158115,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_205,6,42,0.0,1.0172884,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_212,6,42,1.0,1.326595,3.097402572631836,2.0
+Computación Emergente,2526-1,1,anon_220,6,42,1.0,2.6692834,3.097402572631836,2.0
+Computación Emergente,2526-1,1,anon_221,6,42,13.0,11.796504,3.097402572631836,14.0
+Computación Emergente,2526-1,1,anon_222,6,42,1.0,2.4497952,3.097402572631836,2.0
+Computación Emergente,2526-1,1,anon_223,6,42,3.0,4.744711,3.097402572631836,6.0
+Computación Emergente,2526-1,1,anon_224,6,42,8.0,10.610205,3.097402572631836,12.0
+Computación Emergente,2526-1,1,anon_225,6,42,1.0,3.1607232,3.097402572631836,2.0
+Computación Emergente,2526-1,1,anon_226,6,42,5.0,4.4717584,3.097402572631836,6.0
+Computación Emergente,2526-1,1,anon_227,6,42,4.0,4.5856776,3.097402572631836,6.0
+Computación Emergente,2526-1,1,anon_228,6,42,15.0,14.137117,3.097402572631836,18.0
+Computación Emergente,2526-1,1,anon_229,6,42,1.0,1.900516,3.097402572631836,2.0
+Computación Emergente,2526-1,1,anon_230,6,42,1.0,2.0524526,3.097402572631836,2.0
+Computación Emergente,2526-1,1,anon_231,6,42,4.0,6.5266967,3.097402572631836,6.0
+Computación Emergente,2526-1,1,anon_232,6,42,8.0,11.535254,3.097402572631836,14.0
+Computación Emergente,2526-1,1,anon_233,6,42,0.0,1.1991571,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_234,6,42,5.0,6.856235,3.097402572631836,10.0
+Computación Emergente,2526-1,1,anon_235,6,42,13.0,8.623282,3.097402572631836,10.0
+Computación Emergente,2526-1,1,anon_236,6,42,2.0,0.9065219,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_237,6,42,13.0,11.300865,3.097402572631836,14.0
+Computación Emergente,2526-1,1,anon_238,6,42,0.0,0.35908186,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_239,6,42,1.0,2.0067697,3.097402572631836,2.0
+Computación Emergente,2526-1,1,anon_240,6,42,0.0,0.29224312,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_241,6,42,0.0,0.6695847,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_242,6,42,1.0,1.8637218,3.097402572631836,2.0
+Computación Emergente,2526-1,1,anon_243,6,42,0.0,0.5562069,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_244,6,42,0.0,0.15276766,3.097402572631836,0.0
+Computación Emergente,2526-2,1,anon_174,6,42,0.0,0.71782106,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_222,6,42,0.0,0.23554754,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_244,6,42,0.0,0.30865335,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_245,6,42,1.0,2.5908427,3.645390033721924,2.0
+Computación Emergente,2526-2,1,anon_246,6,42,0.0,0.24849248,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_247,6,42,6.0,5.3317432,3.645390033721924,8.0
+Computación Emergente,2526-2,1,anon_248,6,42,0.0,0.21402216,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_249,6,42,0.0,0.20536733,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_250,6,42,10.0,10.038582,3.645390033721924,12.0
+Computación Emergente,2526-2,1,anon_251,6,42,2.0,3.964291,3.645390033721924,4.0
+Computación Emergente,2526-2,1,anon_252,6,42,9.0,11.743082,3.645390033721924,14.0
+Computación Emergente,2526-2,1,anon_253,6,42,0.0,0.18372023,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_254,6,42,0.0,0.8163637,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_255,6,42,0.0,0.80478364,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_256,6,42,0.0,0.17953968,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_257,6,42,4.0,4.9685893,3.645390033721924,6.0
+Computación Emergente,2526-2,1,anon_258,6,42,1.0,1.8475103,3.645390033721924,2.0
+Computación Emergente,2526-2,1,anon_259,6,42,0.0,0.7650546,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_260,6,42,5.0,5.673451,3.645390033721924,8.0
+Computación Emergente,2526-2,1,anon_261,6,42,0.0,0.19066441,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_262,6,42,1.0,1.4889338,3.645390033721924,2.0
+Computación Emergente,2526-2,1,anon_263,6,42,0.0,0.20014012,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_264,6,42,0.0,0.20577157,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_265,6,42,1.0,1.4238874,3.645390033721924,2.0
+Computación Emergente,2526-2,1,anon_266,6,42,1.0,2.195527,3.645390033721924,2.0
+Computación Emergente,2526-2,1,anon_267,6,42,0.0,0.71495706,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_268,6,42,1.0,1.5024599,3.645390033721924,2.0
+Computación Emergente,2526-2,1,anon_269,6,42,0.0,0.7112336,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_270,6,42,0.0,0.71036434,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_271,6,42,0.0,0.26820862,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_272,6,42,0.0,0.7105789,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_273,6,42,0.0,0.2877946,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_274,6,42,0.0,0.29807425,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_275,6,42,2.0,3.3907542,3.645390033721924,4.0
+Computación Emergente,2526-2,1,anon_276,6,42,3.0,4.1862593,3.645390033721924,6.0
+Computación Emergente,2526-2,1,anon_277,6,42,1.0,1.5645249,3.645390033721924,2.0
+Computación Emergente,2526-2,1,anon_278,6,42,0.0,0.7309014,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_279,6,42,12.0,8.206789,3.645390033721924,12.0
+Computación Emergente,2526-2,1,anon_280,6,42,1.0,1.9633,3.645390033721924,2.0
+Computación Emergente,2526-2,1,anon_281,6,42,3.0,1.4299368,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_282,6,42,0.0,0.75508696,3.645390033721924,0.0
+Computación Emergente,2526-3,1,anon_174,6,42,0.0,0.12106526,2.0,0.0
+Computación Emergente,2526-3,1,anon_283,6,42,3.0,2.3959913,2.0,4.0
+Computación Emergente,2526-3,1,anon_284,6,42,21.0,15.260851,2.0,22.0
+Computación Emergente,2526-3,1,anon_285,6,42,30.0,17.945229,2.0,28.0
+Computación Emergente,2526-3,1,anon_286,6,42,18.0,13.074699,2.0,18.0
+Computación Emergente,2526-3,1,anon_287,6,42,23.0,20.431198,2.0,32.0
+Computación Emergente,2526-3,1,anon_288,6,42,24.0,13.191865,2.0,18.0
+Computación Emergente,2526-3,1,anon_289,6,42,0.0,-0.016350567,2.0,0.0
+Computación Emergente,2526-3,1,anon_290,6,42,5.0,7.1905193,2.0,10.0
+Computación Emergente,2526-3,1,anon_291,6,42,0.0,0.25885725,2.0,0.0
+Computación Emergente,2526-3,1,anon_292,6,42,6.0,7.8907766,2.0,10.0
+Computación Emergente,2526-3,1,anon_293,6,42,0.0,0.0283854,2.0,0.0
+Computación Emergente,2526-3,1,anon_294,6,42,0.0,0.035297573,2.0,0.0
+Computación Emergente,2526-3,1,anon_295,6,42,3.0,0.30327058,2.0,0.0
+Computación Emergente,2526-3,1,anon_296,6,42,0.0,0.049977243,2.0,0.0
+Computación Emergente,2526-3,1,anon_297,6,42,16.0,13.11445,2.0,18.0
+Computación Emergente,2526-3,1,anon_298,6,42,6.0,8.100302,2.0,10.0
+Computación Emergente,2526-3,1,anon_299,6,42,0.0,0.07422435,2.0,0.0
+Computación Emergente,2526-3,1,anon_300,6,42,27.0,19.44979,2.0,30.0
+Computación Emergente,2526-3,1,anon_301,6,42,12.0,8.409645,2.0,12.0
+Computación Emergente,2526-3,1,anon_302,6,42,0.0,0.04594487,2.0,0.0
+Computación Emergente,2526-3,1,anon_303,6,42,9.0,9.185622,2.0,12.0
+Computación Emergente,2526-3,1,anon_304,6,42,0.0,0.4357271,2.0,0.0
+Computación Emergente,2526-3,1,anon_305,6,42,12.0,14.34608,2.0,20.0
+Computación Emergente,2526-3,1,anon_306,6,42,11.0,6.308655,2.0,8.0
+Computación Emergente,2526-3,1,anon_307,6,42,0.0,0.16489166,2.0,0.0
+Computación Emergente,2526-3,1,anon_308,6,42,9.0,10.512628,2.0,14.0
+Computación Emergente,2526-3,1,anon_309,6,42,2.0,0.1890797,2.0,0.0
+Computación Emergente,2526-3,1,anon_310,6,42,8.0,11.936898,2.0,16.0
+Computación Emergente,2526-3,1,anon_311,6,42,0.0,0.21484178,2.0,0.0
+Computación Emergente,2526-3,1,anon_312,6,42,7.0,6.33842,2.0,8.0
+Computación Emergente,2526-3,1,anon_313,6,42,1.0,1.6027143,2.0,2.0
+Computación Emergente,2526-3,1,anon_314,6,42,1.0,1.2634902,2.0,2.0
+Computación Emergente,2526-3,1,anon_315,6,42,1.0,1.4716808,2.0,2.0
+Computación Emergente,2526-3,1,anon_316,6,42,11.0,10.651919,2.0,14.0
+Computación Emergente,2526-3,1,anon_317,6,42,0.0,0.6489212,2.0,0.0
+Computación Emergente,2526-3,1,anon_318,6,42,0.0,0.18936282,2.0,0.0
+Computación Emergente,2526-3,1,anon_319,6,42,22.0,9.01468,2.0,12.0
+Computación Emergente,2526-3,1,anon_320,6,42,3.0,1.3764908,2.0,2.0
+Computación Emergente,2526-3,1,anon_321,6,42,3.0,5.102207,2.0,6.0
+Computación Emergente,2425-3,1,anon_148,8,42,1.0,1.6940398,4.2110090255737305,1.5
+Computación Emergente,2425-3,1,anon_149,8,42,5.0,2.7991738,4.2110090255737305,3.0
+Computación Emergente,2425-3,1,anon_150,8,42,4.0,1.6306491,4.2110090255737305,1.5
+Computación Emergente,2425-3,1,anon_151,8,42,1.0,1.4023633,4.2110090255737305,1.5
+Computación Emergente,2425-3,1,anon_152,8,42,4.0,1.4096351,4.2110090255737305,1.5
+Computación Emergente,2425-3,1,anon_153,8,42,0.0,0.26141232,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_154,8,42,0.0,0.23472339,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_155,8,42,5.0,2.8026254,4.2110090255737305,3.0
+Computación Emergente,2425-3,1,anon_156,8,42,0.0,0.3014286,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_157,8,42,2.0,0.2774316,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_158,8,42,0.0,0.25445378,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_159,8,42,1.0,1.3772188,4.2110090255737305,1.5
+Computación Emergente,2425-3,1,anon_160,8,42,1.0,1.2018633,4.2110090255737305,1.5
+Computación Emergente,2425-3,1,anon_161,8,42,0.0,0.086741924,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_162,8,42,0.0,0.36632526,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_163,8,42,0.0,0.35113236,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_164,8,42,5.0,5.003784,4.2110090255737305,6.0
+Computación Emergente,2425-3,1,anon_165,8,42,6.0,3.6208227,4.2110090255737305,4.5
+Computación Emergente,2425-3,1,anon_166,8,42,2.0,1.192708,4.2110090255737305,1.5
+Computación Emergente,2425-3,1,anon_167,8,42,0.0,0.29261675,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_168,8,42,5.0,3.711357,4.2110090255737305,4.5
+Computación Emergente,2425-3,1,anon_169,8,42,0.0,0.068596005,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_170,8,42,0.0,0.25143403,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_171,8,42,3.0,2.363102,4.2110090255737305,3.0
+Computación Emergente,2425-3,1,anon_172,8,42,0.0,0.037122726,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_173,8,42,6.0,4.736831,4.2110090255737305,6.0
+Computación Emergente,2425-3,1,anon_174,8,42,6.0,3.5531576,4.2110090255737305,4.5
+Computación Emergente,2425-3,1,anon_175,8,42,0.0,-0.046351552,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_176,8,42,6.0,4.6623816,4.2110090255737305,6.0
+Computación Emergente,2425-3,1,anon_177,8,42,3.0,-0.05379677,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_178,8,42,3.0,2.3188188,4.2110090255737305,3.0
+Computación Emergente,2425-3,1,anon_179,8,42,0.0,-0.0116022825,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_180,8,42,0.0,-0.01618588,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_181,8,42,3.0,-0.020259976,4.2110090255737305,0.0
+Computación Emergente,2425-3,1,anon_182,8,42,4.0,1.0308299,4.2110090255737305,1.5
+Computación Emergente,2425-3,1,anon_183,8,42,7.0,4.519934,4.2110090255737305,6.0
+Computación Emergente,2425-3,1,anon_184,8,42,1.0,0.9976826,4.2110090255737305,1.5
+Computación Emergente,2425-3,1,anon_185,8,42,0.0,-0.06817025,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_185,8,42,0.0,-0.03409171,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_186,8,42,0.0,0.32279205,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_187,8,42,7.0,6.6553626,4.2110090255737305,7.5
+Computación Emergente,2425-3,2,anon_188,8,42,0.0,0.2594167,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_189,8,42,2.0,2.6341364,4.2110090255737305,3.0
+Computación Emergente,2425-3,2,anon_190,8,42,0.0,0.202371,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_191,8,42,0.0,0.17632878,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_192,8,42,5.0,3.7494404,4.2110090255737305,4.5
+Computación Emergente,2425-3,2,anon_193,8,42,0.0,0.30318707,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_194,8,42,1.0,0.108107984,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_195,8,42,0.0,0.08857679,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_196,8,42,1.0,1.1644154,4.2110090255737305,1.5
+Computación Emergente,2425-3,2,anon_197,8,42,0.0,0.05407071,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_198,8,42,2.0,1.0988032,4.2110090255737305,1.5
+Computación Emergente,2425-3,2,anon_199,8,42,1.0,1.4365523,4.2110090255737305,1.5
+Computación Emergente,2425-3,2,anon_200,8,42,4.0,3.8736296,4.2110090255737305,4.5
+Computación Emergente,2425-3,2,anon_201,8,42,0.0,0.19788444,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_202,8,42,1.0,1.3437006,4.2110090255737305,1.5
+Computación Emergente,2425-3,2,anon_203,8,42,0.0,-0.01660639,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_204,8,42,3.0,2.6136074,4.2110090255737305,3.0
+Computación Emergente,2425-3,2,anon_205,8,42,0.0,0.16469622,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_206,8,42,1.0,1.1191603,4.2110090255737305,1.5
+Computación Emergente,2425-3,2,anon_207,8,42,0.0,-0.040305078,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_208,8,42,1.0,1.1077302,4.2110090255737305,1.5
+Computación Emergente,2425-3,2,anon_209,8,42,1.0,1.2240299,4.2110090255737305,1.5
+Computación Emergente,2425-3,2,anon_210,8,42,0.0,0.13685787,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_211,8,42,0.0,0.13272542,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_212,8,42,0.0,-0.049466312,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_213,8,42,1.0,1.1145144,4.2110090255737305,1.5
+Computación Emergente,2425-3,2,anon_214,8,42,0.0,-0.048297286,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_215,8,42,0.0,-0.046917677,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_216,8,42,1.0,1.2814391,4.2110090255737305,1.5
+Computación Emergente,2425-3,2,anon_217,8,42,0.0,-0.042836487,4.2110090255737305,0.0
+Computación Emergente,2425-3,2,anon_218,8,42,1.0,1.099024,4.2110090255737305,1.5
+Computación Emergente,2425-3,2,anon_219,8,42,2.0,1.0084167,4.2110090255737305,1.5
+Computación Emergente,2526-1,1,anon_174,8,42,0.0,0.6502257,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_205,8,42,0.0,0.19588035,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_212,8,42,1.0,0.9520489,3.097402572631836,1.5
+Computación Emergente,2526-1,1,anon_220,8,42,1.0,2.2607083,3.097402572631836,1.5
+Computación Emergente,2526-1,1,anon_221,8,42,13.0,16.460716,3.097402572631836,15.0
+Computación Emergente,2526-1,1,anon_222,8,42,1.0,2.0405195,3.097402572631836,1.5
+Computación Emergente,2526-1,1,anon_223,8,42,3.0,4.5324903,3.097402572631836,4.5
+Computación Emergente,2526-1,1,anon_224,8,42,8.0,12.61471,3.097402572631836,10.5
+Computación Emergente,2526-1,1,anon_225,8,42,1.0,2.487829,3.097402572631836,1.5
+Computación Emergente,2526-1,1,anon_226,8,42,5.0,5.3398323,3.097402572631836,6.0
+Computación Emergente,2526-1,1,anon_227,8,42,4.0,5.296809,3.097402572631836,6.0
+Computación Emergente,2526-1,1,anon_228,8,42,15.0,18.347599,3.097402572631836,18.0
+Computación Emergente,2526-1,1,anon_229,8,42,1.0,1.3793539,3.097402572631836,1.5
+Computación Emergente,2526-1,1,anon_230,8,42,1.0,1.315999,3.097402572631836,1.5
+Computación Emergente,2526-1,1,anon_231,8,42,4.0,7.647892,3.097402572631836,6.0
+Computación Emergente,2526-1,1,anon_232,8,42,8.0,13.24793,3.097402572631836,12.0
+Computación Emergente,2526-1,1,anon_233,8,42,0.0,0.34385774,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_234,8,42,5.0,5.9964676,3.097402572631836,7.5
+Computación Emergente,2526-1,1,anon_235,8,42,13.0,15.04234,3.097402572631836,15.0
+Computación Emergente,2526-1,1,anon_236,8,42,2.0,1.2394724,3.097402572631836,1.5
+Computación Emergente,2526-1,1,anon_237,8,42,13.0,15.022439,3.097402572631836,15.0
+Computación Emergente,2526-1,1,anon_238,8,42,0.0,-0.051071882,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_239,8,42,1.0,1.1801934,3.097402572631836,1.5
+Computación Emergente,2526-1,1,anon_240,8,42,0.0,-0.07265842,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_241,8,42,0.0,0.00952518,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_242,8,42,1.0,1.1065787,3.097402572631836,1.5
+Computación Emergente,2526-1,1,anon_243,8,42,0.0,-0.025601089,3.097402572631836,0.0
+Computación Emergente,2526-1,1,anon_244,8,42,0.0,-0.10498136,3.097402572631836,0.0
+Computación Emergente,2526-2,1,anon_174,8,42,0.0,0.006904006,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_222,8,42,0.0,-0.21655506,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_244,8,42,0.0,0.20795178,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_245,8,42,1.0,0.80588394,3.645390033721924,1.5
+Computación Emergente,2526-2,1,anon_246,8,42,0.0,-0.22017175,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_247,8,42,6.0,5.0171757,3.645390033721924,7.5
+Computación Emergente,2526-2,1,anon_248,8,42,0.0,-0.20723814,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_249,8,42,0.0,-0.2015261,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_250,8,42,10.0,7.551643,3.645390033721924,10.5
+Computación Emergente,2526-2,1,anon_251,8,42,2.0,1.9088385,3.645390033721924,3.0
+Computación Emergente,2526-2,1,anon_252,8,42,9.0,9.018574,3.645390033721924,12.0
+Computación Emergente,2526-2,1,anon_253,8,42,0.0,-0.17169052,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_254,8,42,0.0,-0.16822332,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_255,8,42,0.0,-0.15792757,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_256,8,42,0.0,-0.14226657,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_257,8,42,4.0,3.0223083,3.645390033721924,4.5
+Computación Emergente,2526-2,1,anon_258,8,42,1.0,0.9084455,3.645390033721924,1.5
+Computación Emergente,2526-2,1,anon_259,8,42,0.0,-0.11183643,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_260,8,42,5.0,4.140023,3.645390033721924,6.0
+Computación Emergente,2526-2,1,anon_261,8,42,0.0,-0.08069801,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_262,8,42,1.0,0.9716825,3.645390033721924,1.5
+Computación Emergente,2526-2,1,anon_263,8,42,0.0,-0.0516603,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_264,8,42,0.0,-0.036135912,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_265,8,42,1.0,1.0181923,3.645390033721924,1.5
+Computación Emergente,2526-2,1,anon_266,8,42,1.0,1.0549892,3.645390033721924,1.5
+Computación Emergente,2526-2,1,anon_267,8,42,0.0,0.02470988,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_268,8,42,1.0,1.0975709,3.645390033721924,1.5
+Computación Emergente,2526-2,1,anon_269,8,42,0.0,0.06266624,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_270,8,42,0.0,0.08289683,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_271,8,42,0.0,0.11478305,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_272,8,42,0.0,0.1260745,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_273,8,42,0.0,0.16004705,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_274,8,42,0.0,0.18369114,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_275,8,42,2.0,2.3861575,3.645390033721924,3.0
+Computación Emergente,2526-2,1,anon_276,8,42,3.0,3.470834,3.645390033721924,4.5
+Computación Emergente,2526-2,1,anon_277,8,42,1.0,1.3442903,3.645390033721924,1.5
+Computación Emergente,2526-2,1,anon_278,8,42,0.0,0.3102848,3.645390033721924,0.0
+Computación Emergente,2526-2,1,anon_279,8,42,12.0,10.1844015,3.645390033721924,13.5
+Computación Emergente,2526-2,1,anon_280,8,42,1.0,1.4491107,3.645390033721924,1.5
+Computación Emergente,2526-2,1,anon_281,8,42,3.0,3.5997055,3.645390033721924,4.5
+Computación Emergente,2526-2,1,anon_282,8,42,0.0,0.4418412,3.645390033721924,0.0
+Computación Emergente,2526-3,1,anon_174,8,42,0.0,0.052269667,2.0,0.0
+Computación Emergente,2526-3,1,anon_283,8,42,3.0,3.459362,2.0,4.5
+Computación Emergente,2526-3,1,anon_284,8,42,21.0,17.77144,2.0,22.5
+Computación Emergente,2526-3,1,anon_285,8,42,30.0,24.759972,2.0,33.0
+Computación Emergente,2526-3,1,anon_286,8,42,18.0,17.756166,2.0,22.5
+Computación Emergente,2526-3,1,anon_287,8,42,23.0,22.822586,2.0,30.0
+Computación Emergente,2526-3,1,anon_288,8,42,24.0,18.817863,2.0,24.0
+Computación Emergente,2526-3,1,anon_289,8,42,0.0,-0.0015707016,2.0,0.0
+Computación Emergente,2526-3,1,anon_290,8,42,5.0,6.246626,2.0,7.5
+Computación Emergente,2526-3,1,anon_291,8,42,0.0,-0.08899397,2.0,0.0
+Computación Emergente,2526-3,1,anon_292,8,42,6.0,7.8303666,2.0,9.0
+Computación Emergente,2526-3,1,anon_293,8,42,0.0,-0.05122775,2.0,0.0
+Computación Emergente,2526-3,1,anon_294,8,42,0.0,-0.042978287,2.0,0.0
+Computación Emergente,2526-3,1,anon_295,8,42,3.0,2.0391994,2.0,3.0
+Computación Emergente,2526-3,1,anon_296,8,42,0.0,-0.025812626,2.0,0.0
+Computación Emergente,2526-3,1,anon_297,8,42,16.0,16.742928,2.0,21.0
+Computación Emergente,2526-3,1,anon_298,8,42,6.0,7.7876763,2.0,9.0
+Computación Emergente,2526-3,1,anon_299,8,42,0.0,0.0016443729,2.0,0.0
+Computación Emergente,2526-3,1,anon_300,8,42,27.0,21.769283,2.0,28.5
+Computación Emergente,2526-3,1,anon_301,8,42,12.0,9.771081,2.0,12.0
+Computación Emergente,2526-3,1,anon_302,8,42,0.0,0.08498269,2.0,0.0
+Computación Emergente,2526-3,1,anon_303,8,42,9.0,11.20669,2.0,13.5
+Computación Emergente,2526-3,1,anon_304,8,42,0.0,0.06224799,2.0,0.0
+Computación Emergente,2526-3,1,anon_305,8,42,12.0,14.655565,2.0,18.0
+Computación Emergente,2526-3,1,anon_306,8,42,11.0,9.821934,2.0,12.0
+Computación Emergente,2526-3,1,anon_307,8,42,0.0,0.097564876,2.0,0.0
+Computación Emergente,2526-3,1,anon_308,8,42,9.0,11.28574,2.0,13.5
+Computación Emergente,2526-3,1,anon_309,8,42,2.0,2.2216988,2.0,3.0
+Computación Emergente,2526-3,1,anon_310,8,42,8.0,10.165847,2.0,12.0
+Computación Emergente,2526-3,1,anon_311,8,42,0.0,0.14750957,2.0,0.0
+Computación Emergente,2526-3,1,anon_312,8,42,7.0,7.4981127,2.0,9.0
+Computación Emergente,2526-3,1,anon_313,8,42,1.0,1.374253,2.0,1.5
+Computación Emergente,2526-3,1,anon_314,8,42,1.0,1.3208954,2.0,1.5
+Computación Emergente,2526-3,1,anon_315,8,42,1.0,1.3590202,2.0,1.5
+Computación Emergente,2526-3,1,anon_316,8,42,11.0,11.212263,2.0,13.5
+Computación Emergente,2526-3,1,anon_317,8,42,0.0,0.24265811,2.0,0.0
+Computación Emergente,2526-3,1,anon_318,8,42,0.0,0.25239667,2.0,0.0
+Computación Emergente,2526-3,1,anon_319,8,42,22.0,16.494219,2.0,21.0
+Computación Emergente,2526-3,1,anon_320,8,42,3.0,2.4395745,2.0,3.0
+Computación Emergente,2526-3,1,anon_321,8,42,3.0,4.1458225,2.0,4.5
+Estructura de Datos,2425-3,2,anon_011,4,42,0.0,2.3425345,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_037,4,42,3.0,5.4613886,4.474359035491943,9.0
+Estructura de Datos,2425-3,2,anon_050,4,42,1.0,3.5676289,4.474359035491943,3.0
+Estructura de Datos,2425-3,2,anon_052,4,42,7.0,8.897678,4.474359035491943,18.0
+Estructura de Datos,2425-3,2,anon_055,4,42,1.0,3.5251918,4.474359035491943,3.0
+Estructura de Datos,2425-3,2,anon_301,4,42,15.0,11.396189,4.474359035491943,24.0
+Estructura de Datos,2425-3,2,anon_322,4,42,36.0,8.812016,4.474359035491943,18.0
+Estructura de Datos,2425-3,2,anon_323,4,42,27.0,8.959623,4.474359035491943,18.0
+Estructura de Datos,2425-3,2,anon_324,4,42,0.0,2.7275696,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_325,4,42,3.0,5.666128,4.474359035491943,9.0
+Estructura de Datos,2425-3,2,anon_326,4,42,0.0,2.3050208,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_327,4,42,11.0,6.6751785,4.474359035491943,12.0
+Estructura de Datos,2425-3,2,anon_328,4,42,18.0,9.868965,4.474359035491943,21.0
+Estructura de Datos,2425-3,2,anon_329,4,42,21.0,14.358885,4.474359035491943,33.0
+Estructura de Datos,2425-3,2,anon_330,4,42,13.0,15.247723,4.474359035491943,36.0
+Estructura de Datos,2425-3,2,anon_331,4,42,0.0,2.5002809,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_332,4,42,0.0,2.7787185,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_333,4,42,2.0,4.134526,4.474359035491943,3.0
+Estructura de Datos,2425-3,2,anon_334,4,42,3.0,3.4871497,4.474359035491943,3.0
+Estructura de Datos,2425-3,2,anon_335,4,42,1.0,3.0908415,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_336,4,42,3.0,5.5749454,4.474359035491943,9.0
+Estructura de Datos,2425-3,2,anon_337,4,42,2.0,4.9917936,4.474359035491943,6.0
+Estructura de Datos,2425-3,2,anon_338,4,42,0.0,2.5754676,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_339,4,42,2.0,3.5289028,4.474359035491943,3.0
+Estructura de Datos,2425-3,2,anon_340,4,42,0.0,2.436796,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_341,4,42,0.0,2.6070795,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_342,4,42,1.0,2.8540998,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_343,4,42,4.0,5.788211,4.474359035491943,9.0
+Estructura de Datos,2425-3,2,anon_344,4,42,0.0,3.0943522,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_345,4,42,7.0,4.7300587,4.474359035491943,6.0
+Estructura de Datos,2526-1,2,anon_012,4,42,0.0,0.77928066,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_060,4,42,2.0,1.4757602,5.615384578704834,3.0
+Estructura de Datos,2526-1,2,anon_324,4,42,0.0,1.8585321,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_333,4,42,0.0,1.2430058,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_336,4,42,21.0,2.845271,5.615384578704834,6.0
+Estructura de Datos,2526-1,2,anon_342,4,42,4.0,5.4442472,5.615384578704834,12.0
+Estructura de Datos,2526-1,2,anon_346,4,42,0.0,2.5950856,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_347,4,42,1.0,2.622478,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_348,4,42,0.0,2.3690877,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_349,4,42,0.0,1.9127554,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_350,4,42,3.0,4.843048,5.615384578704834,3.0
+Estructura de Datos,2526-1,2,anon_351,4,42,6.0,1.5653481,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_352,4,42,0.0,1.5429493,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_353,4,42,2.0,4.637603,5.615384578704834,6.0
+Estructura de Datos,2526-1,2,anon_354,4,42,0.0,1.1552579,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_355,4,42,0.0,1.0478601,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_356,4,42,0.0,0.9527576,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_357,4,42,0.0,0.8754618,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_358,4,42,5.0,3.8670425,5.615384578704834,6.0
+Estructura de Datos,2526-1,2,anon_359,4,42,0.0,0.72907805,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_360,4,42,0.0,0.53814936,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_361,4,42,0.0,0.6596627,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_362,4,42,0.0,0.83668923,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_363,4,42,1.0,2.023667,5.615384578704834,3.0
+Estructura de Datos,2526-1,2,anon_364,4,42,23.0,6.257061,5.615384578704834,9.0
+Estructura de Datos,2526-1,2,anon_365,4,42,0.0,0.55690145,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_366,4,42,6.0,5.7209997,5.615384578704834,9.0
+Estructura de Datos,2526-1,2,anon_367,4,42,14.0,4.4640236,5.615384578704834,9.0
+Estructura de Datos,2526-1,2,anon_368,4,42,2.0,3.4765368,5.615384578704834,6.0
+Estructura de Datos,2526-1,2,anon_369,4,42,2.0,1.5968673,5.615384578704834,3.0
+Estructura de Datos,2526-2,2,anon_031,4,42,3.0,7.6132793,4.644444465637207,9.0
+Estructura de Datos,2526-2,2,anon_064,4,42,0.0,4.3778896,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_067,4,42,7.0,6.500375,4.644444465637207,6.0
+Estructura de Datos,2526-2,2,anon_077,4,42,0.0,3.6585393,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_080,4,42,14.0,9.316372,4.644444465637207,15.0
+Estructura de Datos,2526-2,2,anon_087,4,42,0.0,3.4111872,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_205,4,42,0.0,3.5400991,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_347,4,42,9.0,7.6109915,4.644444465637207,9.0
+Estructura de Datos,2526-2,2,anon_355,4,42,0.0,3.8467355,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_360,4,42,0.0,3.6548018,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_370,4,42,44.0,30.058943,4.644444465637207,66.0
+Estructura de Datos,2526-2,2,anon_371,4,42,9.0,4.180049,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_372,4,42,4.0,3.7916238,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_373,4,42,2.0,3.9113212,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_374,4,42,9.0,3.9165583,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_375,4,42,0.0,3.7222247,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_376,4,42,3.0,6.869128,4.644444465637207,9.0
+Estructura de Datos,2526-2,2,anon_377,4,42,8.0,3.344731,4.644444465637207,0.0
+Estructura de Datos,2526-3,2,anon_004,4,42,7.0,3.0020142,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_007,4,42,0.0,2.160864,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_081,4,42,2.0,5.52553,4.935897350311279,6.0
+Estructura de Datos,2526-3,2,anon_087,4,42,2.0,3.837589,4.935897350311279,6.0
+Estructura de Datos,2526-3,2,anon_324,4,42,0.0,1.7614017,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_326,4,42,12.0,6.0553927,4.935897350311279,6.0
+Estructura de Datos,2526-3,2,anon_339,4,42,0.0,0.9755206,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_341,4,42,0.0,0.878515,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_349,4,42,6.0,11.154494,4.935897350311279,12.0
+Estructura de Datos,2526-3,2,anon_356,4,42,0.0,1.465752,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_362,4,42,15.0,12.068133,4.935897350311279,18.0
+Estructura de Datos,2526-3,2,anon_363,4,42,11.0,2.0666296,4.935897350311279,3.0
+Estructura de Datos,2526-3,2,anon_365,4,42,24.0,17.29094,4.935897350311279,30.0
+Estructura de Datos,2526-3,2,anon_372,4,42,10.0,9.356453,4.935897350311279,15.0
+Estructura de Datos,2526-3,2,anon_375,4,42,4.0,9.248074,4.935897350311279,12.0
+Estructura de Datos,2526-3,2,anon_378,4,42,2.0,4.4234147,4.935897350311279,3.0
+Estructura de Datos,2526-3,2,anon_379,4,42,19.0,22.60548,4.935897350311279,30.0
+Estructura de Datos,2526-3,2,anon_380,4,42,3.0,1.9783884,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_381,4,42,4.0,8.398685,4.935897350311279,12.0
+Estructura de Datos,2526-3,2,anon_382,4,42,2.0,5.0403748,4.935897350311279,6.0
+Estructura de Datos,2526-3,2,anon_383,4,42,3.0,4.8785114,4.935897350311279,9.0
+Estructura de Datos,2526-3,2,anon_384,4,42,2.0,2.6390724,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_385,4,42,0.0,1.0307992,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_386,4,42,2.0,5.3184986,4.935897350311279,6.0
+Estructura de Datos,2526-3,2,anon_387,4,42,4.0,10.144784,4.935897350311279,12.0
+Estructura de Datos,2526-3,2,anon_388,4,42,10.0,12.322869,4.935897350311279,15.0
+Estructura de Datos,2526-3,2,anon_389,4,42,0.0,1.0605967,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_390,4,42,0.0,0.8927667,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_391,4,42,1.0,3.0290189,4.935897350311279,3.0
+Estructura de Datos,2526-3,2,anon_392,4,42,0.0,0.8873317,4.935897350311279,0.0
+Estructura de Datos,2425-3,2,anon_011,6,42,0.0,1.2488668,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_037,6,42,3.0,5.897487,4.474359035491943,6.0
+Estructura de Datos,2425-3,2,anon_050,6,42,1.0,1.5042965,4.474359035491943,2.0
+Estructura de Datos,2425-3,2,anon_052,6,42,7.0,9.775063,4.474359035491943,14.0
+Estructura de Datos,2425-3,2,anon_055,6,42,1.0,1.779179,4.474359035491943,2.0
+Estructura de Datos,2425-3,2,anon_301,6,42,15.0,18.617748,4.474359035491943,22.0
+Estructura de Datos,2425-3,2,anon_322,6,42,36.0,15.899518,4.474359035491943,22.0
+Estructura de Datos,2425-3,2,anon_323,6,42,27.0,16.124142,4.474359035491943,22.0
+Estructura de Datos,2425-3,2,anon_324,6,42,0.0,-0.105228186,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_325,6,42,3.0,5.297824,4.474359035491943,6.0
+Estructura de Datos,2425-3,2,anon_326,6,42,0.0,1.2598766,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_327,6,42,11.0,8.262764,4.474359035491943,10.0
+Estructura de Datos,2425-3,2,anon_328,6,42,18.0,12.893797,4.474359035491943,16.0
+Estructura de Datos,2425-3,2,anon_329,6,42,21.0,22.786053,4.474359035491943,30.0
+Estructura de Datos,2425-3,2,anon_330,6,42,13.0,19.896233,4.474359035491943,26.0
+Estructura de Datos,2425-3,2,anon_331,6,42,0.0,0.36734915,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_332,6,42,0.0,-0.12493205,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_333,6,42,2.0,1.4613237,4.474359035491943,2.0
+Estructura de Datos,2425-3,2,anon_334,6,42,3.0,2.3201044,4.474359035491943,2.0
+Estructura de Datos,2425-3,2,anon_335,6,42,1.0,1.555116,4.474359035491943,2.0
+Estructura de Datos,2425-3,2,anon_336,6,42,3.0,5.8848867,4.474359035491943,6.0
+Estructura de Datos,2425-3,2,anon_337,6,42,2.0,3.2961721,4.474359035491943,4.0
+Estructura de Datos,2425-3,2,anon_338,6,42,0.0,0.09667528,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_339,6,42,2.0,1.8449688,4.474359035491943,2.0
+Estructura de Datos,2425-3,2,anon_340,6,42,0.0,0.52321005,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_341,6,42,0.0,0.039349437,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_342,6,42,1.0,0.2195046,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_343,6,42,4.0,3.9894137,4.474359035491943,6.0
+Estructura de Datos,2425-3,2,anon_344,6,42,0.0,1.3617564,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_345,6,42,7.0,6.216906,4.474359035491943,10.0
+Estructura de Datos,2526-1,2,anon_012,6,42,0.0,0.50077534,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_060,6,42,2.0,2.145,5.615384578704834,4.0
+Estructura de Datos,2526-1,2,anon_324,6,42,0.0,0.43658864,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_333,6,42,0.0,0.22242999,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_336,6,42,21.0,3.9056017,5.615384578704834,6.0
+Estructura de Datos,2526-1,2,anon_342,6,42,4.0,5.27679,5.615384578704834,8.0
+Estructura de Datos,2526-1,2,anon_346,6,42,0.0,1.7649393,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_347,6,42,1.0,1.5207884,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_348,6,42,0.0,1.3591523,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_349,6,42,0.0,1.3241613,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_350,6,42,3.0,2.7991953,5.615384578704834,2.0
+Estructura de Datos,2526-1,2,anon_351,6,42,6.0,0.83401775,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_352,6,42,0.0,0.28600812,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_353,6,42,2.0,3.946031,5.615384578704834,4.0
+Estructura de Datos,2526-1,2,anon_354,6,42,0.0,0.5551586,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_355,6,42,0.0,0.48024213,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_356,6,42,0.0,0.41308284,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_357,6,42,0.0,0.17697978,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_358,6,42,5.0,7.2012744,5.615384578704834,10.0
+Estructura de Datos,2526-1,2,anon_359,6,42,0.0,0.11052704,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_360,6,42,0.0,0.10962248,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_361,6,42,0.0,0.082472324,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_362,6,42,0.0,0.14325333,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_363,6,42,1.0,1.4282564,5.615384578704834,2.0
+Estructura de Datos,2526-1,2,anon_364,6,42,23.0,14.696402,5.615384578704834,22.0
+Estructura de Datos,2526-1,2,anon_365,6,42,0.0,0.05365491,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_366,6,42,6.0,8.271988,5.615384578704834,12.0
+Estructura de Datos,2526-1,2,anon_367,6,42,14.0,11.137367,5.615384578704834,18.0
+Estructura de Datos,2526-1,2,anon_368,6,42,2.0,2.7088509,5.615384578704834,4.0
+Estructura de Datos,2526-1,2,anon_369,6,42,2.0,1.2288947,5.615384578704834,2.0
+Estructura de Datos,2526-2,2,anon_031,6,42,3.0,6.229712,4.644444465637207,6.0
+Estructura de Datos,2526-2,2,anon_064,6,42,0.0,3.1446223,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_067,6,42,7.0,6.204182,4.644444465637207,6.0
+Estructura de Datos,2526-2,2,anon_077,6,42,0.0,2.5904052,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_080,6,42,14.0,12.037802,4.644444465637207,18.0
+Estructura de Datos,2526-2,2,anon_087,6,42,0.0,2.3944383,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_205,6,42,0.0,2.5522082,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_347,6,42,9.0,10.342859,4.644444465637207,14.0
+Estructura de Datos,2526-2,2,anon_355,6,42,0.0,2.750955,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_360,6,42,0.0,2.6036057,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_370,6,42,44.0,34.919823,4.644444465637207,60.0
+Estructura de Datos,2526-2,2,anon_371,6,42,9.0,7.2018657,4.644444465637207,8.0
+Estructura de Datos,2526-2,2,anon_372,6,42,4.0,6.875051,4.644444465637207,8.0
+Estructura de Datos,2526-2,2,anon_373,6,42,2.0,2.8000722,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_374,6,42,9.0,2.7920237,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_375,6,42,0.0,2.6404462,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_376,6,42,3.0,5.639968,4.644444465637207,6.0
+Estructura de Datos,2526-2,2,anon_377,6,42,8.0,4.432152,4.644444465637207,4.0
+Estructura de Datos,2526-3,2,anon_004,6,42,7.0,5.6039906,4.935897350311279,4.0
+Estructura de Datos,2526-3,2,anon_007,6,42,0.0,1.272795,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_081,6,42,2.0,3.0132499,4.935897350311279,4.0
+Estructura de Datos,2526-3,2,anon_087,6,42,2.0,2.4328752,4.935897350311279,4.0
+Estructura de Datos,2526-3,2,anon_324,6,42,0.0,1.0244219,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_326,6,42,12.0,8.526291,4.935897350311279,8.0
+Estructura de Datos,2526-3,2,anon_339,6,42,0.0,-0.020166159,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_341,6,42,0.0,-0.030311584,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_349,6,42,6.0,12.208474,4.935897350311279,10.0
+Estructura de Datos,2526-3,2,anon_356,6,42,0.0,0.6778766,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_362,6,42,15.0,11.934662,4.935897350311279,16.0
+Estructura de Datos,2526-3,2,anon_363,6,42,11.0,4.5427446,4.935897350311279,8.0
+Estructura de Datos,2526-3,2,anon_365,6,42,24.0,18.972685,4.935897350311279,26.0
+Estructura de Datos,2526-3,2,anon_372,6,42,10.0,12.497797,4.935897350311279,16.0
+Estructura de Datos,2526-3,2,anon_375,6,42,4.0,7.3502817,4.935897350311279,8.0
+Estructura de Datos,2526-3,2,anon_378,6,42,2.0,4.227872,4.935897350311279,4.0
+Estructura de Datos,2526-3,2,anon_379,6,42,19.0,21.661896,4.935897350311279,24.0
+Estructura de Datos,2526-3,2,anon_380,6,42,3.0,1.0228491,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_381,6,42,4.0,7.739061,4.935897350311279,8.0
+Estructura de Datos,2526-3,2,anon_382,6,42,2.0,3.8784113,4.935897350311279,4.0
+Estructura de Datos,2526-3,2,anon_383,6,42,3.0,4.390219,4.935897350311279,6.0
+Estructura de Datos,2526-3,2,anon_384,6,42,2.0,1.3141205,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_385,6,42,0.0,0.15994024,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_386,6,42,2.0,3.658764,4.935897350311279,4.0
+Estructura de Datos,2526-3,2,anon_387,6,42,4.0,7.1100283,4.935897350311279,8.0
+Estructura de Datos,2526-3,2,anon_388,6,42,10.0,10.570379,4.935897350311279,12.0
+Estructura de Datos,2526-3,2,anon_389,6,42,0.0,0.16605115,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_390,6,42,0.0,-0.15014195,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_391,6,42,1.0,1.2623845,4.935897350311279,2.0
+Estructura de Datos,2526-3,2,anon_392,6,42,0.0,-0.20472312,4.935897350311279,0.0
+Estructura de Datos,2425-3,2,anon_011,8,42,0.0,0.74556184,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_037,8,42,3.0,4.537776,4.474359035491943,4.5
+Estructura de Datos,2425-3,2,anon_050,8,42,1.0,1.995214,4.474359035491943,1.5
+Estructura de Datos,2425-3,2,anon_052,8,42,7.0,9.337314,4.474359035491943,10.5
+Estructura de Datos,2425-3,2,anon_055,8,42,1.0,2.237208,4.474359035491943,1.5
+Estructura de Datos,2425-3,2,anon_301,8,42,15.0,15.882946,4.474359035491943,18.0
+Estructura de Datos,2425-3,2,anon_322,8,42,36.0,18.175001,4.474359035491943,22.5
+Estructura de Datos,2425-3,2,anon_323,8,42,27.0,17.25388,4.474359035491943,21.0
+Estructura de Datos,2425-3,2,anon_324,8,42,0.0,0.39451826,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_325,8,42,3.0,4.4565067,4.474359035491943,4.5
+Estructura de Datos,2425-3,2,anon_326,8,42,0.0,0.7305641,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_327,8,42,11.0,9.157893,4.474359035491943,10.5
+Estructura de Datos,2425-3,2,anon_328,8,42,18.0,10.491254,4.474359035491943,12.0
+Estructura de Datos,2425-3,2,anon_329,8,42,21.0,18.730764,4.474359035491943,22.5
+Estructura de Datos,2425-3,2,anon_330,8,42,13.0,16.174692,4.474359035491943,19.5
+Estructura de Datos,2425-3,2,anon_331,8,42,0.0,0.45325434,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_332,8,42,0.0,0.39422917,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_333,8,42,2.0,3.0643466,4.474359035491943,3.0
+Estructura de Datos,2425-3,2,anon_334,8,42,3.0,3.0900934,4.474359035491943,3.0
+Estructura de Datos,2425-3,2,anon_335,8,42,1.0,1.897011,4.474359035491943,1.5
+Estructura de Datos,2425-3,2,anon_336,8,42,3.0,4.657958,4.474359035491943,4.5
+Estructura de Datos,2425-3,2,anon_337,8,42,2.0,3.2194104,4.474359035491943,3.0
+Estructura de Datos,2425-3,2,anon_338,8,42,0.0,0.52777636,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_339,8,42,2.0,3.0848804,4.474359035491943,3.0
+Estructura de Datos,2425-3,2,anon_340,8,42,0.0,0.75244385,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_341,8,42,0.0,0.5721527,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_342,8,42,1.0,0.62442213,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_343,8,42,4.0,4.537593,4.474359035491943,4.5
+Estructura de Datos,2425-3,2,anon_344,8,42,0.0,0.8792819,4.474359035491943,0.0
+Estructura de Datos,2425-3,2,anon_345,8,42,7.0,6.743809,4.474359035491943,7.5
+Estructura de Datos,2526-1,2,anon_012,8,42,0.0,0.21044242,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_060,8,42,2.0,2.4707944,5.615384578704834,3.0
+Estructura de Datos,2526-1,2,anon_324,8,42,0.0,-0.13591659,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_333,8,42,0.0,0.27972007,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_336,8,42,21.0,5.515332,5.615384578704834,7.5
+Estructura de Datos,2526-1,2,anon_342,8,42,4.0,5.5580883,5.615384578704834,6.0
+Estructura de Datos,2526-1,2,anon_346,8,42,0.0,0.4126166,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_347,8,42,1.0,1.342799,5.615384578704834,1.5
+Estructura de Datos,2526-1,2,anon_348,8,42,0.0,0.26801682,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_349,8,42,0.0,0.3479073,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_350,8,42,3.0,1.2405746,5.615384578704834,1.5
+Estructura de Datos,2526-1,2,anon_351,8,42,6.0,0.21677864,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_352,8,42,0.0,0.08801675,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_353,8,42,2.0,2.526664,5.615384578704834,3.0
+Estructura de Datos,2526-1,2,anon_354,8,42,0.0,0.19807756,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_355,8,42,0.0,0.19440043,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_356,8,42,0.0,0.19190073,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_357,8,42,0.0,0.2705201,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_358,8,42,5.0,5.952821,5.615384578704834,7.5
+Estructura de Datos,2526-1,2,anon_359,8,42,0.0,0.3640113,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_360,8,42,0.0,0.20806527,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_361,8,42,0.0,0.42604613,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_362,8,42,0.0,0.64595747,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_363,8,42,1.0,1.3391312,5.615384578704834,1.5
+Estructura de Datos,2526-1,2,anon_364,8,42,23.0,17.016886,5.615384578704834,21.0
+Estructura de Datos,2526-1,2,anon_365,8,42,0.0,0.5769819,5.615384578704834,0.0
+Estructura de Datos,2526-1,2,anon_366,8,42,6.0,7.062958,5.615384578704834,9.0
+Estructura de Datos,2526-1,2,anon_367,8,42,14.0,10.974876,5.615384578704834,15.0
+Estructura de Datos,2526-1,2,anon_368,8,42,2.0,2.5308022,5.615384578704834,3.0
+Estructura de Datos,2526-1,2,anon_369,8,42,2.0,1.207106,5.615384578704834,1.5
+Estructura de Datos,2526-2,2,anon_031,8,42,3.0,5.478705,4.644444465637207,4.5
+Estructura de Datos,2526-2,2,anon_064,8,42,0.0,2.438756,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_067,8,42,7.0,5.446125,4.644444465637207,4.5
+Estructura de Datos,2526-2,2,anon_077,8,42,0.0,2.1168218,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_080,8,42,14.0,11.270321,4.644444465637207,13.5
+Estructura de Datos,2526-2,2,anon_087,8,42,0.0,1.9933045,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_205,8,42,0.0,2.1580193,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_347,8,42,9.0,9.499655,4.644444465637207,10.5
+Estructura de Datos,2526-2,2,anon_355,8,42,0.0,2.2388148,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_360,8,42,0.0,2.151714,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_370,8,42,44.0,37.83575,4.644444465637207,52.5
+Estructura de Datos,2526-2,2,anon_371,8,42,9.0,6.432951,4.644444465637207,6.0
+Estructura de Datos,2526-2,2,anon_372,8,42,4.0,6.310695,4.644444465637207,6.0
+Estructura de Datos,2526-2,2,anon_373,8,42,2.0,3.275086,4.644444465637207,1.5
+Estructura de Datos,2526-2,2,anon_374,8,42,9.0,2.2381833,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_375,8,42,0.0,2.147439,4.644444465637207,0.0
+Estructura de Datos,2526-2,2,anon_376,8,42,3.0,5.1030087,4.644444465637207,4.5
+Estructura de Datos,2526-2,2,anon_377,8,42,8.0,4.029909,4.644444465637207,3.0
+Estructura de Datos,2526-3,2,anon_004,8,42,7.0,5.8945484,4.935897350311279,3.0
+Estructura de Datos,2526-3,2,anon_007,8,42,0.0,1.9156797,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_081,8,42,2.0,2.9299607,4.935897350311279,3.0
+Estructura de Datos,2526-3,2,anon_087,8,42,2.0,2.6044893,4.935897350311279,3.0
+Estructura de Datos,2526-3,2,anon_324,8,42,0.0,1.1469665,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_326,8,42,12.0,12.709861,4.935897350311279,12.0
+Estructura de Datos,2526-3,2,anon_339,8,42,0.0,0.2483052,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_341,8,42,0.0,0.075485826,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_349,8,42,6.0,11.611004,4.935897350311279,9.0
+Estructura de Datos,2526-3,2,anon_356,8,42,0.0,1.1733897,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_362,8,42,15.0,12.67076,4.935897350311279,15.0
+Estructura de Datos,2526-3,2,anon_363,8,42,11.0,7.048231,4.935897350311279,9.0
+Estructura de Datos,2526-3,2,anon_365,8,42,24.0,20.193502,4.935897350311279,24.0
+Estructura de Datos,2526-3,2,anon_372,8,42,10.0,11.32784,4.935897350311279,12.0
+Estructura de Datos,2526-3,2,anon_375,8,42,4.0,6.847026,4.935897350311279,6.0
+Estructura de Datos,2526-3,2,anon_378,8,42,2.0,3.9768746,4.935897350311279,3.0
+Estructura de Datos,2526-3,2,anon_379,8,42,19.0,19.977362,4.935897350311279,21.0
+Estructura de Datos,2526-3,2,anon_380,8,42,3.0,1.6393902,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_381,8,42,4.0,7.0637913,4.935897350311279,6.0
+Estructura de Datos,2526-3,2,anon_382,8,42,2.0,3.8335936,4.935897350311279,3.0
+Estructura de Datos,2526-3,2,anon_383,8,42,3.0,4.1869025,4.935897350311279,4.5
+Estructura de Datos,2526-3,2,anon_384,8,42,2.0,4.096301,4.935897350311279,3.0
+Estructura de Datos,2526-3,2,anon_385,8,42,0.0,0.32926726,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_386,8,42,2.0,3.7457964,4.935897350311279,3.0
+Estructura de Datos,2526-3,2,anon_387,8,42,4.0,6.1842127,4.935897350311279,6.0
+Estructura de Datos,2526-3,2,anon_388,8,42,10.0,13.103081,4.935897350311279,13.5
+Estructura de Datos,2526-3,2,anon_389,8,42,0.0,0.12454629,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_390,8,42,0.0,0.041959286,4.935897350311279,0.0
+Estructura de Datos,2526-3,2,anon_391,8,42,1.0,1.2335258,4.935897350311279,1.5
+Estructura de Datos,2526-3,2,anon_392,8,42,0.0,-0.07494831,4.935897350311279,0.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_001,4,42,9.0,6.42865,3.677419424057007,12.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_002,4,42,12.0,4.197698,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_003,4,42,3.0,4.1958094,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_004,4,42,3.0,5.4115524,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_005,4,42,9.0,4.237561,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_006,4,42,2.0,3.1898074,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_007,4,42,11.0,6.3744636,3.677419424057007,12.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_008,4,42,2.0,4.2938976,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_009,4,42,1.0,3.2007518,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_010,4,42,1.0,3.224074,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_011,4,42,3.0,3.2034628,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_012,4,42,8.0,5.2585564,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_013,4,42,5.0,5.257528,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_014,4,42,9.0,5.2770495,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_015,4,42,12.0,7.453713,3.677419424057007,15.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_016,4,42,2.0,4.221424,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_017,4,42,11.0,5.2563357,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_018,4,42,8.0,3.2365282,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_019,4,42,1.0,3.227694,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_020,4,42,0.0,2.1826518,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_021,4,42,0.0,2.189288,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_022,4,42,11.0,6.4187865,3.677419424057007,12.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_023,4,42,3.0,3.2293096,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_024,4,42,5.0,5.2663584,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_025,4,42,1.0,3.2597623,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_026,4,42,1.0,3.2662206,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_027,4,42,8.0,5.3042135,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_028,4,42,8.0,3.2507288,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_029,4,42,1.0,3.2874188,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_030,4,42,1.0,3.2649043,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_031,4,42,1.0,3.303017,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_032,4,42,1.0,3.2836905,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_033,4,42,1.0,3.2888193,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_034,4,42,0.0,2.265137,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_035,4,42,8.0,3.2920988,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_001,4,42,5.0,5.5845823,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_002,4,42,8.0,5.5894437,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_003,4,42,0.0,3.5450785,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_004,4,42,6.0,5.545756,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_005,4,42,4.0,6.5732584,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_006,4,42,9.0,6.5309,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_007,4,42,3.0,4.5615425,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_008,4,42,5.0,7.5649037,3.677419424057007,12.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_009,4,42,1.0,4.51697,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_010,4,42,0.0,3.4941425,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_011,4,42,5.0,4.511358,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_012,4,42,10.0,4.496205,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_013,4,42,1.0,4.4744573,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_014,4,42,2.0,4.466825,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_015,4,42,0.0,3.4532292,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_016,4,42,10.0,5.530829,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_017,4,42,2.0,4.478743,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_018,4,42,1.0,4.497284,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_019,4,42,3.0,6.5397882,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_020,4,42,3.0,6.535762,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_021,4,42,8.0,7.479672,3.677419424057007,12.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_001,4,42,13.0,5.2649746,4.4285712242126465,6.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_002,4,42,0.0,3.352602,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_003,4,42,4.0,3.6450086,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_004,4,42,2.0,3.2368276,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_005,4,42,3.0,3.5650806,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_006,4,42,2.0,3.7009583,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_007,4,42,0.0,1.4759717,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_008,4,42,12.0,8.786457,4.4285712242126465,12.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_009,4,42,1.0,1.3010818,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_010,4,42,8.0,5.0140915,4.4285712242126465,6.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_011,4,42,4.0,1.135845,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_012,4,42,10.0,8.503656,4.4285712242126465,12.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_013,4,42,0.0,3.2064164,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_014,4,42,0.0,1.7512803,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_015,4,42,0.0,2.51776,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_016,4,42,0.0,3.0586643,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_017,4,42,0.0,0.7130933,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_018,4,42,9.0,3.3124866,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_019,4,42,0.0,1.3891174,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_020,4,42,0.0,1.3251107,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_021,4,42,13.0,8.590046,4.4285712242126465,15.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_022,4,42,11.0,6.721345,4.4285712242126465,12.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_023,4,42,0.0,3.1294312,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_024,4,42,0.0,1.9473965,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_025,4,42,6.0,5.21986,4.4285712242126465,9.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_026,4,42,1.0,0.2991252,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_027,4,42,4.0,2.5058877,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_028,4,42,2.0,2.9384274,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_029,4,42,0.0,2.4139822,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_030,4,42,5.0,2.8621557,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_031,4,42,4.0,1.6184802,4.4285712242126465,0.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_001,6,42,9.0,6.2300186,3.677419424057007,8.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_002,6,42,12.0,6.501521,3.677419424057007,10.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_003,6,42,3.0,3.2348113,3.677419424057007,4.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_004,6,42,3.0,4.5352917,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_005,6,42,9.0,6.907036,3.677419424057007,10.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_006,6,42,2.0,2.1394074,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_007,6,42,11.0,6.9089003,3.677419424057007,10.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_008,6,42,2.0,3.771964,3.677419424057007,4.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_009,6,42,1.0,1.9347641,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_010,6,42,1.0,2.5536845,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_011,6,42,3.0,1.9235392,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_012,6,42,8.0,6.453001,3.677419424057007,10.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_013,6,42,5.0,4.2931566,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_014,6,42,9.0,5.2118454,3.677419424057007,8.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_015,6,42,12.0,10.258664,3.677419424057007,16.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_016,6,42,2.0,3.339365,3.677419424057007,4.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_017,6,42,11.0,6.3894286,3.677419424057007,10.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_018,6,42,8.0,5.7121134,3.677419424057007,8.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_019,6,42,1.0,1.9046067,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_020,6,42,0.0,0.77981925,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_021,6,42,0.0,0.78238225,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_022,6,42,11.0,7.882145,3.677419424057007,12.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_023,6,42,3.0,2.2348988,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_024,6,42,5.0,4.22237,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_025,6,42,1.0,1.9152087,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_026,6,42,1.0,1.9188521,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_027,6,42,8.0,5.1074705,3.677419424057007,8.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_028,6,42,8.0,3.2667933,3.677419424057007,4.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_029,6,42,1.0,1.9328159,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_030,6,42,1.0,2.073378,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_031,6,42,1.0,1.9445838,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_032,6,42,1.0,2.422082,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_033,6,42,1.0,2.4229486,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_034,6,42,0.0,1.1375582,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_035,6,42,8.0,3.2859733,3.677419424057007,4.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_001,6,42,5.0,7.863075,3.677419424057007,10.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_002,6,42,8.0,4.7793493,3.677419424057007,4.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_003,6,42,0.0,2.3940983,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_004,6,42,6.0,4.5250673,3.677419424057007,4.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_005,6,42,4.0,5.667017,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_006,6,42,9.0,7.5210238,3.677419424057007,10.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_007,6,42,3.0,3.4528182,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_008,6,42,5.0,6.6389666,3.677419424057007,8.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_009,6,42,1.0,3.2493234,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_010,6,42,0.0,2.1457107,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_011,6,42,5.0,4.232706,3.677419424057007,4.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_012,6,42,10.0,5.239291,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_013,6,42,1.0,3.0872025,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_014,6,42,2.0,3.0520034,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_015,6,42,0.0,1.9670584,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_016,6,42,10.0,5.3503704,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_017,6,42,2.0,3.0079894,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_018,6,42,1.0,3.0617816,3.677419424057007,2.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_019,6,42,3.0,5.298401,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_020,6,42,3.0,5.266282,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_021,6,42,8.0,8.283281,3.677419424057007,12.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_001,6,42,13.0,8.003957,4.4285712242126465,10.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_002,6,42,0.0,2.2548501,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_003,6,42,4.0,2.5005176,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_004,6,42,2.0,3.431795,4.4285712242126465,2.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_005,6,42,3.0,2.4428415,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_006,6,42,2.0,2.5791087,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_007,6,42,0.0,1.0531182,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_008,6,42,12.0,10.916686,4.4285712242126465,14.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_009,6,42,1.0,0.9452442,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_010,6,42,8.0,6.7534704,4.4285712242126465,8.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_011,6,42,4.0,2.0825047,4.4285712242126465,2.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_012,6,42,10.0,9.737175,4.4285712242126465,12.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_013,6,42,0.0,2.2094615,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_014,6,42,0.0,1.1847385,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_015,6,42,0.0,1.7030615,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_016,6,42,0.0,2.1246667,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_017,6,42,0.0,0.6097456,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_018,6,42,9.0,4.6745157,4.4285712242126465,4.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_019,6,42,0.0,1.0012013,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_020,6,42,0.0,0.97194433,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_021,6,42,13.0,11.441399,4.4285712242126465,16.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_022,6,42,11.0,8.736553,4.4285712242126465,12.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_023,6,42,0.0,2.2684171,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_024,6,42,0.0,1.4280727,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_025,6,42,6.0,4.8018312,4.4285712242126465,6.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_026,6,42,1.0,1.5836556,4.4285712242126465,2.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_027,6,42,4.0,4.251446,4.4285712242126465,4.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_028,6,42,2.0,3.3194983,4.4285712242126465,2.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_029,6,42,0.0,1.8181055,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_030,6,42,5.0,3.2833853,4.4285712242126465,2.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_031,6,42,4.0,3.7573304,4.4285712242126465,4.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_001,8,42,9.0,5.8097243,3.677419424057007,7.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_002,8,42,12.0,8.552277,3.677419424057007,12.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_003,8,42,3.0,3.2705555,3.677419424057007,4.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_004,8,42,3.0,3.3354044,3.677419424057007,4.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_005,8,42,9.0,7.783783,3.677419424057007,10.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_006,8,42,2.0,1.207495,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_007,8,42,11.0,8.720279,3.677419424057007,12.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_008,8,42,2.0,2.5913215,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_009,8,42,1.0,1.1232114,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_010,8,42,1.0,1.4986396,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_011,8,42,3.0,2.1448116,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_012,8,42,8.0,6.463908,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_013,8,42,5.0,3.3250265,3.677419424057007,4.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_014,8,42,9.0,7.375308,3.677419424057007,10.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_015,8,42,12.0,11.981604,3.677419424057007,16.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_016,8,42,2.0,2.3937368,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_017,8,42,11.0,8.524958,3.677419424057007,12.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_018,8,42,8.0,6.7416463,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_019,8,42,1.0,1.1839135,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_020,8,42,0.0,0.13364333,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_021,8,42,0.0,0.14200449,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_022,8,42,11.0,9.802832,3.677419424057007,13.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_023,8,42,3.0,1.3871915,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_024,8,42,5.0,5.4180675,3.677419424057007,7.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_025,8,42,1.0,1.2337275,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_026,8,42,1.0,1.242933,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_027,8,42,8.0,5.369409,3.677419424057007,7.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_028,8,42,8.0,5.5362234,3.677419424057007,7.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_029,8,42,1.0,1.2721267,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_030,8,42,1.0,1.344364,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_031,8,42,1.0,1.2929606,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_032,8,42,1.0,1.5549695,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_033,8,42,1.0,1.5609628,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_034,8,42,0.0,0.40285075,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,1,anon_md_2526_2_1_035,8,42,8.0,5.583477,3.677419424057007,7.5
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_001,8,42,5.0,6.4019647,3.677419424057007,7.5
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_002,8,42,8.0,5.380946,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_003,8,42,0.0,1.2325487,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_004,8,42,6.0,5.284605,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_005,8,42,4.0,5.3080335,3.677419424057007,6.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_006,8,42,9.0,7.279335,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_007,8,42,3.0,2.1896076,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_008,8,42,5.0,6.2770543,3.677419424057007,7.5
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_009,8,42,1.0,2.1174507,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_010,8,42,0.0,1.0845785,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_011,8,42,5.0,3.1026754,3.677419424057007,3.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_012,8,42,10.0,7.162728,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_013,8,42,1.0,2.0367167,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_014,8,42,2.0,2.0145023,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_015,8,42,0.0,0.97130674,3.677419424057007,0.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_016,8,42,10.0,7.180442,3.677419424057007,9.0
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_017,8,42,2.0,1.9425403,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_018,8,42,1.0,1.9516705,3.677419424057007,1.5
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_019,8,42,3.0,4.0405116,3.677419424057007,4.5
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_020,8,42,3.0,4.0215797,3.677419424057007,4.5
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_021,8,42,8.0,9.100649,3.677419424057007,12.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_001,8,42,13.0,10.947547,4.4285712242126465,13.5
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_002,8,42,0.0,1.2480897,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_003,8,42,4.0,3.5651197,4.4285712242126465,3.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_004,8,42,2.0,3.4377584,4.4285712242126465,3.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_005,8,42,3.0,2.4359465,4.4285712242126465,1.5
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_006,8,42,2.0,3.6008701,4.4285712242126465,3.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_007,8,42,0.0,0.6010153,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_008,8,42,12.0,11.187738,4.4285712242126465,13.5
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_009,8,42,1.0,1.5788529,4.4285712242126465,1.5
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_010,8,42,8.0,8.808882,4.4285712242126465,10.5
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_011,8,42,4.0,2.6954951,4.4285712242126465,3.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_012,8,42,10.0,12.19922,4.4285712242126465,15.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_013,8,42,0.0,1.2253801,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_014,8,42,0.0,0.6215669,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_015,8,42,0.0,0.90396684,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_016,8,42,0.0,1.1709076,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_017,8,42,0.0,0.35312802,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_018,8,42,9.0,6.6941853,4.4285712242126465,7.5
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_019,8,42,0.0,0.5204272,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_020,8,42,0.0,0.50509334,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_021,8,42,13.0,13.0188465,4.4285712242126465,16.5
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_022,8,42,11.0,9.621554,4.4285712242126465,12.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_023,8,42,0.0,1.2792742,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_024,8,42,0.0,0.7362148,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_025,8,42,6.0,4.897193,4.4285712242126465,6.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_026,8,42,1.0,1.3874111,4.4285712242126465,1.5
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_027,8,42,4.0,5.37485,4.4285712242126465,6.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_028,8,42,2.0,3.3432007,4.4285712242126465,3.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_029,8,42,0.0,0.96508986,4.4285712242126465,0.0
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_030,8,42,5.0,4.3668323,4.4285712242126465,4.5
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_031,8,42,4.0,3.9965515,4.4285712242126465,4.5

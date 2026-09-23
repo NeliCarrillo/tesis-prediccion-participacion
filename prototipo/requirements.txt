@@ -1,16 +1,13 @@
-# Dependencias directas del prototipo (Sprint 5) — NO es un `pip freeze`:
-# solo lo que el código de `prototipo/` y los módulos que reutiliza de
-# `RedBayesiana/codigo_red/` importan directamente. Las transitivas
-# (scipy, joblib, starlette, etc.) las resuelve pip a partir de estas.
+# Dependencias para EJECUTAR el prototipo desplegado (app.py + caso.py +
+# services/lstm_service.py, y lo que importan de RedBayesiana/codigo_red/).
+# NO es un `pip freeze`: solo lo que ese código importa directamente. Las
+# transitivas (scipy, starlette, etc.) las resuelve pip a partir de estas.
+# Para entrenar modelos, correr pruebas de paridad o inspeccionar el
+# notebook, usa `requirements-dev.txt` (instala también estas).
 #
 # Versiones fijadas exactamente a las ya usadas y validadas en el entorno
-# `tesis-py311` (Python 3.11.3) con el que se generaron los resultados de
-# Sprint 3 y 4 — no se actualizó ningún paquete al escribir este archivo.
-#
-# TensorFlow/pgmpy/scikit-learn/networkx no los usa todavía `prototipo/`
-# (solo `caso.py`, que necesita pandas), pero los va a necesitar en cuanto
-# existan `lstm_service.py`/`bayes_service.py` (tarjetas 2-3), así que se
-# documentan aquí desde ya para que el manifiesto no quede incompleto.
+# `tesis-py311` (Python 3.11.3) — no se actualizó ningún paquete al
+# escribir este archivo.
 
 nicegui==3.17.1
 
@@ -19,7 +16,10 @@ numpy==2.2.6
 
 tensorflow==2.21.0
 keras==3.15.1
-scikit-learn==1.6.1
 
+# Todavía no los importa ningún módulo de prototipo/ (ni app.py, ni
+# caso.py, ni lstm_service.py) -- se necesitarán en cuanto exista
+# bayes_service.py (tarjeta 3). Se documentan aquí, no en -dev, porque
+# son dependencias de EJECUCIÓN del prototipo final, no de desarrollo.
 pgmpy==1.1.2
 networkx==3.4.2

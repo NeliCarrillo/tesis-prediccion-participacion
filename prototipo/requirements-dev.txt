@@ -1,0 +1,14 @@
+# Dependencias adicionales para DESARROLLAR el prototipo: entrenar los
+# modelos finales, correr las pruebas de paridad, o inspeccionar/extraer
+# celdas del notebook validado. No hacen falta para ejecutar `app.py` en
+# producción/demo -- por eso viven separadas de `requirements.txt`.
+-r requirements.txt
+
+# entrenar_modelos_finales.py (StandardScaler) y services/test_paridad_lstm.py
+scikit-learn==1.6.1
+
+# services/test_paridad_lstm.py y entrenar_modelos_finales.py -- ejecutan
+# y/o leen celdas del notebook validado para extraer código o comparar
+# resultados, sin necesitar Jupyter instalado.
+nbclient==0.11.0
+nbformat==5.11.1
