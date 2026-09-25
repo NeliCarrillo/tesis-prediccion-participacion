@@ -33,6 +33,7 @@ import tensorflow as tf
 RAIZ = Path(__file__).resolve().parent.parent.parent
 RUTA_DATOS = RAIZ / "Datos Tesis Downstream"
 RUTA_ARTEFACTOS = RAIZ / "prototipo" / "artefactos_lstm"
+RUTA_PREDICCIONES_VALIDACION = RAIZ / "LSTM" / "nuevo" / "predicciones_lstm_validacion_cruzada.csv"
 
 # Debe coincidir con el diccionario usado al entrenar los modelos finales
 # (ver el historial de esta sesión: script de entrenamiento de Sprint 5).
@@ -341,22 +342,23 @@ class ResultadoLSTM:
     prediccion_total: float
 
 
-def predict_lstm(caso) -> ResultadoLSTM:
-    """Predicción puntual del total trimestral para `caso`, usando el
-    modelo final de su asignatura/hito (Estrategia 2 — entrenado con
-    todos los trimestres disponibles, no con la validación cruzada de
-    Sprint 2). No debe usarse para calcular métricas de desempeño."""
+def _predecir_desde_tensor(
+    materia: str, hito: int, X_hito: np.ndarray, X_temas_hito: np.ndarray, acumulado: float
+) -> float:
+    """Imputación de año académico, escalado y reconstrucción del total —
+    el único cuerpo de esta transformación, para no duplicarlo entre
+    `predict_lstm` (estudiante real) y `predict_lstm_manual` (estudiante
+    hipotético): ambos terminan en un tensor con esta misma forma."""
     indice_anio = ESTATICAS.index("anio_academico")
-    X_hito, X_temas_hito, acumulado = construir_entrada_lstm(caso)
-    artefactos = _cargar_artefactos(caso.materia, caso.hito)
+    artefactos = _cargar_artefactos(materia, hito)
 
     X_hito = X_hito.copy()
     if np.isnan(X_hito[:, :, indice_anio]).any():
         mediana = artefactos["mediana_anio_academico"]
         if mediana is None:
             raise ValueError(
-                f"{caso}: año académico faltante pero el modelo de "
-                f"{caso.materia}/hito {caso.hito} no registró una mediana de imputación"
+                f"año académico faltante pero el modelo de "
+                f"{materia}/hito {hito} no registró una mediana de imputación"
             )
         X_hito[:, :, indice_anio] = np.where(
             np.isnan(X_hito[:, :, indice_anio]), mediana, X_hito[:, :, indice_anio]
@@ -369,11 +371,20 @@ def predict_lstm(caso) -> ResultadoLSTM:
     prediccion_estandarizada = artefactos["modelo"].predict(
         [X_escalado, X_temas_hito], verbose=0
     ).ravel()[0]
-    total = (
+    return (
         acumulado
         + float(prediccion_estandarizada) * artefactos["desviacion_objetivo"]
         + artefactos["media_objetivo"]
     )
+
+
+def predict_lstm(caso) -> ResultadoLSTM:
+    """Predicción puntual del total trimestral para `caso`, usando el
+    modelo final de su asignatura/hito (Estrategia 2 — entrenado con
+    todos los trimestres disponibles, no con la validación cruzada de
+    Sprint 2). No debe usarse para calcular métricas de desempeño."""
+    X_hito, X_temas_hito, acumulado = construir_entrada_lstm(caso)
+    total = _predecir_desde_tensor(caso.materia, caso.hito, X_hito, X_temas_hito, acumulado)
 
     return ResultadoLSTM(
         materia=caso.materia,
@@ -383,3 +394,244 @@ def predict_lstm(caso) -> ResultadoLSTM:
         hito=caso.hito,
         prediccion_total=total,
     )
+
+
+def _fila_referencia_seccion(materia: str, trimestre: str, seccion: str) -> int:
+    """Índice de cualquier estudiante ya existente en una sección real
+    (materia/trimestre/sección). Se usa solo para leer hechos de horario
+    de esa sección (sesiones, evaluaciones, temas de cada semana), nunca
+    para leer nada propio de un estudiante en particular."""
+    datos = _preparar_datos()
+    estatica = datos["estatica"]
+    filtro = (
+        (estatica.materia == materia)
+        & (estatica.trimestre == trimestre)
+        & (estatica.seccion.astype(str) == str(seccion))
+    )
+    indices = np.where(filtro.to_numpy())[0]
+    if len(indices) == 0:
+        raise ValueError(f"no existe la sección {materia}/{trimestre}/sección {seccion}")
+    return int(indices[0])
+
+
+def horario_real_seccion(materia: str, trimestre: str, seccion: str, hito: int) -> dict:
+    """Hechos reales de la sección (tamaño del grupo, y calendario de
+    sesiones/evaluaciones/temas por semana hasta el hito) -- los mismos
+    que ya usa `construir_entrada_lstm_manual` para el estudiante nuevo,
+    aquí solo expuestos para mostrárselos al usuario (qué queda "fijado"
+    por la sección real, en vez de inventado)."""
+    datos = _preparar_datos()
+    i = _fila_referencia_seccion(materia, trimestre, seccion)
+    fila = datos["estatica"].iloc[i]
+
+    n_estaticas = len(ESTATICAS)
+    indice_sesiones = n_estaticas + DINAMICAS.index("sesiones")
+    indice_evaluaciones = n_estaticas + DINAMICAS.index("evaluaciones")
+
+    semanas = []
+    for semana in range(hito):
+        semanas.append({
+            "semana": semana + 1,
+            "sesiones": float(datos["X"][i, semana, indice_sesiones]),
+            "evaluaciones": float(datos["X"][i, semana, indice_evaluaciones]),
+            "tema_1": int(datos["X_temas"][i, semana, 0]),
+            "tema_2": int(datos["X_temas"][i, semana, 1]),
+        })
+
+    return {
+        "tamano_grupo": float(fila["tamano_grupo"]),
+        "semanas": semanas,
+    }
+
+
+def valores_reales_estudiante(caso) -> dict:
+    """Valores reales (año académico, posición en la lista, participaciones
+    semana a semana hasta el hito) de un estudiante histórico -- para
+    precargar el formulario de «estudiante nuevo» como plantilla editable
+    (nunca para mezclarlos con una predicción hipotética sin que el
+    usuario los vea y pueda modificarlos)."""
+    datos = _preparar_datos()
+    estatica = datos["estatica"]
+    filtro = (
+        (estatica.materia == caso.materia)
+        & (estatica.trimestre == caso.trimestre)
+        & (estatica.seccion.astype(str) == str(caso.seccion))
+        & (estatica.estudiante_id == caso.estudiante_id)
+    )
+    indices = np.where(filtro.to_numpy())[0]
+    if len(indices) != 1:
+        raise ValueError(f"se esperaba exactamente 1 registro para {caso}, hay {len(indices)}")
+    i = indices[0]
+    fila = estatica.iloc[i]
+
+    indice_anio = ESTATICAS.index("anio_academico")
+    indice_participaciones = len(ESTATICAS) + DINAMICAS.index("participaciones")
+
+    anio = datos["X"][i, 0, indice_anio]  # estática: igual en cualquier semana
+    participaciones = datos["X"][i, :caso.hito, indice_participaciones].tolist()
+
+    return {
+        "anio_academico": None if np.isnan(anio) else float(anio),
+        "posicion_lista": float(fila["posicion_lista"]),
+        "participaciones_semanales": participaciones,
+    }
+
+
+def construir_entrada_lstm_manual(
+    materia: str,
+    trimestre: str,
+    seccion: str,
+    hito: int,
+    anio_academico: float | None,
+    posicion_lista: float,
+    participaciones_semanales: list[float],
+) -> tuple[np.ndarray, np.ndarray, float]:
+    """Para un estudiante hipotético (no presente en los datos históricos)
+    que se uniría a una sección real ya existente: `tamano_grupo`,
+    `seccion_num` y el horario de cada semana (sesiones, evaluaciones,
+    temas) se toman de esa sección real -- son hechos idénticos para
+    todos sus estudiantes (verificado: 0 de 204 combinaciones
+    materia/trimestre/sección/semana del conjunto tienen alguna variación
+    entre estudiantes), nunca se inventan. Lo único propio del estudiante
+    nuevo que se pide es lo que de verdad varía por estudiante: año que
+    cursa, posición en la lista y su propia participación en cada
+    semana."""
+    if len(participaciones_semanales) != hito:
+        raise ValueError(
+            f"se esperaban {hito} valores de participación semanal, "
+            f"llegaron {len(participaciones_semanales)}"
+        )
+
+    datos = _preparar_datos()
+    i = _fila_referencia_seccion(materia, trimestre, seccion)
+    fila_estatica = datos["estatica"].iloc[i]
+
+    n_estaticas = len(ESTATICAS)
+    indice_anio = ESTATICAS.index("anio_academico")
+    indice_seccion_num = ESTATICAS.index("seccion_num")
+    indice_tamano_grupo = ESTATICAS.index("tamano_grupo")
+    indice_posicion = ESTATICAS.index("posicion_lista")
+    indice_participaciones = n_estaticas + DINAMICAS.index("participaciones")
+    indice_sesiones = n_estaticas + DINAMICAS.index("sesiones")
+    indice_evaluaciones = n_estaticas + DINAMICAS.index("evaluaciones")
+
+    X_hito = np.zeros((1, hito, n_estaticas + len(DINAMICAS)), dtype=np.float32)
+    X_hito[0, :, indice_anio] = np.nan if anio_academico is None else float(anio_academico)
+    X_hito[0, :, indice_seccion_num] = float(fila_estatica["seccion_num"])
+    X_hito[0, :, indice_tamano_grupo] = float(fila_estatica["tamano_grupo"])
+    X_hito[0, :, indice_posicion] = float(posicion_lista)
+
+    # Horario real de la sección (sesiones/evaluaciones ya vividas, iguales
+    # para todos sus estudiantes) -- no se pide ni se inventa.
+    X_hito[0, :, indice_sesiones] = datos["X"][i, :hito, indice_sesiones]
+    X_hito[0, :, indice_evaluaciones] = datos["X"][i, :hito, indice_evaluaciones]
+    # Único dato propio del estudiante nuevo por semana.
+    X_hito[0, :, indice_participaciones] = np.array(participaciones_semanales, dtype=np.float32)
+
+    X_temas_hito = datos["X_temas"][i : i + 1, :hito].copy()
+
+    acumulado = float(np.sum(participaciones_semanales))
+    return X_hito, X_temas_hito, acumulado
+
+
+@dataclass(frozen=True)
+class ResultadoLSTMManual:
+    materia: str
+    trimestre: str
+    seccion: str
+    hito: int
+    prediccion_total: float
+
+
+def predict_lstm_manual(
+    materia: str,
+    trimestre: str,
+    seccion: str,
+    hito: int,
+    anio_academico: float | None,
+    posicion_lista: float,
+    participaciones_semanales: list[float],
+) -> ResultadoLSTMManual:
+    """Misma predicción que `predict_lstm`, para un estudiante hipotético
+    que se uniría a una sección real ya existente (`materia`/`trimestre`/
+    `seccion`) en vez de para un registro histórico."""
+    X_hito, X_temas_hito, acumulado = construir_entrada_lstm_manual(
+        materia, trimestre, seccion, hito, anio_academico, posicion_lista, participaciones_semanales
+    )
+    total = _predecir_desde_tensor(materia, hito, X_hito, X_temas_hito, acumulado)
+
+    return ResultadoLSTMManual(
+        materia=materia,
+        trimestre=trimestre,
+        seccion=seccion,
+        hito=hito,
+        prediccion_total=total,
+    )
+
+
+_CACHE_TABLA_ERROR: np.ndarray | None = None
+
+_VECINDAD_MINIMA_ERROR_LOCAL = 2.0
+_N_MINIMO_ERROR_LOCAL = 5
+
+
+def _tabla_error_validacion() -> np.ndarray:
+    """(real, predicho) de los 1572 casos de la validación cruzada oficial
+    de la LSTM (Sprint 2, `LSTM/nuevo/adaptacion_lstm_participaciones.ipynb`,
+    celda 32 `validacion_cruzada`) -- NO de los modelos Estrategia 2 de
+    este prototipo. Lee el CSV ya exportado en Sprint 5 para paridad
+    (`predicciones_lstm_validacion_cruzada.csv`); no reentrena nada."""
+    global _CACHE_TABLA_ERROR
+    if _CACHE_TABLA_ERROR is None:
+        tabla = pd.read_csv(RUTA_PREDICCIONES_VALIDACION)
+        _CACHE_TABLA_ERROR = tabla[["total_trimestre_real", "prediccion_lstm"]].to_numpy(dtype=float)
+    return _CACHE_TABLA_ERROR
+
+
+def error_local(prediccion: float) -> dict:
+    """Margen de error empírico para una predicción de esta magnitud,
+    estimado sobre los casos de la validación cruzada oficial cuya
+    predicción histórica cae cerca de `prediccion` (vecindad de
+    `_VECINDAD_MINIMA_ERROR_LOCAL` participaciones, ampliada si hay menos
+    de `_N_MINIMO_ERROR_LOCAL` casos). No sustituye ni se mezcla con el
+    RMSE/R² global ya reportado en el informe -- es una estimación local,
+    adicional, propia del prototipo."""
+    tabla = _tabla_error_validacion()
+    reales, predichos = tabla[:, 0], tabla[:, 1]
+
+    vecindad = _VECINDAD_MINIMA_ERROR_LOCAL
+    mascara = np.abs(predichos - prediccion) <= vecindad
+    while mascara.sum() < _N_MINIMO_ERROR_LOCAL and vecindad < 20:
+        vecindad *= 2
+        mascara = np.abs(predichos - prediccion) <= vecindad
+
+    n = int(mascara.sum())
+    if n == 0:
+        return {"rmse_local": None, "mae_local": None, "n": 0, "vecindad": vecindad}
+
+    diferencias = reales[mascara] - predichos[mascara]
+    return {
+        "rmse_local": float(np.sqrt(np.mean(diferencias ** 2))),
+        "mae_local": float(np.mean(np.abs(diferencias))),
+        "n": n,
+        "vecindad": vecindad,
+    }
+
+
+def valor_real(caso) -> float:
+    """Valor real observado (participaciones totales del trimestre) para
+    un `CasoPrediccion` histórico -- nunca disponible para un estudiante
+    hipotético. Se lee de la tabla estática, ya cacheada por
+    `_preparar_datos()`."""
+    datos = _preparar_datos()
+    estatica = datos["estatica"]
+    filtro = (
+        (estatica.materia == caso.materia)
+        & (estatica.trimestre == caso.trimestre)
+        & (estatica.seccion.astype(str) == str(caso.seccion))
+        & (estatica.estudiante_id == caso.estudiante_id)
+    )
+    indices = np.where(filtro.to_numpy())[0]
+    if len(indices) != 1:
+        raise ValueError(f"se esperaba exactamente 1 registro para {caso}, hay {len(indices)}")
+    return float(datos["y"][indices[0]])
