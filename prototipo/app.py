@@ -830,7 +830,8 @@ def pagina_principal() -> None:
                 "para un estudiante hipotético."
             )
             etiqueta_contexto_bayes_n.set_text(
-                f"{resultado.materia} · {resultado.trimestre} · sección {resultado.seccion}"
+                f"{resultado.materia} · {resultado.trimestre} · sección {resultado.seccion} · "
+                f"información disponible hasta la semana {hito}"
             )
 
             error = bayes_service.error_local(resultado.prediccion_continua)

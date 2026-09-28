@@ -1,0 +1,10 @@
+materia,estudiante_id,hito,total_trimestre_real,prediccion_bayes,prediccion_lstm,prediccion_extrapolacion
+Algoritmos y Programación,anon_145,4,20.0,17.79561957456792,22.376572,45.0
+Algoritmos y Programación,anon_145,6,20.0,11.192980046269522,23.01151,34.0
+Algoritmos y Programación,anon_145,8,20.0,6.753416840887409,19.104486,27.0
+Estructura de Datos,anon_322,4,36.0,6.851082251082252,8.812016,18.0
+Estructura de Datos,anon_322,6,36.0,6.851082251082252,15.899518,22.0
+Estructura de Datos,anon_322,8,36.0,6.851082251082252,18.175001,22.5
+Estructura de Datos,anon_370,4,44.0,6.626923076923077,30.058943,66.0
+Estructura de Datos,anon_370,6,44.0,6.626923076923077,34.919823,60.0
+Estructura de Datos,anon_370,8,44.0,6.626923076923077,37.83575,52.5
