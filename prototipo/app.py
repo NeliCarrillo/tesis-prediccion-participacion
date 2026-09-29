@@ -335,7 +335,7 @@ def pagina_principal() -> None:
                     f"Margen de error esperado para predicciones de esta magnitud: "
                     f"± {error['mae_local']:.1f} participaciones en promedio "
                     f"(RMSE {error['rmse_local']:.1f}), estimado sobre {error['n']} casos "
-                    f"similares de la validación cruzada — no es el RMSE/R² global del informe."
+                    f"similares de la validación cruzada. No corresponde al RMSE ni al R² globales del informe."
                 )
             else:
                 etiqueta_error_local_lstm.set_text("")
@@ -442,7 +442,7 @@ def pagina_principal() -> None:
                     f"Margen de error esperado para predicciones de esta magnitud: "
                     f"± {error['mae_local']:.1f} participaciones en promedio "
                     f"(RMSE {error['rmse_local']:.1f}), estimado sobre {error['n']} casos "
-                    f"similares de la validación cruzada — no es el RMSE/R² global del informe."
+                    f"similares de la validación cruzada. No corresponde al RMSE ni al R² globales del informe."
                 )
             else:
                 etiqueta_error_local_bayes.set_text("")
@@ -837,7 +837,7 @@ def pagina_principal() -> None:
                     f"Margen de error esperado para predicciones de esta magnitud: "
                     f"± {error['mae_local']:.1f} participaciones en promedio "
                     f"(RMSE {error['rmse_local']:.1f}), estimado sobre {error['n']} casos "
-                    f"similares de la validación cruzada — no es el RMSE/R² global del informe."
+                    f"similares de la validación cruzada. No corresponde al RMSE ni al R² globales del informe."
                 )
             else:
                 etiqueta_error_local_lstm_n.set_text("")
@@ -932,7 +932,7 @@ def pagina_principal() -> None:
                     f"Margen de error esperado para predicciones de esta magnitud: "
                     f"± {error['mae_local']:.1f} participaciones en promedio "
                     f"(RMSE {error['rmse_local']:.1f}), estimado sobre {error['n']} casos "
-                    f"similares de la validación cruzada — no es el RMSE/R² global del informe."
+                    f"similares de la validación cruzada. No corresponde al RMSE ni al R² globales del informe."
                 )
             else:
                 etiqueta_error_local_bayes_n.set_text("")
@@ -1001,4 +1001,4 @@ def pagina_principal() -> None:
     al_cambiar_modo()
 
 
-ui.run(title="Prototipo — participación estudiantil", reload=False)
+ui.run(title="Prototipo de participación estudiantil", reload=False)
