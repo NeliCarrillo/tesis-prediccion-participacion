@@ -40,8 +40,100 @@ import lstm_service  # noqa: E402 (ver sys.path arriba)
 opciones = OpcionesCaso()
 
 
+SIN_DATO = "__sin_dato__"
+TAMANO_TEXTO_PX = 15
+
+
+def construir_simulador(contenedor, materia: str, evidencia_observada: dict, prediccion_base: float) -> None:
+    """Simulador de evidencia: un desplegable por variable de evidencia,
+    iniciado en el valor observado del caso, que permite probar cualquier
+    combinación de estados (o marcar una variable como sin dato, que la red
+    marginaliza). Cada cambio vuelve a consultar el mismo modelo ya
+    ajustado -- no reentrena nada ni mide importancia o causalidad."""
+    contenedor.clear()
+    with contenedor:
+        selectores = {}
+        with ui.row().classes("w-full q-gutter-sm"):
+            for variable, estados in bayes_service.ESTADOS_EVIDENCIA.items():
+                opciones_variable = {estado: estado for estado in estados}
+                opciones_variable[SIN_DATO] = "Sin dato (se marginaliza)"
+                selectores[variable] = ui.select(
+                    opciones_variable, label=variable, value=evidencia_observada.get(variable, SIN_DATO)
+                ).style("width: 300px")
+
+        etiqueta_prediccion = ui.label().classes("text-h6 text-weight-bold q-mt-sm")
+        etiqueta_cambio = ui.label().classes("text-body2")
+        etiqueta_omitida = ui.label().classes("text-caption text-warning")
+        contenedor_posterior = ui.column().classes("w-full q-mt-xs")
+
+        def actualizar() -> None:
+            evidencia = {v: s.value for v, s in selectores.items() if s.value != SIN_DATO}
+            try:
+                posterior, prediccion, omitida = bayes_service.consultar_evidencia(materia, evidencia)
+            except Exception:  # noqa: BLE001 — no debe romper la tarjeta
+                etiqueta_prediccion.set_text("No se pudo calcular esta combinación.")
+                return
+            cambiadas = [v for v, s in selectores.items() if s.value != evidencia_observada.get(v, SIN_DATO)]
+            etiqueta_prediccion.set_text(f"{prediccion:.1f} participaciones")
+            if cambiadas:
+                etiqueta_cambio.set_text(
+                    f"{prediccion - prediccion_base:+.1f} frente a la predicción con la evidencia observada "
+                    f"({prediccion_base:.1f}). Variables cambiadas: {', '.join(cambiadas)}."
+                )
+            else:
+                etiqueta_cambio.set_text("Evidencia observada del caso (sin cambios).")
+            etiqueta_omitida.set_text(
+                "Sin dato: " + ", ".join(omitida) + ". La red marginaliza estas variables." if omitida else ""
+            )
+            contenedor_posterior.clear()
+            with contenedor_posterior:
+                for estado, probabilidad in posterior.items():
+                    with ui.row().classes("w-full items-center no-wrap"):
+                        ui.label(estado).style("width: 90px")
+                        ui.linear_progress(value=probabilidad, show_value=False).classes("flex-grow")
+                        ui.label(f"{probabilidad * 100:.1f}%").style("width: 56px; text-align: right")
+
+        def restablecer() -> None:
+            for variable, selector in selectores.items():
+                selector.set_value(evidencia_observada.get(variable, SIN_DATO))
+
+        for selector in selectores.values():
+            selector.on_value_change(actualizar)
+        ui.button("Volver a los valores observados", on_click=restablecer).props("flat dense")
+        actualizar()
+
+
 @ui.page("/")
 def pagina_principal() -> None:
+    # Un solo tamaño y fuente para todo el texto, para que las capturas
+    # pegadas en el informe a ancho de página queden en Arial de 9 pt o más:
+    # una tarjeta mide 672 px, y a 16 cm cada px equivale a ~0,675 pt.
+    ui.add_css(f"""
+        body, body * {{
+            font-family: Arial, Helvetica, sans-serif !important;
+            font-size: {TAMANO_TEXTO_PX}px !important;
+            line-height: 1.4 !important;
+            letter-spacing: normal !important;
+        }}
+        .q-field--float .q-field__label {{
+            transform: translateY(-45%) scale(1) !important;
+        }}
+        .q-field__native, .q-field__input {{
+            padding-top: 22px !important;
+        }}
+        .q-field__control, .q-field__native {{
+            min-height: 60px !important;
+        }}
+        .q-btn, .q-btn * {{
+            text-transform: none !important;
+        }}
+        /* Los íconos conservan su propia fuente y tamaño. */
+        .q-icon, .material-icons {{
+            font-family: 'Material Icons' !important;
+            font-size: 24px !important;
+            line-height: 1 !important;
+        }}
+    """)
     ui.label("Predicción explicable de participación estudiantil").classes(
         "text-2xl font-bold q-mt-md"
     )
@@ -281,15 +373,21 @@ def pagina_principal() -> None:
                 "text-caption text-warning q-mt-sm"
             )
 
-            ui.label("¿Qué pasaría si...?").classes("text-subtitle2 q-mt-md")
+            ui.label("¿Qué pasaría si...? Simulador de evidencia").classes("text-subtitle2 q-mt-md")
             ui.label(
-                "Para cada variable observada, qué predeciría la red si "
-                "tomara otro valor o no se conociera en absoluto. Es la "
-                "misma consulta al mismo modelo ya ajustado, con una "
-                "evidencia distinta — no una medida de importancia ni de "
-                "causalidad entre variables."
+                "Cambia uno o varios valores a la vez, o márcalos como sin "
+                "dato, y observa cómo cambia la predicción. Es la misma "
+                "consulta al mismo modelo ya ajustado, con una evidencia "
+                "distinta: no una medida de importancia ni de causalidad "
+                "entre variables."
             ).classes("text-caption text-grey-7")
-            contenedor_sensibilidad_bayes = ui.column().classes("w-full q-mt-xs")
+            contenedor_simulador_bayes = ui.column().classes("w-full q-mt-xs")
+            with ui.expansion("Resumen por variable (cada variable por separado)").classes("w-full q-mt-sm"):
+                ui.label(
+                    "Para cada variable observada, la predicción con cada uno de "
+                    "sus otros estados y al omitirla, sin cambiar las demás."
+                ).classes("text-caption text-grey-7")
+                contenedor_sensibilidad_bayes = ui.column().classes("w-full q-mt-xs")
         contenedor_resultado_bayes.set_visibility(False)
 
         def _limpiar_resultado_bayes() -> None:
@@ -357,7 +455,7 @@ def pagina_principal() -> None:
             with contenedor_posterior_bayes:
                 for estado, probabilidad in resultado.posterior.items():
                     with ui.row().classes("w-full items-center no-wrap"):
-                        ui.label(estado).style("width: 72px")
+                        ui.label(estado).style("width: 90px")
                         ui.linear_progress(value=probabilidad, show_value=False).classes("flex-grow")
                         ui.label(f"{probabilidad * 100:.1f}%").style("width: 56px; text-align: right")
 
@@ -403,6 +501,10 @@ def pagina_principal() -> None:
                                 else "text-body2"
                             )
 
+            construir_simulador(
+                contenedor_simulador_bayes, caso.materia,
+                resultado.evidencia_utilizada, resultado.prediccion_continua,
+            )
             contenedor_resultado_bayes.set_visibility(True)
 
     tarjeta_seleccion_nueva = ui.card().classes("w-full max-w-2xl q-mt-md")
@@ -419,109 +521,47 @@ def pagina_principal() -> None:
             "semana."
         ).classes("text-caption text-grey-7 q-mb-sm")
 
-        ui.label("¿Usar un estudiante real como plantilla?").classes("text-subtitle2")
-        ui.label(
-            "Opcional: elige un estudiante real para precargar año, "
-            "posición y participaciones semanales con sus valores reales "
-            "— quedan editables, para modificarlos y crear tu variante "
-            "hipotética. También coloca al estudiante nuevo en la misma "
-            "asignatura, trimestre, sección e hito que la plantilla."
-        ).classes("text-caption text-grey-7 q-mb-xs")
-
-        select_materia_plantilla = ui.select(opciones.materias(), label="Asignatura (plantilla)").classes("w-full")
-        select_trimestre_plantilla = ui.select([], label="Trimestre (plantilla)").classes("w-full")
-        select_seccion_plantilla = ui.select([], label="Sección (plantilla)").classes("w-full")
-        select_estudiante_plantilla = ui.select([], label="Estudiante (plantilla)").classes("w-full")
-        select_hito_plantilla = ui.select(
-            {h: f"Semana {h}" for h in opciones.hitos()}, label="Hito (plantilla)"
-        ).classes("w-full")
-        for selector in (
-            select_trimestre_plantilla, select_seccion_plantilla,
-            select_estudiante_plantilla, select_hito_plantilla,
-        ):
-            selector.disable()
-
-        boton_rellenar_plantilla = ui.button("Rellenar con este estudiante").classes("q-mt-xs")
-        boton_rellenar_plantilla.disable()
-
-        def _reiniciar_plantilla(desde: str) -> None:
-            widgets = {
-                "trimestre": select_trimestre_plantilla,
-                "seccion": select_seccion_plantilla,
-                "estudiante": select_estudiante_plantilla,
-            }
-            niveles = list(widgets)
-            for nombre in niveles[niveles.index(desde):]:
-                widget = widgets[nombre]
-                widget.set_options([])
-                widget.set_value(None)
-                widget.disable()
-            select_hito_plantilla.set_value(None)
-            select_hito_plantilla.disable()
-            boton_rellenar_plantilla.disable()
-
-        def al_cambiar_materia_plantilla() -> None:
-            _reiniciar_plantilla("trimestre")
-            if select_materia_plantilla.value:
-                select_trimestre_plantilla.set_options(opciones.trimestres(select_materia_plantilla.value))
-                select_trimestre_plantilla.enable()
-
-        def al_cambiar_trimestre_plantilla() -> None:
-            _reiniciar_plantilla("seccion")
-            if select_materia_plantilla.value and select_trimestre_plantilla.value:
-                secciones = opciones.secciones(select_materia_plantilla.value, select_trimestre_plantilla.value)
-                select_seccion_plantilla.set_options(secciones)
-                select_seccion_plantilla.enable()
-
-        def al_cambiar_seccion_plantilla() -> None:
-            select_estudiante_plantilla.set_options([])
-            select_estudiante_plantilla.set_value(None)
-            select_hito_plantilla.set_value(None)
-            select_hito_plantilla.disable()
-            boton_rellenar_plantilla.disable()
-            if select_materia_plantilla.value and select_trimestre_plantilla.value and select_seccion_plantilla.value:
-                estudiantes = opciones.estudiantes(
-                    select_materia_plantilla.value, select_trimestre_plantilla.value, select_seccion_plantilla.value
-                )
-                select_estudiante_plantilla.set_options(estudiantes)
-                select_estudiante_plantilla.enable()
-
-        def al_cambiar_estudiante_plantilla() -> None:
-            select_hito_plantilla.set_value(None)
-            boton_rellenar_plantilla.disable()
-            if select_estudiante_plantilla.value:
-                select_hito_plantilla.enable()
-
-        def al_cambiar_hito_plantilla() -> None:
-            boton_rellenar_plantilla.set_enabled(bool(select_hito_plantilla.value))
-
-        select_materia_plantilla.on_value_change(al_cambiar_materia_plantilla)
-        select_trimestre_plantilla.on_value_change(al_cambiar_trimestre_plantilla)
-        select_seccion_plantilla.on_value_change(al_cambiar_seccion_plantilla)
-        select_estudiante_plantilla.on_value_change(al_cambiar_estudiante_plantilla)
-        select_hito_plantilla.on_value_change(al_cambiar_hito_plantilla)
-
-        ui.separator().classes("q-my-md")
+        PARTIR_DE_REAL = "Partir de un estudiante real"
+        DESDE_CERO = "Ingresar desde cero"
+        modo_creacion = ui.toggle([PARTIR_DE_REAL, DESDE_CERO], value=DESDE_CERO).classes("q-mb-xs")
+        etiqueta_modo_creacion = ui.label().classes("text-caption text-grey-7 q-mb-sm")
 
         select_materia_n = ui.select(opciones.materias(), label="Asignatura").classes("w-full")
         select_trimestre_n = ui.select([], label="Trimestre").classes("w-full")
         select_seccion_n = ui.select([], label="Sección").classes("w-full")
+        select_estudiante_n = ui.select([], label="Estudiante real de partida (anonimizado)").classes("w-full")
         select_hito_n = ui.select(
             {h: f"Semana {h}" for h in opciones.hitos()}, label="Hito"
         ).classes("w-full")
-        for selector in (select_trimestre_n, select_seccion_n, select_hito_n):
+        for selector in (select_trimestre_n, select_seccion_n, select_estudiante_n, select_hito_n):
             selector.disable()
+
+        boton_precargar_n = ui.button("Precargar valores de este estudiante").classes("q-mt-xs")
+        boton_precargar_n.disable()
 
         numero_anio_n = ui.number(
             label="Año que cursa (dejar vacío si se desconoce)", min=1, max=6, step=1
         ).classes("w-full")
         numero_posicion_n = ui.number(
-            label="Posición relativa en la lista (0 a 1)", min=0, max=1, step=0.01
+            label="Posición relativa en la lista (0 a 1; dejar vacío si se desconoce)", min=0, max=1, step=0.01
         ).classes("w-full")
 
         ui.label("Participaciones por semana").classes("text-subtitle2 q-mt-sm")
+        ui.label(
+            "Número de participaciones registradas en cada semana; 0 si no "
+            "participó o no hubo clase, igual que en los datos históricos. Si "
+            "una semana se desconoce, déjala vacía: la LSTM la imputa con la "
+            "mediana histórica de esa semana y la red bayesiana, que solo usa "
+            "la semana del hito y la anterior, la omite."
+        ).classes("text-caption text-grey-7")
         contenedor_semanas_n = ui.row().classes("w-full q-gutter-sm")
         campos_semanas_n: list = []
+
+        # Estudiante real del que se precargaron los valores (si hubo).
+        precarga = {"estudiante_id": None}
+
+        def _es_partir_de_real() -> bool:
+            return modo_creacion.value == PARTIR_DE_REAL
 
         def _reconstruir_semanas_n() -> None:
             contenedor_semanas_n.clear()
@@ -533,49 +573,42 @@ def pagina_principal() -> None:
                     campo = ui.number(label=f"Semana {semana}", min=0, step=1, value=0).classes("w-24")
                     campos_semanas_n.append(campo)
 
-        def rellenar_con_plantilla() -> None:
-            caso_plantilla = CasoPrediccion(
-                materia=select_materia_plantilla.value,
-                trimestre=select_trimestre_plantilla.value,
-                seccion=select_seccion_plantilla.value,
-                estudiante_id=select_estudiante_plantilla.value,
-                hito=select_hito_plantilla.value,
+        def _actualizar_botones_n() -> None:
+            listo = bool(select_hito_n.value)
+            boton_generar_n.set_enabled(listo)
+            boton_precargar_n.set_enabled(listo and _es_partir_de_real() and bool(select_estudiante_n.value))
+
+        def precargar_valores() -> None:
+            caso_real = CasoPrediccion(
+                materia=select_materia_n.value,
+                trimestre=select_trimestre_n.value,
+                seccion=select_seccion_n.value,
+                estudiante_id=select_estudiante_n.value,
+                hito=select_hito_n.value,
             )
             try:
-                valores = lstm_service.valores_reales_estudiante(caso_plantilla)
+                valores = lstm_service.valores_reales_estudiante(caso_real)
             except Exception:  # noqa: BLE001
                 ui.notify("No se pudo leer los valores reales de este estudiante.", type="negative")
                 return
 
-            # Coloca al estudiante nuevo en la misma asignatura/trimestre/
-            # sección/hito de la plantilla, disparando la misma cadena de
-            # selección que si el usuario la hubiera elegido a mano.
-            select_materia_n.set_value(caso_plantilla.materia)
-            al_cambiar_materia_n()
-            select_trimestre_n.set_value(caso_plantilla.trimestre)
-            al_cambiar_trimestre_n()
-            select_seccion_n.set_value(caso_plantilla.seccion)
-            al_cambiar_seccion_n()
-            select_hito_n.set_value(caso_plantilla.hito)
-            al_cambiar_hito_n()
-
             numero_anio_n.set_value(valores["anio_academico"])
-            numero_posicion_n.set_value(round(valores["posicion_lista"], 3))
+            # Sin redondear: con el valor exacto, la precarga sin cambios
+            # reproduce la predicción histórica de la LSTM.
+            numero_posicion_n.set_value(valores["posicion_lista"])
             for campo, valor in zip(campos_semanas_n, valores["participaciones_semanales"]):
                 campo.set_value(valor)
-
+            precarga["estudiante_id"] = caso_real.estudiante_id
             ui.notify(
-                f"Campos rellenados con los valores reales de {caso_plantilla.estudiante_id} "
-                f"— quedan editables.",
+                f"Valores precargados de {caso_real.estudiante_id}; quedan editables.",
                 type="positive",
             )
 
-        boton_rellenar_plantilla.on_click(rellenar_con_plantilla)
+        boton_precargar_n.on_click(precargar_valores)
 
         ui.label("Resumen de variables de entrada").classes("text-subtitle2 q-mt-md")
         ui.label(
-            "Las 9 variables que recibe la red bayesiana (más el año, que "
-            "puede quedar vacío): cuáles se fijan por la sección real "
+            "Las variables del caso: cuáles se fijan por la sección real "
             "elegida y cuáles ingresaste a mano."
         ).classes("text-caption text-grey-7")
         contenedor_resumen_variables_n = ui.column().classes("w-full q-mt-xs")
@@ -586,10 +619,17 @@ def pagina_principal() -> None:
 
         etiqueta_caso_n = ui.label().classes("text-caption text-grey-7 q-mt-sm")
 
+        def _limpiar_n() -> None:
+            precarga["estudiante_id"] = None
+            etiqueta_caso_n.set_text("")
+            _limpiar_resultado_lstm_n()
+            _limpiar_resultado_bayes_n()
+
         def _reiniciar_n(desde: str) -> None:
             widgets_con_opciones_dependientes = {
                 "trimestre": select_trimestre_n,
                 "seccion": select_seccion_n,
+                "estudiante": select_estudiante_n,
             }
             niveles = list(widgets_con_opciones_dependientes)
             for nombre in niveles[niveles.index(desde):]:
@@ -599,11 +639,24 @@ def pagina_principal() -> None:
                 widget.disable()
             select_hito_n.set_value(None)
             select_hito_n.disable()
-            boton_generar_n.disable()
-            etiqueta_caso_n.set_text("")
             _reconstruir_semanas_n()
-            _limpiar_resultado_lstm_n()
-            _limpiar_resultado_bayes_n()
+            _limpiar_n()
+            _actualizar_botones_n()
+
+        def _aplicar_modo_visual() -> None:
+            partir = _es_partir_de_real()
+            select_estudiante_n.set_visibility(partir)
+            boton_precargar_n.set_visibility(partir)
+            etiqueta_modo_creacion.set_text(
+                "Elige un estudiante real de la sección y precarga sus valores; "
+                "luego modifica los que quieras para crear la variante hipotética."
+                if partir else
+                "Elige la sección y el hito, e ingresa los valores del estudiante a mano."
+            )
+
+        def al_cambiar_modo_creacion() -> None:
+            _aplicar_modo_visual()
+            al_cambiar_seccion_n()
 
         def al_cambiar_materia_n() -> None:
             _reiniciar_n("trimestre")
@@ -619,41 +672,53 @@ def pagina_principal() -> None:
                 select_seccion_n.enable()
 
         def al_cambiar_seccion_n() -> None:
-            select_hito_n.set_value(None)
-            boton_generar_n.disable()
-            etiqueta_caso_n.set_text("")
-            _reconstruir_semanas_n()
-            _limpiar_resultado_lstm_n()
-            _limpiar_resultado_bayes_n()
-            if select_seccion_n.value:
+            _reiniciar_n("estudiante")
+            if not select_seccion_n.value:
+                return
+            if _es_partir_de_real():
+                select_estudiante_n.set_options(opciones.estudiantes(
+                    select_materia_n.value, select_trimestre_n.value, select_seccion_n.value
+                ))
+                select_estudiante_n.enable()
+            else:
                 select_hito_n.enable()
+
+        def al_cambiar_estudiante_n() -> None:
+            select_hito_n.set_value(None)
+            select_hito_n.disable()
+            _reconstruir_semanas_n()
+            _limpiar_n()
+            if select_estudiante_n.value:
+                select_hito_n.enable()
+            _actualizar_botones_n()
 
         def al_cambiar_hito_n() -> None:
             _reconstruir_semanas_n()
-            _limpiar_resultado_lstm_n()
-            _limpiar_resultado_bayes_n()
-            boton_generar_n.set_enabled(bool(select_hito_n.value))
+            _limpiar_n()
+            _actualizar_botones_n()
 
+        modo_creacion.on_value_change(al_cambiar_modo_creacion)
         select_materia_n.on_value_change(al_cambiar_materia_n)
         select_trimestre_n.on_value_change(al_cambiar_trimestre_n)
         select_seccion_n.on_value_change(al_cambiar_seccion_n)
+        select_estudiante_n.on_value_change(al_cambiar_estudiante_n)
         select_hito_n.on_value_change(al_cambiar_hito_n)
 
         def generar_n() -> None:
-            if numero_posicion_n.value is None:
-                ui.notify("Ingresa la posición relativa en la lista.", type="warning")
-                return
             materia, trimestre, seccion, hito = (
                 select_materia_n.value, select_trimestre_n.value,
                 select_seccion_n.value, select_hito_n.value,
             )
             anio = numero_anio_n.value
             posicion = numero_posicion_n.value
-            participaciones = [campo.value or 0 for campo in campos_semanas_n]
-            etiqueta_caso_n.set_text(
-                f"Estudiante nuevo en: {materia} · {trimestre} · sección {seccion} · "
-                f"semana {hito}"
+            # Una casilla vacía es un dato desconocido (None), nunca un 0.
+            participaciones = [campo.value for campo in campos_semanas_n]
+            texto_caso = (
+                f"Estudiante nuevo en: {materia} · {trimestre} · sección {seccion} · semana {hito}"
             )
+            if precarga["estudiante_id"]:
+                texto_caso += f" · valores de partida precargados de {precarga['estudiante_id']}"
+            etiqueta_caso_n.set_text(texto_caso)
 
             # Resumen de las 9 variables de entrada -- cuáles se fijan por
             # la sección real (tamaño de grupo, sesiones/evaluaciones/tema
@@ -678,10 +743,16 @@ def pagina_principal() -> None:
                     ui.label(
                         f"Año que cursa: {anio if anio is not None else '(sin dato)'}"
                     ).classes("text-body2")
-                    ui.label(f"Posición relativa en la lista: {posicion:.3f}").classes("text-body2")
+                    ui.label(
+                        "Posición relativa en la lista: "
+                        + ("(sin dato)" if posicion is None else f"{posicion:.3f}")
+                    ).classes("text-body2")
                     ui.label(
                         "Participaciones por semana: "
-                        + ", ".join(f"sem. {i + 1}: {p:.0f}" for i, p in enumerate(participaciones))
+                        + ", ".join(
+                            f"sem. {i + 1}: {'(sin dato)' if p is None else f'{p:.0f}'}"
+                            for i, p in enumerate(participaciones)
+                        )
                     ).classes("text-body2")
                 contenedor_resumen_variables_n.set_visibility(True)
             except Exception:  # noqa: BLE001 — el resumen no debe romper la generación
@@ -691,6 +762,7 @@ def pagina_principal() -> None:
             _ejecutar_bayes_manual(materia, trimestre, seccion, hito, anio, participaciones)
 
         boton_generar_n.on_click(generar_n)
+        _aplicar_modo_visual()
 
     tarjeta_lstm_nueva = ui.card().classes("w-full max-w-2xl q-mt-md")
     with tarjeta_lstm_nueva:
@@ -707,6 +779,7 @@ def pagina_principal() -> None:
             etiqueta_frase_lstm_n = ui.label().classes("text-body1")
             etiqueta_contexto_lstm_n = ui.label().classes("text-caption text-grey-7")
             etiqueta_error_local_lstm_n = ui.label().classes("text-caption text-grey-7")
+            etiqueta_imputados_lstm_n = ui.label().classes("text-caption text-warning")
         contenedor_prediccion_lstm_n.set_visibility(False)
 
         def _limpiar_resultado_lstm_n() -> None:
@@ -746,6 +819,18 @@ def pagina_principal() -> None:
                 f"información hasta la semana {resultado.hito}"
             )
 
+            if resultado.valores_imputados:
+                etiqueta_imputados_lstm_n.set_text(
+                    "Valores sin dato que la LSTM imputó con la mediana del histórico de la asignatura: "
+                    + "; ".join(
+                        f"{nombre}: {valor:.3g}"
+                        for nombre, valor in resultado.valores_imputados.items()
+                    )
+                    + ". Es un tratamiento del prototipo, no evaluado en la validación cruzada."
+                )
+            else:
+                etiqueta_imputados_lstm_n.set_text("")
+
             error = lstm_service.error_local(resultado.prediccion_total)
             if error["n"] > 0:
                 etiqueta_error_local_lstm_n.set_text(
@@ -783,13 +868,20 @@ def pagina_principal() -> None:
 
             etiqueta_evidencia_omitida_n = ui.label().classes("text-caption text-warning q-mt-sm")
 
-            ui.label("¿Qué pasaría si...?").classes("text-subtitle2 q-mt-md")
+            ui.label("¿Qué pasaría si...? Simulador de evidencia").classes("text-subtitle2 q-mt-md")
             ui.label(
-                "Igual que en la tarjeta anterior: la misma consulta al "
-                "mismo modelo ya ajustado, con una evidencia distinta — no "
-                "una medida de importancia ni de causalidad."
+                "Cambia uno o varios valores a la vez, o márcalos como sin "
+                "dato, y observa cómo cambia la predicción. Es la misma "
+                "consulta al mismo modelo ya ajustado, con una evidencia "
+                "distinta: no una medida de importancia ni de causalidad."
             ).classes("text-caption text-grey-7")
-            contenedor_sensibilidad_bayes_n = ui.column().classes("w-full q-mt-xs")
+            contenedor_simulador_bayes_n = ui.column().classes("w-full q-mt-xs")
+            with ui.expansion("Resumen por variable (cada variable por separado)").classes("w-full q-mt-sm"):
+                ui.label(
+                    "Para cada variable observada, la predicción con cada uno de "
+                    "sus otros estados y al omitirla, sin cambiar las demás."
+                ).classes("text-caption text-grey-7")
+                contenedor_sensibilidad_bayes_n = ui.column().classes("w-full q-mt-xs")
         contenedor_resultado_bayes_n.set_visibility(False)
 
         def _limpiar_resultado_bayes_n() -> None:
@@ -849,7 +941,7 @@ def pagina_principal() -> None:
             with contenedor_posterior_bayes_n:
                 for estado, probabilidad in resultado.posterior.items():
                     with ui.row().classes("w-full items-center no-wrap"):
-                        ui.label(estado).style("width: 72px")
+                        ui.label(estado).style("width: 90px")
                         ui.linear_progress(value=probabilidad, show_value=False).classes("flex-grow")
                         ui.label(f"{probabilidad * 100:.1f}%").style("width: 56px; text-align: right")
 
@@ -892,6 +984,10 @@ def pagina_principal() -> None:
                                 else "text-body2"
                             )
 
+            construir_simulador(
+                contenedor_simulador_bayes_n, resultado.materia,
+                resultado.evidencia_utilizada, resultado.prediccion_continua,
+            )
             contenedor_resultado_bayes_n.set_visibility(True)
 
     def al_cambiar_modo() -> None:

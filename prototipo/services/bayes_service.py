@@ -344,6 +344,28 @@ def explorar_sensibilidad_manual(materia: str, evidencia: dict, variable: str) -
     return _escenarios_variable(entrada, evidencia, variable)
 
 
+# Estados discretos de cada variable de evidencia, en el orden del dominio
+# declarado en ensamblado.py: son los únicos valores que la red distingue.
+ESTADOS_EVIDENCIA: dict[str, list[str]] = {v: list(ESTADOS_BN[v]) for v in COLUMNAS_EVIDENCIA}
+
+
+def consultar_evidencia(materia: str, evidencia: dict[str, str]) -> tuple[dict[str, float], float, tuple[str, ...]]:
+    """Consulta el mismo modelo de `materia` con una combinación arbitraria
+    de evidencia (cualquier subconjunto de COLUMNAS_EVIDENCIA; las ausentes
+    se marginalizan). Devuelve `(posterior, prediccion_continua,
+    evidencia_omitida)`. Es la misma consulta de `predict_bayes`, sin
+    reajustar nada."""
+    desconocidas = set(evidencia) - set(COLUMNAS_EVIDENCIA)
+    if desconocidas:
+        raise ValueError(f"variables que no son evidencia del objetivo: {sorted(desconocidas)}")
+    for variable, estado in evidencia.items():
+        if estado not in ESTADOS_EVIDENCIA[variable]:
+            raise ValueError(f"'{estado}' no es un estado de '{variable}'")
+    posterior, prediccion = _consultar(_cargar_modelo(materia), evidencia)
+    omitida = tuple(c for c in COLUMNAS_EVIDENCIA if c not in evidencia)
+    return posterior, prediccion, omitida
+
+
 _CACHE_TABLA_ERROR: np.ndarray | None = None
 
 _VECINDAD_MINIMA_ERROR_LOCAL = 2.0

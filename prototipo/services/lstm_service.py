@@ -23,7 +23,7 @@ from __future__ import annotations
 
 import glob
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 import numpy as np
@@ -541,6 +541,28 @@ class ResultadoLSTMManual:
     seccion: str
     hito: int
     prediccion_total: float
+    # Valores que el usuario dejó vacíos y la LSTM imputó (nombre -> valor).
+    valores_imputados: dict = field(default_factory=dict)
+
+
+def medianas_imputacion_manual(materia: str, hito: int) -> dict:
+    """Medianas del histórico completo de `materia` (el mismo conjunto con
+    que se entrenaron los modelos finales, Estrategia 2) para imputar lo que
+    el usuario deje vacío en un estudiante hipotético: la posición relativa
+    en la lista y las participaciones de cada semana hasta el hito, cada
+    semana con su propia mediana. Mismo criterio que la mediana del año que
+    cursa del Sprint 2; es un tratamiento del prototipo, no validado en la
+    evaluación."""
+    datos = _preparar_datos()
+    filas = (datos["estatica"]["materia"] == materia).to_numpy()
+    if not filas.any():
+        raise ValueError(f"no hay registros de {materia!r}")
+    indice_participaciones = len(ESTATICAS) + DINAMICAS.index("participaciones")
+    semanas = np.median(datos["X"][filas, :hito, indice_participaciones], axis=0)
+    return {
+        "posicion_lista": float(np.median(datos["estatica"].loc[filas, "posicion_lista"])),
+        "participaciones_semanales": [float(v) for v in semanas],
+    }
 
 
 def predict_lstm_manual(
@@ -549,12 +571,33 @@ def predict_lstm_manual(
     seccion: str,
     hito: int,
     anio_academico: float | None,
-    posicion_lista: float,
-    participaciones_semanales: list[float],
+    posicion_lista: float | None,
+    participaciones_semanales: list[float | None],
 ) -> ResultadoLSTMManual:
     """Misma predicción que `predict_lstm`, para un estudiante hipotético
     que se uniría a una sección real ya existente (`materia`/`trimestre`/
-    `seccion`) en vez de para un registro histórico."""
+    `seccion`) en vez de para un registro histórico.
+
+    La posición y cualquier semana pueden llegar vacías (`None`): se imputan
+    con `medianas_imputacion_manual` y se devuelven en `valores_imputados`.
+    El año vacío lo sigue imputando `_predecir_desde_tensor` con la mediana
+    guardada del Sprint 2."""
+    imputados: dict = {}
+    if posicion_lista is None or any(p is None for p in participaciones_semanales):
+        medianas = medianas_imputacion_manual(materia, hito)
+        if posicion_lista is None:
+            posicion_lista = medianas["posicion_lista"]
+            imputados["Posición relativa en la lista"] = posicion_lista
+        completas = []
+        for semana, valor in enumerate(participaciones_semanales, start=1):
+            if valor is None:
+                valor = medianas["participaciones_semanales"][semana - 1]
+                imputados[f"Semana {semana}"] = valor
+            completas.append(valor)
+        participaciones_semanales = completas
+    if anio_academico is None:
+        imputados["Año que cursa"] = _cargar_artefactos(materia, hito)["mediana_anio_academico"]
+
     X_hito, X_temas_hito, acumulado = construir_entrada_lstm_manual(
         materia, trimestre, seccion, hito, anio_academico, posicion_lista, participaciones_semanales
     )
@@ -566,6 +609,7 @@ def predict_lstm_manual(
         seccion=seccion,
         hito=hito,
         prediccion_total=total,
+        valores_imputados=imputados,
     )
 
 
