@@ -23,8 +23,8 @@ CARPETA_FUENTES = Path("/System/Library/Fonts/Supplemental")
 ANCHO = 6.5
 TAMANO = 9
 INTERLINEA = TAMANO * 1.25 / 72
-RELLENO = 0.07
-SEP = 0.13
+RELLENO = 0.055
+SEP = 0.09
 GROSOR = 0.8
 
 for nombre in ("Times New Roman.ttf", "Times New Roman Bold.ttf"):
@@ -128,9 +128,6 @@ y_ramas = tipo["abajo"] - 0.14 - 0.15
 # 2. Estudiante ya registrado
 l1 = caja(X_IZQ, y_ramas, W_IZQ, "El usuario selecciona asignatura, trimestre, sección, "
           "estudiante anonimizado e hito (S4, S6 o S8).", encabezado="Estudiante ya registrado")
-l2 = caja(X_IZQ, l1["abajo"] - SEP, W_IZQ, "El sistema construye el caso con la "
-          "información registrada del estudiante.")
-flecha((X_IZQ, l1["abajo"]), (X_IZQ, l2["arriba"]))
 
 # 3. Estudiante nuevo
 cab_nuevo = rombo(X_DER, y_ramas, 3.1, 0.55, "Estudiante nuevo (hipotético): ¿cómo se crea?")
@@ -146,58 +143,70 @@ cero = caja(X_CERO, y_sub, W_CERO, "Elige asignatura, trimestre, sección e hito
             "(S4, S6 o S8).", encabezado="Ingresar desde cero")
 bifurcar(X_DER, cab_nuevo["abajo"], [(X_REAL, real["arriba"]), (X_CERO, cero["arriba"])])
 
-seccion = caja(X_DER, min(real["abajo"], cero["abajo"]) - SEP, W_DER, "El sistema toma de la "
-               "sección real el tamaño del grupo y, para cada semana hasta el hito, las "
-               "sesiones, las sesiones de evaluación y el tema.")
-flecha((X_REAL, real["abajo"]), (X_REAL, seccion["arriba"]))
-flecha((X_CERO, cero["abajo"]), (X_CERO, seccion["arriba"]))
-ingreso = caja(X_DER, seccion["abajo"] - SEP, W_DER, "El usuario ingresa o ajusta el año que "
-               "cursa, la posición relativa en la lista y las participaciones de cada semana "
-               "hasta el hito (0 si no participó o no hubo clase). Cualquiera de estos datos "
-               "puede quedar sin dato.")
-flecha((X_DER, seccion["abajo"]), (X_DER, ingreso["arriba"]))
+ingreso = caja(X_DER, min(real["abajo"], cero["abajo"]) - SEP, W_DER, "El usuario ingresa o "
+               "ajusta el año que cursa, la posición relativa en la lista y las participaciones "
+               "de cada semana hasta el hito (0 si no participó o no hubo clase); cualquiera de "
+               "estos datos puede quedar sin dato.")
+flecha((X_REAL, real["abajo"]), (X_REAL, ingreso["arriba"]))
+flecha((X_CERO, cero["abajo"]), (X_CERO, ingreso["arriba"]))
 
 # 4. Tronco común
 boton = caja(X_CENTRO, ingreso["abajo"] - SEP - 0.05, W_TOTAL,
              "El usuario presiona el botón para generar la predicción.")
-flecha((X_IZQ, l2["abajo"]), (X_IZQ, boton["arriba"]))
+flecha((X_IZQ, l1["abajo"]), (X_IZQ, boton["arriba"]))
 flecha((X_DER, ingreso["abajo"]), (X_DER, boton["arriba"]))
 
-X_ENVIO, W_ENVIO = 2.15, 3.30
-envio = caja(X_ENVIO, boton["abajo"] - SEP, W_ENVIO, "El mismo caso se envía a los dos modelos.")
-flecha((X_ENVIO, boton["abajo"]), (X_ENVIO, envio["arriba"]))
-resumen = caja(5.40, envio["arriba"] + 0.03, 2.00, "Solo estudiante nuevo: resumen de las "
-               "variables del caso.", discontinua=True)
-flecha((envio["der"], envio["medio"]), (resumen["izq"], envio["medio"]))
+completa = caja(X_CENTRO, boton["abajo"] - SEP, W_TOTAL, "El sistema completa el caso con el "
+                "tamaño del grupo y el calendario de cada semana de la sección real (sesiones, "
+                "sesiones de evaluación y tema), junto con el año que cursa, la posición relativa "
+                "en la lista y las participaciones semanales del estudiante.")
+flecha((X_CENTRO, boton["abajo"]), (X_CENTRO, completa["arriba"]))
+envio = caja(X_CENTRO, completa["abajo"] - SEP, W_TOTAL, "El mismo caso se envía a los dos modelos.")
+flecha((X_CENTRO, completa["abajo"]), (X_CENTRO, envio["arriba"]))
 
 # 5. Modelos
-y_modelos = min(envio["abajo"], resumen["abajo"]) - 0.14 - 0.15
+y_modelos = envio["abajo"] - 0.14 - 0.15
 lstm = caja(X_IZQ, y_modelos, W_IZQ, "Predicción puntual del total de participaciones "
-            "del trimestre. Los datos sin dato se imputan con la mediana del histórico de la "
+            "del trimestre; los datos sin dato se imputan con la mediana del histórico de la "
             "asignatura.", encabezado="Red LSTM")
 b1 = caja(X_DER, y_modelos, W_DER, "Predicción continua del total de participaciones "
-          "del trimestre.", encabezado="Red bayesiana")
-bifurcar(X_ENVIO, envio["abajo"], [(X_IZQ, lstm["arriba"]), (X_DER, b1["arriba"])])
-b2 = caja(X_DER, b1["abajo"] - SEP, W_DER, "Distribución posterior sobre los cinco estados "
-          "del objetivo, con la evidencia utilizada y la no disponible, que la red "
-          "marginaliza sin imputarla.")
-b4 = caja(X_DER, b2["abajo"] - SEP, W_DER, "Simulador ¿Qué pasaría si...?: el usuario cambia "
-          "una o varias variables de evidencia, o las marca como sin dato, y la predicción "
-          "se recalcula con el mismo modelo.")
-for a, b in ((b1, b2), (b2, b4)):
-    flecha((X_DER, a["abajo"]), (X_DER, b["arriba"]))
+          "del trimestre y distribución posterior sobre sus cinco estados, con la evidencia "
+          "utilizada y la no disponible, que la red marginaliza sin imputarla.",
+          encabezado="Red bayesiana")
+bifurcar(X_CENTRO, envio["abajo"], [(X_IZQ, lstm["arriba"]), (X_DER, b1["arriba"])])
+b4 = caja(X_DER, b1["abajo"] - SEP, W_DER, "La interfaz ofrece el simulador ¿Qué pasaría "
+          "si...?, que recalcula la predicción con el mismo modelo al cambiar una o varias "
+          "variables de evidencia o marcarlas como sin dato.")
+for a_, b_ in ((b1, b4),):
+    flecha((X_DER, a_["abajo"]), (X_DER, b_["arriba"]))
 
-# 6. Salidas
-margen = caja(X_CENTRO, b4["abajo"] - SEP - 0.05, W_TOTAL, "En ambos modelos, la interfaz "
-              "muestra el margen de error esperado para predicciones de esa magnitud.")
-flecha((X_IZQ, lstm["abajo"]), (X_IZQ, margen["arriba"]))
-flecha((X_DER, b4["abajo"]), (X_DER, margen["arriba"]))
-total = caja(X_CENTRO, margen["abajo"] - SEP, W_TOTAL, "Solo para un estudiante ya registrado: "
-             "la interfaz muestra además el total real de participaciones del trimestre.")
-flecha((X_CENTRO, margen["abajo"]), (X_CENTRO, total["arriba"]))
+# 6. Salidas: las dos columnas se unen en una barra común
+margen_y = b4["abajo"] - SEP - 0.2
+y_union = margen_y + 0.14
+linea((X_IZQ, lstm["abajo"]), (X_IZQ, y_union))
+linea((X_DER, b4["abajo"]), (X_DER, y_union))
+linea((X_IZQ, y_union), (X_DER, y_union))
+margen = caja(X_CENTRO, margen_y, W_TOTAL, "En ambos modelos, la interfaz muestra el margen "
+              "de error esperado para predicciones de esa magnitud.")
+flecha((X_CENTRO, y_union), (X_CENTRO, margen["arriba"]))
+
+resumen = caja(X_CENTRO, margen["abajo"] - SEP, W_TOTAL, "La interfaz muestra el resumen de "
+               "las variables del caso: las tomadas de la sección real y las del estudiante.")
+flecha((X_CENTRO, margen["abajo"]), (X_CENTRO, resumen["arriba"]))
+registrado = rombo(X_CENTRO, resumen["abajo"] - SEP, 2.6, 0.5, "¿Estudiante ya registrado?")
+total = caja(X_CENTRO, registrado["abajo"] - SEP - 0.05, 4.3, "La interfaz muestra además el "
+             "total real de participaciones del trimestre.")
+flecha((X_CENTRO, resumen["abajo"]), (X_CENTRO, registrado["arriba"]))
+flecha((X_CENTRO, registrado["abajo"]), (X_CENTRO, total["arriba"]))
+eje.text(X_CENTRO + 0.06, (registrado["abajo"] + total["arriba"]) / 2, "Sí", ha="left", va="center")
+
 final = caja(X_CENTRO, total["abajo"] - SEP, W_TOTAL, "Presentación diferenciada de los "
              "resultados de ambos modelos en la interfaz.")
 flecha((X_CENTRO, total["abajo"]), (X_CENTRO, final["arriba"]))
+X_NO = 5.95
+y_rombo = (registrado["arriba"] + registrado["abajo"]) / 2
+flecha((X_CENTRO + 1.3, y_rombo), (X_NO, y_rombo), (X_NO, final["arriba"]))
+eje.text((X_CENTRO + 1.3 + X_NO) / 2, y_rombo + 0.04, "No", ha="center", va="bottom")
 
 # Lienzo ajustado al contenido, con 1 unidad = 1 pulgada.
 y_min, y_max = final["abajo"] - 0.06, tipo["arriba"] + 0.06

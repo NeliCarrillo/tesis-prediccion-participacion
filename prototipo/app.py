@@ -44,6 +44,51 @@ SIN_DATO = "__sin_dato__"
 TAMANO_TEXTO_PX = 15
 
 
+def _texto_dato(valor, formato) -> str:
+    return "(sin dato)" if valor is None else formato(valor)
+
+
+def mostrar_resumen_variables(contenedor, materia, trimestre, seccion, hito, anio, posicion,
+                              participaciones, titulo_estudiante: str) -> None:
+    """Resumen de las variables del caso, igual en ambos modos: lo que se
+    toma de la sección real y lo propio del estudiante (registrado o
+    ingresado por el usuario)."""
+    contenedor.clear()
+    try:
+        horario = lstm_service.horario_real_seccion(materia, trimestre, seccion, hito)
+    except Exception:  # noqa: BLE001 — el resumen no debe romper la generación
+        contenedor.set_visibility(False)
+        return
+    with contenedor:
+        ui.label("Resumen de variables de entrada").classes("text-subtitle2 q-mt-md")
+        ui.label(
+            "Las variables del caso: cuáles se fijan por la sección real y cuáles "
+            "corresponden al estudiante."
+        ).classes("text-caption text-grey-7")
+        ui.label(
+            f"Fijado por la sección real ({materia} · {trimestre} · sección {seccion}):"
+        ).classes("text-body2 text-weight-bold")
+        ui.label(f"Tamaño del grupo: {horario['tamano_grupo']:.0f} estudiantes").classes("text-body2")
+        for semana_info in horario["semanas"]:
+            ui.label(
+                f"Semana {semana_info['semana']}: "
+                f"{semana_info['sesiones']:.0f} sesión(es), "
+                f"{semana_info['evaluaciones']:.0f} de evaluación, "
+                f"temas {semana_info['tema_1']}/{semana_info['tema_2']}"
+            ).classes("text-caption text-grey-7")
+        ui.label(titulo_estudiante).classes("text-body2 text-weight-bold q-mt-xs")
+        ui.label(f"Año que cursa: {_texto_dato(anio, lambda v: f'{v:g}')}").classes("text-body2")
+        ui.label(
+            f"Posición relativa en la lista: {_texto_dato(posicion, lambda v: f'{v:.3f}')}"
+        ).classes("text-body2")
+        ui.label(
+            "Participaciones por semana: "
+            + ", ".join(f"sem. {i + 1}: {_texto_dato(p, lambda v: f'{v:.0f}')}"
+                        for i, p in enumerate(participaciones))
+        ).classes("text-body2")
+    contenedor.set_visibility(True)
+
+
 def construir_simulador(contenedor, materia: str, evidencia_observada: dict, prediccion_base: float) -> None:
     """Simulador de evidencia: un desplegable por variable de evidencia,
     iniciado en el valor observado del caso, que permite probar cualquier
@@ -160,6 +205,9 @@ def pagina_principal() -> None:
         for selector in (select_trimestre, select_seccion, select_estudiante, select_hito):
             selector.disable()
 
+        contenedor_resumen_variables = ui.column().classes("w-full q-mt-xs")
+        contenedor_resumen_variables.set_visibility(False)
+
         boton_generar = ui.button("Generar predicción")
         boton_generar.disable()
 
@@ -188,6 +236,7 @@ def pagina_principal() -> None:
             select_hito.disable()
             boton_generar.disable()
             etiqueta_caso.set_text("")
+            contenedor_resumen_variables.set_visibility(False)
             _limpiar_resultado_lstm()
             _limpiar_resultado_bayes()
 
@@ -217,12 +266,14 @@ def pagina_principal() -> None:
             select_hito.set_value(None)
             boton_generar.disable()
             etiqueta_caso.set_text("")
+            contenedor_resumen_variables.set_visibility(False)
             _limpiar_resultado_lstm()
             _limpiar_resultado_bayes()
             if select_estudiante.value:
                 select_hito.enable()
 
         def al_cambiar_hito() -> None:
+            contenedor_resumen_variables.set_visibility(False)
             _limpiar_resultado_lstm()
             _limpiar_resultado_bayes()
             if select_hito.value:
@@ -248,6 +299,15 @@ def pagina_principal() -> None:
                 f"Caso construido: {caso.materia} · {caso.trimestre} · "
                 f"sección {caso.seccion} · {caso.estudiante_id} · semana {caso.hito}"
             )
+            try:
+                registrado = lstm_service.valores_reales_estudiante(caso)
+                mostrar_resumen_variables(
+                    contenedor_resumen_variables, caso.materia, caso.trimestre, caso.seccion,
+                    caso.hito, registrado["anio_academico"], registrado["posicion_lista"],
+                    registrado["participaciones_semanales"], "Registrado para el estudiante:",
+                )
+            except Exception:  # noqa: BLE001 — el resumen no debe romper la generación
+                contenedor_resumen_variables.set_visibility(False)
             _ejecutar_lstm(caso)
             _ejecutar_bayes(caso)
 
@@ -606,11 +666,6 @@ def pagina_principal() -> None:
 
         boton_precargar_n.on_click(precargar_valores)
 
-        ui.label("Resumen de variables de entrada").classes("text-subtitle2 q-mt-md")
-        ui.label(
-            "Las variables del caso: cuáles se fijan por la sección real "
-            "elegida y cuáles ingresaste a mano."
-        ).classes("text-caption text-grey-7")
         contenedor_resumen_variables_n = ui.column().classes("w-full q-mt-xs")
         contenedor_resumen_variables_n.set_visibility(False)
 
@@ -622,6 +677,7 @@ def pagina_principal() -> None:
         def _limpiar_n() -> None:
             precarga["estudiante_id"] = None
             etiqueta_caso_n.set_text("")
+            contenedor_resumen_variables_n.set_visibility(False)
             _limpiar_resultado_lstm_n()
             _limpiar_resultado_bayes_n()
 
@@ -720,43 +776,10 @@ def pagina_principal() -> None:
                 texto_caso += f" · valores de partida precargados de {precarga['estudiante_id']}"
             etiqueta_caso_n.set_text(texto_caso)
 
-            # Resumen de las 9 variables de entrada -- cuáles se fijan por
-            # la sección real (tamaño de grupo, sesiones/evaluaciones/tema
-            # de cada semana) y cuáles se ingresaron a mano.
-            contenedor_resumen_variables_n.clear()
-            try:
-                horario = lstm_service.horario_real_seccion(materia, trimestre, seccion, hito)
-                with contenedor_resumen_variables_n:
-                    ui.label(
-                        f"Fijado por la sección real ({materia} · {trimestre} · sección {seccion}):"
-                    ).classes("text-body2 text-weight-bold")
-                    ui.label(f"Tamaño del grupo: {horario['tamano_grupo']:.0f} estudiantes").classes("text-body2")
-                    for semana_info in horario["semanas"]:
-                        ui.label(
-                            f"Semana {semana_info['semana']}: "
-                            f"{semana_info['sesiones']:.0f} sesión(es), "
-                            f"{semana_info['evaluaciones']:.0f} de evaluación, "
-                            f"temas {semana_info['tema_1']}/{semana_info['tema_2']}"
-                        ).classes("text-caption text-grey-7")
-
-                    ui.label("Ingresado a mano:").classes("text-body2 text-weight-bold q-mt-xs")
-                    ui.label(
-                        f"Año que cursa: {anio if anio is not None else '(sin dato)'}"
-                    ).classes("text-body2")
-                    ui.label(
-                        "Posición relativa en la lista: "
-                        + ("(sin dato)" if posicion is None else f"{posicion:.3f}")
-                    ).classes("text-body2")
-                    ui.label(
-                        "Participaciones por semana: "
-                        + ", ".join(
-                            f"sem. {i + 1}: {'(sin dato)' if p is None else f'{p:.0f}'}"
-                            for i, p in enumerate(participaciones)
-                        )
-                    ).classes("text-body2")
-                contenedor_resumen_variables_n.set_visibility(True)
-            except Exception:  # noqa: BLE001 — el resumen no debe romper la generación
-                contenedor_resumen_variables_n.set_visibility(False)
+            mostrar_resumen_variables(
+                contenedor_resumen_variables_n, materia, trimestre, seccion, hito,
+                anio, posicion, participaciones, "Ingresado por el usuario:",
+            )
 
             _ejecutar_lstm_manual(materia, trimestre, seccion, hito, anio, posicion, participaciones)
             _ejecutar_bayes_manual(materia, trimestre, seccion, hito, anio, participaciones)
