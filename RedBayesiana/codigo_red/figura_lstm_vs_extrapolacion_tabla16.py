@@ -72,7 +72,7 @@ if __name__ == "__main__":
     plt.rcParams.update({"font.size": 9, "axes.linewidth": 0.6, "xtick.major.width": 0.6,
                          "ytick.major.width": 0.6, "svg.fonttype": "none"})
 
-    figura, ejes = plt.subplots(2, 4, figsize=(6.5, 4.3), sharex=True)
+    figura, ejes = plt.subplots(2, 4, figsize=(6.5, 4.6))
     filas = [
         ("rmse_lstm", "rmse_lstm_desv", "rmse_extrapolacion", "RMSE (participaciones)", (0, 6.5), "A"),
         ("r2_lstm", "r2_lstm_desv", "r2_extrapolacion", "R²", (0, 1.0), "B"),
@@ -95,18 +95,16 @@ if __name__ == "__main__":
                 eje.set_title(TITULOS[materia], fontsize=9)
             if columna == 0:
                 eje.set_ylabel(etiqueta)
-                eje.text(-0.55, 1.02, letra, transform=eje.transAxes, fontweight="bold", fontsize=10,
-                         va="bottom", ha="left")
             else:
                 eje.tick_params(labelleft=False)
         for columna in range(4):
-            ejes[1, columna].set_xlabel("Hito")
+            ejes[fila, columna].set_xlabel("Hito")
 
     leyenda = [
         Line2D([0], [0], **ESTILO_LSTM, label="Red LSTM (media ± desviación estándar entre cinco semillas)"),
         Line2D([0], [0], **ESTILO_EXT, label="Extrapolación proporcional"),
     ]
-    figura.tight_layout(rect=(0, 0, 1, 0.9), w_pad=0.8, h_pad=1.0)
+    figura.tight_layout(rect=(0, 0, 1, 0.9), w_pad=0.8, h_pad=1.4)
     figura.legend(handles=leyenda, loc="upper center", bbox_to_anchor=(0.5, 1.0), ncol=2, frameon=False)
 
     CARPETA_SALIDA.mkdir(parents=True, exist_ok=True)
