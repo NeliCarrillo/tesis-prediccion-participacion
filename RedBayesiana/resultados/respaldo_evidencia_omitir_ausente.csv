@@ -1,0 +1,380 @@
+materia,trimestre,seccion,estudiante_id,hito,valores_ausentes,pred_omitir
+Algoritmos y Programación,2425-2,1,anon_009,4,,5.799326981246219
+Algoritmos y Programación,2425-2,1,anon_009,8,,5.799326981246219
+Algoritmos y Programación,2425-2,1,anon_010,4,,5.799326981246219
+Algoritmos y Programación,2425-2,1,anon_010,8,,5.799326981246219
+Algoritmos y Programación,2425-2,1,anon_011,4,,5.799326981246219
+Algoritmos y Programación,2425-2,1,anon_016,4,,5.799326981246219
+Algoritmos y Programación,2425-2,1,anon_016,6,,5.799326981246219
+Algoritmos y Programación,2425-2,1,anon_016,8,,5.799326981246219
+Algoritmos y Programación,2425-2,1,anon_024,6,,5.799326981246219
+Algoritmos y Programación,2425-2,1,anon_027,6,,5.799326981246219
+Algoritmos y Programación,2425-2,1,anon_027,8,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_033,4,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_033,6,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_033,8,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_036,4,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_036,8,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_038,4,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_039,4,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_039,6,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_039,8,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_040,4,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_040,6,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_040,8,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_042,8,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_043,4,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_043,8,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_044,4,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_044,8,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_045,6,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_057,4,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_057,6,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_057,8,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_059,4,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_059,6,,5.799326981246219
+Algoritmos y Programación,2425-2,2,anon_059,8,,5.799326981246219
+Algoritmos y Programación,2526-1,1,anon_061,4,Tamaño del grupo,11.837053210973465
+Algoritmos y Programación,2526-1,1,anon_061,6,Tamaño del grupo,8.74865930257462
+Algoritmos y Programación,2526-1,1,anon_061,8,Tamaño del grupo,18.237768745356583
+Algoritmos y Programación,2526-1,1,anon_062,4,Tamaño del grupo,15.870431349884276
+Algoritmos y Programación,2526-1,1,anon_062,6,Tamaño del grupo,6.963177024827704
+Algoritmos y Programación,2526-1,1,anon_062,8,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_064,4,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_064,6,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_064,8,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_066,4,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_066,6,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_066,8,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_067,4,Tamaño del grupo,6.963177024827704
+Algoritmos y Programación,2526-1,1,anon_067,6,Tamaño del grupo,5.232304139271436
+Algoritmos y Programación,2526-1,1,anon_067,8,Tamaño del grupo,14.099932474610885
+Algoritmos y Programación,2526-1,1,anon_068,4,Tamaño del grupo,3.2194616080931007
+Algoritmos y Programación,2526-1,1,anon_068,6,Tamaño del grupo,3.2194616080931007
+Algoritmos y Programación,2526-1,1,anon_068,8,Tamaño del grupo,3.2194616080931007
+Algoritmos y Programación,2526-1,1,anon_069,4,Tamaño del grupo,15.524028294269053
+Algoritmos y Programación,2526-1,1,anon_069,6,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_069,8,Tamaño del grupo,10.161957371781522
+Algoritmos y Programación,2526-1,1,anon_070,4,Tamaño del grupo,9.852358258752933
+Algoritmos y Programación,2526-1,1,anon_070,6,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_070,8,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_071,4,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_071,6,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_071,8,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_072,4,Tamaño del grupo,1.371086396650065
+Algoritmos y Programación,2526-1,1,anon_072,6,Tamaño del grupo,1.371086396650065
+Algoritmos y Programación,2526-1,1,anon_072,8,Tamaño del grupo,1.371086396650065
+Algoritmos y Programación,2526-1,1,anon_073,4,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_073,6,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_073,8,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_074,4,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_074,6,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_074,8,Tamaño del grupo,9.310520385535447
+Algoritmos y Programación,2526-1,1,anon_075,4,Tamaño del grupo,3.2194616080931007
+Algoritmos y Programación,2526-1,1,anon_075,6,Tamaño del grupo,3.2194616080931007
+Algoritmos y Programación,2526-1,1,anon_075,8,Tamaño del grupo,3.2194616080931007
+Algoritmos y Programación,2526-1,1,anon_076,4,Tamaño del grupo,8.611988390573943
+Algoritmos y Programación,2526-1,1,anon_076,6,Tamaño del grupo,1.371086396650065
+Algoritmos y Programación,2526-1,1,anon_076,8,Tamaño del grupo,1.371086396650065
+Algoritmos y Programación,2526-1,1,anon_077,4,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_077,6,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_077,8,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_078,4,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_078,6,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_078,8,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_079,4,Tamaño del grupo,3.2194616080931007
+Algoritmos y Programación,2526-1,1,anon_079,6,Tamaño del grupo,3.2194616080931007
+Algoritmos y Programación,2526-1,1,anon_079,8,Tamaño del grupo,3.2194616080931007
+Algoritmos y Programación,2526-1,1,anon_080,4,Tamaño del grupo,9.879914128714752
+Algoritmos y Programación,2526-1,1,anon_080,6,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_080,8,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_081,4,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_081,6,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_081,8,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_082,4,Tamaño del grupo,3.2194616080931007
+Algoritmos y Programación,2526-1,1,anon_082,6,Tamaño del grupo,3.2194616080931007
+Algoritmos y Programación,2526-1,1,anon_082,8,Tamaño del grupo,3.2194616080931007
+Algoritmos y Programación,2526-1,1,anon_083,4,Tamaño del grupo,8.73943979871115
+Algoritmos y Programación,2526-1,1,anon_083,6,Tamaño del grupo,2.498095278925731
+Algoritmos y Programación,2526-1,1,anon_083,8,Tamaño del grupo,6.3131159618527315
+Algoritmos y Programación,2526-1,1,anon_084,4,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_084,6,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_084,8,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_085,4,Tamaño del grupo,1.371086396650065
+Algoritmos y Programación,2526-1,1,anon_085,6,Tamaño del grupo,1.371086396650065
+Algoritmos y Programación,2526-1,1,anon_085,8,Tamaño del grupo,1.371086396650065
+Algoritmos y Programación,2526-1,1,anon_086,4,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_086,6,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_086,8,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_087,4,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_087,6,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-1,1,anon_087,8,Tamaño del grupo,2.8145183289746725
+Algoritmos y Programación,2526-3,1,anon_133,4,,6.451973684210527
+Algoritmos y Programación,2526-3,1,anon_133,8,,6.451973684210527
+Algoritmos y Programación,2526-3,1,anon_135,6,,6.451973684210527
+Computación Emergente,2526-1,1,anon_220,4,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_220,6,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_220,8,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_221,4,Tamaño del grupo,15.673714590249192
+Computación Emergente,2526-1,1,anon_221,6,Tamaño del grupo,8.31119171001761
+Computación Emergente,2526-1,1,anon_221,8,Tamaño del grupo,15.673714590249192
+Computación Emergente,2526-1,1,anon_222,4,Tamaño del grupo,5.257380900299595
+Computación Emergente,2526-1,1,anon_222,6,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_222,8,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_223,4,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_223,6,Tamaño del grupo,16.594575817300445
+Computación Emergente,2526-1,1,anon_223,8,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_224,4,Tamaño del grupo,3.856628037674356
+Computación Emergente,2526-1,1,anon_224,6,Tamaño del grupo,7.694010061952664
+Computación Emergente,2526-1,1,anon_224,8,Tamaño del grupo,10.253076281497215
+Computación Emergente,2526-1,1,anon_225,4,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_225,6,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_225,8,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_226,4,Tamaño del grupo,9.21464645190213
+Computación Emergente,2526-1,1,anon_226,6,Tamaño del grupo,5.007956604123033
+Computación Emergente,2526-1,1,anon_226,8,Tamaño del grupo,5.257380900299595
+Computación Emergente,2526-1,1,anon_227,4,Tamaño del grupo,19.643129389841587
+Computación Emergente,2526-1,1,anon_227,6,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_227,8,Tamaño del grupo,5.257380900299595
+Computación Emergente,2526-1,1,anon_228,4,Tamaño del grupo,15.673714590249192
+Computación Emergente,2526-1,1,anon_228,6,Tamaño del grupo,15.673714590249192
+Computación Emergente,2526-1,1,anon_228,8,Tamaño del grupo,15.673714590249192
+Computación Emergente,2526-1,1,anon_229,4,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_229,6,Tamaño del grupo,5.007956604123033
+Computación Emergente,2526-1,1,anon_229,8,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_230,4,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_230,6,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_230,8,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_231,4,Tamaño del grupo,8.31119171001761
+Computación Emergente,2526-1,1,anon_231,6,Tamaño del grupo,2.6793803862991146
+Computación Emergente,2526-1,1,anon_231,8,Tamaño del grupo,10.253076281497215
+Computación Emergente,2526-1,1,anon_232,4,Tamaño del grupo,8.31119171001761
+Computación Emergente,2526-1,1,anon_232,6,Tamaño del grupo,15.673714590249192
+Computación Emergente,2526-1,1,anon_232,8,Tamaño del grupo,7.694010061952664
+Computación Emergente,2526-1,1,anon_233,4,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_233,6,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_233,8,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_234,4,Tamaño del grupo,11.743063909386676
+Computación Emergente,2526-1,1,anon_234,6,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_234,8,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_174,4,Tamaño del grupo,2.6793803862991146
+Computación Emergente,2526-1,1,anon_174,6,Tamaño del grupo,2.6793803862991146
+Computación Emergente,2526-1,1,anon_174,8,Tamaño del grupo,2.6793803862991146
+Computación Emergente,2526-1,1,anon_205,4,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_205,6,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_205,8,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_235,4,Tamaño del grupo,15.673714590249192
+Computación Emergente,2526-1,1,anon_235,6,Tamaño del grupo,8.31119171001761
+Computación Emergente,2526-1,1,anon_235,8,Tamaño del grupo,6.487142524994187
+Computación Emergente,2526-1,1,anon_236,4,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_236,6,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_236,8,Tamaño del grupo,5.711178500285118
+Computación Emergente,2526-1,1,anon_237,4,Tamaño del grupo,7.633746400360383
+Computación Emergente,2526-1,1,anon_237,6,Tamaño del grupo,10.180313447228425
+Computación Emergente,2526-1,1,anon_237,8,Tamaño del grupo,15.673714590249192
+Computación Emergente,2526-1,1,anon_238,4,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_238,6,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_238,8,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_239,4,Tamaño del grupo,5.711178500285118
+Computación Emergente,2526-1,1,anon_239,6,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_239,8,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_240,4,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_240,6,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_240,8,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_241,4,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_241,6,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_241,8,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_242,4,Tamaño del grupo,5.711178500285118
+Computación Emergente,2526-1,1,anon_242,6,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_242,8,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_212,4,Tamaño del grupo,5.257380900299595
+Computación Emergente,2526-1,1,anon_212,6,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_212,8,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_243,4,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_243,6,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_243,8,Tamaño del grupo,1.2226274014187535
+Computación Emergente,2526-1,1,anon_244,4,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_244,6,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-1,1,anon_244,8,Tamaño del grupo,0.8487275680233798
+Computación Emergente,2526-3,1,anon_284,4,,5.117389277389277
+Computación Emergente,2526-3,1,anon_284,8,,5.117389277389277
+Computación Emergente,2526-3,1,anon_285,4,,5.117389277389277
+Computación Emergente,2526-3,1,anon_285,8,,5.117389277389277
+Computación Emergente,2526-3,1,anon_286,4,,5.117389277389277
+Computación Emergente,2526-3,1,anon_286,8,,5.117389277389277
+Computación Emergente,2526-3,1,anon_287,4,,5.117389277389277
+Computación Emergente,2526-3,1,anon_288,4,,5.117389277389277
+Computación Emergente,2526-3,1,anon_288,8,,5.117389277389277
+Computación Emergente,2526-3,1,anon_295,8,,5.117389277389277
+Computación Emergente,2526-3,1,anon_297,4,,5.117389277389277
+Computación Emergente,2526-3,1,anon_297,8,,5.117389277389277
+Computación Emergente,2526-3,1,anon_300,4,,5.117389277389277
+Computación Emergente,2526-3,1,anon_300,8,,5.117389277389277
+Computación Emergente,2526-3,1,anon_303,4,,5.117389277389277
+Computación Emergente,2526-3,1,anon_303,8,,5.117389277389277
+Computación Emergente,2526-3,1,anon_305,4,,5.117389277389277
+Computación Emergente,2526-3,1,anon_305,8,,5.117389277389277
+Computación Emergente,2526-3,1,anon_306,8,,5.117389277389277
+Computación Emergente,2526-3,1,anon_308,4,,5.117389277389277
+Computación Emergente,2526-3,1,anon_310,4,,5.117389277389277
+Computación Emergente,2526-3,1,anon_312,4,,5.117389277389277
+Computación Emergente,2526-3,1,anon_316,8,,5.117389277389277
+Computación Emergente,2526-3,1,anon_319,8,,5.117389277389277
+Estructura de Datos,2425-3,2,anon_322,4,,6.851082251082252
+Estructura de Datos,2425-3,2,anon_322,6,,6.851082251082252
+Estructura de Datos,2425-3,2,anon_322,8,,6.851082251082252
+Estructura de Datos,2425-3,2,anon_323,6,,6.851082251082252
+Estructura de Datos,2425-3,2,anon_327,8,,6.851082251082252
+Estructura de Datos,2425-3,2,anon_329,4,,6.851082251082252
+Estructura de Datos,2425-3,2,anon_301,6,,6.851082251082252
+Estructura de Datos,2526-2,2,anon_031,4,Tamaño del grupo,4.440462330209167
+Estructura de Datos,2526-2,2,anon_031,6,Tamaño del grupo,1.0337660490030518
+Estructura de Datos,2526-2,2,anon_031,8,Tamaño del grupo,1.0337660490030518
+Estructura de Datos,2526-2,2,anon_347,4,Tamaño del grupo,4.440462330209167
+Estructura de Datos,2526-2,2,anon_347,6,Tamaño del grupo,14.207876625686186
+Estructura de Datos,2526-2,2,anon_347,8,Tamaño del grupo,1.0337660490030518
+Estructura de Datos,2526-2,2,anon_064,4,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_064,6,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_064,8,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_067,4,Tamaño del grupo,4.000409923889962
+Estructura de Datos,2526-2,2,anon_067,6,Tamaño del grupo,4.000409923889962
+Estructura de Datos,2526-2,2,anon_067,8,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_370,4,Tamaño del grupo,19.757412943886997
+Estructura de Datos,2526-2,2,anon_370,6,Tamaño del grupo,15.731445159920911
+Estructura de Datos,2526-2,2,anon_370,8,Tamaño del grupo,6.626923076923077
+Estructura de Datos,2526-2,2,anon_371,4,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_371,6,Tamaño del grupo,9.688311736188627
+Estructura de Datos,2526-2,2,anon_371,8,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_372,4,Tamaño del grupo,1.7343910244269782
+Estructura de Datos,2526-2,2,anon_372,6,Tamaño del grupo,15.142574600522856
+Estructura de Datos,2526-2,2,anon_372,8,Tamaño del grupo,1.7343910244269782
+Estructura de Datos,2526-2,2,anon_373,4,Tamaño del grupo,1.0337660490030518
+Estructura de Datos,2526-2,2,anon_373,6,Tamaño del grupo,1.0337660490030518
+Estructura de Datos,2526-2,2,anon_373,8,Tamaño del grupo,5.82465282028577
+Estructura de Datos,2526-2,2,anon_355,4,Tamaño del grupo,1.0337660490030518
+Estructura de Datos,2526-2,2,anon_355,6,Tamaño del grupo,1.0337660490030518
+Estructura de Datos,2526-2,2,anon_355,8,Tamaño del grupo,1.0337660490030518
+Estructura de Datos,2526-2,2,anon_374,4,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_374,6,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_374,8,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_205,4,Tamaño del grupo,1.7343910244269782
+Estructura de Datos,2526-2,2,anon_205,6,Tamaño del grupo,1.7343910244269782
+Estructura de Datos,2526-2,2,anon_205,8,Tamaño del grupo,1.7343910244269782
+Estructura de Datos,2526-2,2,anon_360,4,Tamaño del grupo,1.0337660490030518
+Estructura de Datos,2526-2,2,anon_360,6,Tamaño del grupo,1.0337660490030518
+Estructura de Datos,2526-2,2,anon_360,8,Tamaño del grupo,1.0337660490030518
+Estructura de Datos,2526-2,2,anon_375,4,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_375,6,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_375,8,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_077,4,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_077,6,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_077,8,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_080,4,Tamaño del grupo,4.000409923889962
+Estructura de Datos,2526-2,2,anon_080,6,Tamaño del grupo,8.082569004767286
+Estructura de Datos,2526-2,2,anon_080,8,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_376,4,Tamaño del grupo,4.000409923889962
+Estructura de Datos,2526-2,2,anon_376,6,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_376,8,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_377,4,Tamaño del grupo,1.0337660490030518
+Estructura de Datos,2526-2,2,anon_377,6,Tamaño del grupo,10.896393873585552
+Estructura de Datos,2526-2,2,anon_377,8,Tamaño del grupo,1.0337660490030518
+Estructura de Datos,2526-2,2,anon_087,4,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_087,6,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-2,2,anon_087,8,Tamaño del grupo,2.241391316664899
+Estructura de Datos,2526-3,2,anon_349,4,,7.057922077922078
+Estructura de Datos,2526-3,2,anon_372,4,,7.057922077922078
+Estructura de Datos,2526-3,2,anon_372,6,,7.057922077922078
+Estructura de Datos,2526-3,2,anon_326,4,,7.057922077922078
+Estructura de Datos,2526-3,2,anon_326,6,,7.057922077922078
+Estructura de Datos,2526-3,2,anon_326,8,,7.057922077922078
+Estructura de Datos,2526-3,2,anon_379,4,,7.057922077922078
+Estructura de Datos,2526-3,2,anon_379,6,,7.057922077922078
+Estructura de Datos,2526-3,2,anon_381,4,,7.057922077922078
+Estructura de Datos,2526-3,2,anon_382,4,,7.057922077922078
+Estructura de Datos,2526-3,2,anon_387,4,,7.057922077922078
+Estructura de Datos,2526-3,2,anon_363,6,,7.057922077922078
+Estructura de Datos,2526-3,2,anon_363,8,,7.057922077922078
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_001,4,Tamaño del grupo,8.750169343775665
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_001,6,Tamaño del grupo,8.750169343775665
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_001,8,Tamaño del grupo,1.2196610123012548
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_002,4,Tamaño del grupo,1.4303867103361743
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_002,6,Tamaño del grupo,1.4303867103361743
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_002,8,Tamaño del grupo,9.393667592044412
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_003,4,Tamaño del grupo,2.159006241526037
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_003,6,Tamaño del grupo,2.159006241526037
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_003,8,Tamaño del grupo,2.159006241526037
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_004,4,Tamaño del grupo,0.7555088538325586
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_004,6,Tamaño del grupo,0.7555088538325586
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_004,8,Tamaño del grupo,8.776170663337554
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_005,4,Tamaño del grupo,2.818387992070235
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_005,6,Tamaño del grupo,1.2196610123012548
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_005,8,Tamaño del grupo,2.818387992070235
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_006,4,Tamaño del grupo,9.635476542904991
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_006,6,Tamaño del grupo,8.464606803689042
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_006,8,Tamaño del grupo,6.278335199714344
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_007,4,Tamaño del grupo,1.4303867103361743
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_007,6,Tamaño del grupo,1.4303867103361743
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_007,8,Tamaño del grupo,1.4303867103361743
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_008,4,Tamaño del grupo,8.750169343775665
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_008,6,Tamaño del grupo,1.2196610123012548
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_008,8,Tamaño del grupo,2.818387992070235
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_009,4,Tamaño del grupo,0.7555088538325586
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_009,6,Tamaño del grupo,0.7555088538325586
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_009,8,Tamaño del grupo,0.7555088538325586
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_010,4,Tamaño del grupo,2.159006241526037
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_010,6,Tamaño del grupo,2.159006241526037
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_010,8,Tamaño del grupo,2.159006241526037
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_011,4,Tamaño del grupo,8.750169343775665
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_011,6,Tamaño del grupo,8.750169343775665
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_011,8,Tamaño del grupo,0.7555088538325586
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_012,4,Tamaño del grupo,0.7555088538325586
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_012,6,Tamaño del grupo,5.413333333333334
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_012,8,Tamaño del grupo,8.750169343775665
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_013,4,Tamaño del grupo,2.159006241526037
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_013,6,Tamaño del grupo,2.159006241526037
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_013,8,Tamaño del grupo,2.159006241526037
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_014,4,Tamaño del grupo,2.159006241526037
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_014,6,Tamaño del grupo,2.159006241526037
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_014,8,Tamaño del grupo,2.159006241526037
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_015,4,Tamaño del grupo,2.159006241526037
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_015,6,Tamaño del grupo,2.159006241526037
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_015,8,Tamaño del grupo,2.159006241526037
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_016,4,Tamaño del grupo,1.4303867103361743
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_016,6,Tamaño del grupo,5.731246892368388
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_016,8,Tamaño del grupo,12.59697180581593
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_017,4,Tamaño del grupo,1.2196610123012548
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_017,6,Tamaño del grupo,1.2196610123012548
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_017,8,Tamaño del grupo,1.2196610123012548
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_018,4,Tamaño del grupo,1.4303867103361743
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_018,6,Tamaño del grupo,1.4303867103361743
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_018,8,Tamaño del grupo,1.4303867103361743
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_019,4,Tamaño del grupo,5.731246892368388
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_019,6,Tamaño del grupo,1.4303867103361743
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_019,8,Tamaño del grupo,1.4303867103361743
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_020,4,Tamaño del grupo,5.731246892368388
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_020,6,Tamaño del grupo,1.4303867103361743
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_020,8,Tamaño del grupo,1.4303867103361743
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_021,4,Tamaño del grupo,8.750169343775665
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_021,6,Tamaño del grupo,8.776170663337554
+Matemáticas Discretas,2526-2,2,anon_md_2526_2_2_021,8,Tamaño del grupo,5.413333333333334
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_001,6,,5.201256913021619
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_001,8,,5.201256913021619
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_006,4,Año que cursa,2.3556257826281897
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_006,6,Año que cursa,2.3556257826281897
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_006,8,Año que cursa,8.656652227792625
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_018,4,Año que cursa,2.3556257826281897
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_018,6,Año que cursa,7.761990044193631
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_018,8,Año que cursa,9.460093565354352
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_021,4,,5.201256913021619
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_021,6,,5.201256913021619
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_021,8,,5.201256913021619
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_022,4,,5.201256913021619
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_023,4,Año que cursa,2.3556257826281897
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_023,6,Año que cursa,2.3556257826281897
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_023,8,Año que cursa,2.3556257826281897
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_028,4,Año que cursa,2.3556257826281897
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_028,6,Año que cursa,5.477933487108723
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_028,8,Año que cursa,5.697123792565307
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_030,4,Año que cursa,2.3556257826281897
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_030,6,Año que cursa,5.477933487108723
+Matemáticas Discretas,2526-3,1,anon_md_2526_3_1_030,8,Año que cursa,7.155448188569118
