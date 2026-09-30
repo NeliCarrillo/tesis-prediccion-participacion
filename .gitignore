@@ -217,6 +217,13 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Datos personales de estudiantes generados por el notebook de preprocesamiento
+# Datos personales de estudiantes generados por el preprocesamiento
 # (mapeo cedula -> estudiante_id y su log de detalle). NUNCA subir esto al repo.
+1_datos/originales/_procesado/_confidencial/
+# Ruta anterior a la reorganización del repositorio (por si queda una copia local).
 Datos Tesis Upstream/_procesado/_confidencial/
+
+# Archivos del sistema y de herramientas locales (no forman parte de la tesis)
+.DS_Store
+.claude/
+.vscode/

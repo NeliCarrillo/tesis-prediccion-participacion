@@ -1,0 +1,67 @@
+# Preprocesamiento
+
+Convierte los registros estandarizados en un conjunto de datos tabular, uno por sección.
+
+## Entrada
+
+Cada archivo de `1_datos/originales` lleva dos hojas añadidas al libro original:
+
+- **`Estandar`** — la rejilla de participaciones: una fila por estudiante y dos
+  subcolumnas por semana, una por sesión. Se considera sesión real la subcolumna
+  que lleva el nombre del día, de modo que las secciones con una sola clase
+  semanal quedan con una sesión por semana.
+- **`Cronograma`** — una fila por sesión, con `semana`, `dia_sesion`, `tema` y
+  `tipo_sesion`. El tema es el código del catálogo de la asignatura
+  (`1_datos/plantillas/CATALOGO_Temas.xlsx`); vale `0` cuando la sesión no cubre contenido nuevo, y
+  entonces `tipo_sesion` indica la causa.
+
+## Salida
+
+Un `.csv` por sección en `1_datos/estandarizados`, con la misma estructura de
+carpetas. Cada fila es un estudiante en una sesión.
+
+## Criterios aplicados
+
+- **Participaciones.** El número de la celda, redondeado hacia arriba (una media
+  participación cuenta como una). Los códigos `P`, `p`, `T`, `F` y `J` (presencia
+  sin participación) y `⚕️`, `⚖️` (ausencia justificada) se traducen como cero
+  participaciones. No se registra la asistencia como variable propia: solo dos de
+  las catorce secciones la llevan de forma fiable, y en las demás equivaldría a
+  repetir la participación semanal con otro nombre.
+- **Sesiones no dictadas.** Cuando `tipo_sesion` es `sin_clase`, la participación
+  queda vacía: no hubo oportunidad de participar.
+- **Año académico.** Diferencia entre el año calendario del trimestre y el año de
+  ingreso que indican los cuatro primeros dígitos del carnet, más uno. El valor se
+  agrupa en su último nivel: más allá del quinto año los casos son escasos y
+  dispersos, de modo que `5` debe leerse como «quinto año o más».
+- **Anonimización.** Cuando existe cédula, se sustituye por un identificador
+  consistente entre archivos. El mapeo se guarda en
+  `1_datos/originales/_procesado/_confidencial/`, fuera del control de versiones.
+  Los tres libros de Matemáticas Discretas ya llegaron sin cédula ni nombres.
+  Para ellos se genera un identificador a partir del trimestre, la sección y el
+  número de lista. Esto permite agrupar sus sesiones, pero trata como personas
+  distintas a los alumnos de secciones o trimestres diferentes: no hay datos
+  para comprobar si se repiten o si cursaron otra asignatura.
+
+## Ejecución
+
+Requiere Python 3 con `pandas` y `openpyxl`:
+
+```bash
+pip install pandas openpyxl
+```
+
+```bash
+python3 2_preprocesamiento/generar_csv.py
+```
+
+Se puede correr cuantas veces haga falta: reescribe los diecisiete CSV desde cero en cada
+ejecución y elimina los que ya no correspondan a ningún archivo de origen, de modo que
+la carpeta refleje siempre el estado actual de los registros. El mapeo de anonimización
+sí se conserva entre ejecuciones, para que un mismo estudiante mantenga su identificador.
+
+El resultado es reproducible: dos ejecuciones sobre una copia limpia del repositorio
+producen los diecisiete archivos idénticos byte a byte, identificadores anónimos incluidos,
+porque estos se asignan recorriendo los archivos en un orden fijo. El mapeo no se versiona
+por contener cédulas, de modo que quien clone el repositorio lo regenera al ejecutar el
+script y obtiene los mismos identificadores.
