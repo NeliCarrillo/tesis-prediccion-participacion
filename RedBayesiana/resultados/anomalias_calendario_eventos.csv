@@ -1,0 +1,47 @@
+evento,descripcion,fuente,trimestre,semana,materia,seccion,tipos,participacion_relativa,misma_semana_otros_trimestres,menor_que_otros
+1,9 y 10 de enero de 2025: protestas y juramentación presidencial,CNN en Español (2025),2425-2,1,Algoritmos y Programación,1,"administrativa, contenido",1.3125,2.6332819472616635,True
+1,9 y 10 de enero de 2025: protestas y juramentación presidencial,CNN en Español (2025),2425-2,1,Algoritmos y Programación,2,"administrativa, contenido",1.019607843137255,2.6332819472616635,True
+2,3 y 4 de marzo de 2025: Carnaval,cronograma,2425-2,9,Algoritmos y Programación,1,"sin_clase, evaluacion",0.0,1.7370872210953348,True
+2,3 y 4 de marzo de 2025: Carnaval,cronograma,2425-2,9,Algoritmos y Programación,2,"sin_clase, evaluacion",0.0,1.7370872210953348,True
+3,1 de mayo de 2025: Día del Trabajador,cronograma,2425-3,2,Computación Emergente,1,sin_clase,,2.026243440670598,False
+3,1 de mayo de 2025: Día del Trabajador,cronograma,2425-3,2,Computación Emergente,2,contenido,2.5142857142857142,2.026243440670598,False
+3,1 de mayo de 2025: Día del Trabajador,cronograma,2425-3,2,Estructura de Datos,2,"contenido, contenido",0.6629834254143646,0.8147783251231528,True
+4,22 y 23 de mayo de 2025: suspensión de clases escolares por las elecciones del 25 de mayo,Efecto Cocuyo (2025),2425-3,5,Computación Emergente,1,contenido,0.0,0.6941224734718371,True
+4,22 y 23 de mayo de 2025: suspensión de clases escolares por las elecciones del 25 de mayo,Efecto Cocuyo (2025),2425-3,5,Computación Emergente,2,contenido,0.9428571428571428,0.6941224734718371,False
+4,22 y 23 de mayo de 2025: suspensión de clases escolares por las elecciones del 25 de mayo,Efecto Cocuyo (2025),2425-3,5,Estructura de Datos,2,"contenido, contenido",0.5303867403314917,1.9297815378025271,True
+5,24 de junio de 2025: Batalla de Carabobo,cronograma,2425-3,10,Computación Emergente,1,contenido,2.2261904761904767,0.45649871109559936,False
+5,24 de junio de 2025: Batalla de Carabobo,cronograma,2425-3,10,Computación Emergente,2,sin_clase,,0.45649871109559936,False
+5,24 de junio de 2025: Batalla de Carabobo,cronograma,2425-3,10,Estructura de Datos,2,"contenido, contenido",0.5966850828729282,2.073002784322125,True
+6,19 y 20 de octubre de 2025: días de júbilo nacional,El Nacional (2025),2526-1,7,Algoritmos y Programación,1,"sin_clase, contenido",0.96,1.0083333333333333,True
+6,19 y 20 de octubre de 2025: días de júbilo nacional,El Nacional (2025),2526-1,7,Computación Emergente,1,"contenido, contenido",1.5445544554455446,1.324675324675325,False
+6,19 y 20 de octubre de 2025: días de júbilo nacional,El Nacional (2025),2526-1,7,Estructura de Datos,2,"contenido, evaluacion",0.0,0.3283414527937294,True
+7,22 a 25 de noviembre de 2025: suspensión de vuelos internacionales,Expansión (2025),2526-1,12,Algoritmos y Programación,1,"administrativa, administrativa",0.0,0.0,False
+7,22 a 25 de noviembre de 2025: suspensión de vuelos internacionales,Expansión (2025),2526-1,12,Computación Emergente,1,"evaluacion, administrativa",0.0,0.0,False
+7,22 a 25 de noviembre de 2025: suspensión de vuelos internacionales,Expansión (2025),2526-1,12,Estructura de Datos,2,"contenido, evaluacion",0.6521739130434782,0.515193370165746,False
+8,3 de enero de 2026: ataque de Estados Unidos; otras universidades dictaron clases virtuales entre el 7 y el 10 de enero,Efecto Cocuyo (2026),2526-2,1,Algoritmos y Programación,1,"contenido, contenido",2.896551724137931,1.8338504901960784,False
+8,3 de enero de 2026: ataque de Estados Unidos; otras universidades dictaron clases virtuales entre el 7 y el 10 de enero,Efecto Cocuyo (2026),2526-2,1,Computación Emergente,1,"administrativa, contenido",0.9090909090909091,0.7736259850474843,False
+8,3 de enero de 2026: ataque de Estados Unidos; otras universidades dictaron clases virtuales entre el 7 y el 10 de enero,Efecto Cocuyo (2026),2526-2,1,Estructura de Datos,2,"contenido, contenido",1.1785714285714288,1.5973792109470129,True
+8,3 de enero de 2026: ataque de Estados Unidos; otras universidades dictaron clases virtuales entre el 7 y el 10 de enero,Efecto Cocuyo (2026),2526-2,1,Matemáticas Discretas,1,"administrativa, contenido",0.0,0.21052631578947367,True
+8,3 de enero de 2026: ataque de Estados Unidos; otras universidades dictaron clases virtuales entre el 7 y el 10 de enero,Efecto Cocuyo (2026),2526-2,1,Matemáticas Discretas,2,"administrativa, contenido",0.0,0.21052631578947367,True
+9,12 de enero de 2026: reanudación de clases escolares en el país,El Nacional (2026),2526-2,2,Algoritmos y Programación,1,"contenido, contenido",0.0,1.2411176470588234,True
+9,12 de enero de 2026: reanudación de clases escolares en el país,El Nacional (2026),2526-2,2,Computación Emergente,1,"contenido, contenido",2.3636363636363633,2.076459890887048,False
+9,12 de enero de 2026: reanudación de clases escolares en el país,El Nacional (2026),2526-2,2,Estructura de Datos,2,"contenido, contenido",1.2857142857142858,0.6072013716898458,False
+9,12 de enero de 2026: reanudación de clases escolares en el país,El Nacional (2026),2526-2,2,Matemáticas Discretas,1,"contenido, contenido",2.537142857142857,0.8421052631578947,False
+9,12 de enero de 2026: reanudación de clases escolares en el país,El Nacional (2026),2526-2,2,Matemáticas Discretas,2,"contenido, contenido",3.1999999999999997,0.8421052631578947,False
+10,16 y 17 de febrero de 2026: Carnaval,cronograma,2526-2,7,Algoritmos y Programación,1,"sin_clase, contenido",0.0,1.2483333333333335,True
+10,16 y 17 de febrero de 2026: Carnaval,cronograma,2526-2,7,Computación Emergente,1,"sin_clase, contenido",0.7272727272727273,1.5289957567185293,True
+10,16 y 17 de febrero de 2026: Carnaval,cronograma,2526-2,7,Estructura de Datos,2,"contenido, evaluacion",0.10714285714285714,0.29262716707944375,True
+10,16 y 17 de febrero de 2026: Carnaval,cronograma,2526-2,7,Matemáticas Discretas,1,"sin_clase, contenido",1.782857142857143,1.4736842105263157,False
+10,16 y 17 de febrero de 2026: Carnaval,cronograma,2526-2,7,Matemáticas Discretas,2,"sin_clase, contenido",1.0666666666666667,1.4736842105263157,True
+11,1 de mayo de 2026: Día del Trabajador,cronograma,2526-3,3,Algoritmos y Programación,1,"contenido, contenido",1.4117647058823528,1.993169054259635,True
+11,1 de mayo de 2026: Día del Trabajador,cronograma,2526-3,3,Computación Emergente,1,"contenido, contenido",1.5510204081632655,1.7686613304187562,True
+11,1 de mayo de 2026: Día del Trabajador,cronograma,2526-3,3,Estructura de Datos,2,"contenido, contenido",1.4896551724137932,0.9373305651830753,False
+11,1 de mayo de 2026: Día del Trabajador,cronograma,2526-3,3,Matemáticas Discretas,1,"contenido, contenido",0.8421052631578947,0.9809523809523808,True
+12,"24 de junio de 2026: Batalla de Carabobo y terremoto de magnitud 7,5",CNN en Español (2026),2526-3,11,Algoritmos y Programación,1,"evaluacion, sin_clase",0.0,0.4468965517241379,True
+12,"24 de junio de 2026: Batalla de Carabobo y terremoto de magnitud 7,5",CNN en Español (2026),2526-3,11,Computación Emergente,1,"contenido, evaluacion",0.5306122448979592,1.1525781149543526,True
+12,"24 de junio de 2026: Batalla de Carabobo y terremoto de magnitud 7,5",CNN en Español (2026),2526-3,11,Estructura de Datos,2,"evaluacion, contenido",0.8275862068965517,0.6320133145739679,False
+12,"24 de junio de 2026: Batalla de Carabobo y terremoto de magnitud 7,5",CNN en Español (2026),2526-3,11,Matemáticas Discretas,1,"contenido, evaluacion",0.5263157894736842,0.5409523809523809,True
+13,Semana posterior al terremoto,CNN en Español (2026),2526-3,12,Algoritmos y Programación,1,"evaluacion, administrativa",0.0,0.0,False
+13,Semana posterior al terremoto,CNN en Español (2026),2526-3,12,Computación Emergente,1,"evaluacion, administrativa",0.0,0.0,False
+13,Semana posterior al terremoto,CNN en Español (2026),2526-3,12,Estructura de Datos,2,"evaluacion, administrativa",0.0,0.7325846745135719,True
+13,Semana posterior al terremoto,CNN en Español (2026),2526-3,12,Matemáticas Discretas,1,"evaluacion, administrativa",0.0,0.0,False
