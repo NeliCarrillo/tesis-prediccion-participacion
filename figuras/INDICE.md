@@ -62,6 +62,12 @@ Capturas reales de la interfaz, en `apendice_I_prototipo/`:
 | I10 | `nuevo_3_bayes_a.png` |
 | I11 | `nuevo_3_bayes_b.png` |
 
+## Apéndice K (explicabilidad de la LSTM)
+
+| Figura | Título abreviado | Archivo | Generada por |
+|---|---|---|---|
+| K1 | Predicciones con la misma evidencia y pesos de la primera capa LSTM | `apendice_K_explicabilidad_lstm/figura_explicabilidad_lstm.png` | `3_lstm/adaptacion/explicabilidad_lstm.py` |
+
 ## `no_incluidas_en_informe/`
 
 Figuras que se generaron durante el trabajo pero que no aparecen en la versión actual del
@@ -69,5 +75,5 @@ informe: versiones anteriores (por ejemplo, las de tres asignaturas, antes de in
 Matemáticas Discretas, o `figura_discretizacion.png`, cuyo script comprueba los 437
 registros de esa etapa), alternativas descartadas (`figura_grafo.png`,
 `estructura_comparada_todas_asignaturas_prueba.png`) y análisis complementarios
-(`figura_explicabilidad_lstm.png`, `figura_posterior_atipicos.png`). Se conservan como
+(`figura_posterior_atipicos.png`). Se conservan como
 registro; ninguna sustenta un resultado del informe.

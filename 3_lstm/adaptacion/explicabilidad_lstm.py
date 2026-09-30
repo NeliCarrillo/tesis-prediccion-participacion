@@ -9,7 +9,7 @@ comparación, la red bayesiana final del prototipo. Tres análisis:
 1. Pesos: qué puede leerse de los pesos de entrada de la primera capa y si
    esa lectura es estable entre los 12 modelos.
 2. Combinaciones: sensibilidad de la predicción al cambiar las mismas cuatro
-   variables de la Tabla 21 (participaciones de la semana del hito y de la
+   variables de la Tabla 20 (participaciones de la semana del hito y de la
    anterior, año que cursa y tamaño del grupo), medida como rango máximo
    menos mínimo, comparable con la red bayesiana.
 3. Acción: efecto de sumar una participación en la semana del hito, y si dos
@@ -19,7 +19,8 @@ Como se analizan los modelos finales sobre los mismos registros con que se
 entrenaron, este análisis describe el comportamiento de los modelos y no es
 una evaluación predictiva.
 
-Correr el archivo genera los CSV y la figura en esta carpeta.
+Correr el archivo genera los CSV en `3_lstm/resultados/` y la figura del Apéndice K
+en `figuras/apendice_K_explicabilidad_lstm/`.
 """
 from __future__ import annotations
 
@@ -39,7 +40,7 @@ import lstm_service  # noqa: E402
 from discretizacion import bin_anio, participaciones_semana, tamano_grupo  # noqa: E402
 
 CARPETA = RAIZ / "3_lstm" / "resultados"
-CARPETA_FIGURAS = RAIZ / "figuras" / "no_incluidas_en_informe"
+CARPETA_FIGURAS = RAIZ / "figuras" / "apendice_K_explicabilidad_lstm"
 MATERIAS = ("Algoritmos y Programación", "Computación Emergente",
             "Estructura de Datos", "Matemáticas Discretas")
 HITOS = (4, 6, 8)
@@ -162,47 +163,54 @@ def analisis_perturbaciones() -> pd.DataFrame:
 
 
 def figura(casos: pd.DataFrame, pesos: pd.DataFrame) -> None:
+    """a) Predicciones de ambos modelos para estudiantes con la misma evidencia
+    bayesiana (grupos de al menos 10 casos). b) Peso medio absoluto de cada
+    entrada numérica en la primera capa LSTM de los 12 modelos finales."""
     import matplotlib.pyplot as plt
-    from matplotlib import font_manager
-    fuente = Path("/System/Library/Fonts/Supplemental/Times New Roman.ttf")
-    if fuente.exists():
-        font_manager.fontManager.addfont(str(fuente))
-        plt.rcParams["font.family"] = "Times New Roman"
-    plt.rcParams.update({"font.size": 9})
+    plt.rcParams.update({"font.size": 9, "axes.linewidth": 0.6})
+    coma = lambda y, _p: f"{y:g}".replace(".", ",")
 
-    fig, (a1, a2) = plt.subplots(1, 2, figsize=(6.5, 2.9))
-    # Panel izquierdo: dispersión del efecto de +1 participación entre estudiantes
-    # con la misma evidencia bayesiana (grupos de al menos 5 casos).
-    grupos = casos.groupby(["materia", "hito", "config_bayes"])
-    datos_lstm = [g.delta_lstm_mas1.to_numpy() for _, g in grupos if len(g) >= 5]
-    datos_lstm.sort(key=np.median)
-    for k, valores in enumerate(datos_lstm):
-        a1.plot([k] * len(valores), valores, "o", color="black", markersize=1.6, alpha=0.5)
-    a1.axhline(1, color="0.5", linestyle="--", linewidth=0.8)
-    a1.set_xlabel("Grupos de casos con la misma evidencia bayesiana")
-    a1.set_ylabel("Cambio en la predicción LSTM\nal sumar una participación")
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(6.5, 3.0), gridspec_kw={"width_ratios": [1.35, 1]})
+    grupos = [g for _, g in casos.groupby(["materia", "hito", "config_bayes"]) if len(g) >= 10]
+    grupos.sort(key=lambda g: g.pred_bayes.iloc[0])
+    for k, g in enumerate(grupos):
+        a1.scatter([k] * len(g), g.pred_lstm, s=5, color="tab:blue", alpha=0.45, linewidths=0,
+                   label="LSTM" if k == 0 else None)
+        a1.plot([k - 0.4, k + 0.4], [g.pred_bayes.iloc[0]] * 2, color="tab:red", linewidth=1.6,
+                label="Red bayesiana" if k == 0 else None)
+    a1.set_xlabel(f"Grupos con la misma evidencia bayesiana ({len(grupos)} grupos)")
+    a1.set_ylabel("Predicción del total trimestral")
     a1.set_xticks([])
-    a1.grid(axis="y", color="0.9", linewidth=0.5)
-    for lado in ("top", "right"):
-        a1.spines[lado].set_visible(False)
-    # Panel derecho: peso medio absoluto por rasgo de entrada en los 12 modelos.
+    a1.set_ylim(bottom=0)
+    a1.yaxis.set_major_formatter(coma)
+    a1.set_title("a) Misma evidencia, distintas predicciones", fontsize=9, loc="left")
+    a1.legend(frameon=False, fontsize=7.5, loc="upper left", markerscale=2)
+
     etiquetas = {"anio_academico": "Año", "seccion_num": "Sección", "tamano_grupo": "Tamaño",
                  "posicion_lista": "Posición", "participaciones": "Participaciones",
                  "sesiones": "Sesiones", "evaluaciones": "Evaluaciones"}
     orden = list(etiquetas)
     tabla = pesos[pesos.rasgo.isin(orden)].pivot_table(index=["materia", "hito"], columns="rasgo",
                                                        values="peso_medio_abs")[orden]
-    for _, fila in tabla.iterrows():
-        a2.plot(range(len(orden)), fila.to_numpy(), "-", color="0.55", linewidth=0.7, alpha=0.8)
-    a2.plot(range(len(orden)), tabla.median().to_numpy(), "o-", color="black", linewidth=1.3, markersize=3.5)
+    for i, (_, fila) in enumerate(tabla.iterrows()):
+        a2.plot(range(len(orden)), fila.to_numpy(), "-", color="0.7", linewidth=0.7,
+                label="Cada modelo" if i == 0 else None)
+    a2.plot(range(len(orden)), tabla.median().to_numpy(), "o-", color="black", linewidth=1.3,
+            markersize=3.5, label="Mediana de los 12 modelos")
     a2.set_xticks(range(len(orden)))
     a2.set_xticklabels([etiquetas[r] for r in orden], rotation=35, ha="right")
-    a2.set_ylabel("Peso medio absoluto\n(primera capa LSTM)")
-    a2.set_ylim(bottom=0)
-    a2.grid(axis="y", color="0.9", linewidth=0.5)
-    for lado in ("top", "right"):
-        a2.spines[lado].set_visible(False)
+    a2.set_ylabel("Peso medio absoluto")
+    a2.set_ylim(0, 0.25)
+    a2.yaxis.set_major_formatter(coma)
+    a2.set_title("b) Pesos de la primera capa LSTM", fontsize=9, loc="left")
+    a2.legend(frameon=False, fontsize=7.5, loc="lower left")
+    for eje in (a1, a2):
+        eje.grid(axis="y", color="0.9", linewidth=0.5)
+        eje.set_axisbelow(True)
+        for lado in ("top", "right"):
+            eje.spines[lado].set_visible(False)
     fig.tight_layout(w_pad=2.0)
+    CARPETA_FIGURAS.mkdir(parents=True, exist_ok=True)
     fig.savefig(CARPETA_FIGURAS / "figura_explicabilidad_lstm.png", dpi=300, bbox_inches="tight", facecolor="white")
     plt.close(fig)
 
