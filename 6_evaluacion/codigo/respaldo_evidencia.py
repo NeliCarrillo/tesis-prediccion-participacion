@@ -9,7 +9,9 @@ la extrapolación proporcional.
 1. Respaldo de cada caso con evidencia completa: número de filas
    estudiante-sesión del entrenamiento de su pliegue con exactamente la misma
    combinación de las cuatro variables de evidencia. Se exige reproducir los
-   conteos y el RMSE de la Tabla 19.
+   conteos y el RMSE de la Tabla 19, y también las otras columnas de esa tabla:
+   mediana de registros estudiante-sección que aportan esas filas, puntaje de
+   Brier y concentración media de la distribución posterior.
 2. Brecha frente a la LSTM según el respaldo (RMSE de los tres métodos por
    banda y en los casos con respaldo).
 3. Causa de la falta de respaldo: qué valores de la evidencia no aparecen
@@ -53,6 +55,9 @@ BANDAS = [(-1, 0, "0"), (0, 10, "1–10"), (10, 50, "11–50"), (50, 200, "51–
 # comprobación de ese valor admite una diferencia de 0,01.
 TABLA_19 = {"0": (379, 7.49, 4.36), "1–10": (145, 8.76, 6.19), "11–50": (142, 5.86, 4.82),
             "51–200": (324, 3.43, 1.91), ">200": (573, 2.39, 1.65)}
+# Otras columnas de la Tabla 19: (mediana de registros estudiante-sección, puntaje de Brier, concentración media).
+TABLA_19_CALIDAD = {"0": (0, 0.80, 0.20), "1–10": (2, 1.08, 0.82), "11–50": (8, 0.87, 0.52),
+                    "51–200": (8, 0.87, 0.57), ">200": (42, 0.64, 0.50)}
 
 
 def _rmse(a, b) -> float:
@@ -84,14 +89,23 @@ def analizar(datos: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
         train = train_bn.dropna(subset=NODOS + [OBJETIVO])
         medias = medias_entrenamiento_por_estado(reg, materia, trimestre)
         conteo = train.groupby(NODOS).size()
+        # Registros estudiante-sección distintos que aportan las filas de cada combinación.
+        registros = (sesiones[(sesiones.materia == materia) & (sesiones.trimestre != trimestre)]
+                     .dropna(subset=NODOS + [OBJETIVO])
+                     .drop_duplicates(NODOS + ["estudiante_id", "seccion", "trimestre"])
+                     .groupby(NODOS).size())
         combinaciones = pd.DataFrame(list(conteo.index), columns=NODOS)
         posiciones = np.column_stack([combinaciones[n].map(lambda e, n=n: _posicion(n, e)) for n in NODOS])
         for _, caso in g.iterrows():
             clave = tuple(caso[c] for c in EVIDENCIA)
             respaldo = int(conteo.get(clave, 0))
             ausentes = [n for n, v in zip(NODOS, clave) if not (train[n] == v).any()]
+            posterior_caso = np.array([float(caso[f"posterior_{e}"]) for e in ESTADOS])
+            observado = np.array([float(e == caso.estado_real) for e in ESTADOS])
             fila = {**{c: caso[c] for c in LLAVE}, **{c: caso[c] for c in EVIDENCIA},
-                    "respaldo": respaldo, "valores_ausentes": ", ".join(ausentes),
+                    "respaldo": respaldo, "registros_respaldo": int(registros.get(clave, 0)),
+                    "brier": float(((posterior_caso - observado) ** 2).sum()),
+                    "concentracion": float(posterior_caso.max()), "valores_ausentes": ", ".join(ausentes),
                     "total_trimestre_real": caso.total_trimestre_real, "prediccion_bayes": caso.prediccion_continua,
                     "prediccion_lstm": caso.prediccion_lstm, "prediccion_extrapolacion": caso.prediccion_extrapolacion}
             if respaldo == 0:
@@ -121,7 +135,13 @@ def analizar(datos: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
         assert len(b) == n_esperado, (nombre, len(b))
         assert abs(_rmse(b.prediccion_bayes, b.total_trimestre_real) - rmse_bayes) <= 0.01, nombre
         assert round(_rmse(b.prediccion_extrapolacion, b.total_trimestre_real), 2) == rmse_ext, nombre
+        registros_mediana, brier, concentracion = TABLA_19_CALIDAD[nombre]
+        assert b.registros_respaldo.median() == registros_mediana, nombre
+        assert round(b.brier.mean(), 2) == brier, nombre
+        assert round(b.concentracion.mean(), 2) == concentracion, nombre
         resumen.append({"banda": nombre, "casos": len(b),
+                        "registros_mediana": b.registros_respaldo.median(), "brier": b.brier.mean(),
+                        "concentracion": b.concentracion.mean(),
                         "rmse_bayes": _rmse(b.prediccion_bayes, b.total_trimestre_real),
                         "rmse_extrapolacion": _rmse(b.prediccion_extrapolacion, b.total_trimestre_real),
                         "rmse_lstm": _rmse(b.prediccion_lstm, b.total_trimestre_real)})

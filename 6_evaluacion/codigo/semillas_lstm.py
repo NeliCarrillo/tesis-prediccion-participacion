@@ -13,7 +13,8 @@ informe usan solo la semilla 42:
    (filas de la LSTM de la Tabla J2).
 3. RMSE de la LSTM en los casos sin participación en las dos semanas
    observadas (Algoritmos y Programación-S6 y Estructura de Datos-S8).
-4. RMSE de la LSTM en los casos con respaldo (brecha de Comparación LSTM y Bayes).
+4. RMSE de la LSTM en los casos con respaldo (brecha de Comparación LSTM y Bayes) y en los 379
+   casos sin respaldo (Tabla F3 del Apéndice F).
 5. Diferencia promedio entre el RMSE de la LSTM (media de las cinco semillas) y el de
    la red bayesiana y la extrapolación proporcional, comparada con la variación del
    RMSE entre semillas (comentario del tutor: "reportar la diferencia promedio").
@@ -117,8 +118,15 @@ def casos_puntuales(pred: pd.DataFrame) -> pd.DataFrame:
         con = g[g.respaldo > 0]
         fila["rmse_con_respaldo"] = _rmse(con.prediccion_lstm, con.total_trimestre_real)
         fila["casos_con_respaldo"] = len(con)
+        sin = g[g.respaldo == 0]
+        fila["rmse_sin_respaldo"] = _rmse(sin.prediccion_lstm, sin.total_trimestre_real)
+        fila["casos_sin_respaldo"] = len(sin)
         filas.append(fila)
-    return pd.DataFrame(filas)
+    tabla = pd.DataFrame(filas)
+    # Valor publicado en la Tabla F3 (semilla 42, todos los casos sin respaldo).
+    assert (tabla.casos_sin_respaldo == 379).all()
+    assert round(tabla.loc[tabla.semilla == 42, "rmse_sin_respaldo"].iloc[0], 2) == 3.55
+    return tabla
 
 
 if __name__ == "__main__":

@@ -61,6 +61,9 @@ Capturas reales de la interfaz, en `apendice_I_prototipo/`:
 | I9 | `nuevo_2_lstm.png` |
 | I10 | `nuevo_3_bayes_a.png` |
 | I11 | `nuevo_3_bayes_b.png` |
+| (opcional) | `historico_2_lstm_semilla_7.png`: la misma tarjeta de I3 con la semilla 7 elegida, donde cambian la predicción y el margen de error |
+
+Las capturas las genera `5_prototipo/capturas_apendice_i.js` desde la interfaz en ejecución; I3 e I9 muestran la lista de semillas desplegada.
 
 ## Apéndice K (explicabilidad de la LSTM)
 

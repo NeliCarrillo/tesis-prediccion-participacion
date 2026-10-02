@@ -40,6 +40,7 @@ SEMILLA_PRINCIPAL = 42
 SEMILLAS_ADICIONALES = (7, 123, 2024, 31)
 RUTA_SEMILLAS_ADICIONALES = RUTA_ARTEFACTOS / "semillas_adicionales"
 RUTA_PREDICCIONES_VALIDACION = RAIZ / "3_lstm" / "resultados" / "predicciones_lstm_validacion_cruzada.csv"
+RUTA_PREDICCIONES_CINCO_SEMILLAS = RAIZ / "3_lstm" / "resultados" / "predicciones_lstm_cinco_semillas.csv"
 
 # Debe coincidir con el diccionario usado al entrenar los modelos finales
 # (ver el historial de esta sesión: script de entrenamiento de Sprint 5).
@@ -350,6 +351,8 @@ class ResultadoLSTM:
     # Predicción de cada una de las cinco semillas de entrenamiento (None si faltan los modelos de
     # las semillas adicionales). `prediccion_total` es siempre la de la semilla 42.
     por_semilla: dict[int, float] | None = None
+    # Semilla cuyo modelo produjo `prediccion_total` (42 por defecto, la de los resultados del informe).
+    semilla: int = SEMILLA_PRINCIPAL
 
     @property
     def rango_semillas(self) -> tuple[float, float] | None:
@@ -395,6 +398,13 @@ def _predecir_desde_tensor(
     )
 
 
+def semillas_disponibles() -> list[int]:
+    """Semillas con modelos finales disponibles: la principal y las adicionales que estén entrenadas."""
+    return [SEMILLA_PRINCIPAL] + [
+        semilla for semilla in SEMILLAS_ADICIONALES if (RUTA_SEMILLAS_ADICIONALES / str(semilla)).is_dir()
+    ]
+
+
 def predicciones_por_semilla(
     materia: str, hito: int, X_hito: np.ndarray, X_temas_hito: np.ndarray, acumulado: float,
     principal: float,
@@ -411,13 +421,17 @@ def predicciones_por_semilla(
     return predicciones
 
 
-def predict_lstm(caso) -> ResultadoLSTM:
+def predict_lstm(caso, semilla: int = SEMILLA_PRINCIPAL) -> ResultadoLSTM:
     """Predicción puntual del total trimestral para `caso`, usando el
     modelo final de su asignatura/hito (Estrategia 2 — entrenado con
     todos los trimestres disponibles, no con la validación cruzada de
     Sprint 2). No debe usarse para calcular métricas de desempeño."""
     X_hito, X_temas_hito, acumulado = construir_entrada_lstm(caso)
-    total = _predecir_desde_tensor(caso.materia, caso.hito, X_hito, X_temas_hito, acumulado)
+    principal = _predecir_desde_tensor(caso.materia, caso.hito, X_hito, X_temas_hito, acumulado)
+    por_semilla = predicciones_por_semilla(caso.materia, caso.hito, X_hito, X_temas_hito, acumulado, principal)
+    total = principal if semilla == SEMILLA_PRINCIPAL else (
+        por_semilla[semilla] if por_semilla and semilla in por_semilla else
+        _predecir_desde_tensor(caso.materia, caso.hito, X_hito, X_temas_hito, acumulado, semilla))
 
     return ResultadoLSTM(
         materia=caso.materia,
@@ -426,7 +440,8 @@ def predict_lstm(caso) -> ResultadoLSTM:
         estudiante_id=caso.estudiante_id,
         hito=caso.hito,
         prediccion_total=total,
-        por_semilla=predicciones_por_semilla(caso.materia, caso.hito, X_hito, X_temas_hito, acumulado, total),
+        por_semilla=por_semilla,
+        semilla=semilla,
     )
 
 
@@ -578,6 +593,7 @@ class ResultadoLSTMManual:
     # Valores que el usuario dejó vacíos y la LSTM imputó (nombre -> valor).
     valores_imputados: dict = field(default_factory=dict)
     por_semilla: dict[int, float] | None = None
+    semilla: int = SEMILLA_PRINCIPAL
 
     @property
     def rango_semillas(self) -> tuple[float, float] | None:
@@ -614,6 +630,7 @@ def predict_lstm_manual(
     anio_academico: float | None,
     posicion_lista: float | None,
     participaciones_semanales: list[float | None],
+    semilla: int = SEMILLA_PRINCIPAL,
 ) -> ResultadoLSTMManual:
     """Misma predicción que `predict_lstm`, para un estudiante hipotético
     que se uniría a una sección real ya existente (`materia`/`trimestre`/
@@ -642,7 +659,11 @@ def predict_lstm_manual(
     X_hito, X_temas_hito, acumulado = construir_entrada_lstm_manual(
         materia, trimestre, seccion, hito, anio_academico, posicion_lista, participaciones_semanales
     )
-    total = _predecir_desde_tensor(materia, hito, X_hito, X_temas_hito, acumulado)
+    principal = _predecir_desde_tensor(materia, hito, X_hito, X_temas_hito, acumulado)
+    por_semilla = predicciones_por_semilla(materia, hito, X_hito, X_temas_hito, acumulado, principal)
+    total = principal if semilla == SEMILLA_PRINCIPAL else (
+        por_semilla[semilla] if por_semilla and semilla in por_semilla else
+        _predecir_desde_tensor(materia, hito, X_hito, X_temas_hito, acumulado, semilla))
 
     return ResultadoLSTMManual(
         materia=materia,
@@ -651,30 +672,37 @@ def predict_lstm_manual(
         hito=hito,
         prediccion_total=total,
         valores_imputados=imputados,
-        por_semilla=predicciones_por_semilla(materia, hito, X_hito, X_temas_hito, acumulado, total),
+        por_semilla=por_semilla,
+        semilla=semilla,
     )
 
 
-_CACHE_TABLA_ERROR: np.ndarray | None = None
+_CACHE_TABLA_ERROR: dict[int, np.ndarray] = {}
 
 _VECINDAD_MINIMA_ERROR_LOCAL = 2.0
 _N_MINIMO_ERROR_LOCAL = 5
 
 
-def _tabla_error_validacion() -> np.ndarray:
-    """(real, predicho) de los 1572 casos de la validación cruzada oficial
-    de la LSTM (Sprint 2, `3_lstm/adaptacion/adaptacion_lstm_participaciones.ipynb`,
-    celda 32 `validacion_cruzada`) -- NO de los modelos Estrategia 2 de
-    este prototipo. Lee el CSV ya exportado en Sprint 5 para paridad
-    (`predicciones_lstm_validacion_cruzada.csv`); no reentrena nada."""
-    global _CACHE_TABLA_ERROR
-    if _CACHE_TABLA_ERROR is None:
-        tabla = pd.read_csv(RUTA_PREDICCIONES_VALIDACION)
-        _CACHE_TABLA_ERROR = tabla[["total_trimestre_real", "prediccion_lstm"]].to_numpy(dtype=float)
-    return _CACHE_TABLA_ERROR
+def _tabla_error_validacion(semilla: int = SEMILLA_PRINCIPAL) -> np.ndarray:
+    """(real, predicho) de los 1572 casos de la validación cruzada de la LSTM (Sprint 2,
+    `3_lstm/adaptacion/adaptacion_lstm_participaciones.ipynb`, celda 32 `validacion_cruzada`) para la
+    `semilla` elegida, NO de los modelos Estrategia 2 de este prototipo. La semilla 42 usa el CSV
+    oficial ya exportado para paridad (`predicciones_lstm_validacion_cruzada.csv`); las otras, las
+    predicciones de las cinco semillas (`predicciones_lstm_cinco_semillas.csv`, que reproducen las
+    métricas publicadas, Apéndice C). No reentrena nada."""
+    if semilla not in _CACHE_TABLA_ERROR:
+        if semilla == SEMILLA_PRINCIPAL:
+            tabla = pd.read_csv(RUTA_PREDICCIONES_VALIDACION)
+        else:
+            tabla = pd.read_csv(RUTA_PREDICCIONES_CINCO_SEMILLAS)
+            tabla = tabla[tabla["semilla"] == semilla]
+            if len(tabla) != 1572:
+                raise FileNotFoundError(f"no hay predicciones de validación cruzada para la semilla {semilla}")
+        _CACHE_TABLA_ERROR[semilla] = tabla[["total_trimestre_real", "prediccion_lstm"]].to_numpy(dtype=float)
+    return _CACHE_TABLA_ERROR[semilla]
 
 
-def error_local(prediccion: float) -> dict:
+def error_local(prediccion: float, semilla: int = SEMILLA_PRINCIPAL) -> dict:
     """Margen de error empírico para una predicción de esta magnitud,
     estimado sobre los casos de la validación cruzada oficial cuya
     predicción histórica cae cerca de `prediccion` (vecindad de
@@ -682,7 +710,7 @@ def error_local(prediccion: float) -> dict:
     de `_N_MINIMO_ERROR_LOCAL` casos). No sustituye ni se mezcla con el
     RMSE/R² global ya reportado en el informe -- es una estimación local,
     adicional, propia del prototipo."""
-    tabla = _tabla_error_validacion()
+    tabla = _tabla_error_validacion(semilla)
     reales, predichos = tabla[:, 0], tabla[:, 1]
 
     vecindad = _VECINDAD_MINIMA_ERROR_LOCAL

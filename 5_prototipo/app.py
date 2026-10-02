@@ -49,29 +49,17 @@ def _texto_dato(valor, formato) -> str:
 
 
 def _texto_rango_semillas(resultado) -> str:
-    """Rango de la predicción de la LSTM entre sus cinco semillas de entrenamiento. El número grande
-    de la tarjeta es el de la semilla 42, la que usan los análisis por estudiante del informe."""
+    """Rango de la predicción de la LSTM entre sus cinco semillas de entrenamiento. La semilla 42 es
+    la que usan los análisis por estudiante del informe; con el selector se puede ver cualquiera."""
     if resultado.rango_semillas is None:
         return ""
     minimo, maximo = resultado.rango_semillas
+    de_informe = ", la que usan los resultados del informe" if resultado.semilla == lstm_service.SEMILLA_PRINCIPAL else ""
     return (
         f"Según la semilla de entrenamiento, la predicción de la LSTM varía entre {minimo:.1f} y "
-        f"{maximo:.1f} participaciones (cinco entrenamientos con semillas distintas; arriba se "
-        f"muestra el de la semilla {lstm_service.SEMILLA_PRINCIPAL}, la que usan los resultados del informe)."
+        f"{maximo:.1f} participaciones (cinco entrenamientos con semillas distintas). Arriba se muestra "
+        f"la de la semilla {resultado.semilla}{de_informe}."
     )
-
-
-def _llenar_semillas(contenedor, expansion, resultado) -> None:
-    """Lista la predicción de cada semilla dentro del desplegable de la tarjeta de la LSTM. El
-    número principal de la tarjeta no cambia: sigue siendo el de la semilla 42."""
-    contenedor.clear()
-    expansion.set_visibility(bool(resultado.por_semilla))
-    if not resultado.por_semilla:
-        return
-    with contenedor:
-        for semilla, valor in resultado.por_semilla.items():
-            nota = " (la que se muestra arriba)" if semilla == lstm_service.SEMILLA_PRINCIPAL else ""
-            ui.label(f"Semilla {semilla}{nota}: {valor:.1f} participaciones")
 
 
 def mostrar_resumen_variables(contenedor, materia, trimestre, seccion, hito, anio, posicion,
@@ -355,23 +343,31 @@ def pagina_principal() -> None:
             etiqueta_contexto_lstm = ui.label().classes("text-caption text-grey-7")
             etiqueta_valor_real_lstm = ui.label().classes("text-body2 text-weight-bold q-mt-xs")
             etiqueta_rango_semillas_lstm = ui.label().classes("text-caption text-grey-7")
-            expansion_semillas_lstm = ui.expansion("Ver la predicción de cada semilla").classes("w-full")
-            with expansion_semillas_lstm:
-                lista_semillas_lstm = ui.column().classes("q-pa-sm")
+            select_semilla_lstm = ui.select(
+                lstm_service.semillas_disponibles(), value=lstm_service.SEMILLA_PRINCIPAL,
+                label="Semilla de entrenamiento",
+            ).classes("w-full")
             etiqueta_error_local_lstm = ui.label().classes("text-caption text-grey-7")
         contenedor_prediccion_lstm.set_visibility(False)
 
+        caso_lstm_actual: dict = {"caso": None}
+        select_semilla_lstm.on_value_change(
+            lambda _: _ejecutar_lstm(caso_lstm_actual["caso"]) if caso_lstm_actual["caso"] is not None else None
+        )
+
         def _limpiar_resultado_lstm() -> None:
+            caso_lstm_actual["caso"] = None
             estado_lstm.set_text("Selecciona un caso completo y presiona el botón Generar predicción.")
             estado_lstm.classes(replace="text-body2 text-grey-7 q-mt-sm")
             contenedor_prediccion_lstm.set_visibility(False)
 
         def _ejecutar_lstm(caso: CasoPrediccion) -> None:
+            caso_lstm_actual["caso"] = caso
             contenedor_prediccion_lstm.set_visibility(False)
             estado_lstm.set_text("Calculando predicción…")
             estado_lstm.classes(replace="text-body2 text-grey-7 q-mt-sm")
             try:
-                resultado = lstm_service.predict_lstm(caso)
+                resultado = lstm_service.predict_lstm(caso, select_semilla_lstm.value)
             except FileNotFoundError:
                 estado_lstm.set_text(
                     f"No hay un modelo final entrenado para {caso.materia} / "
@@ -418,17 +414,16 @@ def pagina_principal() -> None:
                 etiqueta_valor_real_lstm.set_text("")
 
             etiqueta_rango_semillas_lstm.set_text(_texto_rango_semillas(resultado))
-            _llenar_semillas(lista_semillas_lstm, expansion_semillas_lstm, resultado)
 
             # Margen de error local: estimado sobre la validación cruzada
             # oficial (Sprint 2), NO el RMSE/R² global ya reportado.
-            error = lstm_service.error_local(resultado.prediccion_total)
+            error = lstm_service.error_local(resultado.prediccion_total, resultado.semilla)
             if error["n"] > 0:
                 etiqueta_error_local_lstm.set_text(
                     f"Margen de error esperado para predicciones de esta magnitud: "
                     f"± {error['mae_local']:.1f} participaciones en promedio "
                     f"(RMSE {error['rmse_local']:.1f}), estimado sobre {error['n']} casos "
-                    f"similares de la validación cruzada. No corresponde al RMSE ni al R² globales del informe."
+                    f"similares de la validación cruzada de la semilla {resultado.semilla}. No corresponde al RMSE ni al R² globales del informe."
                 )
             else:
                 etiqueta_error_local_lstm.set_text("")
@@ -835,14 +830,21 @@ def pagina_principal() -> None:
             etiqueta_frase_lstm_n = ui.label().classes("text-body1")
             etiqueta_contexto_lstm_n = ui.label().classes("text-caption text-grey-7")
             etiqueta_rango_semillas_lstm_n = ui.label().classes("text-caption text-grey-7")
-            expansion_semillas_lstm_n = ui.expansion("Ver la predicción de cada semilla").classes("w-full")
-            with expansion_semillas_lstm_n:
-                lista_semillas_lstm_n = ui.column().classes("q-pa-sm")
+            select_semilla_lstm_n = ui.select(
+                lstm_service.semillas_disponibles(), value=lstm_service.SEMILLA_PRINCIPAL,
+                label="Semilla de entrenamiento",
+            ).classes("w-full")
             etiqueta_error_local_lstm_n = ui.label().classes("text-caption text-grey-7")
             etiqueta_imputados_lstm_n = ui.label().classes("text-caption text-warning")
         contenedor_prediccion_lstm_n.set_visibility(False)
 
+        argumentos_lstm_n: dict = {"args": None}
+        select_semilla_lstm_n.on_value_change(
+            lambda _: _ejecutar_lstm_manual(*argumentos_lstm_n["args"]) if argumentos_lstm_n["args"] is not None else None
+        )
+
         def _limpiar_resultado_lstm_n() -> None:
+            argumentos_lstm_n["args"] = None
             estado_lstm_n.set_text(
                 "Completa los datos y presiona el botón Generar predicción (estudiante nuevo)."
             )
@@ -850,12 +852,14 @@ def pagina_principal() -> None:
             contenedor_prediccion_lstm_n.set_visibility(False)
 
         def _ejecutar_lstm_manual(materia, trimestre, seccion, hito, anio, posicion, participaciones) -> None:
+            argumentos_lstm_n["args"] = (materia, trimestre, seccion, hito, anio, posicion, participaciones)
             contenedor_prediccion_lstm_n.set_visibility(False)
             estado_lstm_n.set_text("Calculando predicción…")
             estado_lstm_n.classes(replace="text-body2 text-grey-7 q-mt-sm")
             try:
                 resultado = lstm_service.predict_lstm_manual(
-                    materia, trimestre, seccion, hito, anio, posicion, participaciones
+                    materia, trimestre, seccion, hito, anio, posicion, participaciones,
+                    select_semilla_lstm_n.value,
                 )
             except (FileNotFoundError, ValueError) as error:
                 estado_lstm_n.set_text(f"No se pudo calcular la predicción: {error}")
@@ -892,15 +896,14 @@ def pagina_principal() -> None:
                 etiqueta_imputados_lstm_n.set_text("")
 
             etiqueta_rango_semillas_lstm_n.set_text(_texto_rango_semillas(resultado))
-            _llenar_semillas(lista_semillas_lstm_n, expansion_semillas_lstm_n, resultado)
 
-            error = lstm_service.error_local(resultado.prediccion_total)
+            error = lstm_service.error_local(resultado.prediccion_total, resultado.semilla)
             if error["n"] > 0:
                 etiqueta_error_local_lstm_n.set_text(
                     f"Margen de error esperado para predicciones de esta magnitud: "
                     f"± {error['mae_local']:.1f} participaciones en promedio "
                     f"(RMSE {error['rmse_local']:.1f}), estimado sobre {error['n']} casos "
-                    f"similares de la validación cruzada. No corresponde al RMSE ni al R² globales del informe."
+                    f"similares de la validación cruzada de la semilla {resultado.semilla}. No corresponde al RMSE ni al R² globales del informe."
                 )
             else:
                 etiqueta_error_local_lstm_n.set_text("")

@@ -7,7 +7,10 @@
 //
 // Reproduce el flujo del apéndice: estudiante registrado anon_001 (Algoritmos y Programación,
 // 2425-2, sección 1, semana 6) y estudiante nuevo precargado de anon_003 en la misma sección e hito.
-// El desplegable de la LSTM con la predicción de cada semilla se deja abierto.
+// Las tarjetas de la LSTM (Figuras I3 e I9) se capturan con la lista de semillas desplegada y la semilla 42
+// seleccionada. Además se guarda una captura opcional del caso registrado con la semilla 7, para mostrar que al
+// elegir otra semilla cambian la predicción y el margen de error. Antes de capturar el estudiante nuevo se
+// comprueba lo mismo con la semilla 2024.
 const { chromium } = require('playwright');
 const SALIDA = process.argv[2] || "../figuras/apendice_I_prototipo";
 (async () => {
@@ -37,6 +40,26 @@ const SALIDA = process.argv[2] || "../figuras/apendice_I_prototipo";
     const c = await caja(card); const e = await caja(loc);
     return { top: e.y - c.y, bottom: e.y + e.h - c.y };
   };
+  const conMenu = async (card, nombre) => {  // tarjeta con la lista de semillas desplegada
+    await card.locator('.q-field').filter({ hasText: 'Semilla de entrenamiento' }).first().click();
+    await p.waitForTimeout(700);
+    const menu = p.locator('.q-menu').filter({ visible: true }).last();
+    const c = await caja(card); const m = await caja(menu);
+    await card.evaluate(e => document.querySelectorAll('.q-card').forEach(o => { if (o !== e) o.style.visibility = 'hidden'; }));
+    const abajo = Math.max(c.y + c.h, m.y + m.h) + 6;
+    await p.screenshot({ path: `${SALIDA}/${nombre}.png`, fullPage: true, clip: { x: c.x, y: c.y, width: c.w, height: abajo - c.y } });
+    console.log(nombre, 'con menú');
+    await p.evaluate(() => document.querySelectorAll('.q-card').forEach(o => { o.style.visibility = ''; }));
+    await p.keyboard.press('Escape'); await p.waitForTimeout(500);
+  };
+  const elegirSemilla = async (card, valor) => {
+    await card.locator('.q-field').filter({ hasText: 'Semilla de entrenamiento' }).first().click();
+    await p.getByRole('option', { name: valor, exact: true }).click();
+    await p.waitForTimeout(3500);
+    await p.evaluate(() => document.activeElement && document.activeElement.blur());
+    await p.mouse.click(2, 2);
+    await p.waitForTimeout(400);
+  };
   const completa = async (card, nombre) => { const c = await caja(card); await recorte(card, 0, c.h, nombre); };
   const texto = (card, patron) => card.getByText(patron, { exact: false }).first();
 
@@ -50,7 +73,6 @@ const SALIDA = process.argv[2] || "../figuras/apendice_I_prototipo";
   await p.getByRole('button', { name: 'Generar predicción', exact: true }).click();
   await p.getByText('Según la semilla de entrenamiento').first().waitFor({ timeout: 120000 });
   await p.getByText('Distribución posterior').first().waitFor({ timeout: 120000 });
-  await p.getByText('Ver la predicción de cada semilla').filter({ visible: true }).first().click();
   await p.waitForTimeout(1500);
   await p.evaluate(() => window.scrollTo(0, 0));
 
@@ -60,7 +82,10 @@ const SALIDA = process.argv[2] || "../figuras/apendice_I_prototipo";
   const alto1 = (await caja(c1)).h;
   await recorte(c1, 0, corte1, 'historico_1_seleccion_a');
   await recorte(c1, corte1, alto1, 'historico_1_seleccion_b');
-  await completa(tarjeta('2. Resultado LSTM'), 'historico_2_lstm');
+  await conMenu(tarjeta('2. Resultado LSTM'), 'historico_2_lstm');
+  await elegirSemilla(tarjeta('2. Resultado LSTM'), '7');
+  await completa(tarjeta('2. Resultado LSTM'), 'historico_2_lstm_semilla_7');
+  await elegirSemilla(tarjeta('2. Resultado LSTM'), '42');
   let c3 = tarjeta('3. Resultado red bayesiana');
   let ev = await rel(c3, c3.getByText(/^Año que cursa: /).first());
   let sim = await rel(c3, c3.getByText('¿Qué pasaría si...?').first());
@@ -84,7 +109,17 @@ const SALIDA = process.argv[2] || "../figuras/apendice_I_prototipo";
   await p.getByRole('button', { name: 'Generar predicción (estudiante nuevo)' }).click();
   await p.getByText('Según la semilla de entrenamiento').filter({ visible: true }).first().waitFor({ timeout: 120000 });
   await p.getByText('Distribución posterior').filter({ visible: true }).first().waitFor({ timeout: 120000 });
-  await p.getByText('Ver la predicción de cada semilla').filter({ visible: true }).first().click();
+  const tarjetaNueva = () => p.locator('.q-card').filter({ hasText: '2. Resultado LSTM (estudiante nuevo)', visible: true }).first();
+  const cambiarSemilla = async (valor) => {
+    await tarjetaNueva().locator('.q-field').filter({ hasText: 'Semilla de entrenamiento' }).first().click();
+    await p.getByRole('option', { name: valor, exact: true }).click();
+    await p.waitForTimeout(3000);
+    console.log('nuevo, semilla', valor, '->', (await tarjetaNueva().innerText()).split('\n').filter(l => /^\d+\.\d participaciones|Margen/.test(l)).join(' | '));
+  };
+  await cambiarSemilla('2024');
+  await cambiarSemilla('42');
+  await p.evaluate(() => document.activeElement && document.activeElement.blur());
+  await p.waitForTimeout(400);
   await p.waitForTimeout(1500);
   await p.evaluate(() => window.scrollTo(0, 0));
 
@@ -96,7 +131,7 @@ const SALIDA = process.argv[2] || "../figuras/apendice_I_prototipo";
   await recorte(n1, 0, hito.bottom + 10, 'nuevo_1_formulario_a');
   await recorte(n1, boton.top - 10, (w4.bottom + w5.top) / 2, 'nuevo_1_formulario_b');
   await recorte(n1, (w4.bottom + w5.top) / 2, alto_n1, 'nuevo_1_formulario_c');
-  await completa(tarjeta('2. Resultado LSTM (estudiante nuevo)'), 'nuevo_2_lstm');
+  await conMenu(tarjeta('2. Resultado LSTM (estudiante nuevo)'), 'nuevo_2_lstm');
   let n3 = tarjeta('3. Resultado red bayesiana (estudiante nuevo)');
   let simn = await rel(n3, n3.getByText('¿Qué pasaría si...?').first());
   let desc = await rel(n3, n3.getByText('Cambia uno o varios valores').first());

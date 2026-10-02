@@ -24,7 +24,8 @@ no exista) y presiona "Generar predicción".
 - **Tarjeta LSTM**: un solo número principal, el total de participaciones que la
   LSTM predice para todo el trimestre (con los modelos de la semilla 42, la que usan los
   resultados por estudiante del informe), debajo el rango de esa predicción entre las
-  cinco semillas de entrenamiento y un desplegable con la predicción de cada semilla.
+  cinco semillas de entrenamiento y un selector de semilla: al elegir otra, cambian la
+  predicción y el margen de error local (calculado con la validación cruzada de esa semilla).
 - **Tarjeta red bayesiana**: el mismo tipo de número (el "valor esperado"),
   más la distribución de probabilidad completa sobre los cinco estados
   posibles del objetivo, más qué información (evidencia) usó la red para
