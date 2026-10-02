@@ -36,7 +36,7 @@ la Figura 11.
 | Figura | Título abreviado | Archivo | Generada por |
 |---|---|---|---|
 | 14 | RMSE y R² de la LSTM y la extrapolación | `resultados/figura_lstm_vs_extrapolacion_tabla16.png` (y `.svg`) | `6_evaluacion/codigo/figura_lstm_vs_extrapolacion_tabla16.py` |
-| 15 | Puntaje de Brier frente a referencias | No está en el repositorio | Elaborada fuera del código versionado |
+| 15 | Puntaje de Brier frente a referencias | `resultados/figura_brier_referencias.png` | `6_evaluacion/codigo/figura_brier.py` |
 | 16 | RMSE según el respaldo de la evidencia | No está en el repositorio | Elaborada fuera del código versionado; sus valores salen de `6_evaluacion/codigo/respaldo_evidencia.py` |
 | 17 | Sensibilidad por variable y asignatura | `resultados/figura_sensibilidad_por_asignatura.png` | `6_evaluacion/codigo/sensibilidad_evidencia.py` |
 | 18 | Predicciones de los tres casos atípicos | `resultados/figura_atipicos_predicciones.png` | `6_evaluacion/codigo/casos_atipicos.py` |

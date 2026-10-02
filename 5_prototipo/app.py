@@ -16,7 +16,7 @@ con la LSTM, la UI solo llama a
 `services.bayes_service.predict_bayes(caso)` y presenta `ResultadoBayes`
 — discretización, evidencia, CPD, inferencia y valor esperado siguen
 viviendo exclusivamente en `services/bayes_service.py` (Sprint 4/tarjeta
-3). Se conectó al mismo botón «Generar predicción» que ya ejecuta la
+3). Se conectó al mismo botón Generar predicción que ya ejecuta la
 LSTM (ver `generar()`): es la integración incremental más pequeña posible
 sin duplicar el flujo de selección. La integración conceptual/comparativa
 de ambos modelos es la tarjeta 6, no esta.
@@ -46,6 +46,32 @@ TAMANO_TEXTO_PX = 15
 
 def _texto_dato(valor, formato) -> str:
     return "(sin dato)" if valor is None else formato(valor)
+
+
+def _texto_rango_semillas(resultado) -> str:
+    """Rango de la predicción de la LSTM entre sus cinco semillas de entrenamiento. El número grande
+    de la tarjeta es el de la semilla 42, la que usan los análisis por estudiante del informe."""
+    if resultado.rango_semillas is None:
+        return ""
+    minimo, maximo = resultado.rango_semillas
+    return (
+        f"Según la semilla de entrenamiento, la predicción de la LSTM varía entre {minimo:.1f} y "
+        f"{maximo:.1f} participaciones (cinco entrenamientos con semillas distintas; arriba se "
+        f"muestra el de la semilla {lstm_service.SEMILLA_PRINCIPAL}, la que usan los resultados del informe)."
+    )
+
+
+def _llenar_semillas(contenedor, expansion, resultado) -> None:
+    """Lista la predicción de cada semilla dentro del desplegable de la tarjeta de la LSTM. El
+    número principal de la tarjeta no cambia: sigue siendo el de la semilla 42."""
+    contenedor.clear()
+    expansion.set_visibility(bool(resultado.por_semilla))
+    if not resultado.por_semilla:
+        return
+    with contenedor:
+        for semilla, valor in resultado.por_semilla.items():
+            nota = " (la que se muestra arriba)" if semilla == lstm_service.SEMILLA_PRINCIPAL else ""
+            ui.label(f"Semilla {semilla}{nota}: {valor:.1f} participaciones")
 
 
 def mostrar_resumen_variables(contenedor, materia, trimestre, seccion, hito, anio, posicion,
@@ -319,7 +345,7 @@ def pagina_principal() -> None:
         ui.label("Modelo de contraste").classes("text-caption text-grey-7")
 
         estado_lstm = ui.label(
-            "Selecciona un caso completo y presiona «Generar predicción»."
+            "Selecciona un caso completo y presiona el botón Generar predicción."
         ).classes("text-body2 text-grey-7 q-mt-sm")
 
         contenedor_prediccion_lstm = ui.column().classes("q-mt-sm")
@@ -328,11 +354,15 @@ def pagina_principal() -> None:
             etiqueta_frase_lstm = ui.label().classes("text-body1")
             etiqueta_contexto_lstm = ui.label().classes("text-caption text-grey-7")
             etiqueta_valor_real_lstm = ui.label().classes("text-body2 text-weight-bold q-mt-xs")
+            etiqueta_rango_semillas_lstm = ui.label().classes("text-caption text-grey-7")
+            expansion_semillas_lstm = ui.expansion("Ver la predicción de cada semilla").classes("w-full")
+            with expansion_semillas_lstm:
+                lista_semillas_lstm = ui.column().classes("q-pa-sm")
             etiqueta_error_local_lstm = ui.label().classes("text-caption text-grey-7")
         contenedor_prediccion_lstm.set_visibility(False)
 
         def _limpiar_resultado_lstm() -> None:
-            estado_lstm.set_text("Selecciona un caso completo y presiona «Generar predicción».")
+            estado_lstm.set_text("Selecciona un caso completo y presiona el botón Generar predicción.")
             estado_lstm.classes(replace="text-body2 text-grey-7 q-mt-sm")
             contenedor_prediccion_lstm.set_visibility(False)
 
@@ -344,7 +374,7 @@ def pagina_principal() -> None:
                 resultado = lstm_service.predict_lstm(caso)
             except FileNotFoundError:
                 estado_lstm.set_text(
-                    f"No hay un modelo final entrenado para «{caso.materia}» / "
+                    f"No hay un modelo final entrenado para {caso.materia} / "
                     f"semana {caso.hito} todavía."
                 )
                 estado_lstm.classes(replace="text-body2 text-negative q-mt-sm")
@@ -387,6 +417,9 @@ def pagina_principal() -> None:
             except Exception:  # noqa: BLE001 — no debe romper el resto de la tarjeta
                 etiqueta_valor_real_lstm.set_text("")
 
+            etiqueta_rango_semillas_lstm.set_text(_texto_rango_semillas(resultado))
+            _llenar_semillas(lista_semillas_lstm, expansion_semillas_lstm, resultado)
+
             # Margen de error local: estimado sobre la validación cruzada
             # oficial (Sprint 2), NO el RMSE/R² global ya reportado.
             error = lstm_service.error_local(resultado.prediccion_total)
@@ -408,7 +441,7 @@ def pagina_principal() -> None:
         ui.label("Modelo principal").classes("text-caption text-grey-7")
 
         estado_bayes = ui.label(
-            "Selecciona un caso completo y presiona «Generar predicción»."
+            "Selecciona un caso completo y presiona el botón Generar predicción."
         ).classes("text-body2 text-grey-7 q-mt-sm")
 
         contenedor_resultado_bayes = ui.column().classes("w-full q-mt-sm")
@@ -451,7 +484,7 @@ def pagina_principal() -> None:
         contenedor_resultado_bayes.set_visibility(False)
 
         def _limpiar_resultado_bayes() -> None:
-            estado_bayes.set_text("Selecciona un caso completo y presiona «Generar predicción».")
+            estado_bayes.set_text("Selecciona un caso completo y presiona el botón Generar predicción.")
             estado_bayes.classes(replace="text-body2 text-grey-7 q-mt-sm")
             contenedor_resultado_bayes.set_visibility(False)
 
@@ -541,7 +574,7 @@ def pagina_principal() -> None:
             contenedor_sensibilidad_bayes.clear()
             with contenedor_sensibilidad_bayes:
                 for variable in resultado.evidencia_utilizada:
-                    with ui.expansion(f"Si cambiara «{variable}»").classes("w-full"):
+                    with ui.expansion(f"Si cambiara {variable}").classes("w-full"):
                         try:
                             escenarios = bayes_service.explorar_sensibilidad(caso, variable)
                         except Exception:  # noqa: BLE001 — no debe romper el resto de la tarjeta
@@ -793,7 +826,7 @@ def pagina_principal() -> None:
         ui.label("Modelo de contraste").classes("text-caption text-grey-7")
 
         estado_lstm_n = ui.label(
-            "Completa los datos y presiona «Generar predicción (estudiante nuevo)»."
+            "Completa los datos y presiona el botón Generar predicción (estudiante nuevo)."
         ).classes("text-body2 text-grey-7 q-mt-sm")
 
         contenedor_prediccion_lstm_n = ui.column().classes("q-mt-sm")
@@ -801,13 +834,17 @@ def pagina_principal() -> None:
             etiqueta_prediccion_lstm_n = ui.label().classes("text-h4 text-weight-bold text-primary")
             etiqueta_frase_lstm_n = ui.label().classes("text-body1")
             etiqueta_contexto_lstm_n = ui.label().classes("text-caption text-grey-7")
+            etiqueta_rango_semillas_lstm_n = ui.label().classes("text-caption text-grey-7")
+            expansion_semillas_lstm_n = ui.expansion("Ver la predicción de cada semilla").classes("w-full")
+            with expansion_semillas_lstm_n:
+                lista_semillas_lstm_n = ui.column().classes("q-pa-sm")
             etiqueta_error_local_lstm_n = ui.label().classes("text-caption text-grey-7")
             etiqueta_imputados_lstm_n = ui.label().classes("text-caption text-warning")
         contenedor_prediccion_lstm_n.set_visibility(False)
 
         def _limpiar_resultado_lstm_n() -> None:
             estado_lstm_n.set_text(
-                "Completa los datos y presiona «Generar predicción (estudiante nuevo)»."
+                "Completa los datos y presiona el botón Generar predicción (estudiante nuevo)."
             )
             estado_lstm_n.classes(replace="text-body2 text-grey-7 q-mt-sm")
             contenedor_prediccion_lstm_n.set_visibility(False)
@@ -854,6 +891,9 @@ def pagina_principal() -> None:
             else:
                 etiqueta_imputados_lstm_n.set_text("")
 
+            etiqueta_rango_semillas_lstm_n.set_text(_texto_rango_semillas(resultado))
+            _llenar_semillas(lista_semillas_lstm_n, expansion_semillas_lstm_n, resultado)
+
             error = lstm_service.error_local(resultado.prediccion_total)
             if error["n"] > 0:
                 etiqueta_error_local_lstm_n.set_text(
@@ -873,7 +913,7 @@ def pagina_principal() -> None:
         ui.label("Modelo principal").classes("text-caption text-grey-7")
 
         estado_bayes_n = ui.label(
-            "Completa los datos y presiona «Generar predicción (estudiante nuevo)»."
+            "Completa los datos y presiona el botón Generar predicción (estudiante nuevo)."
         ).classes("text-body2 text-grey-7 q-mt-sm")
 
         contenedor_resultado_bayes_n = ui.column().classes("w-full q-mt-sm")
@@ -909,7 +949,7 @@ def pagina_principal() -> None:
 
         def _limpiar_resultado_bayes_n() -> None:
             estado_bayes_n.set_text(
-                "Completa los datos y presiona «Generar predicción (estudiante nuevo)»."
+                "Completa los datos y presiona el botón Generar predicción (estudiante nuevo)."
             )
             estado_bayes_n.classes(replace="text-body2 text-grey-7 q-mt-sm")
             contenedor_resultado_bayes_n.set_visibility(False)
@@ -985,7 +1025,7 @@ def pagina_principal() -> None:
             contenedor_sensibilidad_bayes_n.clear()
             with contenedor_sensibilidad_bayes_n:
                 for variable in resultado.evidencia_utilizada:
-                    with ui.expansion(f"Si cambiara «{variable}»").classes("w-full"):
+                    with ui.expansion(f"Si cambiara {variable}").classes("w-full"):
                         try:
                             escenarios = bayes_service.explorar_sensibilidad_manual(
                                 resultado.materia, resultado.evidencia_utilizada, variable

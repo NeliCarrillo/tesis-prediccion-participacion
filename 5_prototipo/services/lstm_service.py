@@ -33,6 +33,12 @@ import tensorflow as tf
 RAIZ = Path(__file__).resolve().parent.parent.parent
 RUTA_DATOS = RAIZ / "1_datos" / "estandarizados"
 RUTA_ARTEFACTOS = RAIZ / "5_prototipo" / "artefactos_lstm"
+# Semilla de los modelos principales (la de los análisis por estudiante del informe, Apéndice C) y
+# semillas adicionales con las que se entrenó el mismo conjunto de 12 modelos, solo para mostrar el
+# rango de la predicción entre semillas (`entrenar_semillas_adicionales.ipynb`).
+SEMILLA_PRINCIPAL = 42
+SEMILLAS_ADICIONALES = (7, 123, 2024, 31)
+RUTA_SEMILLAS_ADICIONALES = RUTA_ARTEFACTOS / "semillas_adicionales"
 RUTA_PREDICCIONES_VALIDACION = RAIZ / "3_lstm" / "resultados" / "predicciones_lstm_validacion_cruzada.csv"
 
 # Debe coincidir con el diccionario usado al entrenar los modelos finales
@@ -253,7 +259,7 @@ def truncar_a_hito(tensor, hito):
 # ============================================================
 
 _CACHE_DATOS: dict | None = None
-_CACHE_ARTEFACTOS: dict[tuple[str, int], dict] = {}
+_CACHE_ARTEFACTOS: dict[tuple[str, int, int], dict] = {}
 
 
 def _preparar_datos() -> dict:
@@ -303,16 +309,17 @@ def construir_entrada_lstm(caso) -> tuple[np.ndarray, np.ndarray, float]:
     return X_hito, X_temas_hito, acumulado
 
 
-def _cargar_artefactos(materia: str, hito: int) -> dict:
-    clave = (materia, hito)
+def _cargar_artefactos(materia: str, hito: int, semilla: int = SEMILLA_PRINCIPAL) -> dict:
+    clave = (materia, hito, semilla)
     if clave in _CACHE_ARTEFACTOS:
         return _CACHE_ARTEFACTOS[clave]
 
     slug = SLUGS[materia]
-    carpeta = RUTA_ARTEFACTOS / f"{slug}_h{hito}"
+    base = RUTA_ARTEFACTOS if semilla == SEMILLA_PRINCIPAL else RUTA_SEMILLAS_ADICIONALES / str(semilla)
+    carpeta = base / f"{slug}_h{hito}"
     if not carpeta.exists():
         raise FileNotFoundError(
-            f"no hay modelo final para {materia!r} / hito {hito} en {carpeta}"
+            f"no hay modelo final para {materia!r} / hito {hito} (semilla {semilla}) en {carpeta}"
         )
 
     modelo = tf.keras.models.load_model(carpeta / "modelo.keras")
@@ -340,17 +347,27 @@ class ResultadoLSTM:
     estudiante_id: str
     hito: int
     prediccion_total: float
+    # Predicción de cada una de las cinco semillas de entrenamiento (None si faltan los modelos de
+    # las semillas adicionales). `prediccion_total` es siempre la de la semilla 42.
+    por_semilla: dict[int, float] | None = None
+
+    @property
+    def rango_semillas(self) -> tuple[float, float] | None:
+        if not self.por_semilla:
+            return None
+        return min(self.por_semilla.values()), max(self.por_semilla.values())
 
 
 def _predecir_desde_tensor(
-    materia: str, hito: int, X_hito: np.ndarray, X_temas_hito: np.ndarray, acumulado: float
+    materia: str, hito: int, X_hito: np.ndarray, X_temas_hito: np.ndarray, acumulado: float,
+    semilla: int = SEMILLA_PRINCIPAL,
 ) -> float:
     """Imputación de año académico, escalado y reconstrucción del total —
     el único cuerpo de esta transformación, para no duplicarlo entre
     `predict_lstm` (estudiante real) y `predict_lstm_manual` (estudiante
     hipotético): ambos terminan en un tensor con esta misma forma."""
     indice_anio = ESTATICAS.index("anio_academico")
-    artefactos = _cargar_artefactos(materia, hito)
+    artefactos = _cargar_artefactos(materia, hito, semilla)
 
     X_hito = X_hito.copy()
     if np.isnan(X_hito[:, :, indice_anio]).any():
@@ -378,6 +395,22 @@ def _predecir_desde_tensor(
     )
 
 
+def predicciones_por_semilla(
+    materia: str, hito: int, X_hito: np.ndarray, X_temas_hito: np.ndarray, acumulado: float,
+    principal: float,
+) -> dict[int, float] | None:
+    """Predicción del mismo caso con cada una de las cinco semillas (la principal, ya calculada,
+    y las adicionales). Devuelve None si no están los modelos de las semillas adicionales, de modo
+    que el prototipo siga funcionando solo con los modelos de la semilla 42."""
+    predicciones = {SEMILLA_PRINCIPAL: principal}
+    for semilla in SEMILLAS_ADICIONALES:
+        try:
+            predicciones[semilla] = _predecir_desde_tensor(materia, hito, X_hito, X_temas_hito, acumulado, semilla)
+        except FileNotFoundError:
+            return None
+    return predicciones
+
+
 def predict_lstm(caso) -> ResultadoLSTM:
     """Predicción puntual del total trimestral para `caso`, usando el
     modelo final de su asignatura/hito (Estrategia 2 — entrenado con
@@ -393,6 +426,7 @@ def predict_lstm(caso) -> ResultadoLSTM:
         estudiante_id=caso.estudiante_id,
         hito=caso.hito,
         prediccion_total=total,
+        por_semilla=predicciones_por_semilla(caso.materia, caso.hito, X_hito, X_temas_hito, acumulado, total),
     )
 
 
@@ -543,6 +577,13 @@ class ResultadoLSTMManual:
     prediccion_total: float
     # Valores que el usuario dejó vacíos y la LSTM imputó (nombre -> valor).
     valores_imputados: dict = field(default_factory=dict)
+    por_semilla: dict[int, float] | None = None
+
+    @property
+    def rango_semillas(self) -> tuple[float, float] | None:
+        if not self.por_semilla:
+            return None
+        return min(self.por_semilla.values()), max(self.por_semilla.values())
 
 
 def medianas_imputacion_manual(materia: str, hito: int) -> dict:
@@ -610,6 +651,7 @@ def predict_lstm_manual(
         hito=hito,
         prediccion_total=total,
         valores_imputados=imputados,
+        por_semilla=predicciones_por_semilla(materia, hito, X_hito, X_temas_hito, acumulado, total),
     )
 
 

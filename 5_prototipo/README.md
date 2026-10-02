@@ -21,8 +21,10 @@ no exista) y presiona "Generar predicción".
 
 ## Qué vas a ver
 
-- **Tarjeta LSTM**: un solo número — el total de participaciones que la
-  LSTM predice para todo el trimestre.
+- **Tarjeta LSTM**: un solo número principal, el total de participaciones que la
+  LSTM predice para todo el trimestre (con los modelos de la semilla 42, la que usan los
+  resultados por estudiante del informe), debajo el rango de esa predicción entre las
+  cinco semillas de entrenamiento y un desplegable con la predicción de cada semilla.
 - **Tarjeta red bayesiana**: el mismo tipo de número (el "valor esperado"),
   más la distribución de probabilidad completa sobre los cinco estados
   posibles del objetivo, más qué información (evidencia) usó la red para
@@ -40,6 +42,8 @@ no exista) y presiona "Generar predicción".
 │   └── bayes_service.py       cómo se le pregunta a la red bayesiana
 ├── artefactos_lstm/           los 12 modelos LSTM ya entrenados, listos para usar
 ├── entrenar_modelos_finales.py   el script que generó esos 12 modelos
+├── entrenar_semillas_adicionales.ipynb   entrena los mismos 12 modelos con otras 4 semillas
+├── capturas_apendice_i.js     regenera las capturas del Apéndice I desde la interfaz en ejecución
 ├── requirements.txt            lo mínimo para correr app.py
 └── requirements-dev.txt        lo anterior + lo necesario solo para reentrenar
 ```
@@ -95,6 +99,12 @@ Dentro de cada una:
 | `objetivo.json` | La media y la desviación que se usaron para "destraducir" la salida del modelo a un número real de participaciones. |
 | `imputacion.json` | Qué valor se usa si a un estudiante le falta el año académico (le pasa a muy pocos casos). |
 
+La subcarpeta `semillas_adicionales/` guarda, con la misma estructura, los 12 modelos
+entrenados con las otras cuatro semillas del barrido (7, 123, 2024 y 31). La tarjeta de la
+LSTM los usa solo para mostrar el rango de la predicción entre semillas; el número principal
+sigue siendo el de la semilla 42. Si esa subcarpeta no existe, el prototipo funciona igual y
+simplemente no muestra el rango.
+
 Y en la raíz de la carpeta, `config_compartida.json` anota con qué
 variables, semillas y configuración se entrenaron los 12 modelos, para que
 quede registrado cómo se hicieron.
@@ -126,6 +136,11 @@ nueva), se corre así:
 ```bash
 python3 entrenar_modelos_finales.py --salida artefactos_lstm
 ```
+
+Con `--semilla N` entrena el mismo conjunto con otra semilla. El cuaderno
+`entrenar_semillas_adicionales.ipynb` lo hace con las cuatro semillas adicionales, deja los
+modelos en `artefactos_lstm/semillas_adicionales/` y conserva sus resultados (épocas,
+variación de la predicción entre semillas en los 1.572 casos).
 
 El parámetro `--salida` es obligatorio a propósito, para que nunca se
 sobrescriban los modelos actuales sin querer — se puede apuntar a una

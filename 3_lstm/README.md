@@ -53,3 +53,6 @@ Métricas de la validación cruzada (`metricas_adaptacion.csv`, `metricas_semill
 `metricas_semillas_resumen.csv`), predicciones por estudiante de la semilla 42
 (`predicciones_lstm_validacion_cruzada.csv`) y el intento de explicabilidad
 (`explicabilidad_lstm_*.csv`, generado por `adaptacion/explicabilidad_lstm.py`).
+`predicciones_lstm_cinco_semillas.csv` guarda las predicciones por estudiante de las cinco
+semillas; lo genera `adaptacion/predicciones_cinco_semillas.py`, que ejecuta las celdas del
+cuaderno y comprueba que reproduce `metricas_semillas.csv` y las predicciones de la semilla 42.

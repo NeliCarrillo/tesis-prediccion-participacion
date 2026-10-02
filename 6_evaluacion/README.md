@@ -17,12 +17,14 @@ publicado (Tablas 16, 19 y 20), exige que coincida con el informe.
 | `figura_lstm_vs_extrapolacion_tabla16.py` | Figura de RMSE y R² de la LSTM y la extrapolación | Figura 14 |
 | `figura_comparacion_modelos.py` | Figura de RMSE de los tres métodos | Figura 19 |
 | `casos_atipicos.py` | Predicciones de los tres casos atípicos | Figura 18 |
+| `figura_brier.py` | Puntaje de Brier por asignatura e hito y referencias uniforme y marginal histórica, con los colores de las tablas | Tabla 18 y Figura 15 |
 | `respaldo_evidencia.py` | Respaldo de cada combinación de evidencia, brecha en los casos con respaldo y alternativas para los casos sin respaldo | Tabla 19, Comparación LSTM y Bayes, Tabla F3 |
 | `sensibilidad_evidencia.py` | Rango de sensibilidad por variable, global y por asignatura | Tabla 20 y Figura 17 |
 | `margen_equivalencia.py` | Otras reglas de suavizado y cota con todos los trimestres | Comparación LSTM y Bayes, Tabla F2 |
 | `rmse_con_techo.py` | RMSE de la red bayesiana tomando el techo como valor correcto | Comparación LSTM y Bayes, Apéndice F |
 | `anomalias_pendiente.py` | Cambio de pendiente del RMSE con intervalo bootstrap, sesgos e hipótesis de la meta de participaciones | Comparación LSTM y Bayes, Tabla J2 |
 | `anomalias_calendario.py` | Calendario, acontecimientos nacionales, casos sin participación y prueba de la indicación de evaluación en la LSTM | Figuras 20 y 21, Tabla J1, Apéndice J |
+| `semillas_lstm.py` | Repite con las cinco semillas los análisis por estudiante que usan la semilla 42 (cambio de pendiente, casos sin participación, brecha con respaldo) la posición de cada semilla, la diferencia promedio frente a los otros métodos y la variación de la predicción individual entre semillas | Apéndice C (Tablas C2 y C3) y Resultados |
 | `figura_posterior_atipicos.py` | Distribución posterior de los casos atípicos | No incluida en el informe |
 | `rutas.py` | Agrega `4_red_bayesiana/codigo/` a `sys.path` para reutilizar el código de la red | Uso interno |
 

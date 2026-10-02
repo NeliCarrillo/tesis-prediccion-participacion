@@ -1,0 +1,13 @@
+materia,hito,n_registros,epocas_ejecutadas,epoca_mejor_val_loss,early_stopping_activo,segundos,mediana_anio_imputada
+Algoritmos y Programación,4,147,27,7,True,3.1,1.0
+Algoritmos y Programación,6,147,21,1,True,2.6,1.0
+Algoritmos y Programación,8,147,21,1,True,2.8,1.0
+Computación Emergente,4,182,30,10,True,3.1,4.0
+Computación Emergente,6,182,28,8,True,3.0,4.0
+Computación Emergente,8,182,27,7,True,3.1,4.0
+Estructura de Datos,4,108,36,16,True,3.3,
+Estructura de Datos,6,108,32,12,True,3.1,
+Estructura de Datos,8,108,29,9,True,2.9,
+Matemáticas Discretas,4,87,135,115,True,7.1,
+Matemáticas Discretas,6,87,58,38,True,4.0,
+Matemáticas Discretas,8,87,114,94,True,6.6,

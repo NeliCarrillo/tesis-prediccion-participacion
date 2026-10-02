@@ -29,8 +29,14 @@ mismo `StandardScaler`) en la línea que lo usa — no es una reimplementación
 distinta, es la única forma de obtener el objeto ajustado sin modificar
 esa función en el notebook.
 
+Semillas adicionales: con `--semilla N` se entrena el mismo conjunto de 12 modelos con otra
+semilla (el cuaderno `entrenar_semillas_adicionales.ipynb` lo hace con las otras cuatro
+semillas del barrido, 7, 123, 2024 y 31), para que el prototipo muestre el rango de la
+predicción entre semillas. La semilla 42 sigue siendo la de los artefactos principales.
+
 Uso:
     python3 entrenar_modelos_finales.py --salida artefactos_lstm
+    python3 entrenar_modelos_finales.py --salida artefactos_lstm/semillas_adicionales/7 --semilla 7
     python3 entrenar_modelos_finales.py --salida /ruta/de/prueba   # no toca los artefactos reales
 
 El directorio de salida es obligatorio a propósito: así una ejecución de
@@ -94,7 +100,7 @@ def _extraer_del_notebook() -> tuple:
     return espacio_nombres["construir_modelo_lstm"], espacio_nombres["escalar_objetivo"]
 
 
-def entrenar(salida: Path) -> pd.DataFrame:
+def entrenar(salida: Path, semilla: int = SEMILLA) -> pd.DataFrame:
     construir_modelo_lstm, escalar_objetivo = _extraer_del_notebook()
 
     datos = lstm_service._preparar_datos()
@@ -130,7 +136,7 @@ def entrenar(salida: Path) -> pd.DataFrame:
 
             media_obj, desviacion_obj = escalar_objetivo(restantes)
 
-            tf.keras.utils.set_random_seed(SEMILLA)
+            tf.keras.utils.set_random_seed(semilla)
             modelo = construir_modelo_lstm(hito, X.shape[2], unidades=UNIDADES)
             historia = modelo.fit(
                 [X_escalado, T_hito], (restantes - media_obj) / desviacion_obj,
@@ -176,7 +182,7 @@ def entrenar(salida: Path) -> pd.DataFrame:
     json.dump({
         "ESTATICAS": lstm_service.ESTATICAS, "DINAMICAS": lstm_service.DINAMICAS,
         "N_SEMANAS": lstm_service.N_SEMANAS, "N_TEMAS": lstm_service.N_TEMAS,
-        "HITOS": list(lstm_service.HITOS), "SEMILLA": SEMILLA, "unidades": UNIDADES,
+        "HITOS": list(lstm_service.HITOS), "SEMILLA": semilla, "unidades": UNIDADES,
     }, open(salida / "config_compartida.json", "w"), indent=2)
 
     resumen_df = pd.DataFrame(resumen)
@@ -191,8 +197,10 @@ if __name__ == "__main__":
         help="Directorio donde escribir los 12 artefactos (obligatorio, para no "
              "sobrescribir 5_prototipo/artefactos_lstm/ por accidente).",
     )
+    parser.add_argument("--semilla", type=int, default=SEMILLA,
+                        help="Semilla de entrenamiento (por defecto 42, la de los artefactos principales).")
     args = parser.parse_args()
 
-    resumen_df = entrenar(args.salida.resolve())
+    resumen_df = entrenar(args.salida.resolve(), args.semilla)
     print(f"\n{len(resumen_df)} combinaciones entrenadas. Resumen en "
           f"{args.salida.resolve() / 'resumen_entrenamiento.csv'}")
