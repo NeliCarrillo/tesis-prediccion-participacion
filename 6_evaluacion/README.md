@@ -19,7 +19,7 @@ publicado (Tablas 16, 19 y 20), exige que coincida con el informe.
 | `casos_atipicos.py` | Predicciones de los tres casos atípicos | Figura 18 |
 | `figura_brier.py` | Puntaje de Brier por asignatura e hito y referencias uniforme y marginal histórica, con los colores de las tablas | Tabla 18 y Figura 15 |
 | `respaldo_evidencia.py` | Respaldo de cada combinación de evidencia, brecha en los casos con respaldo y alternativas para los casos sin respaldo | Tabla 19, Comparación LSTM y Bayes, Tabla F3 |
-| `sensibilidad_evidencia.py` | Rango de sensibilidad por variable, global y por asignatura | Tabla 20 y Figura 17 |
+| `sensibilidad_evidencia.py` | Rango de sensibilidad por variable, global y por asignatura; predicción de cada caso con el valor observado, con cada estado y con la variable omitida; cambio de RMSE al omitir cada variable (aporte predictivo observado) y dirección del cambio entre estados con respaldo | Tabla de sensibilidad (Tabla 20) y Figura 17 |
 | `margen_equivalencia.py` | Otras reglas de suavizado y cota con todos los trimestres | Comparación LSTM y Bayes, Tabla F2 |
 | `rmse_con_techo.py` | RMSE de la red bayesiana tomando el techo como valor correcto | Comparación LSTM y Bayes, Apéndice F |
 | `anomalias_pendiente.py` | Cambio de pendiente del RMSE con intervalo bootstrap, sesgos e hipótesis de la meta de participaciones | Comparación LSTM y Bayes, Tabla J2 |
