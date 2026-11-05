@@ -20,7 +20,8 @@ entrenaron, este análisis describe el comportamiento de los modelos y no es
 una evaluación predictiva.
 
 Correr el archivo genera los CSV en `3_lstm/resultados/` y la figura del Apéndice K
-en `figuras/apendice_K_explicabilidad_lstm/`.
+en `figuras/apendice_K_explicabilidad_lstm/`. Con `--solo-figura` redibuja la figura a
+partir de los CSV ya guardados, sin recalcular.
 """
 from __future__ import annotations
 
@@ -164,8 +165,9 @@ def analisis_perturbaciones() -> pd.DataFrame:
 
 def figura(casos: pd.DataFrame, pesos: pd.DataFrame) -> None:
     """a) Predicciones de ambos modelos para estudiantes con la misma evidencia
-    bayesiana (grupos de al menos 10 casos). b) Peso medio absoluto de cada
-    entrada numérica en la primera capa LSTM de los 12 modelos finales."""
+    bayesiana (grupos de al menos 10 casos). b) Diagrama de caja, por entrada
+    numérica, del peso medio absoluto en la primera capa LSTM de los 12 modelos
+    finales (semilla 42), con el valor esperado al inicializar como referencia."""
     import matplotlib.pyplot as plt
     plt.rcParams.update({"font.size": 9, "axes.linewidth": 0.6})
     coma = lambda y, _p: f"{y:g}".replace(".", ",")
@@ -192,30 +194,51 @@ def figura(casos: pd.DataFrame, pesos: pd.DataFrame) -> None:
     orden = list(etiquetas)
     tabla = pesos[pesos.rasgo.isin(orden)].pivot_table(index=["materia", "hito"], columns="rasgo",
                                                        values="peso_medio_abs")[orden]
-    for i, (_, fila) in enumerate(tabla.iterrows()):
-        a2.plot(range(len(orden)), fila.to_numpy(), "-", color="0.7", linewidth=0.7,
-                label="Cada modelo" if i == 0 else None)
-    a2.plot(range(len(orden)), tabla.median().to_numpy(), "o-", color="black", linewidth=1.3,
-            markersize=3.5, label="Mediana de los 12 modelos")
+    # Un diagrama de caja por entrada con los 12 valores (un modelo final por asignatura e
+    # hito, semilla 42): mediana, cuartiles, bigotes hasta 1,5 veces el rango intercuartílico
+    # y, fuera de ellos, los valores atípicos.
+    valores = [tabla[r].to_numpy() for r in orden]
+    assert all(len(v) == 12 for v in valores)
+    a2.boxplot(valores, positions=range(len(orden)), widths=0.55, whis=1.5, patch_artist=True,
+               boxprops={"facecolor": "0.88", "edgecolor": "0.3", "linewidth": 0.8},
+               medianprops={"color": "black", "linewidth": 1.4},
+               whiskerprops={"color": "0.3", "linewidth": 0.8}, capprops={"color": "0.3", "linewidth": 0.8},
+               flierprops={"marker": "o", "markersize": 3, "markerfacecolor": "white",
+                           "markeredgecolor": "0.2", "markeredgewidth": 0.7})
+    # Referencia: valor esperado del peso medio absoluto al inicializar (Glorot uniforme,
+    # límite sqrt(6 / (entradas + salidas)); la media de |w| es la mitad del límite).
+    entradas, salidas = len(RASGOS), 64
+    inicial = np.sqrt(6 / (entradas + salidas)) / 2
+    a2.axhline(inicial, color="tab:red", linestyle="--", linewidth=0.9, zorder=1,
+               label=f"Valor esperado al inicializar ({inicial:.2f})".replace(".", ","))
     a2.set_xticks(range(len(orden)))
     a2.set_xticklabels([etiquetas[r] for r in orden], rotation=35, ha="right")
     a2.set_ylabel("Peso medio absoluto")
-    a2.set_ylim(0, 0.25)
+    a2.set_ylim(0.10, 0.23)
     a2.yaxis.set_major_formatter(coma)
     a2.set_title("b) Pesos de la primera capa LSTM", fontsize=9, loc="left")
-    a2.legend(frameon=False, fontsize=7.5, loc="lower left")
+    a2.legend(frameon=False, fontsize=7.5, loc="upper left")
     for eje in (a1, a2):
         eje.grid(axis="y", color="0.9", linewidth=0.5)
         eje.set_axisbelow(True)
         for lado in ("top", "right"):
             eje.spines[lado].set_visible(False)
-    fig.tight_layout(w_pad=2.0)
+    # Posiciones fijas: las que daba `tight_layout(w_pad=2.0)` en la versión con líneas del
+    # panel b, para que el panel a quede exactamente igual que antes.
+    a1.set_position([0.1074, 0.2911, 0.4295, 0.6044])
+    a2.set_position([0.6611, 0.2911, 0.3181, 0.6044])
     CARPETA_FIGURAS.mkdir(parents=True, exist_ok=True)
     fig.savefig(CARPETA_FIGURAS / "figura_explicabilidad_lstm.png", dpi=300, bbox_inches="tight", facecolor="white")
     plt.close(fig)
 
 
 if __name__ == "__main__":
+    if "--solo-figura" in sys.argv:
+        # Redibuja la figura con los CSV ya guardados, sin recalcular ningún análisis.
+        figura(pd.read_csv(CARPETA / "explicabilidad_lstm_casos.csv"),
+               pd.read_csv(CARPETA / "explicabilidad_lstm_pesos.csv"))
+        print("Figura guardada en", CARPETA_FIGURAS)
+        sys.exit()
     pesos = analisis_pesos()
     pesos.to_csv(CARPETA / "explicabilidad_lstm_pesos.csv", index=False)
     casos = analisis_perturbaciones()

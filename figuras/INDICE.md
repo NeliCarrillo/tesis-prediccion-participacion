@@ -65,11 +65,17 @@ Capturas reales de la interfaz, en `apendice_I_prototipo/`:
 
 Las capturas las genera `5_prototipo/capturas_apendice_i.js` desde la interfaz en ejecución; I3 e I9 muestran la lista de semillas desplegada.
 
+## Apéndice J (cronograma y acontecimientos)
+
+| Figura | Título abreviado | Archivo | Generada por |
+|---|---|---|---|
+| J1 | Registros con al menos x participaciones (hipótesis de la meta) | `apendice_J_anomalias/figura_supervivencia_participaciones.png` | `6_evaluacion/codigo/figura_meta_participaciones.py` |
+
 ## Apéndice K (explicabilidad de la LSTM)
 
 | Figura | Título abreviado | Archivo | Generada por |
 |---|---|---|---|
-| K1 | Predicciones con la misma evidencia y pesos de la primera capa LSTM | `apendice_K_explicabilidad_lstm/figura_explicabilidad_lstm.png` | `3_lstm/adaptacion/explicabilidad_lstm.py` |
+| K1 | Predicciones con la misma evidencia y pesos de la primera capa LSTM | `apendice_K_explicabilidad_lstm/figura_explicabilidad_lstm.png` | `3_lstm/adaptacion/explicabilidad_lstm.py` (panel b en diagramas de caja; `--solo-figura` la redibuja desde los CSV) |
 
 ## Apéndice M (exploración inicial de los datos)
 
