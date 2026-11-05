@@ -242,7 +242,7 @@ def figura_calendario(cal: pd.DataFrame) -> None:
 
 def figura_mecanismo(acumulada: pd.DataFrame, datos: pd.DataFrame) -> None:
     plt = _estilo()
-    figura, ejes = plt.subplots(1, 3, figsize=(6.5, 2.7), gridspec_kw={"width_ratios": [1.25, 1, 1]})
+    figura, ejes = plt.subplots(1, 3, figsize=(6.5, 3.6), gridspec_kw={"width_ratios": [1.25, 1, 1]})
     estilos = {"Algoritmos y Programación": ("-", "o"), "Computación Emergente": ("--", "s"),
                "Estructura de Datos": ("-.", "^"), "Matemáticas Discretas": (":", "D")}
     eje = ejes[0]
@@ -254,6 +254,23 @@ def figura_mecanismo(acumulada: pd.DataFrame, datos: pd.DataFrame) -> None:
     for hito in HITOS:
         eje.axvline(hito, color="0.8", linewidth=0.6, zorder=0)
         eje.text(hito, 1.03, f"S{hito}", ha="center", va="bottom", fontsize=7)
+    # Proporción acumulada en S4, S6 y S8 (citada en el texto), como tabla pequeña dentro del panel:
+    # una fila por asignatura con su símbolo de la leyenda, en la zona libre bajo la diagonal de
+    # reparto uniforme (abajo a la derecha), sin tapar ninguna línea ni marcador.
+    simbolos = {"Algoritmos y Programación": "●", "Computación Emergente": "■",
+                "Estructura de Datos": "▲", "Matemáticas Discretas": "◆"}
+    # x (alineada a la derecha) de cada hito; las líneas de S6 (x = 6) y S8 (x = 8) pasan por los huecos
+    # entre el símbolo y la primera columna, y entre la primera y la segunda columna.
+    columnas = {4: 7.75, 6: 9.6, 8: 11.45}
+    en_hitos = acumulada[acumulada.semana.isin(columnas)].pivot(index="materia", columns="semana",
+                                                                 values="proporcion_acumulada")
+    for hito, x in columnas.items():
+        eje.text(x, 0.40, f"S{hito}", ha="right", va="center", fontsize=6.5)
+    for i, materia in enumerate(sorted(simbolos, key=lambda m: -en_hitos.loc[m, 4])):
+        y = 0.32 - 0.08 * i
+        eje.text(5.4, y, simbolos[materia], ha="left", va="center", fontsize=6.5)
+        for hito, x in columnas.items():
+            eje.text(x, y, f"{en_hitos.loc[materia, hito] * 100:.0f}%", ha="right", va="center", fontsize=6.5)
     eje.set_xticks(range(1, 13))
     eje.set_xticklabels([str(i) if i % 2 == 0 else "" for i in range(1, 13)])
     eje.set_xlim(0, 12.3)
@@ -284,7 +301,7 @@ def figura_mecanismo(acumulada: pd.DataFrame, datos: pd.DataFrame) -> None:
         for lado in ("top", "right"):
             eje.spines[lado].set_visible(False)
     manejadores, etiquetas = ejes[1].get_legend_handles_labels()
-    figura.tight_layout(rect=(0, 0, 1, 0.80), w_pad=1.0)
+    figura.tight_layout(rect=(0, 0, 1, 0.85), w_pad=1.0)
     lineas, nombres = ejes[0].get_legend_handles_labels()
     figura.legend(lineas, nombres, loc="upper left", bbox_to_anchor=(0.0, 1.0), ncol=2, frameon=False,
                   fontsize=6.5, handlelength=2.4, columnspacing=1.0,

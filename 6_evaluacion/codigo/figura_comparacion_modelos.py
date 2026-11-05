@@ -28,6 +28,8 @@ MATERIAS: tuple[str, ...] = (
     "Algoritmos y Programación", "Computación Emergente",
     "Estructura de Datos", "Matemáticas Discretas",
 )
+# Etiqueta de cada panel, en orden de lectura (fila por fila); el texto remite a ellas (p. ej., Figura 19.b).
+LETRAS: tuple[str, ...] = ("a", "b", "c", "d")
 HITOS: tuple[int, ...] = (4, 6, 8)
 TAMANO_TEXTO = 9
 TAMANO_VALOR = 7.5
@@ -115,14 +117,14 @@ if __name__ == "__main__":
 
     plt.rcParams.update({"font.size": TAMANO_TEXTO})
     figura, ejes = plt.subplots(2, 2, figsize=(6.5, 5.6))
-    for eje, materia in zip(ejes.flat, MATERIAS):
+    for eje, materia, letra in zip(ejes.flat, MATERIAS, LETRAS):
         g = datos[datos["materia"] == materia].sort_values("hito")
         eje.errorbar(g["hito"], g["rmse_lstm"], yerr=g["rmse_lstm_desv"], marker="o", markersize=4,
                      color="tab:blue", capsize=3, label="LSTM (media ± desviación entre cinco semillas)")
         eje.plot(g["hito"], g["rmse_bayes"], marker="s", markersize=4, color="tab:red", label="Red bayesiana")
         eje.plot(g["hito"], g["rmse_extrapolacion"], marker="^", markersize=4, color="tab:gray",
                  label="Extrapolación proporcional")
-        eje.set_title(materia, fontsize=TAMANO_TEXTO + 1)
+        eje.set_title(rf"$\mathbf{{({letra})}}$ {materia}", fontsize=TAMANO_TEXTO + 1)  # letra en negrita
         eje.set_xticks(HITOS)
         eje.set_xticklabels([f"S{h}" for h in HITOS])
         eje.set_xlim(3.4, 8.6)

@@ -16,7 +16,7 @@ desactualizados.
 | 1 | Hoja "Estandar" de participaciones | No está en el repositorio: captura de la plantilla | `1_datos/plantillas/ESTANDAR_Participaciones.xlsx` |
 | 2 | Hoja "Cronograma" de participaciones | No está en el repositorio: captura de la plantilla | `1_datos/plantillas/ESTANDAR_Participaciones.xlsx` |
 | 3 | Tamaño de las secciones | `metodo_datos_y_exploracion/figura_tamano_grupo_exploracion.png` | `4_red_bayesiana/exploracion/figura_tamano_grupo_exploracion.py` |
-| 4 | Total de participaciones por asignatura | `metodo_datos_y_exploracion/figura_distribucion_objetivo.png` | `3_lstm/adaptacion/adaptacion_lstm_participaciones.ipynb` |
+| 4 | Total de participaciones por asignatura | `metodo_datos_y_exploracion/figura_distribucion_objetivo.png` | `3_lstm/adaptacion/figura_distribucion_objetivo.py` (versión en una fila; la celda 50 del cuaderno genera la versión 2 × 2 anterior) |
 | 5 | Participación semanal según año académico | `metodo_datos_y_exploracion/figura_participacion_semanal_anio_academico.png` | Sin script en el repositorio |
 | 6 | Acumulado frente al total del trimestre | `metodo_datos_y_exploracion/figura_correlacion_acumulado_total.png` | `3_lstm/adaptacion/adaptacion_lstm_participaciones.ipynb` |
 | 7 | Trayectoria de los tres casos atípicos | `metodo_datos_y_exploracion/figura_atipicos_dispersion.png` | `3_lstm/adaptacion/adaptacion_lstm_participaciones.ipynb` |
@@ -70,6 +70,12 @@ Las capturas las genera `5_prototipo/capturas_apendice_i.js` desde la interfaz e
 | Figura | Título abreviado | Archivo | Generada por |
 |---|---|---|---|
 | K1 | Predicciones con la misma evidencia y pesos de la primera capa LSTM | `apendice_K_explicabilidad_lstm/figura_explicabilidad_lstm.png` | `3_lstm/adaptacion/explicabilidad_lstm.py` |
+
+## Apéndice M (exploración inicial de los datos)
+
+| Figura | Título abreviado | Archivo | Generada por |
+|---|---|---|---|
+| M1 | Cobertura y granularidad de los datos cuantitativos | `apendice_M_exploracion_datos/figura_cobertura_granularidad.png` | `4_red_bayesiana/exploracion/figura_cobertura_granularidad.py` |
 
 ## `no_incluidas_en_informe/`
 
